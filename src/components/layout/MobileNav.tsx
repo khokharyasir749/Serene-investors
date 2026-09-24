@@ -18,11 +18,12 @@ export function MobileNav({ open, onClose }: Props) {
   useLockBodyScroll(open)
   useFocusTrap(open, dialogRef, close, '[aria-controls="mobile-menu"]')
 
+  const location = useLocation()
+
   if (!open) return null
 
   const start = utilityNav.find((item) => item.id === 'start')
   const login = utilityNav.find((item) => item.id === 'login')
-  const location = useLocation()
 
   return (
     <div

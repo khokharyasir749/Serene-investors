@@ -1,6 +1,7 @@
 import type { FooterColumn, NavItem } from '@/types'
 
 export const primaryNav: NavItem[] = [
+  { id: 'home', label: 'Home', href: '/' },
   { id: 'properties', label: 'Properties', href: '/properties' },
   { id: 'funds', label: 'Funds', href: '/funds', badge: 'New' },
   { id: 'how', label: 'How it works', href: '/how-it-works' },

@@ -1,4 +1,5 @@
 import { useRef } from 'react'
+import { FileText, Sparkles } from 'lucide-react'
 import type { TrustItem } from '@/types'
 import { TrustPoint } from '@/components/cards/TrustPoint'
 import { TrustRecordCard } from '@/components/ui/TrustRecordCard'
@@ -55,18 +56,20 @@ export function TrustSection({ items }: Props) {
         </div>
 
         <div className="trust-stage mt-12 lg:mt-16" data-depth-stage>
-          <figure data-trust-media data-depth="back" className="trust-stage__media m-0">
-            <img
-              src={trustIntro.image.src}
-              alt={trustIntro.image.alt}
-              width={2000}
-              height={1200}
-              loading="lazy"
-              decoding="async"
-            />
-          </figure>
-          <div className="trust-stage__record" data-depth="mid">
-            <TrustRecordCard record={trustRecord} />
+          <div className="trust-stage__banner">
+            <figure data-trust-media data-depth="back" className="trust-stage__media m-0">
+              <img
+                src={trustIntro.image.src}
+                alt={trustIntro.image.alt}
+                width={2000}
+                height={1200}
+                loading="lazy"
+                decoding="async"
+              />
+            </figure>
+            <div className="trust-stage__record" data-depth="mid">
+              <TrustRecordCard record={trustRecord} />
+            </div>
           </div>
           <div className="trust-stage__cards">
             {sideCards.map((item, index) => (
@@ -76,6 +79,13 @@ export function TrustSection({ items }: Props) {
                 data-depth={index === 0 ? 'mid' : 'front'}
                 className="trust-doc stage-card depth-lift text-ink"
               >
+                <div className="trust-doc__icon" aria-hidden="true">
+                  {item.id === 'documentation' ? (
+                    <FileText size={20} strokeWidth={1.8} />
+                  ) : (
+                    <Sparkles size={20} strokeWidth={1.8} />
+                  )}
+                </div>
                 <h3 className="trust-doc__title">{item.title}</h3>
                 <p className="trust-doc__body">{item.body}</p>
               </article>

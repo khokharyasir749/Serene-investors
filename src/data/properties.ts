@@ -77,6 +77,10 @@ export const propertiesIntro = {
   heading: 'Invest in places people want to live.',
   body: 'Explore a curated collection of sample residential properties presented for fractional investment.',
   sampleLabel: 'Demo property catalogue',
+  image: {
+    src: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1600&h=1200&q=80',
+    alt: 'Contemporary residential architecture featuring serene stone facades, floor-to-ceiling glass, and landscaped garden',
+  },
 } as const
 
 export const propertiesNotice = {
@@ -94,8 +98,13 @@ export const propertiesFeaturedBand = {
 export const propertiesCta = {
   heading: 'Find your next property.',
   body: 'Explore the collection or start with the basics before reviewing sample opportunities.',
-  primary: { label: 'Explore properties', href: '/properties#property-collection' },
+  primary: { label: 'Explore a property', href: '/properties/courtyard-residences' },
   secondary: { label: 'How it works', href: '/how-it-works' },
+  image: {
+    src: 'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1400&h=1050&q=80',
+    alt: 'Modern architectural villa featuring clean lines, warm evening light, and landscaped reflection pool',
+    badge: 'Featured Property',
+  },
 } as const
 
 /**
@@ -240,8 +249,8 @@ export const properties: Property[] = [
     neighborhood: 'Old Town',
     city: 'Valencia',
     type: 'Residential',
-    image: 'https://picsum.photos/seed/serene-marble-house/1400/1750',
-    imageAlt: 'A pale stone house along a river street',
+    image: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=80',
+    imageAlt: 'Modern luxury marble architectural residence',
     beds: 3,
     areaLabel: '118 m2',
     status: 'open',
@@ -264,8 +273,8 @@ export const properties: Property[] = [
     features: residentialFeatures,
     gallery: [
       {
-        src: 'https://picsum.photos/seed/serene-marble-house/1600/1200',
-        alt: 'A pale stone house along a river street',
+        src: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1600&h=1200&q=80',
+        alt: 'Modern luxury marble architectural residence',
       },
       ...sampleGallery('marble-house', [
         'A stone stair with a shallow landing',
@@ -418,6 +427,94 @@ export const properties: Property[] = [
     ],
     investmentExample: sampleInvestmentExample,
     documentation: sampleRecord('DEMO-0190'),
+  },
+  {
+    id: 'azure-horizon-villa',
+    name: 'Azure Horizon Villa',
+    neighborhood: 'Algarve Coastal',
+    city: 'Faro',
+    type: 'Residential',
+    image: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1400&h=1750&q=80',
+    imageAlt: 'Contemporary luxury villa with limestone facade, geometric cantilevered glass, and serene infinity pool',
+    beds: 3,
+    areaLabel: '142 m2',
+    status: 'open',
+    occupancyLabel: 'Let',
+    sampleYieldPct: 7.8,
+    sampleNetYieldPct: 6.5,
+    sampleMinInvestment: 5000,
+    samplePriceLabel: formatSampleMinimum(5000),
+    fundedPct: 68,
+    description:
+      'A striking modern residence perched along coastal bluffs, combining clean geometric concrete, warm limestone, and expansive panoramic glass.',
+    overview: [
+      'Azure Horizon Villa represents contemporary Mediterranean residential architecture designed for calm coastal living.',
+      'Floor-to-ceiling glazing connects fluid living spaces to landscaped stone terraces, shaded pergolas, and reflective water features.',
+      'All figures and property details shown are sample demonstration content.',
+    ],
+    sampleValueLabel: '$14.2M',
+    unitsLabel: '8 sample residences',
+    completion: 'Sample 2025',
+    management: 'Demo property manager',
+    features: residentialFeatures,
+    gallery: [
+      {
+        src: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1600&h=1200&q=80',
+        alt: 'Contemporary luxury villa with limestone facade, geometric cantilevered glass, and serene infinity pool',
+      },
+      ...sampleGallery('azure-horizon', [
+        'Sunlit stone terrace overlooking coastal waters',
+        'Open-concept living room with floor-to-ceiling glass',
+        'Minimalist kitchen finished in natural timber and quartzite',
+        'Evening ambient glow across the courtyard pool',
+      ]),
+    ],
+    investmentExample: sampleInvestmentExample,
+    documentation: sampleRecord('DEMO-0812'),
+  },
+  {
+    id: 'the-glass-pavilion',
+    name: 'The Glass Pavilion',
+    neighborhood: 'Aspen Highlands',
+    city: 'Colorado',
+    type: 'Residential',
+    image: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1400&h=1750&q=80',
+    imageAlt: 'Modern minimalist pavilion residence featuring structural glass walls, natural timber, and mountain landscaping',
+    beds: 2,
+    areaLabel: '110 m2',
+    status: 'funded',
+    occupancyLabel: 'Let',
+    sampleYieldPct: 6.9,
+    sampleNetYieldPct: 5.8,
+    sampleMinInvestment: 10000,
+    samplePriceLabel: formatSampleMinimum(10000),
+    fundedPct: 100,
+    description:
+      'An architectural masterwork nestled into high-elevation alpine terrain, balancing transparent glass pavilions with tactile stone walls.',
+    overview: [
+      'The Glass Pavilion is a study in quiet transparency, framing panoramic natural vistas while preserving deep interior privacy.',
+      'Sustainably sourced timber finishes and high-thermal-efficiency glass panels create a peaceful year-round sanctuary.',
+      'Presented as an illustrative fully funded holding for catalogue balance and demonstration purposes.',
+    ],
+    sampleValueLabel: '$9.6M',
+    unitsLabel: '12 sample residences',
+    completion: 'Sample 2024',
+    management: 'Demo property manager',
+    features: residentialFeatures,
+    gallery: [
+      {
+        src: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1600&h=1200&q=80',
+        alt: 'Modern minimalist pavilion residence featuring structural glass walls, natural timber, and mountain landscaping',
+      },
+      ...sampleGallery('glass-pavilion', [
+        'Glass wall reflection against native pine forest',
+        'Quiet reading lounge with bespoke timber shelving',
+        'Sheltered stone loggia with outdoor hearth',
+        'Winter dusk light through high-efficiency glass panes',
+      ]),
+    ],
+    investmentExample: sampleInvestmentExample,
+    documentation: sampleRecord('DEMO-0925'),
   },
 ]
 

@@ -780,6 +780,20 @@
     z-index: 2;
     margin-top: 0;
     box-shadow: var(--lift-deep);
+    transition:
+      transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+      box-shadow 0.35s ease,
+      z-index 0s 0.05s;
+  }
+
+  .story-property__card:hover,
+  .story-receipt__card:hover,
+  .story-track__float:hover,
+  .story-grow__float:hover,
+  .story-value-receive__card:hover {
+    z-index: 50 !important;
+    transform: translateY(-8px) scale(1.03);
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.22);
   }
 
   .story-property__card {

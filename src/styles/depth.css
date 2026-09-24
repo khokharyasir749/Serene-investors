@@ -36,12 +36,27 @@
     box-shadow: var(--lift-deep);
   }
 
-  .holding-canvas__support,
-  .holding-canvas__panel,
   .property-stage__card,
-  .fund-float,
   .stage-card.depth-lift {
     transform-style: preserve-3d;
+  }
+
+  .holding-canvas__support,
+  .holding-canvas__panel {
+    isolation: auto;
+    overflow: visible;
+    transform-style: flat;
+    backface-visibility: visible;
+    transition:
+      transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+      box-shadow 0.35s ease,
+      z-index 0s 0.05s;
+  }
+
+  .holding-canvas__support:hover,
+  .holding-canvas__panel:hover {
+    z-index: 50 !important;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.22);
   }
 
   .holding-canvas__support img,
@@ -50,22 +65,12 @@
     transition: transform 0.65s var(--ease-out-quart);
   }
 
-  .holding-canvas__support {
-    transition:
-      transform 0.65s var(--ease-out-quart),
-      box-shadow 0.65s var(--ease-out-quart);
-  }
-
-  .holding-canvas__support:hover {
-    box-shadow: var(--lift-deep);
-  }
-
   .holding-canvas__support:hover a {
-    transform: translate3d(0, -8px, 0);
+    transform: translate3d(0, -4px, 0);
   }
 
   .holding-canvas__support:hover img {
-    transform: scale(1.045);
+    transform: scale(1.03);
   }
 
   .holding-canvas__support:hover p {
@@ -79,12 +84,12 @@
   .reward-deck[data-depth-stage] {
     display: block;
     position: relative;
-    isolation: auto;
-    overflow: visible;
+    isolation: auto !important;
+    overflow: visible !important;
     min-height: 22rem;
-    perspective: 1300px;
-    transform: none;
-    transform-style: preserve-3d;
+    perspective: none !important;
+    transform: none !important;
+    transform-style: flat !important;
   }
 
   .reward-deck__mark {
@@ -94,14 +99,14 @@
     top: 46%;
     z-index: 0;
     margin: 0;
-    transform: translate(-50%, -50%) translateZ(-80px);
+    transform: translate(-50%, -50%);
     font-size: clamp(6rem, 16vw, 12rem);
     font-weight: 600;
     letter-spacing: -0.06em;
     line-height: 0.8;
     color: var(--primary);
     opacity: 0.07;
-    pointer-events: none;
+    pointer-events: none !important;
     user-select: none;
   }
 
@@ -110,18 +115,17 @@
     top: 0;
     width: 33.333%;
     margin-inline: -0.65rem;
-    isolation: auto;
-    overflow: visible;
-    transform: none;
-    transform-style: flat;
+    isolation: auto !important;
+    overflow: visible !important;
+    transform-style: flat !important;
     backface-visibility: visible;
     cursor: pointer;
+    pointer-events: auto !important;
   }
 
   .reward-deck__card--one,
   .reward-deck__card--two,
   .reward-deck__card--three {
-    transform: none;
     z-index: auto;
   }
 
@@ -144,24 +148,18 @@
   .fund-stage__scene[data-depth-stage] {
     isolation: auto;
     overflow: visible;
-    perspective: 1300px;
+    perspective: none;
     transform: none;
-    transform-style: preserve-3d;
+    transform-style: flat;
   }
 
   .fund-stage__scene .fund-float {
     isolation: auto;
     overflow: visible;
-    transform: none;
     transform-style: flat;
     backface-visibility: visible;
     cursor: pointer;
-  }
-
-  .fund-stage__scene .fund-float--one,
-  .fund-stage__scene .fund-float--two,
-  .fund-stage__scene .fund-float--three {
-    transform: none;
+    pointer-events: auto;
   }
 
   .fund-stage__scene .fund-float__image {
@@ -232,7 +230,8 @@
     content: '';
   }
 
-  .site-nav-link:hover::after {
+  .site-nav-link:hover::after,
+  .site-nav-link[aria-current='page']::after {
     transform: scaleX(1);
   }
 

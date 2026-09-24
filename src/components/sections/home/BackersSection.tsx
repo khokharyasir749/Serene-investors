@@ -1,4 +1,5 @@
 import { useRef } from 'react'
+import { Link } from 'react-router-dom'
 import { BackerMark } from '@/components/cards/BackerMark'
 import { backerGroups, backersIntro } from '@/data'
 import { useBackersReveal } from '@/hooks/useBackersReveal'
@@ -50,9 +51,31 @@ export function BackersSection() {
                 </h3>
                 <ul className="community__list">
                   {group.items.map((item) => (
-                    <li key={item.id} data-backer-mark>
-                      <BackerMark id={item.id} name={item.name} />
-                      <p className="community__name">{item.name}</p>
+                    <li key={item.id} data-backer-mark className="community__item">
+                      <Link
+                        to="/how-it-works"
+                        className="community__card-link group"
+                        aria-label={`Explore ${item.name} (${item.category}) in our ecosystem`}
+                      >
+                        <BackerMark id={item.id} name={item.name} />
+                        <div className="community__details">
+                          <p className="community__name">{item.name}</p>
+                        </div>
+                        <span className="community__arrow" aria-hidden="true">
+                          <svg
+                            width="16"
+                            height="16"
+                            viewBox="0 0 20 20"
+                            fill="none"
+                            stroke="currentColor"
+                            strokeWidth="2"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                          >
+                            <path d="M6 14L14 6M14 6H7M14 6V13" />
+                          </svg>
+                        </span>
+                      </Link>
                     </li>
                   ))}
                 </ul>
@@ -64,3 +87,4 @@ export function BackersSection() {
     </section>
   )
 }
+

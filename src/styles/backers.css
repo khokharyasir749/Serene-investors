@@ -39,15 +39,50 @@
   list-style: none;
 }
 
-.community__list li {
+.community__item {
+  border-top: 1px solid var(--line);
+  padding: 0.2rem 0;
+}
+
+.community__card-link {
   display: grid;
-  grid-template-columns: auto 1fr;
+  grid-template-columns: auto 1fr auto;
   align-items: center;
   gap: 1rem;
-  margin-inline: -0.35rem;
-  padding: 0.95rem 0.35rem;
-  border-top: 1px solid var(--line);
-  border-radius: var(--radius-sm);
+  width: 100%;
+  margin-inline: -0.5rem;
+  padding: 0.75rem 0.65rem;
+  border: 1px solid transparent;
+  border-radius: var(--radius-md, 0.75rem);
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+  background: transparent;
+  transition: transform var(--duration-fast, 200ms) var(--ease-out-quart, ease-out),
+              background-color var(--duration-fast, 200ms) var(--ease-out-quart, ease-out),
+              border-color var(--duration-fast, 200ms) var(--ease-out-quart, ease-out),
+              box-shadow var(--duration-fast, 200ms) var(--ease-out-quart, ease-out);
+}
+
+.community__card-link:hover {
+  background: rgba(0, 0, 0, 0.035);
+  border-color: rgba(0, 0, 0, 0.06);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px -4px rgba(0, 0, 0, 0.05), 0 2px 6px -2px rgba(0, 0, 0, 0.03);
+}
+
+.community__card-link:active {
+  transform: translateY(0) scale(0.985);
+}
+
+.community__card-link:focus-visible {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 2px var(--primary);
+}
+
+.community__details {
+  min-width: 0;
 }
 
 .community-mark {
@@ -58,6 +93,16 @@
   border-radius: var(--radius-sm);
   background: var(--soft);
   color: var(--accent);
+  transition: background-color var(--duration-fast, 200ms) var(--ease-out-quart, ease-out),
+              color var(--duration-fast, 200ms) var(--ease-out-quart, ease-out),
+              transform var(--duration-fast, 200ms) var(--ease-out-quart, ease-out);
+}
+
+.community__card-link:hover .community-mark,
+.community__card-link:focus-visible .community-mark {
+  background: var(--primary);
+  color: var(--primary-ink);
+  transform: scale(1.04);
 }
 
 .community-mark svg {
@@ -76,6 +121,30 @@
   font-weight: 560;
   letter-spacing: -0.025em;
   line-height: 1.2;
+}
+
+.community__arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.85rem;
+  height: 1.85rem;
+  border-radius: 9999px;
+  color: var(--muted);
+  opacity: 0;
+  transform: translateX(-4px);
+  transition: opacity var(--duration-fast, 200ms) var(--ease-out-quart, ease-out),
+              transform var(--duration-fast, 200ms) var(--ease-out-quart, ease-out),
+              color var(--duration-fast, 200ms) var(--ease-out-quart, ease-out),
+              background-color var(--duration-fast, 200ms) var(--ease-out-quart, ease-out);
+}
+
+.community__card-link:hover .community__arrow,
+.community__card-link:focus-visible .community__arrow {
+  opacity: 1;
+  transform: translateX(0);
+  color: var(--primary);
+  background: var(--soft);
 }
 
 @media (min-width: 768px) {
@@ -115,30 +184,19 @@
     min-height: 34rem;
   }
 
-  .community__list li {
-    margin-inline: -0.65rem;
-    padding-inline: 0.65rem;
-  }
-
   .community__board {
     gap: 2.5rem;
     padding: 2.25rem 2.5rem 2.5rem;
   }
 
-  .community__list li {
-    padding-block: 1.1rem;
-    transition: background-color var(--duration-fast) var(--ease-out-quart);
+  .community__card-link {
+    margin-inline: -0.65rem;
+    padding: 0.95rem 0.65rem;
   }
 
-  .community__list li:hover,
-  .community__list li:focus-within {
+  .community__card-link:hover {
     background: var(--bg);
-  }
-
-  .community__list li:hover .community-mark,
-  .community__list li:focus-within .community-mark {
-    background: var(--primary);
-    color: var(--primary-ink);
+    box-shadow: 0 8px 20px -4px rgba(0, 0, 0, 0.06), 0 2px 6px -2px rgba(0, 0, 0, 0.04);
   }
 
   .community__name {
@@ -147,8 +205,11 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .community__list li,
-  .community-mark {
+  .community__card-link,
+  .community-mark,
+  .community__arrow {
     transition: none;
+    transform: none !important;
   }
 }
+

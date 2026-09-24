@@ -72,6 +72,7 @@ export function SiteHeader({ elevated, menuOpen, onMenuToggle, onMenuClose }: Pr
               <Link
                 key={item.id}
                 to={item.href}
+                onClick={item.href === '/' ? goToTop : undefined}
                 aria-current={current ? 'page' : undefined}
                 className="site-nav-link inline-flex items-center gap-1.5 text-sm text-ink transition-colors duration-[var(--duration-fast)] hover:text-primary"
               >

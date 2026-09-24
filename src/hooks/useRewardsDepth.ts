@@ -8,9 +8,9 @@ const ACTIVE_Z = 72
 const INACTIVE_Z = -32
 const ACTIVE_SCALE = 1.05
 const INACTIVE_SCALE = 0.98
-const ACTIVE_ZINDEX = 30
+const ACTIVE_ZINDEX = 50
 const INACTIVE_ZINDEX = 1
-const DEPTH_DURATION = 0.62
+const DEPTH_DURATION = 0.35
 
 export function useRewardsDepth(rootRef: RefObject<HTMLElement | null>) {
   useLayoutEffect(() => {
@@ -87,9 +87,9 @@ export function useRewardsDepth(rootRef: RefObject<HTMLElement | null>) {
 
             if (active === -1) {
               if (isHover) {
-                z = Math.min(rest.z + 28, 40)
-                scale = 1.035
-                zIndex = 8
+                z = Math.min(rest.z + 36, 72)
+                scale = 1.03
+                zIndex = 50
               }
             } else if (isOn) {
               z = ACTIVE_Z + (isHover ? 8 : 0)
@@ -98,7 +98,7 @@ export function useRewardsDepth(rootRef: RefObject<HTMLElement | null>) {
             } else {
               z = INACTIVE_Z + (isHover ? 8 : 0)
               scale = INACTIVE_SCALE
-              zIndex = INACTIVE_ZINDEX
+              zIndex = isHover ? 50 : INACTIVE_ZINDEX
             }
 
             gsap.set(driver.card, { zIndex })

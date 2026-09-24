@@ -1,5 +1,16 @@
 .properties-hero {
   padding: 5.25rem 1.25rem 3.25rem;
+  overflow: clip;
+}
+
+.properties-hero__layout {
+  display: grid;
+  gap: 2.25rem;
+}
+
+.properties-hero__copy {
+  display: flex;
+  flex-direction: column;
 }
 
 .properties-hero__rule {
@@ -8,6 +19,26 @@
   margin-top: 2.25rem;
   background: var(--line);
 }
+
+.properties-hero__media {
+  position: relative;
+  overflow: hidden;
+  border-radius: 1.5rem;
+  background: var(--bg-warm);
+  box-shadow: var(--lift);
+}
+
+.properties-hero__image,
+.properties-hero__media img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  object-position: 50% 45%;
+  border-radius: 1.5rem;
+  transition: transform 0.6s var(--ease-out-quart);
+}
+
 
 .property-filters {
   padding: 0 1.25rem;
@@ -345,6 +376,18 @@
 .properties-cta {
   padding: 5rem 1.25rem 5.5rem;
   background: var(--soft);
+  overflow: clip;
+}
+
+.properties-cta__layout {
+  display: grid;
+  gap: 2.5rem;
+}
+
+.properties-cta__copy {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .properties-cta__actions {
@@ -354,6 +397,54 @@
   margin-top: 2rem;
 }
 
+.properties-cta__visual {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.properties-cta__card {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  border-radius: 1.5rem;
+  background: transparent;
+  padding: 0;
+  border: 0;
+  outline: none;
+  text-decoration: none;
+  color: inherit;
+  box-shadow: 0 20px 40px -12px rgba(24, 32, 25, 0.18), 0 8px 18px -4px rgba(24, 32, 25, 0.08);
+  transition: transform 0.5s var(--ease-out-quart), box-shadow 0.5s var(--ease-out-quart);
+}
+
+.properties-cta__card:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 4px;
+}
+
+.properties-cta__card:hover {
+  box-shadow: 0 26px 52px -12px rgba(24, 32, 25, 0.24), 0 10px 22px -4px rgba(24, 32, 25, 0.12);
+}
+
+.properties-cta__image,
+.properties-cta__card img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  object-position: 50% 45%;
+  border-radius: 1.5rem;
+  transition: transform 0.6s var(--ease-out-quart);
+}
+
+.properties-cta__card:hover .properties-cta__image,
+.properties-cta__card:hover img {
+  transform: scale(1.03);
+}
+
+
 @media (min-width: 768px) {
   .properties-hero,
   .property-filters,
@@ -361,6 +452,23 @@
   .property-featured,
   .properties-cta {
     padding-inline: 2rem;
+  }
+
+  .properties-hero__layout {
+    grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+    align-items: center;
+    gap: 3rem;
+  }
+
+  .properties-hero__media {
+    border-radius: 1.5rem;
+  }
+
+  .properties-hero__image,
+  .properties-hero__media img {
+    min-height: 22rem;
+    max-height: 26rem;
+    aspect-ratio: 4 / 3;
   }
 
   .property-filters__fields,
@@ -376,11 +484,46 @@
     flex-direction: row;
     align-items: center;
   }
+
+  .properties-cta__layout {
+    grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+    align-items: center;
+    gap: 3rem;
+  }
+
+  .properties-cta__card {
+    border-radius: 1.5rem;
+  }
+
+  .properties-cta__image,
+  .properties-cta__card img {
+    aspect-ratio: 4 / 3;
+    min-height: 20rem;
+    max-height: 24rem;
+    border-radius: 1.5rem;
+  }
 }
 
 @media (min-width: 1024px) {
   .properties-hero {
     padding: 6.5rem 2.5rem 3.75rem;
+  }
+
+  .properties-hero__layout {
+    grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+    align-items: center;
+    gap: 4.5rem;
+  }
+
+  .properties-hero__media {
+    border-radius: 1.75rem;
+  }
+
+  .properties-hero__image,
+  .properties-hero__media img {
+    min-height: 24rem;
+    max-height: 28rem;
+    aspect-ratio: 4 / 3;
   }
 
   .catalogue-card:hover {
@@ -398,6 +541,25 @@
   .property-featured,
   .properties-cta {
     padding-block: 5.5rem;
+  }
+
+  .properties-cta__layout {
+    grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+    align-items: center;
+    gap: 4.5rem;
+  }
+
+  .properties-cta__card {
+    border-radius: 1.75rem;
+    padding: 0;
+  }
+
+  .properties-cta__image,
+  .properties-cta__card img {
+    min-height: 22rem;
+    max-height: 25rem;
+    aspect-ratio: 4 / 3;
+    border-radius: 1.75rem;
   }
 
   .property-filters__fields {
@@ -439,6 +601,9 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .properties-hero__image,
+  .properties-cta__image,
+  .properties-cta__card,
   .catalogue-card__image,
   .property-chip,
   .property-select,

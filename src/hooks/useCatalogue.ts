@@ -31,10 +31,12 @@ const featuredOrder = [
   'linden-house',
   'copper-yard',
   'kiln-yard',
+  'azure-horizon-villa',
+  'the-glass-pavilion',
 ]
 
 function matchesSize(amount: number, size: SizeFilter) {
-  if (size === 'all') return true
+  if (!size || size === 'all') return true
   if (size === 'under-7500') return amount < 7500
   if (size === 'mid') return amount >= 7500 && amount <= 10000
   return amount > 10000
@@ -44,22 +46,24 @@ export function useCatalogue(items: Property[]) {
   const [filters, setFilters] = useState<CatalogueFilters>(DEFAULT_CATALOGUE_FILTERS)
 
   const locations = useMemo(() => {
-    return [...new Set(items.map((item) => item.neighborhood))].sort()
+    return [...new Set(items.map((item) => item.neighborhood))].filter(Boolean).sort()
   }, [items])
 
   const visible = useMemo(() => {
     const next = items.filter((item) => {
-      if (filters.type !== 'all' && item.type !== filters.type) return false
-      if (filters.location !== 'all' && item.neighborhood !== filters.location) return false
-      if (filters.status !== 'all' && item.status !== filters.status) return false
-      if (!matchesSize(item.sampleMinInvestment, filters.size)) return false
+      if (filters.type && filters.type !== 'all' && item.type !== filters.type) return false
+      if (filters.location && filters.location !== 'all' && item.neighborhood !== filters.location) return false
+      if (filters.status && filters.status !== 'all' && item.status !== filters.status) return false
+      if (filters.size && !matchesSize(item.sampleMinInvestment, filters.size)) return false
       return true
     })
 
     next.sort((a, b) => {
       if (filters.sort === 'yield') return b.sampleYieldPct - a.sampleYieldPct
       if (filters.sort === 'minimum') return a.sampleMinInvestment - b.sampleMinInvestment
-      return featuredOrder.indexOf(a.id) - featuredOrder.indexOf(b.id)
+      const indexA = featuredOrder.indexOf(a.id)
+      const indexB = featuredOrder.indexOf(b.id)
+      return (indexA === -1 ? 999 : indexA) - (indexB === -1 ? 999 : indexB)
     })
 
     return next

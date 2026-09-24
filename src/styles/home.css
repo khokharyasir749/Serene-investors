@@ -1,4 +1,13 @@
+[data-site-sticky] {
+  position: sticky !important;
+  top: 0 !important;
+  z-index: 100000 !important;
+}
+
 .home-band {
+  position: relative;
+  z-index: 1;
+  isolation: isolate;
   padding-inline: 1.25rem;
   padding-block: var(--section-y);
 }
@@ -45,6 +54,10 @@
   border-radius: var(--radius-md);
   background: var(--surface);
   box-shadow: var(--lift);
+  transition:
+    transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 0.35s ease,
+    z-index 0s 0.05s;
 }
 
 .stage-breakout {

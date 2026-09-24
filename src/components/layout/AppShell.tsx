@@ -37,7 +37,11 @@ export function AppShell() {
         Skip to content
       </a>
       <div ref={sentinelRef} className="h-px" aria-hidden="true" />
-      <div className="sticky top-0 z-[var(--z-sticky)]" data-site-sticky>
+      <div
+        className="sticky top-0 z-[100000] bg-surface"
+        data-site-sticky
+        style={{ zIndex: 100000 }}
+      >
         {promoOpen ? <PromoBar onDismiss={() => setPromoOpen(false)} /> : null}
         <SiteHeader
           elevated={elevated}

@@ -69,11 +69,11 @@
   --depth-hover: 28px;
 
   --z-dropdown: 20;
-  --z-sticky: 30;
-  --z-modal-backdrop: 40;
-  --z-modal: 50;
-  --z-toast: 60;
-  --z-tooltip: 70;
+  --z-sticky: 100000;
+  --z-modal-backdrop: 100010;
+  --z-modal: 100020;
+  --z-toast: 100030;
+  --z-tooltip: 100040;
 
   --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
   --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);

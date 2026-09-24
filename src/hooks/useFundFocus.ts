@@ -3,19 +3,22 @@ import { DEPTH_QUERY } from '@/lib/motion'
 import { gsap, registerGsapPlugins } from '@/lib/gsap'
 
 const FUND_RESTS = [
-  { z: -28, zIndex: 2 },
-  { z: 8, zIndex: 3 },
-  { z: 36, zIndex: 4 },
+  { z: -28, zIndex: 2, rotateZ: 3 },
+  { z: 8, zIndex: 3, rotateZ: -3.5 },
+  { z: 36, zIndex: 4, rotateZ: 2 },
 ] as const
 
 const STAGE_PERSPECTIVE = 1300
-const ACTIVE_Z = 72
-const INACTIVE_Z = -32
-const ACTIVE_SCALE = 1.05
-const INACTIVE_SCALE = 0.98
-const ACTIVE_ZINDEX = 30
+const HOVER_ZINDEX = 100
+const HOVER_Z = 96
+const HOVER_SCALE = 1.04
+const INACTIVE_Z = -36
+const INACTIVE_SCALE = 0.97
 const INACTIVE_ZINDEX = 1
-const DEPTH_DURATION = 0.65
+const ACTIVE_ZINDEX = 100
+const ACTIVE_Z = 96
+const ACTIVE_SCALE = 1.04
+const DEPTH_DURATION = 0.35
 
 export function useFundFocus(
   rootRef: RefObject<HTMLElement | null>,
@@ -50,12 +53,14 @@ export function useFundFocus(
           card.style.overflow = 'visible'
           card.style.transformStyle = 'flat'
           card.style.backfaceVisibility = 'visible'
+          card.style.pointerEvents = 'auto'
           gsap.set(card, {
             transformStyle: 'flat',
             backfaceVisibility: 'visible',
             force3D: true,
             z: rest.z,
             zIndex: rest.zIndex,
+            rotationZ: rest.rotateZ,
           })
         })
 
@@ -72,27 +77,51 @@ export function useFundFocus(
             let z: number = rest.z
             let scale = 1
             let zIndex: number = rest.zIndex
+            let liftY = 0
+            let rotateZ: number = rest.rotateZ
 
-            if (active === -1) {
+            if (hovered !== -1) {
               if (isHover) {
-                z = Math.min(rest.z + 28, 40)
-                scale = 1.03
-                zIndex = 8
+                z = HOVER_Z
+                scale = HOVER_SCALE
+                zIndex = HOVER_ZINDEX
+                liftY = -10
+                rotateZ = rest.rotateZ * 0.3
+              } else {
+                z = INACTIVE_Z
+                scale = INACTIVE_SCALE
+                zIndex = INACTIVE_ZINDEX
+                liftY = 0
+                rotateZ = rest.rotateZ
               }
-            } else if (isOn) {
-              z = ACTIVE_Z + (isHover ? 8 : 0)
-              scale = ACTIVE_SCALE
-              zIndex = ACTIVE_ZINDEX
+            } else if (active !== -1) {
+              if (isOn) {
+                z = ACTIVE_Z
+                scale = ACTIVE_SCALE
+                zIndex = ACTIVE_ZINDEX
+                liftY = -10
+                rotateZ = rest.rotateZ * 0.3
+              } else {
+                z = INACTIVE_Z
+                scale = INACTIVE_SCALE
+                zIndex = INACTIVE_ZINDEX
+                liftY = 0
+                rotateZ = rest.rotateZ
+              }
             } else {
-              z = INACTIVE_Z + (isHover ? 8 : 0)
-              scale = INACTIVE_SCALE
-              zIndex = INACTIVE_ZINDEX
+              z = rest.z
+              scale = 1
+              zIndex = rest.zIndex
+              liftY = 0
+              rotateZ = rest.rotateZ
             }
 
             gsap.set(card, { zIndex })
             gsap.to(card, {
               z,
               scale,
+              y: liftY,
+              rotationZ: rotateZ,
               duration: DEPTH_DURATION,
               ease: 'power3.out',
               overwrite: 'auto',
@@ -157,6 +186,7 @@ export function useFundFocus(
             card.style.overflow = ''
             card.style.transformStyle = ''
             card.style.backfaceVisibility = ''
+            card.style.pointerEvents = ''
           })
           stage.style.overflow = ''
           stage.style.isolation = ''

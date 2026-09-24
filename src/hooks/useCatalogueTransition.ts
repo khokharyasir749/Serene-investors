@@ -23,42 +23,23 @@ export function useCatalogueTransition(
     if (!root) return
 
     const next = latestRef.current
-    if (idsKey(next) === idsKey(rendered) && !firstRef.current) return
-
-    registerGsapPlugins()
-
-    if (reduced) {
-      firstRef.current = false
-      incomingRef.current = false
-      setRendered(next)
-      return
-    }
-
     const cards = root.querySelectorAll<HTMLElement>('[data-catalogue-card]')
 
+    // On initial mount, ensure all cards are visible immediately at full opacity without delay
     if (firstRef.current) {
       firstRef.current = false
       incomingRef.current = false
-      if (cards.length === 0) return
-      const tween = gsap.fromTo(
-        cards,
-        { opacity: 0, y: 22, scale: 0.98 },
-        {
-          opacity: 1,
-          y: 0,
-          scale: 1,
-          duration: 0.5,
-          stagger: 0.06,
-          ease: 'power3.out',
-          overwrite: 'auto',
-        },
-      )
-      return () => {
-        tween.kill()
+      if (cards.length > 0) {
+        gsap.set(cards, { clearProps: 'all' })
       }
+      return
     }
 
-    if (cards.length === 0) {
+    if (idsKey(next) === idsKey(rendered)) return
+
+    registerGsapPlugins()
+
+    if (reduced || cards.length === 0) {
       incomingRef.current = true
       setRendered(next)
       return
@@ -66,10 +47,10 @@ export function useCatalogueTransition(
 
     const tween = gsap.to(cards, {
       opacity: 0,
-      y: 14,
-      scale: 0.985,
-      duration: 0.2,
-      stagger: 0.02,
+      y: 10,
+      scale: 0.99,
+      duration: 0.16,
+      stagger: 0.015,
       ease: 'power2.out',
       overwrite: 'auto',
       onComplete: () => {
@@ -77,8 +58,10 @@ export function useCatalogueTransition(
         setRendered(latestRef.current)
       },
     })
+
     return () => {
       tween.kill()
+      gsap.set(cards, { clearProps: 'all' })
     }
   }, [properties, reduced, rendered, rootRef])
 
@@ -91,19 +74,22 @@ export function useCatalogueTransition(
 
     const tween = gsap.fromTo(
       cards,
-      { opacity: 0, y: 16, scale: 0.98 },
+      { opacity: 0, y: 14, scale: 0.985 },
       {
         opacity: 1,
         y: 0,
         scale: 1,
-        duration: 0.38,
-        stagger: 0.045,
+        duration: 0.32,
+        stagger: 0.03,
         ease: 'power3.out',
         overwrite: 'auto',
+        clearProps: 'all',
       },
     )
+
     return () => {
       tween.kill()
+      gsap.set(cards, { clearProps: 'all' })
     }
   }, [reduced, rendered, rootRef])
 

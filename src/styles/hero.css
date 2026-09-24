@@ -29,6 +29,17 @@
 .hero-card,
 .hero-receipt {
   box-shadow: var(--lift-deep);
+  transition:
+    transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 0.35s ease,
+    z-index 0s 0.05s;
+}
+
+.hero-card:hover,
+.hero-receipt:hover {
+  z-index: 50 !important;
+  transform: translateY(-8px) scale(1.03);
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.22);
 }
 
 @media (min-width: 1024px) {

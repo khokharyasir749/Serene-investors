@@ -5,7 +5,7 @@ import type { Property } from '@/types'
 import { featuredHoldingsIntro } from '@/data'
 import { formatPropertyMeta, formatSampleAmount, formatPercent, formatStatus } from '@/lib/format'
 import { useDepthParallax } from '@/hooks/useDepthParallax'
-import { usePointerTilt } from '@/hooks/usePointerTilt'
+import { useHoldingsDepth } from '@/hooks/useHoldingsDepth'
 import { useSectionReveal } from '@/hooks/useSectionReveal'
 
 type Props = {
@@ -15,14 +15,7 @@ type Props = {
 export function FeaturedHoldingsSection({ properties }: Props) {
   const rootRef = useRef<HTMLElement>(null)
   useSectionReveal(rootRef, { media: '[data-holding-image]', depth: true })
-  usePointerTilt(rootRef, {
-    layers: [
-      { selector: '[data-holding-image="featured"]', x: 14, y: 10, rotateX: 2, rotateY: 2.6, z: -36, invert: true },
-      { selector: '[data-holding-panel]', x: 16, y: 11, rotateX: 2.4, rotateY: 3.2, z: 40 },
-      { selector: '.holding-canvas__support--one', x: 8, y: 6, rotateX: 1.6, rotateY: 2, z: 18, rotateZ: 2.2 },
-      { selector: '.holding-canvas__support--two', x: 8, y: 6, rotateX: 1.6, rotateY: 2, z: 18, rotateZ: -2.8 },
-    ],
-  })
+  useHoldingsDepth(rootRef)
   useDepthParallax(rootRef, [
     { selector: '[data-holding-image="featured"]', yPercent: 8 },
     { selector: '[data-holding-panel]', yPercent: -6 },
@@ -67,34 +60,34 @@ export function FeaturedHoldingsSection({ properties }: Props) {
               loading="lazy"
               decoding="async"
             />
-            <div data-reveal-item data-holding-panel data-depth="front" className="holding-canvas__panel stage-card p-5">
+            <div data-reveal-item data-holding-panel data-depth="front" className="holding-canvas__panel p-6">
               <Link
                 to={`/properties/${featured.id}`}
-                className="block"
+                className="block group"
                 aria-label={`View sample listing for ${featured.name}`}
               >
-                <p className="home-kicker text-muted">{featured.type}</p>
-                <p className="mt-2 text-[1.5rem] font-medium tracking-tight">{featured.name}</p>
+                <p className="home-kicker text-muted text-xs uppercase tracking-wider">{featured.type}</p>
+                <p className="mt-2 text-[1.55rem] font-semibold tracking-tight text-ink">{featured.name}</p>
                 <p className="mt-1 text-sm text-muted">{location}</p>
-                <dl className="mt-5 space-y-3 border-t border-line pt-4 text-sm">
+                <dl className="mt-5 space-y-3.5 border-t border-black/[0.08] pt-4 text-sm">
                   <div className="flex items-baseline justify-between gap-6">
                     <dt className="text-muted">Sample yield</dt>
-                    <dd className="font-semibold tabular-nums">{formatPercent(featured.sampleYieldPct)}</dd>
+                    <dd className="font-semibold tabular-nums text-ink">{formatPercent(featured.sampleYieldPct)}</dd>
                   </div>
                   <div className="flex items-baseline justify-between gap-6">
                     <dt className="text-muted">Sample minimum</dt>
-                    <dd className="font-semibold tabular-nums">
+                    <dd className="font-semibold tabular-nums text-ink">
                       {formatSampleAmount(featured.sampleMinInvestment)}
                     </dd>
                   </div>
                   <div className="flex items-baseline justify-between gap-6">
                     <dt className="text-muted">Status</dt>
-                    <dd className="font-semibold">{formatStatus(featured.status)}</dd>
+                    <dd className="font-semibold text-ink">{formatStatus(featured.status)}</dd>
                   </div>
                 </dl>
-                <p className="mt-5 inline-flex min-h-11 items-center gap-1.5 text-sm font-medium">
+                <p className="mt-5 inline-flex min-h-11 items-center gap-1.5 text-sm font-medium text-ink group-hover:text-primary transition-colors">
                   View property
-                  <ArrowRight size={16} strokeWidth={1.75} aria-hidden="true" />
+                  <ArrowRight size={16} strokeWidth={1.75} aria-hidden="true" className="transition-transform group-hover:translate-x-1" />
                 </p>
               </Link>
             </div>

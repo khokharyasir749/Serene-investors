@@ -95,6 +95,10 @@ export const fundsHowSteps: ProcessStep[] = [
 export const fundsCta = {
   heading: 'Explore a broader property strategy.',
   body: 'Open a sample fund, or start with the same four-step demonstration used for direct property.',
+  image: {
+    src: 'https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=1600&h=1200&q=80',
+    alt: 'Masterplanned contemporary residential towers and mixed-use urban quarter',
+  },
 } as const
 
 function requireById(id: string): Fund {

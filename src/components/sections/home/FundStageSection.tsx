@@ -1,45 +1,40 @@
-import { useRef } from 'react'
+import { useState, useRef } from 'react'
 import { Link } from 'react-router-dom'
 import { ArrowRight } from 'lucide-react'
 import type { OfferingSplit } from '@/types'
 import { fundStageIntro, funds, sampleFundMinimum } from '@/data'
 import { fundStageAssets, fundStageImage } from '@/data/fund-stage-assets'
 import { formatSampleAmount } from '@/lib/format'
-import { useDepthParallax } from '@/hooks/useDepthParallax'
-import { useFloatingMotion } from '@/hooks/useFloatingMotion'
-import { useFundFocus } from '@/hooks/useFundFocus'
 import { useOfferingsReveal } from '@/hooks/useOfferingsReveal'
-import { usePointerTilt } from '@/hooks/usePointerTilt'
 
 type Props = {
   offering: OfferingSplit
 }
 
+const FLOAT_CONFIGS = [
+  { id: 'fund-float-0', defaultZIndex: 2, defaultTransform: 'rotate(3deg)', positionClass: 'fund-float--one' },
+  { id: 'fund-float-1', defaultZIndex: 6, defaultTransform: 'rotate(-3.5deg)', positionClass: 'fund-float--two' },
+  { id: 'fund-float-2', defaultZIndex: 4, defaultTransform: 'rotate(2deg)', positionClass: 'fund-float--three' },
+] as const
+
 export function FundStageSection({ offering }: Props) {
   const rootRef = useRef<HTMLElement>(null)
+  const [hoveredCard, setHoveredCard] = useState<string | null>(null)
   useOfferingsReveal(rootRef)
-  usePointerTilt(rootRef, {
-    layers: [
-      { selector: '[data-offering-media] img', x: 10, y: 7, rotateX: 1.6, rotateY: 2, z: -40, invert: true },
-      { selector: '[data-fund-phone]', x: 12, y: 0, rotateX: 2.2, rotateY: 2.8, z: 16 },
-    ],
-  })
-  useFloatingMotion(rootRef, [
-    { selector: '[data-fund-phone]', y: 9, rotate: 0.85, duration: 5.4 },
-    { selector: '[data-fund-float]', y: 6, rotate: 0.5, duration: 6.2 },
-  ])
-  useDepthParallax(rootRef, [
-    { selector: '[data-offering-media]', yPercent: 6 },
-    { selector: '[data-fund-phone]', yPercent: -4 },
-    { selector: '[data-fund-float="0"]', yPercent: -3 },
-    { selector: '[data-fund-float="2"]', yPercent: -7 },
-  ])
-  useFundFocus(rootRef)
 
   const urban = funds.find((item) => item.id === 'urban-living-fund')
   const quay = funds.find((item) => item.id === 'quay-mixed-fund')
   const olive = funds.find((item) => item.id === 'olive-court-fund')
   const floats = [urban, quay, olive].filter((item) => item !== undefined)
+
+  const isPhoneHovered = hoveredCard === 'fund-phone'
+  const phoneStyle = {
+    zIndex: isPhoneHovered ? 9999 : (hoveredCard ? 1 : 5),
+    transform: isPhoneHovered ? 'translate3d(0, -14px, 0) scale(1.05)' : undefined,
+    transition: 'transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s ease, z-index 0s',
+    boxShadow: isPhoneHovered ? '0 30px 60px -12px rgba(0, 0, 0, 0.45)' : undefined,
+    pointerEvents: 'auto' as const,
+  }
 
   return (
     <section
@@ -74,7 +69,7 @@ export function FundStageSection({ offering }: Props) {
         </div>
 
         <div data-reveal-item data-depth-stage className="fund-stage__scene">
-          <div data-offering-media data-depth="back" className="fund-stage__field">
+          <div data-offering-media data-depth="back" className="fund-stage__field pointer-events-none">
             <img
               src={fundStageAssets.field.src}
               alt=""
@@ -82,10 +77,19 @@ export function FundStageSection({ offering }: Props) {
               height={900}
               loading="lazy"
               decoding="async"
+              className="pointer-events-none"
             />
           </div>
 
-          <article data-offering-card data-fund-phone data-depth="mid" className="fund-phone app-phone" aria-hidden="true">
+          <article
+            data-offering-card
+            data-fund-phone
+            data-depth="mid"
+            className="fund-phone app-phone"
+            style={phoneStyle}
+            onMouseEnter={() => setHoveredCard('fund-phone')}
+            onMouseLeave={() => setHoveredCard(null)}
+          >
             <div className="app-phone__screen fund-phone__screen">
               <div className="px-3.5 pt-2">
                 <div className="app-phone__island" />
@@ -117,19 +121,32 @@ export function FundStageSection({ offering }: Props) {
           </article>
 
           {floats.map((fund, index) => {
-            const position =
-              index === 0 ? 'fund-float--one' : index === 1 ? 'fund-float--two' : 'fund-float--three'
+            const config = FLOAT_CONFIGS[index] ?? FLOAT_CONFIGS[0]
+            const isHovered = hoveredCard === config.id
             const image = fundStageImage(fund.id)
+
+            const floatStyle = {
+              zIndex: isHovered ? 9999 : (hoveredCard ? 1 : config.defaultZIndex),
+              transform: isHovered
+                ? 'translate3d(0, -14px, 0) scale(1.05)'
+                : (hoveredCard ? `${config.defaultTransform} scale(0.97)` : config.defaultTransform),
+              transition: 'transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s ease, z-index 0s',
+              boxShadow: isHovered ? '0 30px 60px -12px rgba(0, 0, 0, 0.45)' : undefined,
+              pointerEvents: 'auto' as const,
+            }
 
             return (
               <aside
                 key={fund.id}
                 data-offering-card
                 data-fund-float={index}
-                className={`fund-float ${position} stage-card`}
+                className={`fund-float ${config.positionClass} stage-card`}
+                style={floatStyle}
+                onMouseEnter={() => setHoveredCard(config.id)}
+                onMouseLeave={() => setHoveredCard(null)}
               >
                 <img
-                  className="fund-float__image"
+                  className="fund-float__image pointer-events-none"
                   src={image.src}
                   alt={image.alt}
                   width={720}

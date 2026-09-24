@@ -145,6 +145,7 @@
   z-index: 0;
   overflow: hidden;
   border-radius: var(--radius-lg);
+  pointer-events: none;
 }
 
 .fund-stage__field img {
@@ -156,6 +157,7 @@
   opacity: 0.34;
   filter: saturate(0.45) contrast(1.08);
   mix-blend-mode: luminosity;
+  pointer-events: none;
 }
 
 .fund-phone {
@@ -175,8 +177,8 @@
 }
 
 .fund-float {
-  overflow: hidden;
-  isolation: isolate;
+  overflow: visible;
+  isolation: auto;
   width: min(16.5rem, 100%);
   margin-top: 1rem;
 }
@@ -264,6 +266,11 @@
   position: relative;
 }
 
+.trust-stage__banner {
+  position: relative;
+  overflow: visible;
+}
+
 .trust-stage__media img {
   display: block;
   width: 100%;
@@ -274,10 +281,19 @@
   opacity: 0.28;
 }
 
+.trust-stage__record {
+  margin-top: -3.5rem;
+  margin-inline: auto;
+  position: relative;
+  z-index: 3;
+  width: min(24rem, 100%);
+  box-shadow: var(--lift-deep);
+}
+
 .trust-stage__cards {
   display: grid;
-  gap: 1rem;
-  margin-top: 1.25rem;
+  gap: 1.25rem;
+  margin-top: 2.5rem;
 }
 
 @media (min-width: 768px) {
@@ -345,16 +361,19 @@
 
   .holding-canvas {
     min-height: 44rem;
+    overflow: visible;
   }
 
   .holding-canvas__main {
     width: 78%;
+    overflow: visible;
   }
 
   .holding-canvas__main img {
     min-height: 44rem;
     aspect-ratio: auto;
     height: 44rem;
+    border-radius: var(--radius-lg);
   }
 
   .holding-canvas__panel {
@@ -362,9 +381,24 @@
     left: 1.75rem;
     bottom: -1.75rem;
     z-index: 4;
-    width: min(22rem, calc(100% - 3.5rem));
+    width: min(22.5rem, calc(100% - 3.5rem));
     margin-top: 0;
-    box-shadow: var(--lift-deep);
+    background: rgba(255, 255, 255, 0.88);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.7);
+    border-radius: var(--radius-lg);
+    box-shadow: 0 20px 45px -12px rgba(0, 0, 0, 0.16), 0 0 0 1px rgba(0, 0, 0, 0.05), inset 0 1px 0 rgba(255, 255, 255, 0.85);
+    transition:
+      transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+      box-shadow 0.35s ease,
+      z-index 0s 0.05s;
+  }
+
+  .holding-canvas__panel:hover {
+    z-index: 50 !important;
+    transform: translateY(-8px) scale(1.03);
+    box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.28), 0 0 0 1px rgba(0, 0, 0, 0.06), inset 0 1px 0 rgba(255, 255, 255, 0.9);
   }
 
   .holding-canvas__support {
@@ -376,6 +410,15 @@
     border-radius: var(--radius-lg);
     overflow: hidden;
     background: var(--surface);
+    transition:
+      transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+      box-shadow 0.35s ease,
+      z-index 0s 0.05s;
+  }
+
+  .holding-canvas__support:hover {
+    z-index: 50 !important;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.22);
   }
 
   .holding-canvas__support--one {
@@ -407,6 +450,16 @@
     width: min(23rem, calc(100% - 4.5rem));
     margin-top: 0;
     box-shadow: var(--lift-deep);
+    transition:
+      transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+      box-shadow 0.35s ease,
+      z-index 0s 0.05s;
+  }
+
+  .property-stage__card:hover {
+    z-index: 50 !important;
+    transform: translateY(-8px) scale(1.03);
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.22);
   }
 
   .fund-stage {
@@ -416,7 +469,10 @@
   }
 
   .fund-stage__scene {
+    position: relative;
     min-height: 40rem;
+    overflow: visible;
+    isolation: auto;
   }
 
   .fund-phone {
@@ -430,8 +486,20 @@
     margin-top: 0;
     box-shadow: var(--lift-deep);
     cursor: pointer;
+    pointer-events: auto;
+    isolation: auto;
+    overflow: visible;
+    transition:
+      transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+      box-shadow 0.3s ease,
+      z-index 0s;
   }
 
+  .fund-float:hover {
+    z-index: 100 !important;
+    transform: translateY(-10px) scale(1.04) !important;
+    box-shadow: 0 25px 50px -10px rgba(0, 0, 0, 0.35) !important;
+  }
 
   .fund-float--one {
     top: 6%;
@@ -490,21 +558,23 @@
   }
 
   .trust-stage__media img {
-    min-height: 36rem;
+    min-height: 28rem;
+    max-height: 32rem;
   }
 
   .trust-stage__record {
     position: absolute;
-    left: 50%;
+    left: 70%;
     top: 50%;
     z-index: 3;
     width: min(24rem, calc(100% - 3rem));
-    transform: translate(-50%, -42%);
+    transform: translate(-50%, -50%);
+    margin-top: 0;
     box-shadow: var(--lift-deep);
   }
 
   .trust-stage__cards {
-    margin-top: 3rem;
+    margin-top: 3.5rem;
   }
 }
 

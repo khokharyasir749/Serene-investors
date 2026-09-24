@@ -27,22 +27,22 @@ export function HowHero() {
     <section ref={rootRef} className="how-hero" aria-labelledby="how-page-heading">
       <div className="how-hero__layout mx-auto max-w-[var(--container-wide)]">
         <div className="how-hero__copy">
-          <p data-reveal-heading className="property-hero__mark">
+          <p data-reveal-heading className="property-hero__mark m-0">
             Illustrative sample
           </p>
-          <p data-reveal-heading className="mt-5 text-sm text-muted">
+          <p data-reveal-heading className="mt-4 text-sm text-muted">
             {howItWorksIntro.eyebrow}
           </p>
           <h1
             data-reveal-heading
             id="how-page-heading"
-            className="mt-2 max-w-[10ch] text-[clamp(2.6rem,5.4vw,4.6rem)] font-semibold leading-[1.05] tracking-[-0.03em] text-balance"
+            className="mt-2.5 max-w-[10ch] text-[clamp(2.6rem,5.4vw,4.6rem)] font-semibold leading-[1.05] tracking-[-0.03em] text-balance"
           >
             How it works
           </h1>
           <p
             data-reveal-heading
-            className="mt-5 max-w-[38ch] text-[1.05rem] leading-relaxed text-muted text-pretty"
+            className="mt-4 max-w-[38ch] text-[1.05rem] leading-relaxed text-muted text-pretty"
           >
             {howItWorksIntro.body}
           </p>

@@ -1,17 +1,27 @@
+import type { CSSProperties } from 'react'
 import type { RewardItem as RewardContent } from '@/types'
 
 type Props = {
   item: RewardContent
   index: number
+  style?: CSSProperties
+  onMouseEnter?: () => void
+  onMouseLeave?: () => void
 }
 
 const tones = ['reward-deck__card--one', 'reward-deck__card--two', 'reward-deck__card--three'] as const
 
-export function RewardItem({ item, index }: Props) {
+export function RewardItem({ item, index, style, onMouseEnter, onMouseLeave }: Props) {
   const tone = tones[index] ?? tones[0]
 
   return (
-    <article data-reward-item={index} className={`reward-deck__card ${tone}`}>
+    <article
+      data-reward-item={index}
+      className={`reward-deck__card ${tone}`}
+      style={style}
+      onMouseEnter={onMouseEnter}
+      onMouseLeave={onMouseLeave}
+    >
       <div className="reward-deck__content">
         <p data-reward-kicker className="home-kicker">
           {item.level}
