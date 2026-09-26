@@ -6,6 +6,8 @@ import { useLenisControl } from '@/app/providers/LenisProvider'
 import { primaryNav, site, utilityNav } from '@/data'
 import { Badge } from '@/components/ui/Badge'
 import { ButtonLink } from '@/components/ui/Button'
+import { UserProfileDropdown } from '@/components/layout/UserProfileDropdown'
+import { useAuth } from '@/context/AuthContext'
 import { cn } from '@/lib/cn'
 import { isModifiedClick } from '@/lib/nav'
 
@@ -41,6 +43,7 @@ export function SiteHeader({ elevated, menuOpen, onMenuToggle, onMenuClose }: Pr
     requestAnimationFrame(() => scrollTo(0))
   }
 
+  const { isAuthenticated, user, isLoaded } = useAuth()
   const login = utilityNav.find((item) => item.id === 'login')
   const start = utilityNav.find((item) => item.id === 'start')
 
@@ -85,20 +88,28 @@ export function SiteHeader({ elevated, menuOpen, onMenuToggle, onMenuClose }: Pr
         </nav>
 
         <div className="relative z-10 flex items-center gap-5">
-          {login ? (
-            <Link
-              href={login.href}
-              aria-current={pathname === login.href ? 'page' : undefined}
-              className="site-nav-link max-lg:hidden text-sm text-ink transition-colors duration-[var(--duration-fast)] hover:text-primary"
-            >
-              {login.label}
-            </Link>
-          ) : null}
-          {start ? (
-            <ButtonLink href={start.href} className="max-lg:hidden px-4 py-2">
-              {start.label}
-            </ButtonLink>
-          ) : null}
+          {isLoaded && isAuthenticated && user ? (
+            <div className="max-lg:hidden">
+              <UserProfileDropdown user={user} />
+            </div>
+          ) : (
+            <>
+              {login ? (
+                <Link
+                  href={login.href}
+                  aria-current={pathname === login.href ? 'page' : undefined}
+                  className="site-nav-link max-lg:hidden text-sm text-ink transition-colors duration-[var(--duration-fast)] hover:text-primary"
+                >
+                  {login.label}
+                </Link>
+              ) : null}
+              {start ? (
+                <ButtonLink href={start.href} className="max-lg:hidden px-4 py-2">
+                  {start.label}
+                </ButtonLink>
+              ) : null}
+            </>
+          )}
 
           <button
             type="button"

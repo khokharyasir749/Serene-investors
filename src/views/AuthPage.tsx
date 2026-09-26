@@ -4,8 +4,10 @@ import { useEffect, useState, type FormEvent } from 'react'
 import Link from 'next/link'
 import { useRouter, useSearchParams } from 'next/navigation'
 import { ArrowRight, CheckCircle2, Sparkles } from 'lucide-react'
+import { OtpVerificationStep } from '@/components/auth/OtpVerificationStep'
 import { Button, ButtonLink } from '@/components/ui/Button'
 import { Container } from '@/components/ui/Container'
+import { useAuth } from '@/context/AuthContext'
 import { funds, properties, site } from '@/data'
 import { usePageMeta } from '@/hooks/usePageMeta'
 
@@ -16,7 +18,8 @@ type Props = {
 export function AuthPage({ title }: Props) {
   const router = useRouter()
   const params = useSearchParams()
-  const [submitted, setSubmitted] = useState(false)
+  const { login } = useAuth()
+  const [authState, setAuthState] = useState<'credentials' | 'otp' | 'success'>('credentials')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
 
@@ -44,32 +47,42 @@ export function AuthPage({ title }: Props) {
 
   useEffect(() => {
     let timer: ReturnType<typeof setTimeout> | undefined
-    if (submitted) {
+    if (authState === 'success') {
       timer = setTimeout(() => {
         router.push(targetHref)
-      }, 800)
+      }, 900)
     }
     return () => {
       if (timer) clearTimeout(timer)
     }
-  }, [submitted, router, targetHref])
+  }, [authState, router, targetHref])
 
-  function onSubmit(event: FormEvent<HTMLFormElement>) {
+  function onCredentialsSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault()
     if (!email || !password) return
-    setSubmitted(true)
+    setAuthState('otp')
   }
 
   function handleQuickDemo() {
     setEmail('demo.investor@serene-investors.com')
     setPassword('demopassword')
-    setSubmitted(true)
+    setAuthState('otp')
+  }
+
+  function handleOtpSuccess() {
+    // Authenticate user in persistent context
+    login({
+      name: email.includes('@') ? email.split('@')[0].replace(/[._-]/g, ' ') : 'Yasir Khokhar',
+      email: email || 'investor@serene-investors.com',
+      investorType: 'individual',
+    })
+    setAuthState('success')
   }
 
   return (
     <Container as="section" className="flex justify-center py-12 md:py-16 lg:py-20">
       <div className="w-full max-w-md rounded-3xl border border-line bg-surface/90 p-7 sm:p-10 shadow-xl backdrop-blur-xl transition-all">
-        {submitted ? (
+        {authState === 'success' ? (
           <div className="py-2 text-center" role="status">
             <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-emerald-100 text-emerald-800">
               <CheckCircle2 size={32} />
@@ -98,6 +111,13 @@ export function AuthPage({ title }: Props) {
               </Link>
             </p>
           </div>
+        ) : authState === 'otp' ? (
+          <OtpVerificationStep
+            email={email}
+            onVerify={handleOtpSuccess}
+            onBack={() => setAuthState('credentials')}
+            actionLabel="Verify & Log in"
+          />
         ) : (
           <div>
             <div className="flex items-center gap-2">
@@ -142,7 +162,7 @@ export function AuthPage({ title }: Props) {
               </div>
             ) : null}
 
-            <form className="mt-6 flex flex-col gap-4" onSubmit={onSubmit}>
+            <form className="mt-6 flex flex-col gap-4" onSubmit={onCredentialsSubmit}>
               {!isLogin ? (
                 <div>
                   <label

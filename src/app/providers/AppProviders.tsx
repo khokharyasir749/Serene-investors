@@ -1,6 +1,7 @@
 'use client'
 
 import type { ReactNode } from 'react'
+import { AuthProvider } from '@/context/AuthContext'
 import { LenisProvider } from './LenisProvider'
 
 type Props = {
@@ -8,5 +9,9 @@ type Props = {
 }
 
 export function AppProviders({ children }: Props) {
-  return <LenisProvider>{children}</LenisProvider>
+  return (
+    <AuthProvider>
+      <LenisProvider>{children}</LenisProvider>
+    </AuthProvider>
+  )
 }

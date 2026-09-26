@@ -1,18 +1,22 @@
 'use client'
 
-import { useState, type FormEvent } from 'react'
+import { useEffect, useState, type FormEvent } from 'react'
 import Link from 'next/link'
-import { useSearchParams } from 'next/navigation'
-import { CheckCircle2, User, Building2 } from 'lucide-react'
+import { useRouter, useSearchParams } from 'next/navigation'
+import { ArrowRight, Building2, CheckCircle2, User } from 'lucide-react'
+import { OtpVerificationStep } from '@/components/auth/OtpVerificationStep'
 import { Button, ButtonLink } from '@/components/ui/Button'
 import { Container } from '@/components/ui/Container'
+import { useAuth } from '@/context/AuthContext'
 import { funds, properties, site } from '@/data'
 import { usePageMeta } from '@/hooks/usePageMeta'
 import { cn } from '@/lib/cn'
 
 export function SignupPage() {
+  const router = useRouter()
   const params = useSearchParams()
-  const [submitted, setSubmitted] = useState(false)
+  const { login } = useAuth()
+  const [step, setStep] = useState<'form' | 'otp' | 'success'>('form')
   const [fullName, setFullName] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
@@ -30,12 +34,30 @@ export function SignupPage() {
       ? `/login?intent=${encodeURIComponent(intent)}&id=${encodeURIComponent(relatedId)}`
       : '/login'
 
+  const targetHref = property
+    ? `/properties/${property.id}`
+    : fund
+      ? `/funds/${fund.id}`
+      : '/properties'
+
   usePageMeta(
     `${site.name} | Create account`,
     'Create your demo account on SERENE INVESTORS. Experience fractional ownership in luxury real estate assets and institutional syndicates.',
   )
 
-  function onSubmit(event: FormEvent<HTMLFormElement>) {
+  useEffect(() => {
+    let timer: ReturnType<typeof setTimeout> | undefined
+    if (step === 'success') {
+      timer = setTimeout(() => {
+        router.push(targetHref)
+      }, 1200)
+    }
+    return () => {
+      if (timer) clearTimeout(timer)
+    }
+  }, [step, router, targetHref])
+
+  function onFormSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault()
     setErrorMessage('')
 
@@ -49,13 +71,22 @@ export function SignupPage() {
       return
     }
 
-    setSubmitted(true)
+    setStep('otp')
+  }
+
+  function handleOtpSuccess() {
+    login({
+      name: fullName || 'Eleanor Vance',
+      email: email || 'investor@serene-investors.com',
+      investorType,
+    })
+    setStep('success')
   }
 
   return (
     <Container as="section" className="flex justify-center py-12 md:py-16 lg:py-20">
       <div className="w-full max-w-lg rounded-3xl border border-line bg-surface/90 p-7 sm:p-10 shadow-xl backdrop-blur-xl transition-all">
-        {submitted ? (
+        {step === 'success' ? (
           <div className="py-2 text-center" role="status">
             <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-emerald-100 text-emerald-800">
               <CheckCircle2 size={32} />
@@ -76,39 +107,18 @@ export function SignupPage() {
               <p className="mt-1 font-medium text-ink">Email: {email}</p>
               <p className="text-muted">Type: {investorType === 'institutional' ? 'Institutional / Syndicate' : 'Individual / Accredited'}</p>
               <p className="mt-2 text-[0.75rem] text-muted">
-                This is a simulation on {site.name}. No financial commitments have been made and no credentials are saved.
+                Redirecting to your investor portal in a moment...
               </p>
             </div>
 
             <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
-              {property ? (
-                <>
-                  <ButtonLink href={`/properties/${property.id}`} className="w-full sm:w-auto">
-                    View {property.name}
-                  </ButtonLink>
-                  <ButtonLink href="/properties" variant="ghost" className="w-full sm:w-auto">
-                    Browse properties
-                  </ButtonLink>
-                </>
-              ) : fund ? (
-                <>
-                  <ButtonLink href={`/funds/${fund.id}`} className="w-full sm:w-auto">
-                    View {fund.name}
-                  </ButtonLink>
-                  <ButtonLink href="/funds" variant="ghost" className="w-full sm:w-auto">
-                    Explore funds
-                  </ButtonLink>
-                </>
-              ) : (
-                <>
-                  <ButtonLink href="/properties" className="w-full sm:w-auto">
-                    Browse properties
-                  </ButtonLink>
-                  <ButtonLink href="/funds" variant="ghost" className="w-full sm:w-auto">
-                    Explore funds
-                  </ButtonLink>
-                </>
-              )}
+              <ButtonLink href={targetHref} className="w-full gap-2 sm:w-auto">
+                Continue to portal
+                <ArrowRight size={16} aria-hidden="true" />
+              </ButtonLink>
+              <ButtonLink href="/funds" variant="ghost" className="w-full sm:w-auto">
+                Explore funds
+              </ButtonLink>
             </div>
 
             <div className="mt-8 border-t border-line pt-4 text-xs text-muted">
@@ -121,6 +131,13 @@ export function SignupPage() {
               </Link>
             </div>
           </div>
+        ) : step === 'otp' ? (
+          <OtpVerificationStep
+            email={email}
+            onVerify={handleOtpSuccess}
+            onBack={() => setStep('form')}
+            actionLabel="Verify & Create Account"
+          />
         ) : (
           <div>
             <div className="flex items-center gap-2">
@@ -163,7 +180,7 @@ export function SignupPage() {
               </div>
             ) : null}
 
-            <form className="mt-6 flex flex-col gap-4" onSubmit={onSubmit}>
+            <form className="mt-6 flex flex-col gap-4" onSubmit={onFormSubmit}>
               {/* Investor Type (Radio pills) */}
               <div>
                 <span className="block text-xs font-semibold uppercase tracking-wider text-muted">

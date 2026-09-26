@@ -1,11 +1,14 @@
 import { useCallback, useRef } from 'react'
 import Link from 'next/link'
-import { usePathname } from 'next/navigation'
+import { usePathname, useRouter } from 'next/navigation'
+import { LayoutDashboard, LogOut, ShieldCheck } from 'lucide-react'
 import { primaryNav, utilityNav } from '@/data'
 import { useFocusTrap } from '@/hooks/useFocusTrap'
 import { useLockBodyScroll } from '@/hooks/useLockBodyScroll'
 import { Badge } from '@/components/ui/Badge'
 import { ButtonLink } from '@/components/ui/Button'
+import { getInitials } from '@/components/layout/UserProfileDropdown'
+import { useAuth } from '@/context/AuthContext'
 
 type Props = {
   open: boolean
@@ -20,11 +23,19 @@ export function MobileNav({ open, onClose }: Props) {
   useFocusTrap(open, dialogRef, close, '[aria-controls="mobile-menu"]')
 
   const pathname = usePathname()
+  const router = useRouter()
+  const { isAuthenticated, user, isLoaded, logout } = useAuth()
 
   if (!open) return null
 
   const start = utilityNav.find((item) => item.id === 'start')
   const login = utilityNav.find((item) => item.id === 'login')
+
+  function handleLogout() {
+    close()
+    logout()
+    router.push('/login')
+  }
 
   return (
     <div
@@ -58,21 +69,62 @@ export function MobileNav({ open, onClose }: Props) {
         </ul>
 
         <div className="mt-auto flex flex-col gap-3 pb-6">
-          {login ? (
-            <Link
-              href={login.href}
-              onClick={onClose}
-              aria-current={pathname === login.href ? 'page' : undefined}
-              className="inline-flex min-h-11 items-center text-sm"
-            >
-              {login.label}
-            </Link>
-          ) : null}
-          {start ? (
-            <ButtonLink href={start.href} className="w-full" onClick={onClose}>
-              {start.label}
-            </ButtonLink>
-          ) : null}
+          {isLoaded && isAuthenticated && user ? (
+            <div className="rounded-2xl border border-line bg-surface/90 p-4">
+              <div className="flex items-center gap-3">
+                <span className="flex size-11 shrink-0 items-center justify-center rounded-full bg-primary font-mono text-sm font-bold text-primary-ink shadow-xs">
+                  {getInitials(user.name)}
+                </span>
+                <div className="min-w-0 flex-1">
+                  <p className="truncate text-sm font-semibold text-ink">{user.name}</p>
+                  <p className="truncate text-xs text-muted">{user.email}</p>
+                  <span className="mt-1 inline-flex items-center gap-1 rounded-full bg-emerald-100 px-2 py-0.5 text-[0.65rem] font-semibold text-emerald-800">
+                    <ShieldCheck size={10} />
+                    {user.investorType === 'institutional' ? 'Institutional' : 'Individual'} Investor
+                  </span>
+                </div>
+              </div>
+
+              <div className="my-3.5 h-px bg-line" />
+
+              <div className="flex flex-col gap-2">
+                <Link
+                  href="/properties"
+                  onClick={onClose}
+                  className="flex items-center gap-2.5 rounded-xl px-2 py-2 text-sm font-medium text-ink transition-colors hover:bg-bg-warm hover:text-primary"
+                >
+                  <LayoutDashboard size={16} className="text-muted" />
+                  Portfolio / Dashboard
+                </Link>
+                <button
+                  type="button"
+                  onClick={handleLogout}
+                  className="flex w-full items-center gap-2.5 rounded-xl px-2 py-2 text-sm font-semibold text-danger transition-colors hover:bg-danger/10 text-left"
+                >
+                  <LogOut size={16} />
+                  Log out
+                </button>
+              </div>
+            </div>
+          ) : (
+            <>
+              {login ? (
+                <Link
+                  href={login.href}
+                  onClick={onClose}
+                  aria-current={pathname === login.href ? 'page' : undefined}
+                  className="inline-flex min-h-11 items-center text-sm"
+                >
+                  {login.label}
+                </Link>
+              ) : null}
+              {start ? (
+                <ButtonLink href={start.href} className="w-full" onClick={onClose}>
+                  {start.label}
+                </ButtonLink>
+              ) : null}
+            </>
+          )}
         </div>
       </nav>
     </div>
