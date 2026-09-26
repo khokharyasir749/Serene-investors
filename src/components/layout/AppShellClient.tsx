@@ -7,6 +7,7 @@ import { useScrollToHash } from '@/hooks/useScrollToHash'
 import { registerGsapPlugins, ScrollTrigger } from '@/lib/gsap'
 import { MobileNav } from './MobileNav'
 import { PromoBar } from './PromoBar'
+import { ScrollProgressIndicator } from './ScrollProgressIndicator'
 import { SiteFooter } from './SiteFooter'
 import { SiteHeader } from './SiteHeader'
 
@@ -42,6 +43,7 @@ export function AppShellClient({ children }: Props) {
       <a href="#main" className="skip-link">
         Skip to content
       </a>
+      <ScrollProgressIndicator />
       <div ref={sentinelRef} className="h-px" aria-hidden="true" />
       <div
         className="sticky top-0 z-[100000] bg-surface"

@@ -126,7 +126,7 @@ export function UserProfileDropdown({ user }: Props) {
           {/* Navigation Items */}
           <div className="flex flex-col gap-0.5">
             <Link
-              href="/properties"
+              href="/dashboard"
               onClick={() => setOpen(false)}
               role="menuitem"
               className="flex items-center gap-2.5 rounded-xl px-3 py-2.5 text-xs font-medium text-ink transition-colors hover:bg-bg-warm hover:text-primary"

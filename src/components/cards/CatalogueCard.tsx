@@ -41,13 +41,28 @@ export function CatalogueCard({ property }: Props) {
           </div>
           {/* Subtle luxury vignette */}
           <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/35 via-transparent to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
-          <p className="absolute left-3.5 top-3.5 rounded-full border border-ink/[0.08] bg-surface/90 px-3 py-1 text-xs font-medium text-ink shadow-sm backdrop-blur-md">
-            {property.type}
-            <span className="text-muted"> / {status}</span>
-          </p>
+          {/* Top badges */}
+          <div className="absolute inset-x-3 top-3 flex items-center justify-between pointer-events-none">
+            <span className="rounded-full border border-ink/[0.08] bg-surface/90 px-3 py-1 text-[0.7rem] font-medium text-ink shadow-sm backdrop-blur-md">
+              {property.type}
+              <span className="text-muted"> / {status}</span>
+            </span>
+            <span className="rounded-full border border-emerald-800/10 bg-emerald-900/85 px-2.5 py-0.8 text-[0.65rem] font-bold text-white shadow-xs backdrop-blur-md font-mono">
+              92% Funded
+            </span>
+          </div>
         </div>
 
         <div className="px-1.5 pt-4 pb-2 text-ink">
+          <div className="flex items-center gap-1.5 mb-1.5">
+            <span className="rounded-md bg-emerald-100/80 px-2 py-0.5 text-[0.68rem] font-semibold text-emerald-800">
+              Yield {formatPercent(property.sampleYieldPct)}
+            </span>
+            <span className="rounded-md bg-bg-warm px-2 py-0.5 text-[0.68rem] font-medium text-muted">
+              FCA Custodian
+            </span>
+          </div>
+
           <h3 className="text-xl font-semibold tracking-tight text-ink transition-colors duration-300 group-hover:text-primary">
             {property.name}
           </h3>

@@ -6,6 +6,7 @@ import { FundCollection } from '@/components/sections/funds/FundCollection'
 import { FundsCta } from '@/components/sections/funds/FundsCta'
 import { FundsHero } from '@/components/sections/funds/FundsHero'
 import { HowFundsWork } from '@/components/sections/funds/HowFundsWork'
+import { InvestmentYieldCalculator } from '@/components/calculator/InvestmentYieldCalculator'
 import { funds } from '@/data'
 import { usePageMeta } from '@/hooks/usePageMeta'
 
@@ -22,6 +23,10 @@ export function FundsPage() {
       <FeaturedFundBand />
       <FundBreakdown items={funds} />
       <HowFundsWork />
+      <InvestmentYieldCalculator
+        title="Fund Yield & Growth Forecaster"
+        eyebrow="PORTFOLIO MODELING"
+      />
       <FundsCta />
     </>
   )

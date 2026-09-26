@@ -11,6 +11,8 @@ import { RewardsSection } from '@/components/sections/home/RewardsSection'
 import { TestimonialsSection } from '@/components/sections/home/TestimonialsSection'
 import { TrustSection } from '@/components/sections/home/TrustSection'
 import { ValueStorySection } from '@/components/sections/home/ValueStorySection'
+import { MarketTickerBand } from '@/components/home/MarketTickerBand'
+import { InvestmentYieldCalculator } from '@/components/calculator/InvestmentYieldCalculator'
 import {
   featuredProperties,
   offeringSplits,
@@ -31,10 +33,12 @@ export function HomePage() {
   return (
     <>
       <HeroSection />
+      <MarketTickerBand />
       <PressSection logos={pressLogos} />
       <HowItWorksSection />
       <FeaturedHoldingsSection properties={featuredProperties} />
       <PlatformStatsSection stats={platformStats} />
+      <InvestmentYieldCalculator />
       {propertyOffering ? <PropertyStageSection offering={propertyOffering} /> : null}
       {fundOffering ? <FundStageSection offering={fundOffering} /> : null}
       <RewardsSection items={rewards} />

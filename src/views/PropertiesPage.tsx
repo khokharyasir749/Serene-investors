@@ -3,6 +3,7 @@ import { PropertiesCta } from '@/components/sections/properties/PropertiesCta'
 import { PropertiesHero } from '@/components/sections/properties/PropertiesHero'
 import { PropertyCatalogue } from '@/components/sections/properties/PropertyCatalogue'
 import { PropertyFilters } from '@/components/sections/properties/PropertyFilters'
+import { InvestmentYieldCalculator } from '@/components/calculator/InvestmentYieldCalculator'
 import { properties } from '@/data'
 import { useCatalogue } from '@/hooks/useCatalogue'
 import { usePageMeta } from '@/hooks/usePageMeta'
@@ -28,6 +29,10 @@ export function PropertiesPage() {
       />
       <PropertyCatalogue properties={catalogue.visible} onReset={catalogue.reset} />
       <FeaturedPropertyBand />
+      <InvestmentYieldCalculator
+        title="Portfolio Yield Projection"
+        eyebrow="ESTIMATE YOUR ALLOCATION"
+      />
       <PropertiesCta />
     </>
   )

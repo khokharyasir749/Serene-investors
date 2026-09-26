@@ -101,7 +101,7 @@ export function MobileNav({ open, onClose }: Props) {
 
               <div className="flex flex-col gap-2">
                 <Link
-                  href="/properties"
+                  href="/dashboard"
                   onClick={onClose}
                   className="flex items-center gap-2.5 rounded-xl px-2 py-2 text-sm font-medium text-ink transition-colors hover:bg-bg-warm hover:text-primary"
                 >
