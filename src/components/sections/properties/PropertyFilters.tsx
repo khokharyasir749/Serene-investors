@@ -64,7 +64,10 @@ export function PropertyFilters({
                 type="button"
                 aria-pressed={selected}
                 onClick={() => onChange('type', option.id)}
-                className={cn('property-chip', selected && 'property-chip--active')}
+                className={cn(
+                  'property-chip transition-all duration-300 ease-out active:scale-95',
+                  selected && 'property-chip--active shadow-xs',
+                )}
               >
                 {option.label}
               </button>

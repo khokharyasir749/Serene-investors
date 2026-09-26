@@ -10,9 +10,9 @@ type Props = {
 }
 
 const TONE_CLASSES = [
-  'bg-surface text-ink border border-black/5',
-  'bg-primary text-primary-ink border border-white/10 shadow-2xl',
-  'bg-accent text-accent-ink border border-white/10',
+  'bg-surface text-ink border border-ink/[0.08] hover:-translate-y-1.5 hover:shadow-2xl hover:border-ink/20 transition-all duration-500 ease-out',
+  'bg-primary text-primary-ink border border-white/10 shadow-2xl hover:-translate-y-1.5 hover:shadow-2xl transition-all duration-500 ease-out',
+  'bg-accent text-accent-ink border border-white/10 hover:-translate-y-1.5 hover:shadow-2xl transition-all duration-500 ease-out',
 ] as const
 
 const MUTED_CLASSES = [
@@ -28,7 +28,7 @@ export function RewardItem({ item, index, style, onMouseEnter, onMouseLeave }: P
   return (
     <article
       data-reward-item={index}
-      className={`relative min-h-[22rem] p-7 md:p-6 lg:p-7 rounded-2xl shadow-xl transition-all duration-300 md:-mx-2.5 cursor-pointer ${toneClass}`}
+      className={`relative min-h-[22rem] cursor-pointer rounded-2xl p-7 shadow-xl md:-mx-2.5 md:p-6 lg:p-7 ${toneClass}`}
       style={style}
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
@@ -54,4 +54,3 @@ export function RewardItem({ item, index, style, onMouseEnter, onMouseLeave }: P
     </article>
   )
 }
-

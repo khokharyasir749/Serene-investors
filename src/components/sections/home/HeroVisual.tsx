@@ -23,7 +23,7 @@ export function HeroVisual() {
           data-hero-card="property"
           data-depth="mid"
           aria-label={`View sample listing for ${listing.place}`}
-          className="absolute bottom-4 left-4 w-[min(19rem,calc(100%-2rem))] rounded-2xl border border-white/70 bg-white/90 px-5 py-4 text-ink shadow-[0_18px_40px_rgb(24_32_25/0.14)] backdrop-blur-md transition-all duration-300 hover:z-50 hover:-translate-y-2 hover:scale-[1.03] hover:shadow-2xl lg:-left-3 lg:bottom-10 lg:w-[21rem] lg:-rotate-[1.5deg]"
+          className="absolute bottom-4 left-4 w-[min(19rem,calc(100%-2rem))] rounded-2xl border border-ink/[0.08] bg-surface/90 px-5 py-4 text-ink shadow-[0_18px_40px_rgb(24_32_25/0.14)] backdrop-blur-md transition-all duration-500 ease-out hover:z-50 hover:-translate-y-2 hover:border-ink/20 hover:shadow-2xl lg:-left-3 lg:bottom-10 lg:w-[21rem] lg:-rotate-[1.5deg]"
         >
           <p className="home-kicker text-muted">{listing.type}</p>
           <p className="mt-2 text-xl font-medium tracking-tight">{listing.place}</p>
@@ -35,7 +35,7 @@ export function HeroVisual() {
         <p
           data-hero-pill
           data-depth="front"
-          className="absolute right-4 top-4 rounded-pill bg-soft px-3 py-1.5 text-xs font-medium text-soft-ink lg:right-[8%] lg:top-7"
+          className="absolute right-4 top-4 rounded-pill border border-ink/[0.08] bg-surface/90 px-3.5 py-1.5 text-xs font-semibold text-ink shadow-sm backdrop-blur-md lg:right-[8%] lg:top-7"
         >
           {yieldPill.label}
         </p>
@@ -45,7 +45,7 @@ export function HeroVisual() {
           data-hero-card="receipt"
           data-depth="front"
           aria-label={`View sample listing for ${receipt.detail}`}
-          className="absolute right-4 top-16 w-[min(13.5rem,calc(100%-2rem))] rounded-2xl border border-white/70 bg-white/90 px-3.5 py-3 text-ink shadow-[0_18px_40px_rgb(24_32_25/0.14)] backdrop-blur-md transition-all duration-300 hover:z-50 hover:-translate-y-2 hover:scale-[1.03] hover:shadow-2xl lg:right-[7%] lg:top-[12%] lg:w-[13.5rem] lg:rotate-[2.5deg]"
+          className="absolute right-4 top-16 w-[min(13.5rem,calc(100%-2rem))] rounded-2xl border border-ink/[0.08] bg-surface/90 px-3.5 py-3 text-ink shadow-[0_18px_40px_rgb(24_32_25/0.14)] backdrop-blur-md transition-all duration-500 ease-out hover:z-50 hover:-translate-y-2 hover:border-ink/20 hover:shadow-2xl lg:right-[7%] lg:top-[12%] lg:w-[13.5rem] lg:rotate-[2.5deg]"
         >
           <p className="flex items-baseline justify-between gap-2 text-sm">
             <span>{receipt.title}</span>

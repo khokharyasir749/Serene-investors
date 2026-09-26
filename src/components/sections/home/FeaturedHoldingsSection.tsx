@@ -67,7 +67,7 @@ export function FeaturedHoldingsSection({ properties }: Props) {
               data-reveal-item
               data-holding-panel
               data-depth="front"
-              className="mt-4 lg:mt-0 lg:absolute lg:left-7 lg:-bottom-7 z-10 lg:w-[min(22.5rem,calc(100%-3.5rem))] p-6 bg-white/90 backdrop-blur-md border border-white/70 rounded-2xl shadow-xl hover:shadow-2xl hover:-translate-y-2 hover:scale-[1.03] hover:z-50 transition-all duration-300"
+              className="mt-4 lg:mt-0 lg:absolute lg:left-7 lg:-bottom-7 z-10 lg:w-[min(22.5rem,calc(100%-3.5rem))] p-6 bg-surface/95 backdrop-blur-md border border-ink/[0.08] rounded-2xl shadow-xl hover:shadow-2xl hover:-translate-y-2 hover:border-ink/15 hover:z-50 transition-all duration-500 ease-out"
             >
               <Link
                 href={`/properties/${featured.id}`}
@@ -75,9 +75,9 @@ export function FeaturedHoldingsSection({ properties }: Props) {
                 aria-label={`View sample listing for ${featured.name}`}
               >
                 <p className="text-muted text-xs font-semibold uppercase tracking-[0.14em]">{featured.type}</p>
-                <p className="mt-2 text-[1.55rem] font-semibold tracking-tight text-ink">{featured.name}</p>
+                <p className="mt-2 text-[1.55rem] font-semibold tracking-tight text-ink group-hover:text-primary transition-colors duration-300">{featured.name}</p>
                 <p className="mt-1 text-sm text-muted">{location}</p>
-                <dl className="mt-5 space-y-3.5 border-t border-black/[0.08] pt-4 text-sm">
+                <dl className="mt-5 space-y-3.5 border-t border-ink/[0.08] pt-4 text-sm">
                   <div className="flex items-baseline justify-between gap-6">
                     <dt className="text-muted">Sample yield</dt>
                     <dd className="font-semibold tabular-nums text-ink">{formatPercent(featured.sampleYieldPct)}</dd>
@@ -93,9 +93,9 @@ export function FeaturedHoldingsSection({ properties }: Props) {
                     <dd className="font-semibold text-ink">{formatStatus(featured.status)}</dd>
                   </div>
                 </dl>
-                <p className="mt-5 inline-flex min-h-11 items-center gap-1.5 text-sm font-medium text-ink group-hover:text-primary transition-colors">
+                <p className="mt-5 inline-flex min-h-11 items-center gap-1.5 text-sm font-medium text-ink group-hover:text-primary transition-colors duration-300">
                   View property
-                  <ArrowRight size={16} strokeWidth={1.75} aria-hidden="true" className="transition-transform group-hover:translate-x-1" />
+                  <ArrowRight size={16} strokeWidth={1.75} aria-hidden="true" className="transition-transform duration-300 group-hover:translate-x-1.5" />
                 </p>
               </Link>
             </div>
@@ -107,7 +107,7 @@ export function FeaturedHoldingsSection({ properties }: Props) {
               data-reveal-item
               data-holding-support={index === 0 ? 'one' : 'two'}
               data-depth="mid"
-              className={`mt-4 lg:mt-0 lg:absolute lg:w-[27%] z-10 shadow-xl rounded-2xl overflow-hidden bg-surface hover:shadow-2xl hover:-translate-y-2 hover:scale-[1.03] hover:z-50 transition-all duration-300 ${
+              className={`mt-4 lg:mt-0 lg:absolute lg:w-[27%] z-10 shadow-xl rounded-2xl overflow-hidden bg-surface border border-ink/[0.08] hover:shadow-2xl hover:-translate-y-2 hover:border-ink/15 hover:z-50 transition-all duration-500 ease-out ${
                 index === 0
                   ? 'lg:top-[7%] lg:-right-5 lg:rotate-[2.2deg]'
                   : 'lg:right-[6%] lg:-bottom-9 lg:-rotate-[2.8deg]'
@@ -118,18 +118,21 @@ export function FeaturedHoldingsSection({ properties }: Props) {
                 className="block group"
                 aria-label={`View sample listing for ${property.name}`}
               >
-                <img
-                  data-holding-image
-                  src={property.image}
-                  alt={property.imageAlt}
-                  width={900}
-                  height={1120}
-                  loading="lazy"
-                  decoding="async"
-                  className="block w-full aspect-[4/5] object-cover transition-transform duration-500 group-hover:scale-105"
-                />
+                <div className="relative overflow-hidden">
+                  <img
+                    data-holding-image
+                    src={property.image}
+                    alt={property.imageAlt}
+                    width={900}
+                    height={1120}
+                    loading="lazy"
+                    decoding="async"
+                    className="block w-full aspect-[4/5] object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                  />
+                  <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/35 via-transparent to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+                </div>
                 <div className="px-4 py-3">
-                  <p className="text-base font-medium tracking-tight text-ink group-hover:text-primary transition-colors">{property.name}</p>
+                  <p className="text-base font-medium tracking-tight text-ink group-hover:text-primary transition-colors duration-300">{property.name}</p>
                   <p className="mt-0.5 text-sm text-muted">{property.neighborhood}</p>
                 </div>
               </Link>

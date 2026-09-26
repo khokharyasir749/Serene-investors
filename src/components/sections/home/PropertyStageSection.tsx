@@ -69,7 +69,7 @@ export function PropertyStageSection({ offering }: Props) {
           <article
             data-offering-card
             data-depth="front"
-            className="mt-5 rounded-2xl border border-white/70 bg-white/90 p-6 text-ink shadow-[0_18px_40px_rgb(24_32_25/0.14)] backdrop-blur-md transition-all duration-300 hover:z-50 hover:-translate-y-2 hover:scale-[1.03] hover:shadow-2xl lg:absolute lg:bottom-[-1.75rem] lg:left-9 lg:mt-0 lg:w-[min(23rem,calc(100%-4.5rem))] lg:z-[3]"
+            className="mt-5 rounded-2xl border border-ink/[0.08] bg-surface/95 p-6 text-ink shadow-[0_18px_40px_rgb(24_32_25/0.14)] backdrop-blur-md transition-all duration-500 ease-out hover:z-50 hover:-translate-y-2 hover:border-ink/20 hover:shadow-2xl lg:absolute lg:bottom-[-1.75rem] lg:left-9 lg:mt-0 lg:w-[min(23rem,calc(100%-4.5rem))] lg:z-[3]"
           >
             <Link
               href={cedar ? `/properties/${cedar.id}` : offering.href}

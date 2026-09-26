@@ -71,10 +71,10 @@ export function UserProfileDropdown({ user }: Props) {
         aria-expanded={open}
         aria-haspopup="menu"
         className={cn(
-          'flex items-center gap-2.5 rounded-full border bg-surface/90 py-1 pl-1 pr-3 text-left transition-all',
+          'flex items-center gap-2.5 rounded-full border bg-surface/90 py-1 pl-1 pr-3 text-left transition-all duration-300 ease-out active:scale-[0.98]',
           open
-            ? 'border-primary ring-2 ring-primary/20'
-            : 'border-line hover:border-ink/20 hover:bg-surface',
+            ? 'border-primary ring-2 ring-primary/20 shadow-md'
+            : 'border-ink/[0.08] hover:border-ink/20 hover:bg-surface hover:shadow-xs',
         )}
       >
         <span className="flex size-7 items-center justify-center rounded-full bg-primary font-mono text-xs font-bold text-primary-ink shadow-xs">
@@ -91,7 +91,7 @@ export function UserProfileDropdown({ user }: Props) {
         <ChevronDown
           size={14}
           className={cn(
-            'text-muted transition-transform duration-200',
+            'text-muted transition-transform duration-300',
             open && 'rotate-180 text-ink',
           )}
         />
@@ -102,7 +102,7 @@ export function UserProfileDropdown({ user }: Props) {
         <div
           role="menu"
           aria-label="User account menu"
-          className="absolute right-0 top-[calc(100%+0.5rem)] z-50 w-72 origin-top-right rounded-2xl border border-line bg-surface/95 p-2 shadow-2xl backdrop-blur-xl animate-in fade-in zoom-in-95"
+          className="absolute right-0 top-[calc(100%+0.5rem)] z-50 w-72 origin-top-right rounded-2xl border border-ink/[0.08] bg-surface/95 p-2 shadow-2xl backdrop-blur-xl animate-in fade-in zoom-in-95 duration-200"
         >
           {/* User Header Details */}
           <div className="flex items-start gap-3 rounded-xl bg-bg-warm/60 p-3">

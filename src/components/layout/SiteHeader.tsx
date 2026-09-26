@@ -50,8 +50,8 @@ export function SiteHeader({ elevated, menuOpen, onMenuToggle, onMenuClose }: Pr
   return (
     <header
       className={cn(
-        'border-b bg-surface transition-colors duration-[var(--duration-fast)] ease-[var(--ease-out-quart)]',
-        elevated ? 'border-line' : 'border-transparent',
+        'border-b bg-surface transition-all duration-300 ease-out',
+        elevated ? 'border-ink/[0.08] shadow-xs' : 'border-transparent',
       )}
     >
       <div className="relative mx-auto flex h-[var(--header-h)] max-w-[var(--container-wide)] items-center justify-between px-5 md:px-8 lg:px-10">
@@ -59,7 +59,7 @@ export function SiteHeader({ elevated, menuOpen, onMenuToggle, onMenuClose }: Pr
           href="/"
           onClick={goToTop}
           aria-label={`${site.name} home`}
-          className="relative z-10 whitespace-nowrap text-[0.875rem] font-semibold tracking-[0.14em] sm:text-[1rem] lg:text-[1.0625rem]"
+          className="relative z-10 whitespace-nowrap text-[0.875rem] font-semibold tracking-[0.14em] transition-transform duration-300 active:scale-95 sm:text-[1rem] lg:text-[1.0625rem]"
         >
           {site.name}
         </Link>
@@ -78,7 +78,7 @@ export function SiteHeader({ elevated, menuOpen, onMenuToggle, onMenuClose }: Pr
                 href={item.href}
                 onClick={item.href === '/' ? goToTop : undefined}
                 aria-current={current ? 'page' : undefined}
-                className="site-nav-link inline-flex items-center gap-1.5 text-sm text-ink transition-colors duration-[var(--duration-fast)] hover:text-primary"
+                className="site-nav-link inline-flex items-center gap-1.5 text-sm text-ink transition-all duration-300 hover:text-primary active:scale-95"
               >
                 {item.label}
                 {item.badge ? <Badge>{item.badge}</Badge> : null}
@@ -98,7 +98,7 @@ export function SiteHeader({ elevated, menuOpen, onMenuToggle, onMenuClose }: Pr
                 <Link
                   href={login.href}
                   aria-current={pathname === login.href ? 'page' : undefined}
-                  className="site-nav-link max-lg:hidden text-sm text-ink transition-colors duration-[var(--duration-fast)] hover:text-primary"
+                  className="site-nav-link max-lg:hidden text-sm text-ink transition-all duration-300 hover:text-primary active:scale-95"
                 >
                   {login.label}
                 </Link>
