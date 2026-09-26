@@ -1,5 +1,7 @@
-import { Suspense, useEffect, useState, useRef, type CSSProperties } from 'react'
-import { Outlet, useLocation } from 'react-router-dom'
+'use client'
+
+import { useEffect, useState, useRef, type CSSProperties, type ReactNode } from 'react'
+import { usePathname } from 'next/navigation'
 import { useHeaderState } from '@/hooks/useHeaderState'
 import { useScrollToHash } from '@/hooks/useScrollToHash'
 import { registerGsapPlugins, ScrollTrigger } from '@/lib/gsap'
@@ -8,12 +10,16 @@ import { PromoBar } from './PromoBar'
 import { SiteFooter } from './SiteFooter'
 import { SiteHeader } from './SiteHeader'
 
-export function AppShell() {
+type Props = {
+  children: ReactNode
+}
+
+export function AppShellClient({ children }: Props) {
   const [promoOpen, setPromoOpen] = useState(true)
   const [menuOpen, setMenuOpen] = useState(false)
   const sentinelRef = useRef<HTMLDivElement>(null)
   const { elevated } = useHeaderState(sentinelRef)
-  const location = useLocation()
+  const pathname = usePathname()
   useScrollToHash()
 
   useEffect(() => {
@@ -22,7 +28,7 @@ export function AppShell() {
       ScrollTrigger.refresh()
     })
     return () => cancelAnimationFrame(frame)
-  }, [location.pathname, promoOpen])
+  }, [pathname, promoOpen])
 
   return (
     <div
@@ -53,15 +59,7 @@ export function AppShell() {
       <MobileNav open={menuOpen} onClose={() => setMenuOpen(false)} />
       <div inert={menuOpen || undefined}>
         <main id="main" tabIndex={-1}>
-          <Suspense
-            fallback={
-              <div className="min-h-[70vh]" aria-busy="true" aria-live="polite">
-                <span className="sr-only">Loading</span>
-              </div>
-            }
-          >
-            <Outlet />
-          </Suspense>
+          {children}
         </main>
         <SiteFooter />
       </div>

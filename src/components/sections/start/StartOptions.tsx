@@ -1,5 +1,5 @@
 import { useRef } from 'react'
-import { Link } from 'react-router-dom'
+import Link from 'next/link'
 import { ArrowRight } from 'lucide-react'
 import { getStartedOptions } from '@/data'
 import { useCardPointerTilt } from '@/hooks/useCardPointerTilt'
@@ -17,7 +17,7 @@ function StartOptionCard({
 
   return (
     <article ref={cardRef} data-reveal-item data-start-option className="start-option">
-      <Link to={href} className="start-option__link" aria-label={`${title}. ${body}`}>
+      <Link href={href} className="start-option__link" aria-label={`${title}. ${body}`}>
         <div className="start-option__media">
           <div className="start-option__image">
             <img src={image} alt={imageAlt} width={1400} height={1050} loading="lazy" decoding="async" />

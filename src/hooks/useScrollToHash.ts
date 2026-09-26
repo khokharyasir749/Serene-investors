@@ -1,5 +1,7 @@
+'use client'
+
 import { useEffect } from 'react'
-import { useLocation } from 'react-router-dom'
+import { usePathname } from 'next/navigation'
 import { useLenisControl } from '@/app/providers/LenisProvider'
 
 const HASH_WAIT_MS = 4000
@@ -11,10 +13,11 @@ function stickyOffset() {
 }
 
 export function useScrollToHash() {
-  const { pathname, hash } = useLocation()
+  const pathname = usePathname()
   const { scrollTo } = useLenisControl()
 
   useEffect(() => {
+    const hash = typeof window !== 'undefined' ? window.location.hash : ''
     const id = hash.replace(/^#/, '')
     if (!id) {
       scrollTo(0)
@@ -46,5 +49,5 @@ export function useScrollToHash() {
       window.cancelAnimationFrame(frame)
       window.clearTimeout(timer)
     }
-  }, [hash, pathname, scrollTo])
+  }, [pathname, scrollTo])
 }

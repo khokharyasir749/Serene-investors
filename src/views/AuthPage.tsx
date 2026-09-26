@@ -1,5 +1,6 @@
 import { useState, type FormEvent } from 'react'
-import { Link, useSearchParams } from 'react-router-dom'
+import Link from 'next/link'
+import { useSearchParams } from 'next/navigation'
 import { Button, ButtonLink } from '@/components/ui/Button'
 import { Container } from '@/components/ui/Container'
 import { funds, properties, site } from '@/data'
@@ -10,11 +11,11 @@ type Props = {
 }
 
 export function AuthPage({ title }: Props) {
-  const [params] = useSearchParams()
+  const params = useSearchParams()
   const [submitted, setSubmitted] = useState(false)
   const isLogin = title === 'Login'
-  const intent = params.get('intent')
-  const relatedId = params.get('id')
+  const intent = params?.get('intent')
+  const relatedId = params?.get('id')
   const property = intent === 'property' ? properties.find((item) => item.id === relatedId) : undefined
   const fund = intent === 'fund' ? funds.find((item) => item.id === relatedId) : undefined
 
@@ -43,7 +44,7 @@ export function AuthPage({ title }: Props) {
       {property ? (
         <p className="mt-4 max-w-prose text-sm">
           Continuing from sample property{' '}
-          <Link to={`/properties/${property.id}`} className="font-medium underline underline-offset-2">
+          <Link href={`/properties/${property.id}`} className="font-medium underline underline-offset-2">
             {property.name}
           </Link>
           .
@@ -52,7 +53,7 @@ export function AuthPage({ title }: Props) {
       {fund ? (
         <p className="mt-4 max-w-prose text-sm">
           Continuing from sample fund{' '}
-          <Link to={`/funds/${fund.id}`} className="font-medium underline underline-offset-2">
+          <Link href={`/funds/${fund.id}`} className="font-medium underline underline-offset-2">
             {fund.name}
           </Link>
           .
@@ -70,22 +71,22 @@ export function AuthPage({ title }: Props) {
           <div className="page-actions">
             {property ? (
               <>
-                <ButtonLink to={`/properties/${property.id}`}>View {property.name}</ButtonLink>
-                <ButtonLink to="/properties" variant="ghost">
+                <ButtonLink href={`/properties/${property.id}`}>View {property.name}</ButtonLink>
+                <ButtonLink href="/properties" variant="ghost">
                   Browse properties
                 </ButtonLink>
               </>
             ) : fund ? (
               <>
-                <ButtonLink to={`/funds/${fund.id}`}>View {fund.name}</ButtonLink>
-                <ButtonLink to="/funds" variant="ghost">
+                <ButtonLink href={`/funds/${fund.id}`}>View {fund.name}</ButtonLink>
+                <ButtonLink href="/funds" variant="ghost">
                   Explore funds
                 </ButtonLink>
               </>
             ) : (
               <>
-                <ButtonLink to="/properties">Browse properties</ButtonLink>
-                <ButtonLink to="/funds" variant="ghost">
+                <ButtonLink href="/properties">Browse properties</ButtonLink>
+                <ButtonLink href="/funds" variant="ghost">
                   Explore funds
                 </ButtonLink>
               </>
@@ -119,7 +120,7 @@ export function AuthPage({ title }: Props) {
             <Button type="submit">{isLogin ? 'Enter demo' : 'Create demo account'}</Button>
             {isLogin ? (
               <ButtonLink
-                to={
+                href={
                   property
                     ? `/get-started?intent=property&id=${property.id}`
                     : fund
@@ -131,7 +132,7 @@ export function AuthPage({ title }: Props) {
                 Get started
               </ButtonLink>
             ) : (
-              <ButtonLink to="/login" variant="ghost">
+              <ButtonLink href="/login" variant="ghost">
                 Login
               </ButtonLink>
             )}

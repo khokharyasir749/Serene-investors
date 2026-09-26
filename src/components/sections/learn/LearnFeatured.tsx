@@ -1,5 +1,5 @@
 import { useRef } from 'react'
-import { Link } from 'react-router-dom'
+import Link from 'next/link'
 import { ArrowRight } from 'lucide-react'
 import { ButtonLink } from '@/components/ui/Button'
 import { featuredLearnGuide } from '@/data'
@@ -25,7 +25,7 @@ export function LearnFeatured() {
     >
       <div className="learn-featured__layout mx-auto max-w-[var(--container-wide)]">
         <figure data-depth-stage className="learn-featured__media m-0">
-          <Link to={`/learn/${guide.slug}`} aria-label={`Read guide: ${guide.title}`}>
+          <Link href={`/learn/${guide.slug}`} aria-label={`Read guide: ${guide.title}`}>
             <img
               data-learn-featured-image
               src={guide.image}
@@ -59,7 +59,7 @@ export function LearnFeatured() {
             Illustrative sample
           </p>
           <div data-reveal-item className="mt-8">
-            <ButtonLink to={`/learn/${guide.slug}`} className="min-h-11 gap-1.5">
+            <ButtonLink href={`/learn/${guide.slug}`} className="min-h-11 gap-1.5">
               Read guide
               <ArrowRight size={16} strokeWidth={1.75} aria-hidden="true" />
             </ButtonLink>

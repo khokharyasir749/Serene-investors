@@ -1,5 +1,5 @@
 import type { ButtonHTMLAttributes, ComponentProps, ReactNode } from 'react'
-import { Link } from 'react-router-dom'
+import Link from 'next/link'
 import { cn } from '@/lib/cn'
 
 type Variant = 'primary' | 'secondary' | 'ghost'
@@ -34,18 +34,21 @@ export function Button({
 }
 
 type ButtonLinkProps = Shared & {
-  to: string
-} & Omit<ComponentProps<typeof Link>, 'to' | 'className' | 'children'>
+  to?: string
+  href?: string
+} & Omit<ComponentProps<typeof Link>, 'href' | 'className' | 'children'>
 
 export function ButtonLink({
   to,
+  href,
   variant = 'primary',
   className,
   children,
   ...props
 }: ButtonLinkProps) {
+  const targetHref = href ?? to ?? '/'
   return (
-    <Link to={to} className={cn(base, variants[variant], className)} {...props}>
+    <Link href={targetHref} className={cn(base, variants[variant], className)} {...props}>
       {children}
     </Link>
   )

@@ -1,5 +1,5 @@
 import { useLayoutEffect, useRef } from 'react'
-import { Link } from 'react-router-dom'
+import Link from 'next/link'
 import { ArrowRight } from 'lucide-react'
 import { Button, ButtonLink } from '@/components/ui/Button'
 import {
@@ -46,7 +46,7 @@ function ListingSummary({
               <dd>{formatSampleAmount(amount)}</dd>
             </div>
           </dl>
-          <Link to={`/funds/${fund.id}`} className="start-summary__link">
+          <Link href={`/funds/${fund.id}`} className="start-summary__link">
             View fund
             <ArrowRight size={16} strokeWidth={1.75} aria-hidden="true" />
           </Link>
@@ -80,7 +80,7 @@ function ListingSummary({
             <dd>{formatSampleAmount(amount)}</dd>
           </div>
         </dl>
-          <Link to={`/properties/${property.id}`} className="start-summary__link">
+          <Link href={`/properties/${property.id}`} className="start-summary__link">
             View property
             <ArrowRight size={16} strokeWidth={1.75} aria-hidden="true" />
           </Link>
@@ -146,10 +146,10 @@ export function StartOnboarding() {
               <Button type="button" variant="ghost" onClick={onboard.back}>
                 Back to review
               </Button>
-              <ButtonLink to="/properties" className="min-h-11">
+              <ButtonLink href="/properties" className="min-h-11">
                 Explore properties
               </ButtonLink>
-              <ButtonLink to="/funds" variant="ghost" className="min-h-11">
+              <ButtonLink href="/funds" variant="ghost" className="min-h-11">
                 Explore funds
               </ButtonLink>
             </div>

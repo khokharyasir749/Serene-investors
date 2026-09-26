@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom'
+import Link from 'next/link'
 import { ArrowRight } from 'lucide-react'
 import type { FooterColumn } from '@/types'
 import { ButtonLink } from '@/components/ui/Button'
@@ -16,7 +16,7 @@ function FooterNavGroup({ column }: { column: FooterColumn }) {
         {column.links.map((link) => (
           <li key={link.id}>
             {link.href ? (
-              <Link to={link.href} className="text-[0.9375rem]">
+              <Link href={link.href} className="text-[0.9375rem]">
                 {link.label}
               </Link>
             ) : (
@@ -46,7 +46,7 @@ export function SiteFooter() {
             </p>
             <div className="mt-7">
               <ButtonLink
-                to={footerIntro.cta.href}
+                href={footerIntro.cta.href}
                 variant="ghost"
                 className="gap-1.5 bg-[#f7f5ef] text-[#1f3d2e] hover:bg-[#dce7de] hover:text-[#1f3d2e]"
               >
@@ -74,7 +74,7 @@ export function SiteFooter() {
             {legalLinks.map((link) =>
               link.href ? (
                 <li key={link.id}>
-                  <Link to={link.href} className="text-sm">
+                  <Link href={link.href} className="text-sm">
                     {link.label}
                   </Link>
                 </li>

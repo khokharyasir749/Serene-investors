@@ -1,11 +1,11 @@
-import { Link } from 'react-router-dom'
+import { Link } from '@/components/ui/Link'
 import { heroVisual } from '@/data'
 
 export function HeroVisual() {
   const { image, listing, yieldPill, receipt } = heroVisual
 
   return (
-    <div data-hero-visual className="hero-visual relative order-1 w-full lg:order-2">
+    <div data-hero-visual className="relative order-1 w-full max-w-[34rem] lg:order-2 lg:max-w-none">
       <div data-hero-frame data-depth-stage className="relative isolate">
         <img
           data-hero-image
@@ -15,15 +15,15 @@ export function HeroVisual() {
           width={2000}
           height={2500}
           fetchPriority="high"
-          className="hero-image aspect-[4/5] h-auto w-full rounded-[var(--radius-lg)] object-cover sm:aspect-[5/6] lg:aspect-auto"
+          className="aspect-[4/5] h-auto w-full rounded-2xl object-cover [object-position:50%_22%] sm:aspect-[5/6] lg:aspect-auto lg:h-[min(72rem,calc(100dvh-var(--header-h)-var(--promo-h)+2rem))] lg:rounded-l-2xl lg:rounded-r-none lg:[object-position:48%_18%]"
         />
 
         <Link
-          to="/properties/courtyard-residences"
+          href="/properties/courtyard-residences"
           data-hero-card="property"
           data-depth="mid"
           aria-label={`View sample listing for ${listing.place}`}
-          className="hero-card stage-card absolute bottom-4 left-4 w-[min(19rem,calc(100%-2rem))] px-5 py-4"
+          className="absolute bottom-4 left-4 w-[min(19rem,calc(100%-2rem))] rounded-2xl border border-white/70 bg-white/90 px-5 py-4 text-ink shadow-[0_18px_40px_rgb(24_32_25/0.14)] backdrop-blur-md transition-all duration-300 hover:z-50 hover:-translate-y-2 hover:scale-[1.03] hover:shadow-2xl lg:-left-3 lg:bottom-10 lg:w-[21rem] lg:-rotate-[1.5deg]"
         >
           <p className="home-kicker text-muted">{listing.type}</p>
           <p className="mt-2 text-xl font-medium tracking-tight">{listing.place}</p>
@@ -41,11 +41,11 @@ export function HeroVisual() {
         </p>
 
         <Link
-          to="/properties/cedar-court"
+          href="/properties/cedar-court"
           data-hero-card="receipt"
           data-depth="front"
           aria-label={`View sample listing for ${receipt.detail}`}
-          className="hero-receipt stage-card absolute right-4 top-16 w-[min(13.5rem,calc(100%-2rem))] px-3.5 py-3"
+          className="absolute right-4 top-16 w-[min(13.5rem,calc(100%-2rem))] rounded-2xl border border-white/70 bg-white/90 px-3.5 py-3 text-ink shadow-[0_18px_40px_rgb(24_32_25/0.14)] backdrop-blur-md transition-all duration-300 hover:z-50 hover:-translate-y-2 hover:scale-[1.03] hover:shadow-2xl lg:right-[7%] lg:top-[12%] lg:w-[13.5rem] lg:rotate-[2.5deg]"
         >
           <p className="flex items-baseline justify-between gap-2 text-sm">
             <span>{receipt.title}</span>

@@ -1,5 +1,7 @@
+'use client'
+
 import { useRef } from 'react'
-import { Link } from 'react-router-dom'
+import { Link } from '@/components/ui/Link'
 import { ArrowRight } from 'lucide-react'
 import type { Property } from '@/types'
 import { featuredHoldingsIntro } from '@/data'
@@ -31,25 +33,25 @@ export function FeaturedHoldingsSection({ properties }: Props) {
     <section
       ref={rootRef}
       id="holdings"
-      className="home-band home-band--stage overflow-x-clip bg-surface"
+      className="py-16 md:py-24 px-5 md:px-8 overflow-x-clip bg-surface"
       aria-labelledby="holdings-heading"
     >
       <div className="mx-auto max-w-[var(--container-wide)]">
         <div className="max-w-2xl">
-          <p data-reveal-heading className="home-kicker text-muted">
+          <p data-reveal-heading className="text-xs font-semibold uppercase tracking-[0.14em] text-muted">
             {featuredHoldingsIntro.eyebrow}
           </p>
           <h2
             data-reveal-heading
             id="holdings-heading"
-            className="home-heading mt-3 max-w-[14ch]"
+            className="text-[clamp(2.2rem,4vw,3.5rem)] font-semibold leading-[1.08] tracking-tight mt-3 max-w-[14ch] text-ink"
           >
             {featuredHoldingsIntro.heading}
           </h2>
         </div>
 
-        <div className="holding-canvas mt-12 pb-10 lg:mt-16 lg:pb-16" data-depth-stage>
-          <figure className="holding-canvas__main m-0">
+        <div className="relative mt-12 pb-10 lg:mt-16 lg:pb-16 lg:min-h-[44rem] overflow-visible" data-depth-stage>
+          <figure className="m-0 relative overflow-hidden rounded-2xl lg:w-[78%]">
             <img
               data-holding-image="featured"
               data-depth="back"
@@ -59,14 +61,20 @@ export function FeaturedHoldingsSection({ properties }: Props) {
               height={2000}
               loading="lazy"
               decoding="async"
+              className="block w-full aspect-[4/5] lg:aspect-auto lg:h-[44rem] lg:min-h-[44rem] object-cover rounded-2xl"
             />
-            <div data-reveal-item data-holding-panel data-depth="front" className="holding-canvas__panel p-6">
+            <div
+              data-reveal-item
+              data-holding-panel
+              data-depth="front"
+              className="mt-4 lg:mt-0 lg:absolute lg:left-7 lg:-bottom-7 z-10 lg:w-[min(22.5rem,calc(100%-3.5rem))] p-6 bg-white/90 backdrop-blur-md border border-white/70 rounded-2xl shadow-xl hover:shadow-2xl hover:-translate-y-2 hover:scale-[1.03] hover:z-50 transition-all duration-300"
+            >
               <Link
-                to={`/properties/${featured.id}`}
+                href={`/properties/${featured.id}`}
                 className="block group"
                 aria-label={`View sample listing for ${featured.name}`}
               >
-                <p className="home-kicker text-muted text-xs uppercase tracking-wider">{featured.type}</p>
+                <p className="text-muted text-xs font-semibold uppercase tracking-[0.14em]">{featured.type}</p>
                 <p className="mt-2 text-[1.55rem] font-semibold tracking-tight text-ink">{featured.name}</p>
                 <p className="mt-1 text-sm text-muted">{location}</p>
                 <dl className="mt-5 space-y-3.5 border-t border-black/[0.08] pt-4 text-sm">
@@ -97,17 +105,17 @@ export function FeaturedHoldingsSection({ properties }: Props) {
             <article
               key={property.id}
               data-reveal-item
-              data-holding-support
+              data-holding-support={index === 0 ? 'one' : 'two'}
               data-depth="mid"
-              className={
+              className={`mt-4 lg:mt-0 lg:absolute lg:w-[27%] z-10 shadow-xl rounded-2xl overflow-hidden bg-surface hover:shadow-2xl hover:-translate-y-2 hover:scale-[1.03] hover:z-50 transition-all duration-300 ${
                 index === 0
-                  ? 'holding-canvas__support holding-canvas__support--one'
-                  : 'holding-canvas__support holding-canvas__support--two'
-              }
+                  ? 'lg:top-[7%] lg:-right-5 lg:rotate-[2.2deg]'
+                  : 'lg:right-[6%] lg:-bottom-9 lg:-rotate-[2.8deg]'
+              }`}
             >
               <Link
-                to={`/properties/${property.id}`}
-                className="block"
+                href={`/properties/${property.id}`}
+                className="block group"
                 aria-label={`View sample listing for ${property.name}`}
               >
                 <img
@@ -118,9 +126,10 @@ export function FeaturedHoldingsSection({ properties }: Props) {
                   height={1120}
                   loading="lazy"
                   decoding="async"
+                  className="block w-full aspect-[4/5] object-cover transition-transform duration-500 group-hover:scale-105"
                 />
                 <div className="px-4 py-3">
-                  <p className="text-base font-medium tracking-tight">{property.name}</p>
+                  <p className="text-base font-medium tracking-tight text-ink group-hover:text-primary transition-colors">{property.name}</p>
                   <p className="mt-0.5 text-sm text-muted">{property.neighborhood}</p>
                 </div>
               </Link>
@@ -131,3 +140,4 @@ export function FeaturedHoldingsSection({ properties }: Props) {
     </section>
   )
 }
+

@@ -1,3 +1,5 @@
+'use client'
+
 import { useState, useRef } from 'react'
 import { ArrowRight } from 'lucide-react'
 import type { RewardItem as RewardContent } from '@/types'
@@ -25,12 +27,12 @@ export function RewardsSection({ items }: Props) {
     <section
       ref={rootRef}
       id="rewards"
-      className="home-band home-band--stage overflow-x-clip bg-soft"
+      className="py-16 md:py-24 px-5 md:px-8 overflow-x-clip bg-soft"
       aria-labelledby="rewards-heading"
     >
       <div className="mx-auto max-w-[var(--container-wide)]">
         <div className="mx-auto max-w-3xl text-center">
-          <p data-reveal-heading className="home-kicker text-muted">
+          <p data-reveal-heading className="text-xs font-semibold uppercase tracking-[0.14em] text-muted">
             {rewardsIntro.eyebrow}
           </p>
           <h2
@@ -42,14 +44,18 @@ export function RewardsSection({ items }: Props) {
           </h2>
           <p
             data-reveal-heading
-            className="mt-5 inline-block rounded-pill bg-surface px-2.5 py-1 text-xs font-medium text-soft-ink"
+            className="mt-5 inline-block rounded-pill bg-surface px-3 py-1 text-xs font-medium text-soft-ink shadow-sm"
           >
             {rewardsIntro.sampleLabel}
           </p>
         </div>
 
-        <div className="reward-deck mt-14 lg:mt-20" data-depth-stage>
-          <p className="reward-deck__mark pointer-events-none select-none" data-reward-mark aria-hidden="true">
+        <div className="relative grid gap-4 md:grid-cols-3 md:gap-0 md:-mx-3 lg:-mx-10 mt-14 lg:mt-20 overflow-visible" data-depth-stage>
+          <p
+            className="hidden lg:block absolute left-1/2 top-[46%] -translate-x-1/2 -translate-y-1/2 pointer-events-none select-none text-[clamp(6rem,16vw,12rem)] font-semibold tracking-[-0.06em] leading-[0.8] text-primary/10"
+            data-reward-mark
+            aria-hidden="true"
+          >
             Rewards
           </p>
           {items.map((item, index) => {
@@ -82,12 +88,13 @@ export function RewardsSection({ items }: Props) {
         </div>
 
         <div data-rewards-cta className="mt-14 text-center">
-          <ButtonLink to={rewardsIntro.action.href} variant="ghost" className="home-cta gap-1.5 px-0">
+          <ButtonLink href={rewardsIntro.action.href} variant="ghost" className="group home-cta gap-1.5 px-0">
             {rewardsIntro.action.label}
-            <ArrowRight size={16} strokeWidth={1.75} aria-hidden="true" />
+            <ArrowRight size={16} strokeWidth={1.75} aria-hidden="true" className="transition-transform group-hover:translate-x-1" />
           </ButtonLink>
         </div>
       </div>
     </section>
   )
 }
+

@@ -1,3 +1,5 @@
+'use client'
+
 import { FeaturedFundBand } from '@/components/sections/funds/FeaturedFundBand'
 import { FundBreakdown } from '@/components/sections/funds/FundBreakdown'
 import { FundCollection } from '@/components/sections/funds/FundCollection'

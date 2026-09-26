@@ -1,5 +1,5 @@
 import { useRef } from 'react'
-import { Link } from 'react-router-dom'
+import Link from 'next/link'
 import { ArrowRight } from 'lucide-react'
 import type { LearnGuide } from '@/types'
 import { learnGuides } from '@/data'
@@ -17,7 +17,7 @@ function ResourceCard({ guide }: { guide: LearnGuide }) {
       data-learn-card
       className="learn-card"
     >
-      <Link to={`/learn/${guide.slug}`} className="learn-card__link" aria-label={`${guide.title}. Read guide.`}>
+      <Link href={`/learn/${guide.slug}`} className="learn-card__link" aria-label={`${guide.title}. Read guide.`}>
         <div className="learn-card__media">
           <div className="learn-card__image">
             <img src={guide.image} alt={guide.imageAlt} width={900} height={675} loading="lazy" decoding="async" />

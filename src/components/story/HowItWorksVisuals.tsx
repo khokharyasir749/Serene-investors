@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom'
+import Link from 'next/link'
 import { appDownload, properties } from '@/data'
 import { storyAssets, storyHoldingThumb } from '@/data/story-assets'
 import { formatPercent, formatSampleAmount } from '@/lib/format'
@@ -40,7 +40,7 @@ export function HowItWorksChooseVisual() {
         height={1867}
       />
       <Link
-        to={`/properties/${cedar.id}`}
+        href={`/properties/${cedar.id}`}
         className="story-property__card stage-card"
         data-depth="front"
         aria-label={`View sample listing for ${cedar.name}`}

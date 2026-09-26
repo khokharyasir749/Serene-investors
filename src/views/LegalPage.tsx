@@ -1,5 +1,5 @@
 import { useLayoutEffect } from 'react'
-import { useParams } from 'react-router-dom'
+import { useParams } from 'next/navigation'
 import { LegalArticle } from '@/components/sections/legal/LegalArticle'
 import { LegalClose } from '@/components/sections/legal/LegalClose'
 import { LegalHero } from '@/components/sections/legal/LegalHero'
@@ -10,7 +10,8 @@ import { usePageMeta } from '@/hooks/usePageMeta'
 import { ScrollTrigger } from '@/lib/gsap'
 
 export function LegalPage() {
-  const { slug } = useParams()
+  const params = useParams<{ slug: string }>()
+  const slug = params?.slug
   const doc = slug ? getLegalDoc(slug) : undefined
 
   usePageMeta(

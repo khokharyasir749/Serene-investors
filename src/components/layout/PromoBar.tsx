@@ -1,5 +1,5 @@
 import { X } from 'lucide-react'
-import { Link } from 'react-router-dom'
+import Link from 'next/link'
 import { promoNotice } from '@/data'
 
 type Props = {
@@ -12,7 +12,7 @@ export function PromoBar({ onDismiss }: Props) {
       <div className="mx-auto flex h-[var(--promo-h-open)] max-w-[var(--container-wide)] items-center justify-center gap-3 px-5 text-[13px] md:px-8 lg:px-10">
         <p className="min-w-0 truncate">
           <span>{promoNotice.text}</span>{' '}
-          <Link to={promoNotice.href} className="font-medium underline underline-offset-2">
+          <Link href={promoNotice.href} className="font-medium underline underline-offset-2">
             {promoNotice.cta}
           </Link>
         </p>

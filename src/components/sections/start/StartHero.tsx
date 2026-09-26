@@ -1,5 +1,5 @@
 import { useRef } from 'react'
-import { Link } from 'react-router-dom'
+import Link from 'next/link'
 import { ArrowRight } from 'lucide-react'
 import { getStartedIntro, properties } from '@/data'
 import { storyAssets } from '@/data/story-assets'
@@ -61,7 +61,7 @@ export function StartHero() {
 
           {cedar ? (
             <Link
-              to={`/properties/${cedar.id}`}
+              href={`/properties/${cedar.id}`}
               data-start-hero-card
               className="start-hero__card"
               aria-label={`View sample listing for ${cedar.name}`}

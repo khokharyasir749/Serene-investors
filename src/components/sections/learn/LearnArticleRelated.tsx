@@ -1,5 +1,5 @@
 import { useRef } from 'react'
-import { Link } from 'react-router-dom'
+import Link from 'next/link'
 import { ArrowRight } from 'lucide-react'
 import type { LearnGuide } from '@/types'
 import { useRelatedGuides } from '@/hooks/useRelatedGuides'
@@ -30,7 +30,7 @@ export function LearnArticleRelated({ guide }: Props) {
           {related.map((item) => (
             <article key={item.id} data-reveal-item>
               <Link
-                to={`/learn/${item.slug}`}
+                href={`/learn/${item.slug}`}
                 className="learn-related__card"
                 aria-label={`${item.title}. Read guide.`}
               >

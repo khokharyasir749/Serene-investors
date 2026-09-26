@@ -1,5 +1,5 @@
 import { useRef } from 'react'
-import { Link } from 'react-router-dom'
+import Link from 'next/link'
 import { ArrowRight } from 'lucide-react'
 import { aboutExperience } from '@/data'
 import { useDepthParallax } from '@/hooks/useDepthParallax'
@@ -31,7 +31,7 @@ export function AboutExperience() {
           {aboutExperience.steps.map((step) => (
             <li key={step.id} data-about-step className="about-step">
               <Link
-                to={step.href}
+                href={step.href}
                 className="about-step__link"
                 aria-label={`${step.title}. ${step.cta}.`}
               >

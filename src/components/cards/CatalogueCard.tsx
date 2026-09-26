@@ -1,5 +1,5 @@
 import { useRef } from 'react'
-import { Link } from 'react-router-dom'
+import { Link } from '@/components/ui/Link'
 import { ArrowRight } from 'lucide-react'
 import type { Property } from '@/types'
 import { formatPercent, formatPropertyMeta, formatSampleAmount, formatStatus } from '@/lib/format'

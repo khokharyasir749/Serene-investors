@@ -23,7 +23,7 @@ function initialsFrom(name: string) {
 
 export function BackerMark({ id, name }: Props) {
   return (
-    <span className="community-mark">
+    <span className="community-mark grid size-11 place-items-center rounded-lg bg-soft text-accent transition-all duration-200 group-hover:scale-[1.04] group-hover:bg-primary group-hover:text-primary-ink group-focus-visible:scale-[1.04] group-focus-visible:bg-primary group-focus-visible:text-primary-ink">
       {id === 'stonebridge' ? (
         <Mark>
           <path d="M8 24h24M10 24V16h6v8M24 24V14h6v10M8 16h24" stroke="currentColor" strokeWidth="1.6" />
@@ -55,7 +55,7 @@ export function BackerMark({ id, name }: Props) {
           <path d="M20 9v22M11 16h18M11 24h18" stroke="currentColor" strokeWidth="1.6" />
         </Mark>
       ) : (
-        <span className="community-mark__fallback">{initialsFrom(name)}</span>
+        <span className="text-xs font-semibold tracking-wider">{initialsFrom(name)}</span>
       )}
     </span>
   )

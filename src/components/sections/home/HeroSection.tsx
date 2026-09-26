@@ -1,5 +1,5 @@
 import { useLayoutEffect, useRef } from 'react'
-import { Link } from 'react-router-dom'
+import { Link } from '@/components/ui/Link'
 import { heroCopy } from '@/data'
 import { usePrefersReducedMotion } from '@/hooks/usePrefersReducedMotion'
 import { gsap, registerGsapPlugins } from '@/lib/gsap'
@@ -57,10 +57,10 @@ export function HeroSection() {
     <section
       ref={rootRef}
       id="hero"
-      className="hero flex min-h-[calc(100dvh-var(--header-h)-var(--promo-h))] items-center overflow-x-clip px-5 py-8 md:px-8 lg:py-0 lg:pl-10 lg:pr-0"
+      className="flex min-h-[calc(100dvh-var(--header-h)-var(--promo-h))] items-center overflow-x-clip px-5 py-8 md:px-8 lg:py-0 lg:pl-10 lg:pr-0"
     >
       <div className="mx-auto grid w-full items-center gap-8 lg:grid-cols-[minmax(0,26rem)_minmax(0,1fr)] lg:gap-12 xl:gap-16">
-        <div className="hero-copy order-2 w-full lg:order-1">
+        <div className="order-2 w-full max-w-[24rem] lg:order-1 lg:max-w-none">
           <p data-hero-eyebrow className="home-kicker text-muted">
             {heroCopy.eyebrow}
           </p>
@@ -80,11 +80,11 @@ export function HeroSection() {
             data-hero-cta
             className="mt-8 flex flex-col items-stretch gap-3 sm:flex-row sm:items-center"
           >
-            <ButtonLink to={heroCopy.primary.href} className="home-cta min-h-12 w-full px-7 text-base sm:w-auto">
+            <ButtonLink href={heroCopy.primary.href} className="home-cta min-h-12 w-full px-7 text-base transition-all duration-300 hover:-translate-y-0.5 hover:scale-[1.015] sm:w-auto">
               {heroCopy.primary.label}
             </ButtonLink>
             <Link
-              to={heroCopy.secondary.href}
+              href={heroCopy.secondary.href}
               className="inline-flex min-h-11 items-center justify-center px-1 text-center text-[0.9375rem] text-ink underline-offset-4 hover:underline sm:justify-start sm:text-left"
             >
               {heroCopy.secondary.label}

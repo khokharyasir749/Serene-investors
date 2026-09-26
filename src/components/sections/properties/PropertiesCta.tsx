@@ -1,5 +1,5 @@
 import { useRef } from 'react'
-import { Link } from 'react-router-dom'
+import Link from 'next/link'
 import { ArrowRight } from 'lucide-react'
 import { ButtonLink } from '@/components/ui/Button'
 import { Image } from '@/components/ui/Image'
@@ -39,11 +39,11 @@ export function PropertiesCta() {
             {propertiesCta.body}
           </p>
           <div data-reveal-heading className="properties-cta__actions">
-            <ButtonLink to={`/properties/${catalogueFeatured.id}`} className="min-h-11 w-full gap-1.5 sm:w-auto">
+            <ButtonLink href={`/properties/${catalogueFeatured.id}`} className="min-h-11 w-full gap-1.5 sm:w-auto">
               Explore a property
               <ArrowRight size={16} strokeWidth={1.75} aria-hidden="true" />
             </ButtonLink>
-            <ButtonLink to="/how-it-works" variant="ghost" className="min-h-11 w-full sm:w-auto">
+            <ButtonLink href="/how-it-works" variant="ghost" className="min-h-11 w-full sm:w-auto">
               How it works
             </ButtonLink>
           </div>
@@ -51,7 +51,7 @@ export function PropertiesCta() {
 
         <figure data-reveal-item data-depth-stage className="properties-cta__visual m-0">
           <Link
-            to={`/properties/${catalogueFeatured.id}`}
+            href={`/properties/${catalogueFeatured.id}`}
             data-properties-cta-card
             className="properties-cta__card block"
             aria-label={`View sample listing for ${catalogueFeatured.name}`}

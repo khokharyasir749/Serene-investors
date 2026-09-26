@@ -1,5 +1,5 @@
 import { useRef } from 'react'
-import { Link } from 'react-router-dom'
+import { Link } from '@/components/ui/Link'
 import { ArrowRight } from 'lucide-react'
 import type { OfferingSplit } from '@/types'
 import { properties, propertyStageIntro } from '@/data'
@@ -33,10 +33,10 @@ export function PropertyStageSection({ offering }: Props) {
     <section
       ref={rootRef}
       id="direct-property"
-      className="home-band home-band--stage overflow-x-clip bg-soft"
+      className="overflow-x-clip bg-soft py-16 md:py-20 lg:py-24"
       aria-labelledby="property-stage-heading"
     >
-      <div className="mx-auto max-w-[var(--container-wide)]">
+      <div className="mx-auto max-w-[var(--container-wide)] px-5 md:px-8 lg:px-10">
         <div className="max-w-xl">
           <p data-reveal-heading className="home-kicker text-muted">
             {propertyStageIntro.eyebrow}
@@ -53,8 +53,8 @@ export function PropertyStageSection({ offering }: Props) {
           </p>
         </div>
 
-        <div data-reveal-item data-depth-stage className="property-stage mt-12 pb-8 lg:mt-16 lg:pb-10">
-          <figure data-offering-media data-depth="back" className="property-stage__media m-0">
+        <div data-reveal-item data-depth-stage className="relative mt-12 min-h-[32rem] pb-8 lg:mt-16 lg:min-h-[42rem] lg:pb-10">
+          <figure data-offering-media data-depth="back" className="m-0">
             <img
               src={offering.image}
               alt={offering.imageAlt}
@@ -62,12 +62,17 @@ export function PropertyStageSection({ offering }: Props) {
               height={1400}
               loading="lazy"
               decoding="async"
+              className="block aspect-[4/3] min-h-[22rem] w-full rounded-2xl object-cover lg:aspect-[16/9] lg:min-h-[40rem]"
             />
           </figure>
 
-          <article data-offering-card data-depth="front" className="property-stage__card stage-card p-6">
+          <article
+            data-offering-card
+            data-depth="front"
+            className="mt-5 rounded-2xl border border-white/70 bg-white/90 p-6 text-ink shadow-[0_18px_40px_rgb(24_32_25/0.14)] backdrop-blur-md transition-all duration-300 hover:z-50 hover:-translate-y-2 hover:scale-[1.03] hover:shadow-2xl lg:absolute lg:bottom-[-1.75rem] lg:left-9 lg:mt-0 lg:w-[min(23rem,calc(100%-4.5rem))] lg:z-[3]"
+          >
             <Link
-              to={cedar ? `/properties/${cedar.id}` : offering.href}
+              href={cedar ? `/properties/${cedar.id}` : offering.href}
               className="block"
               aria-label={`View sample listing for ${cedar?.name ?? offering.example.name}`}
             >

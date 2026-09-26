@@ -31,7 +31,7 @@ const CARDS_CONFIG: CardConfig[] = [
     tiltRY: 3.2,
   },
   {
-    selector: '.holding-canvas__support--one',
+    selector: '[data-holding-support="one"]',
     baseZ: 18,
     baseZIndex: 3,
     baseRotateZ: 2.2,
@@ -41,7 +41,7 @@ const CARDS_CONFIG: CardConfig[] = [
     tiltRY: 2,
   },
   {
-    selector: '.holding-canvas__support--two',
+    selector: '[data-holding-support="two"]',
     baseZ: 22,
     baseZIndex: 2,
     baseRotateZ: -2.8,

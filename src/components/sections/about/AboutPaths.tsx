@@ -1,5 +1,5 @@
 import { useRef } from 'react'
-import { Link } from 'react-router-dom'
+import Link from 'next/link'
 import { ArrowRight } from 'lucide-react'
 import { ButtonLink } from '@/components/ui/Button'
 import { aboutPaths, sampleFundMinimum } from '@/data'
@@ -38,7 +38,7 @@ function DirectPath() {
           />
         </figure>
         <Link
-          to={`/properties/${direct.listing.id}`}
+          href={`/properties/${direct.listing.id}`}
           data-about-direct-card
           className="about-path__card"
           aria-label={`View sample listing for ${direct.listing.name}`}
@@ -68,7 +68,7 @@ function DirectPath() {
           ))}
         </ul>
         <div className="mt-7">
-          <ButtonLink to={direct.href} className="min-h-11 gap-1.5">
+          <ButtonLink href={direct.href} className="min-h-11 gap-1.5">
             {direct.cta}
             <ArrowRight size={16} strokeWidth={1.75} aria-hidden="true" />
           </ButtonLink>
@@ -108,7 +108,7 @@ function FundsPath() {
           />
         </figure>
         <Link
-          to={`/funds/${funds.listing.id}`}
+          href={`/funds/${funds.listing.id}`}
           data-about-fund-card
           className="about-path__card"
           aria-label={`View sample fund ${funds.listing.name}`}
@@ -157,7 +157,7 @@ function FundsPath() {
           ))}
         </ul>
         <div className="mt-7">
-          <ButtonLink to={funds.href} className="min-h-11 gap-1.5">
+          <ButtonLink href={funds.href} className="min-h-11 gap-1.5">
             {funds.cta}
             <ArrowRight size={16} strokeWidth={1.75} aria-hidden="true" />
           </ButtonLink>

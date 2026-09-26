@@ -1,5 +1,5 @@
 import { ArrowLeft } from 'lucide-react'
-import { Link } from 'react-router-dom'
+import Link from 'next/link'
 import { ButtonLink } from '@/components/ui/Button'
 import type { LegalDoc } from '@/types/legal'
 import { legalFrame, legalIndex } from '@/data'
@@ -13,7 +13,7 @@ export function LegalClose({ doc }: Props) {
 
   return (
     <div className="legal-close">
-      <ButtonLink to={legalFrame.backHref} variant="ghost" className="legal-close__back min-h-11 gap-1.5">
+      <ButtonLink href={legalFrame.backHref} variant="ghost" className="legal-close__back min-h-11 gap-1.5">
         <ArrowLeft size={16} strokeWidth={1.75} aria-hidden="true" />
         {legalFrame.backLabel}
       </ButtonLink>
@@ -23,7 +23,7 @@ export function LegalClose({ doc }: Props) {
         <ul>
           {others.map((item) => (
             <li key={item.slug}>
-              <Link to={item.href}>{item.title}</Link>
+              <Link href={item.href}>{item.title}</Link>
             </li>
           ))}
         </ul>

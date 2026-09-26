@@ -1,5 +1,5 @@
 import { useRef } from 'react'
-import { Link } from 'react-router-dom'
+import Link from 'next/link'
 import { ArrowRight } from 'lucide-react'
 import { ButtonLink } from '@/components/ui/Button'
 import { catalogueFeatured, propertiesFeaturedBand } from '@/data'
@@ -26,7 +26,7 @@ export function FeaturedPropertyBand() {
       <div className="property-featured__layout mx-auto max-w-[var(--container-wide)]">
         <figure className="property-featured__media m-0" data-depth-stage>
           <Link
-            to={`/properties/${catalogueFeatured.id}`}
+            href={`/properties/${catalogueFeatured.id}`}
             aria-label={`View sample listing for ${catalogueFeatured.name}`}
           >
             <img
@@ -76,7 +76,7 @@ export function FeaturedPropertyBand() {
 
           <div data-reveal-item className="mt-8">
             <ButtonLink
-              to={`/properties/${catalogueFeatured.id}`}
+              href={`/properties/${catalogueFeatured.id}`}
               className="min-h-11 gap-1.5"
             >
               View property

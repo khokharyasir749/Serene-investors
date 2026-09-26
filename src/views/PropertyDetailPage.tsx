@@ -1,5 +1,5 @@
 import { useLayoutEffect } from 'react'
-import { useParams } from 'react-router-dom'
+import { useParams } from 'next/navigation'
 import { PropertyClosingCta } from '@/components/sections/property/PropertyClosingCta'
 import { PropertyExperience } from '@/components/sections/property/PropertyExperience'
 import { PropertyFeatures } from '@/components/sections/property/PropertyFeatures'
@@ -15,7 +15,8 @@ import { usePageMeta } from '@/hooks/usePageMeta'
 import { ScrollTrigger } from '@/lib/gsap'
 
 export function PropertyDetailPage() {
-  const { slug } = useParams()
+  const params = useParams<{ slug: string }>()
+  const slug = params?.slug
   const property = properties.find((item) => item.id === slug)
 
   usePageMeta(

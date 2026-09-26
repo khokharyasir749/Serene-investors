@@ -1,3 +1,5 @@
+'use client'
+
 import { useRef } from 'react'
 import { FundCard } from '@/components/cards/FundCard'
 import { fundsNotice } from '@/data'
@@ -18,7 +20,7 @@ export function FundCollection({ items }: Props) {
     <section
       ref={rootRef}
       id="fund-collection"
-      className="fund-collection"
+      className="py-10 md:py-16 lg:py-20 px-5 md:px-8 lg:px-10"
       aria-labelledby="fund-collection-heading"
     >
       <div className="mx-auto max-w-[var(--container-wide)]">
@@ -26,16 +28,17 @@ export function FundCollection({ items }: Props) {
           Sample fund collection
         </h2>
 
-        <div className="fund-collection__grid">
+        <div className="grid gap-9 md:grid-cols-2 lg:grid-cols-3 lg:gap-x-7 lg:gap-y-8">
           {items.map((fund) => (
             <FundCard key={fund.id} fund={fund} />
           ))}
         </div>
 
-        <aside className="fund-collection__notice">
+        <aside className="max-w-[48ch] mt-14 pt-6 border-t border-line text-sm leading-relaxed text-muted">
           <p>{fundsNotice.body}</p>
         </aside>
       </div>
     </section>
   )
 }
+

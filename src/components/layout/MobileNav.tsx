@@ -1,5 +1,6 @@
 import { useCallback, useRef } from 'react'
-import { Link, useLocation } from 'react-router-dom'
+import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 import { primaryNav, utilityNav } from '@/data'
 import { useFocusTrap } from '@/hooks/useFocusTrap'
 import { useLockBodyScroll } from '@/hooks/useLockBodyScroll'
@@ -18,7 +19,7 @@ export function MobileNav({ open, onClose }: Props) {
   useLockBodyScroll(open)
   useFocusTrap(open, dialogRef, close, '[aria-controls="mobile-menu"]')
 
-  const location = useLocation()
+  const pathname = usePathname()
 
   if (!open) return null
 
@@ -38,12 +39,12 @@ export function MobileNav({ open, onClose }: Props) {
         <ul className="flex flex-col gap-1">
           {primaryNav.map((item) => {
             const current =
-              location.pathname === item.href ||
-              (item.href !== '/' && location.pathname.startsWith(`${item.href}/`))
+              pathname === item.href ||
+              (item.href !== '/' && !!pathname?.startsWith(`${item.href}/`))
             return (
               <li key={item.id}>
                 <Link
-                  to={item.href}
+                  href={item.href}
                   onClick={onClose}
                   aria-current={current ? 'page' : undefined}
                   className="flex items-center gap-2 py-3 text-2xl tracking-tight"
@@ -59,16 +60,16 @@ export function MobileNav({ open, onClose }: Props) {
         <div className="mt-auto flex flex-col gap-3 pb-6">
           {login ? (
             <Link
-              to={login.href}
+              href={login.href}
               onClick={onClose}
-              aria-current={location.pathname === login.href ? 'page' : undefined}
+              aria-current={pathname === login.href ? 'page' : undefined}
               className="inline-flex min-h-11 items-center text-sm"
             >
               {login.label}
             </Link>
           ) : null}
           {start ? (
-            <ButtonLink to={start.href} className="w-full" onClick={onClose}>
+            <ButtonLink href={start.href} className="w-full" onClick={onClose}>
               {start.label}
             </ButtonLink>
           ) : null}
@@ -77,3 +78,4 @@ export function MobileNav({ open, onClose }: Props) {
     </div>
   )
 }
+

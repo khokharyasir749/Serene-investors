@@ -1,5 +1,5 @@
 import { useLayoutEffect } from 'react'
-import { useParams } from 'react-router-dom'
+import { useParams } from 'next/navigation'
 import { FundClosingCta } from '@/components/sections/fund/FundClosingCta'
 import { FundHero } from '@/components/sections/fund/FundHero'
 import { FundHoldings } from '@/components/sections/fund/FundHoldings'
@@ -12,7 +12,8 @@ import { usePageMeta } from '@/hooks/usePageMeta'
 import { ScrollTrigger } from '@/lib/gsap'
 
 export function FundDetailPage() {
-  const { slug } = useParams()
+  const params = useParams<{ slug: string }>()
+  const slug = params?.slug
   const fund = funds.find((item) => item.id === slug)
 
   usePageMeta(

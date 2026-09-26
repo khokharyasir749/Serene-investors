@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom'
+import Link from 'next/link'
 import type { LegalLinkPart, LegalParagraph, LegalSection } from '@/types/legal'
 
 function isLinkPart(part: string | LegalLinkPart): part is LegalLinkPart {
@@ -14,7 +14,7 @@ function LegalParagraphView({ value }: { value: LegalParagraph }) {
     <p>
       {value.parts.map((part, index) =>
         isLinkPart(part) ? (
-          <Link key={`${part.to}-${index}`} to={part.to}>
+          <Link key={`${part.to}-${index}`} href={part.to}>
             {part.label}
           </Link>
         ) : (

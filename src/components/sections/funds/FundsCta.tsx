@@ -1,5 +1,7 @@
+'use client'
+
 import { useRef } from 'react'
-import { Link } from 'react-router-dom'
+import Link from 'next/link'
 import { ArrowRight } from 'lucide-react'
 import { ButtonLink } from '@/components/ui/Button'
 import { Image } from '@/components/ui/Image'
@@ -19,16 +21,16 @@ export function FundsCta() {
   useDepthParallax(rootRef, [{ selector: '[data-funds-cta-card]', yPercent: 4 }])
 
   return (
-    <section ref={rootRef} className="funds-cta" aria-labelledby="funds-cta-heading">
-      <div className="funds-cta__layout mx-auto max-w-[var(--container-wide)]">
-        <div className="funds-cta__copy">
-          <p data-reveal-heading className="property-hero__mark">
+    <section ref={rootRef} className="py-20 md:py-24 px-5 md:px-8 lg:px-10 bg-soft overflow-clip" aria-labelledby="funds-cta-heading">
+      <div className="mx-auto max-w-[var(--container-wide)] grid gap-10 md:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)] md:items-center md:gap-12 lg:gap-16">
+        <div className="flex flex-col justify-center">
+          <p data-reveal-heading className="text-xs font-semibold uppercase tracking-[0.14em] text-muted">
             Next step
           </p>
           <h2
             data-reveal-heading
             id="funds-cta-heading"
-            className="mt-6 max-w-[12ch] text-[clamp(2.4rem,5vw,4.4rem)] font-semibold leading-[1.05] tracking-[-0.03em] text-balance"
+            className="mt-4 max-w-[12ch] text-[clamp(2.4rem,5vw,4.4rem)] font-semibold leading-[1.05] tracking-[-0.03em] text-balance text-ink"
           >
             {fundsCta.heading}
           </h2>
@@ -38,22 +40,22 @@ export function FundsCta() {
           >
             {fundsCta.body}
           </p>
-          <div data-reveal-heading className="funds-cta__actions">
-            <ButtonLink to={`/funds/${catalogueFeaturedFund.id}`} className="min-h-11 w-full gap-1.5 sm:w-auto">
+          <div data-reveal-heading className="flex flex-col sm:flex-row items-center gap-3 mt-8">
+            <ButtonLink href={`/funds/${catalogueFeaturedFund.id}`} className="min-h-11 w-full gap-1.5 sm:w-auto">
               View a fund
               <ArrowRight size={16} strokeWidth={1.75} aria-hidden="true" />
             </ButtonLink>
-            <ButtonLink to="/how-it-works" variant="ghost" className="min-h-11 w-full sm:w-auto">
+            <ButtonLink href="/how-it-works" variant="ghost" className="min-h-11 w-full sm:w-auto">
               How it works
             </ButtonLink>
           </div>
         </div>
 
-        <figure data-reveal-item data-depth-stage className="funds-cta__visual m-0">
+        <figure data-reveal-item data-depth-stage className="relative flex items-center justify-center m-0">
           <Link
-            to={`/funds/${catalogueFeaturedFund.id}`}
+            href={`/funds/${catalogueFeaturedFund.id}`}
             data-funds-cta-card
-            className="funds-cta__card block"
+            className="group relative w-full overflow-hidden rounded-2xl lg:rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-500 block"
             aria-label={`View sample fund: ${catalogueFeaturedFund.name}`}
           >
             <Image
@@ -62,7 +64,7 @@ export function FundsCta() {
               alt={fundsCta.image.alt}
               width={1600}
               height={1200}
-              className="funds-cta__image"
+              className="block w-full aspect-[16/10] md:aspect-[4/3] md:min-h-[20rem] md:max-h-[24rem] lg:min-h-[22rem] lg:max-h-[25rem] object-cover object-[50%_45%] rounded-2xl lg:rounded-3xl transition-transform duration-700 group-hover:scale-105"
             />
           </Link>
         </figure>
@@ -70,4 +72,5 @@ export function FundsCta() {
     </section>
   )
 }
+
 

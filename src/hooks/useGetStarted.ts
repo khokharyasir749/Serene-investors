@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from 'react'
-import { useSearchParams } from 'react-router-dom'
+import { useSearchParams } from 'next/navigation'
 import type { Fund, Property } from '@/types'
 import {
   catalogueFeaturedFund,
@@ -42,9 +42,9 @@ function closestSampleAmount(minimum: number): SampleAmount {
 }
 
 export function useGetStarted() {
-  const [params] = useSearchParams()
-  const intent = params.get('intent')
-  const relatedId = params.get('id')
+  const params = useSearchParams()
+  const intent = params?.get('intent')
+  const relatedId = params?.get('id')
   const queryProperty = propertyFromQuery(intent === 'property' ? relatedId : null)
   const queryFund = fundFromQuery(intent === 'fund' ? relatedId : null)
 

@@ -1,5 +1,6 @@
 import { useEffect, type MouseEvent } from 'react'
-import { Link, useLocation, useNavigate } from 'react-router-dom'
+import Link from 'next/link'
+import { usePathname, useRouter } from 'next/navigation'
 import { Menu, X } from 'lucide-react'
 import { useLenisControl } from '@/app/providers/LenisProvider'
 import { primaryNav, site, utilityNav } from '@/data'
@@ -16,8 +17,8 @@ type Props = {
 }
 
 export function SiteHeader({ elevated, menuOpen, onMenuToggle, onMenuClose }: Props) {
-  const location = useLocation()
-  const navigate = useNavigate()
+  const pathname = usePathname()
+  const router = useRouter()
   const { scrollTo } = useLenisControl()
 
   useEffect(() => {
@@ -33,8 +34,8 @@ export function SiteHeader({ elevated, menuOpen, onMenuToggle, onMenuClose }: Pr
     if (isModifiedClick(event)) return
     event.preventDefault()
     onMenuClose()
-    if (location.pathname !== '/') {
-      navigate('/')
+    if (pathname !== '/') {
+      router.push('/')
     }
     scrollTo(0)
     requestAnimationFrame(() => scrollTo(0))
@@ -52,7 +53,7 @@ export function SiteHeader({ elevated, menuOpen, onMenuToggle, onMenuClose }: Pr
     >
       <div className="relative mx-auto flex h-[var(--header-h)] max-w-[var(--container-wide)] items-center justify-between px-5 md:px-8 lg:px-10">
         <Link
-          to="/"
+          href="/"
           onClick={goToTop}
           aria-label={`${site.name} home`}
           className="relative z-10 whitespace-nowrap text-[0.875rem] font-semibold tracking-[0.14em] sm:text-[1rem] lg:text-[1.0625rem]"
@@ -66,12 +67,12 @@ export function SiteHeader({ elevated, menuOpen, onMenuToggle, onMenuClose }: Pr
         >
           {primaryNav.map((item) => {
             const current =
-              location.pathname === item.href ||
-              (item.href !== '/' && location.pathname.startsWith(`${item.href}/`))
+              pathname === item.href ||
+              (item.href !== '/' && !!pathname?.startsWith(`${item.href}/`))
             return (
               <Link
                 key={item.id}
-                to={item.href}
+                href={item.href}
                 onClick={item.href === '/' ? goToTop : undefined}
                 aria-current={current ? 'page' : undefined}
                 className="site-nav-link inline-flex items-center gap-1.5 text-sm text-ink transition-colors duration-[var(--duration-fast)] hover:text-primary"
@@ -86,15 +87,15 @@ export function SiteHeader({ elevated, menuOpen, onMenuToggle, onMenuClose }: Pr
         <div className="relative z-10 flex items-center gap-5">
           {login ? (
             <Link
-              to={login.href}
-              aria-current={location.pathname === login.href ? 'page' : undefined}
+              href={login.href}
+              aria-current={pathname === login.href ? 'page' : undefined}
               className="site-nav-link max-lg:hidden text-sm text-ink transition-colors duration-[var(--duration-fast)] hover:text-primary"
             >
               {login.label}
             </Link>
           ) : null}
           {start ? (
-            <ButtonLink to={start.href} className="max-lg:hidden px-4 py-2">
+            <ButtonLink href={start.href} className="max-lg:hidden px-4 py-2">
               {start.label}
             </ButtonLink>
           ) : null}

@@ -1,5 +1,5 @@
 import { useRef } from 'react'
-import { Link } from 'react-router-dom'
+import Link from 'next/link'
 import type { Property } from '@/types'
 import { properties } from '@/data'
 import { formatPropertyMeta, formatSampleYield } from '@/lib/format'
@@ -35,7 +35,7 @@ export function PropertyRelated({ property }: Props) {
             return (
               <article key={item.id} data-reveal-item>
                 <Link
-                  to={`/properties/${item.id}`}
+                  href={`/properties/${item.id}`}
                   className="property-related__card"
                   aria-label={`${item.name}, ${location}. View property.`}
                 >

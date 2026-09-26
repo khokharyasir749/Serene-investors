@@ -1,5 +1,5 @@
 import { useRef } from 'react'
-import { Link } from 'react-router-dom'
+import Link from 'next/link'
 import { howPageFaq, learnDisclaimer } from '@/data'
 import { useSectionReveal } from '@/hooks/useSectionReveal'
 
@@ -41,9 +41,9 @@ export function LearnDisclaimer() {
           </div>
           <p data-reveal-item className="learn-faq__more">
             The same answers also sit on{' '}
-            <Link to="/how-it-works">How it works</Link>
+            <Link href="/how-it-works">How it works</Link>
             {' '}and in the{' '}
-            <Link to="/legal/risks">sample key risks</Link>.
+            <Link href="/legal/risks">sample key risks</Link>.
           </p>
         </div>
       </div>
