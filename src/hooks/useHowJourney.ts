@@ -5,10 +5,6 @@ import { formatSampleAmount } from '@/lib/format'
 const PIN_QUERY = '(min-width: 1024px) and (prefers-reduced-motion: no-preference)'
 const SEGMENT_VH = 0.9
 
-function canUsePin() {
-  if (typeof window === 'undefined') return false
-  return window.matchMedia(PIN_QUERY).matches
-}
 
 function refreshWhenReady(root: HTMLElement) {
   let cancelled = false

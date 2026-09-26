@@ -4,10 +4,6 @@ import { gsap, registerGsapPlugins, ScrollTrigger } from '@/lib/gsap'
 
 const PIN_QUERY = '(min-width: 1024px) and (prefers-reduced-motion: no-preference)'
 
-function canUsePin() {
-  if (typeof window === 'undefined') return false
-  return window.matchMedia(PIN_QUERY).matches
-}
 
 function chromeOffset() {
   const chrome = document.querySelector('.sticky.top-0')
