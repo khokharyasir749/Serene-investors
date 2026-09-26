@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useRef, useState } from 'react'
+import { createPortal } from 'react-dom'
 import { ArrowUpRight, BookOpen, Quote, X } from 'lucide-react'
 import type { PressLogo } from '@/types'
 import { PressMark } from '@/components/ui/PressMark'
@@ -18,6 +19,12 @@ export function PressSection({ logos }: Props) {
   usePressReveal(rootRef)
 
   const [selectedLogo, setSelectedLogo] = useState<PressLogo | null>(null)
+  const [mounted, setMounted] = useState(false)
+
+  useEffect(() => {
+    setMounted(true)
+  }, [])
+
   useLockBodyScroll(!!selectedLogo)
 
   useEffect(() => {
@@ -88,71 +95,81 @@ export function PressSection({ logos }: Props) {
         </ul>
       </div>
 
-      {/* Interactive Press Quote Modal */}
-      {selectedLogo ? (
-        <div
-          role="dialog"
-          aria-modal="true"
-          aria-labelledby="press-modal-title"
-          className="fixed inset-0 z-50 flex items-center justify-center bg-ink/45 p-4 backdrop-blur-xs motion-safe:animate-[fade-in_200ms_ease-out]"
-          onClick={() => setSelectedLogo(null)}
-        >
-          <div
-            className="relative w-full max-w-lg rounded-2xl border border-line bg-surface p-6 sm:p-8 shadow-2xl transition-all"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <div className="flex items-center justify-between">
-              <span className="inline-flex items-center gap-1.5 rounded-full bg-primary/10 px-3 py-1 text-xs font-semibold text-primary">
-                <Quote size={12} />
-                {selectedLogo.date ?? 'Press Feature'}
-              </span>
-
-              <button
-                type="button"
+      {/* Interactive Press Quote Modal via React Portal */}
+      {mounted && selectedLogo
+        ? createPortal(
+            <div
+              role="dialog"
+              aria-modal="true"
+              aria-labelledby="press-modal-title"
+              className="fixed inset-0 z-[9999] flex items-center justify-center p-4 sm:p-6 overflow-y-auto"
+            >
+              {/* Full-viewport Backdrop with Blur */}
+              <div
+                className="fixed inset-0 bg-ink/60 backdrop-blur-md transition-opacity motion-safe:animate-[fade-in_200ms_ease-out]"
                 onClick={() => setSelectedLogo(null)}
-                aria-label="Close modal"
-                className="flex size-8 items-center justify-center rounded-full text-muted transition-colors hover:bg-bg-warm hover:text-ink"
-              >
-                <X size={18} />
-              </button>
-            </div>
-
-            <div className="mt-5">
-              <PressMark
-                id={selectedLogo.id}
-                name={selectedLogo.name}
-                index={0}
-                className="text-xl sm:text-2xl text-ink font-semibold"
+                aria-hidden="true"
               />
 
-              <div className="relative mt-5 rounded-xl border border-line/60 bg-bg-warm/60 p-5 sm:p-6">
-                <Quote size={28} className="text-primary/20 mb-2" />
-                <p className="font-serif text-lg sm:text-xl italic leading-relaxed text-ink">
-                  “{selectedLogo.quote}”
-                </p>
-              </div>
-
-              <p className="mt-4 text-xs leading-relaxed text-muted">
-                Featured in <strong className="font-semibold text-ink">{selectedLogo.name}</strong>’s editorial study on institutional property syndication and transparent fractional yields.
-              </p>
-            </div>
-
-            <div className="mt-6 flex flex-wrap items-center justify-end gap-3 pt-4 border-t border-line">
-              <Button variant="secondary" onClick={() => setSelectedLogo(null)}>
-                Close
-              </Button>
-              <ButtonLink
-                href={selectedLogo.href || '/learn'}
-                onClick={() => setSelectedLogo(null)}
-                className="gap-1.5"
+              {/* Elevated, centered dialog card */}
+              <div
+                className="relative z-10 w-full max-w-lg max-h-[90vh] overflow-y-auto rounded-2xl border border-line bg-surface p-6 sm:p-8 shadow-2xl transition-all motion-safe:animate-[scale-in_200ms_ease-out]"
+                onClick={(e) => e.stopPropagation()}
               >
-                <BookOpen size={15} />
-                Read in Learn
-              </ButtonLink>
-            </div>
-          </div>
-        </div>
-      ) : null}
+                <div className="flex items-center justify-between">
+                  <span className="inline-flex items-center gap-1.5 rounded-full bg-primary/10 px-3 py-1 text-xs font-semibold text-primary">
+                    <Quote size={12} />
+                    {selectedLogo.date ?? 'Press Feature'}
+                  </span>
+
+                  <button
+                    type="button"
+                    onClick={() => setSelectedLogo(null)}
+                    aria-label="Close modal"
+                    className="flex size-8 items-center justify-center rounded-full text-muted transition-colors hover:bg-bg-warm hover:text-ink cursor-pointer"
+                  >
+                    <X size={18} />
+                  </button>
+                </div>
+
+                <div className="mt-5">
+                  <PressMark
+                    id={selectedLogo.id}
+                    name={selectedLogo.name}
+                    index={0}
+                    className="text-xl sm:text-2xl text-ink font-semibold"
+                  />
+
+                  <div className="relative mt-5 rounded-xl border border-line/60 bg-bg-warm/60 p-5 sm:p-6">
+                    <Quote size={28} className="text-primary/20 mb-2" />
+                    <p className="font-serif text-lg sm:text-xl italic leading-relaxed text-ink">
+                      “{selectedLogo.quote}”
+                    </p>
+                  </div>
+
+                  <p className="mt-4 text-xs leading-relaxed text-muted">
+                    Featured in <strong className="font-semibold text-ink">{selectedLogo.name}</strong>’s editorial study on institutional property syndication and transparent fractional yields.
+                  </p>
+                </div>
+
+                <div className="mt-6 flex flex-wrap items-center justify-end gap-3 pt-4 border-t border-line">
+                  <Button variant="secondary" onClick={() => setSelectedLogo(null)}>
+                    Close
+                  </Button>
+                  <ButtonLink
+                    href={selectedLogo.href || '/learn'}
+                    onClick={() => setSelectedLogo(null)}
+                    className="gap-1.5"
+                  >
+                    <BookOpen size={15} />
+                    Read in Learn
+                  </ButtonLink>
+                </div>
+              </div>
+            </div>,
+            document.body,
+          )
+        : null}
     </section>
   )
 }
