@@ -9,6 +9,7 @@ import { Badge } from '@/components/ui/Badge'
 import { ButtonLink } from '@/components/ui/Button'
 import { getInitials } from '@/components/layout/UserProfileDropdown'
 import { useAuth } from '@/context/AuthContext'
+import { cn } from '@/lib/cn'
 
 type Props = {
   open: boolean
@@ -47,7 +48,7 @@ export function MobileNav({ open, onClose }: Props) {
       aria-label="Menu"
     >
       <nav className="mx-auto flex h-full max-w-[var(--container-wide)] flex-col px-5 py-8 md:px-8">
-        <ul className="flex flex-col gap-1">
+        <ul className="flex flex-col gap-1.5">
           {primaryNav.map((item) => {
             const current =
               pathname === item.href ||
@@ -58,10 +59,21 @@ export function MobileNav({ open, onClose }: Props) {
                   href={item.href}
                   onClick={onClose}
                   aria-current={current ? 'page' : undefined}
-                  className="flex items-center gap-2 py-3 text-2xl tracking-tight"
+                  className={cn(
+                    'flex items-center justify-between rounded-xl px-4 py-3 text-xl tracking-tight transition-all duration-200',
+                    current
+                      ? 'font-semibold text-primary bg-primary/[0.08] border-l-4 border-primary pl-3.5 shadow-xs'
+                      : 'font-normal text-ink/70 hover:text-ink hover:bg-ink/[0.03]',
+                  )}
                 >
-                  {item.label}
-                  {item.badge ? <Badge>{item.badge}</Badge> : null}
+                  <span className="flex items-center gap-2">
+                    {item.label}
+                    {item.badge ? (
+                      <Badge className={cn('transition-colors', current && 'bg-primary/20 text-primary')}>
+                        {item.badge}
+                      </Badge>
+                    ) : null}
+                  </span>
                 </Link>
               </li>
             )
@@ -113,7 +125,12 @@ export function MobileNav({ open, onClose }: Props) {
                   href={login.href}
                   onClick={onClose}
                   aria-current={pathname === login.href ? 'page' : undefined}
-                  className="inline-flex min-h-11 items-center text-sm"
+                  className={cn(
+                    'inline-flex min-h-11 items-center rounded-xl px-4 text-base font-medium transition-all duration-200',
+                    pathname === login.href
+                      ? 'font-semibold text-primary bg-primary/[0.08] border-l-4 border-primary pl-3.5 shadow-xs'
+                      : 'text-ink/75 hover:text-ink hover:bg-ink/[0.03]',
+                  )}
                 >
                   {login.label}
                 </Link>

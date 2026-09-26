@@ -65,7 +65,7 @@ export function SiteHeader({ elevated, menuOpen, onMenuToggle, onMenuClose }: Pr
         </Link>
 
         <nav
-          className="absolute left-1/2 hidden -translate-x-1/2 items-center gap-8 lg:flex"
+          className="absolute left-1/2 hidden -translate-x-1/2 items-center gap-1.5 lg:flex"
           aria-label="Primary"
         >
           {primaryNav.map((item) => {
@@ -78,10 +78,19 @@ export function SiteHeader({ elevated, menuOpen, onMenuToggle, onMenuClose }: Pr
                 href={item.href}
                 onClick={item.href === '/' ? goToTop : undefined}
                 aria-current={current ? 'page' : undefined}
-                className="site-nav-link inline-flex items-center gap-1.5 text-sm text-ink transition-all duration-300 hover:text-primary active:scale-95"
+                className={cn(
+                  'relative inline-flex items-center gap-1.5 rounded-full px-3.5 py-1.5 text-sm transition-all duration-300 ease-out active:scale-95',
+                  current
+                    ? 'font-semibold text-primary bg-primary/[0.08] shadow-xs after:absolute after:bottom-1 after:left-3.5 after:right-3.5 after:h-0.5 after:rounded-full after:bg-primary'
+                    : 'font-normal text-ink/65 hover:text-ink hover:bg-ink/[0.04]',
+                )}
               >
-                {item.label}
-                {item.badge ? <Badge>{item.badge}</Badge> : null}
+                <span>{item.label}</span>
+                {item.badge ? (
+                  <Badge className={cn('transition-colors', current && 'bg-primary/20 text-primary')}>
+                    {item.badge}
+                  </Badge>
+                ) : null}
               </Link>
             )
           })}
@@ -98,7 +107,12 @@ export function SiteHeader({ elevated, menuOpen, onMenuToggle, onMenuClose }: Pr
                 <Link
                   href={login.href}
                   aria-current={pathname === login.href ? 'page' : undefined}
-                  className="site-nav-link max-lg:hidden text-sm text-ink transition-all duration-300 hover:text-primary active:scale-95"
+                  className={cn(
+                    'max-lg:hidden relative inline-flex items-center rounded-full px-3.5 py-1.5 text-sm transition-all duration-300 ease-out active:scale-95',
+                    pathname === login.href
+                      ? 'font-semibold text-primary bg-primary/[0.08] shadow-xs after:absolute after:bottom-1 after:left-3.5 after:right-3.5 after:h-0.5 after:rounded-full after:bg-primary'
+                      : 'font-normal text-ink/65 hover:text-ink hover:bg-ink/[0.04]',
+                  )}
                 >
                   {login.label}
                 </Link>
