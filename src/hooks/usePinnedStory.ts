@@ -399,7 +399,7 @@ export function usePinnedStory(
 ) {
   const { scrollTo } = useLenisControl()
   const [activeIndex, setActiveIndex] = useState(0)
-  const [isPinned, setIsPinned] = useState(canUsePin)
+  const [isPinned, setIsPinned] = useState(false)
   const indexRef = useRef(0)
   const thresholdKey = thresholds?.join(',') ?? ''
 

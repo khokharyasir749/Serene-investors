@@ -1,4 +1,4 @@
-import { useRef, type ReactNode } from 'react'
+import { useEffect, useRef, useState, type ReactNode } from 'react'
 import type { StoryState } from '@/types'
 import { useFloatingMotion } from '@/hooks/useFloatingMotion'
 import { usePinnedStory } from '@/hooks/usePinnedStory'
@@ -43,6 +43,12 @@ export function PinnedStorySection({
 }: Props) {
   const rootRef = useRef<HTMLElement>(null)
   const pinRef = useRef<HTMLDivElement>(null)
+  const [mounted, setMounted] = useState(false)
+
+  useEffect(() => {
+    setMounted(true)
+  }, [])
+
   const { activeIndex, isPinned } = usePinnedStory(rootRef, pinRef, {
     stateCount: states.length,
     segmentVh,
@@ -54,6 +60,8 @@ export function PinnedStorySection({
     scrubbed,
     scrubLag,
   })
+
+  const activePinned = mounted && isPinned
 
   usePointerTilt(rootRef, {
     perspective: 1500,
@@ -85,7 +93,7 @@ export function PinnedStorySection({
     <section
       ref={rootRef}
       id={id}
-      className={`pinned-story${isPinned ? ' pinned-story--active' : ''}${scrubbed ? ' pinned-story--scrub' : ''} ${className ?? ''}`}
+      className={`pinned-story${activePinned ? ' pinned-story--active' : ''}${scrubbed ? ' pinned-story--scrub' : ''} ${className ?? ''}`}
       aria-labelledby={headingId}
     >
       <div ref={pinRef} className="pinned-story__pin">
@@ -100,7 +108,7 @@ export function PinnedStorySection({
                 key={state.id}
                 state={state}
                 active={index === activeIndex}
-                stacked={isPinned}
+                stacked={activePinned}
                 order={index * 2}
               />
             ))}
@@ -110,7 +118,7 @@ export function PinnedStorySection({
               <StoryVisual
                 key={state.id}
                 active={index === activeIndex}
-                stacked={isPinned}
+                stacked={activePinned}
                 order={index * 2 + 1}
               >
                 {visuals[index]}

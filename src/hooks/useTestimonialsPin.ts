@@ -64,7 +64,7 @@ type Options = {
 
 export function useTestimonialsPin({ rootRef, pinRef, trackRef, count, onIndex }: Options) {
   const { scrollTo } = useLenisControl()
-  const [pinned, setPinned] = useState(canUsePin)
+  const [pinned, setPinned] = useState(false)
   const triggerRef = useRef<ScrollTrigger | null>(null)
   const indexRef = useRef(0)
   const onIndexRef = useRef(onIndex)

@@ -1,6 +1,6 @@
 'use client'
 
-import { useRef, type CSSProperties } from 'react'
+import { useEffect, useRef, useState, type CSSProperties } from 'react'
 import type { StoryState } from '@/types'
 import { howPageJourney } from '@/data'
 import { HowPageVisual } from '@/components/sections/how/HowJourneyVisuals'
@@ -47,7 +47,14 @@ function JourneyCopy({
 export function HowJourney() {
   const rootRef = useRef<HTMLElement>(null)
   const pinRef = useRef<HTMLDivElement>(null)
+  const [mounted, setMounted] = useState(false)
+
+  useEffect(() => {
+    setMounted(true)
+  }, [])
+
   const { activeIndex, isPinned } = useHowJourney(rootRef, pinRef, howPageJourney.length)
+  const activePinned = mounted && isPinned
 
   usePointerTilt(rootRef, {
     perspective: 1400,
@@ -66,7 +73,7 @@ export function HowJourney() {
     <section
       ref={rootRef}
       id="how-journey"
-      className={`how-journey${isPinned ? ' how-journey--pinned' : ''}`}
+      className={`how-journey${activePinned ? ' how-journey--pinned' : ''}`}
       aria-label="How a sample investment moves from choose to receive"
     >
       <div ref={pinRef} className="how-journey__pin">
@@ -77,7 +84,7 @@ export function HowJourney() {
                 key={state.id}
                 state={state}
                 active={index === activeIndex}
-                stacked={isPinned}
+                stacked={activePinned}
                 order={index * 2}
               />
             ))}
@@ -91,8 +98,8 @@ export function HowJourney() {
                 data-how-id={state.id}
                 className={index === activeIndex ? 'how-journey__visual is-active' : 'how-journey__visual'}
                 style={{ '--how-order': index * 2 + 1 } as CSSProperties}
-                aria-hidden={isPinned && index !== activeIndex ? true : undefined}
-                inert={isPinned && index !== activeIndex ? true : undefined}
+                aria-hidden={activePinned && index !== activeIndex ? true : undefined}
+                inert={activePinned && index !== activeIndex ? true : undefined}
               >
                 <HowPageVisual id={state.id} />
               </div>
