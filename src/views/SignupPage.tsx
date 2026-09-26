@@ -23,6 +23,7 @@ export function SignupPage() {
   const [confirmPassword, setConfirmPassword] = useState('')
   const [investorType, setInvestorType] = useState<'individual' | 'institutional'>('individual')
   const [errorMessage, setErrorMessage] = useState('')
+  const [isSendingOtp, setIsSendingOtp] = useState(false)
 
   const intent = params?.get('intent')
   const relatedId = params?.get('id')
@@ -57,7 +58,7 @@ export function SignupPage() {
     }
   }, [step, router, targetHref])
 
-  function onFormSubmit(event: FormEvent<HTMLFormElement>) {
+  async function onFormSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault()
     setErrorMessage('')
 
@@ -71,7 +72,26 @@ export function SignupPage() {
       return
     }
 
-    setStep('otp')
+    setIsSendingOtp(true)
+
+    try {
+      const res = await fetch('/api/auth/send-otp', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email }),
+      })
+      const data = await res.json().catch(() => ({}))
+
+      if (res.ok && data.success) {
+        setStep('otp')
+      } else {
+        setErrorMessage(data.error || 'Failed to dispatch verification code. Please check your email.')
+      }
+    } catch {
+      setErrorMessage('Network error while dispatching code. Please try again.')
+    } finally {
+      setIsSendingOtp(false)
+    }
   }
 
   function handleOtpSuccess() {
@@ -134,7 +154,7 @@ export function SignupPage() {
         ) : step === 'otp' ? (
           <OtpVerificationStep
             email={email}
-            onVerify={handleOtpSuccess}
+            onSuccess={handleOtpSuccess}
             onBack={() => setStep('form')}
             actionLabel="Verify & Create Account"
           />
@@ -335,8 +355,19 @@ export function SignupPage() {
               )}
 
               {/* Primary Submit Button */}
-              <Button type="submit" className="mt-2 w-full py-3 text-sm font-semibold tracking-wide">
-                Create account
+              <Button
+                type="submit"
+                disabled={isSendingOtp}
+                className="mt-2 w-full py-3 text-sm font-semibold tracking-wide disabled:opacity-60"
+              >
+                {isSendingOtp ? (
+                  <span className="flex items-center justify-center gap-2">
+                    <span className="h-4 w-4 animate-spin rounded-full border-2 border-primary-ink border-t-transparent" />
+                    Sending verification code...
+                  </span>
+                ) : (
+                  'Create account'
+                )}
               </Button>
 
               {/* Inter-page Link to Login */}

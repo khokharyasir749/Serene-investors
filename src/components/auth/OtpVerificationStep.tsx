@@ -1,26 +1,27 @@
 'use client'
 
 import { useEffect, useRef, useState, type ClipboardEvent, type KeyboardEvent } from 'react'
-import { ArrowLeft, CheckCircle2, Lock, Sparkles } from 'lucide-react'
+import { ArrowLeft, CheckCircle2, Lock } from 'lucide-react'
 import { Button } from '@/components/ui/Button'
 
 type Props = {
   email: string
-  onVerify: () => void
+  onSuccess: () => void
   onBack: () => void
   actionLabel?: string
 }
 
 export function OtpVerificationStep({
   email,
-  onVerify,
+  onSuccess,
   onBack,
   actionLabel = 'Verify & Log in',
 }: Props) {
   const [digits, setDigits] = useState<string[]>(['', '', '', '', '', ''])
   const [error, setError] = useState('')
   const [isVerifying, setIsVerifying] = useState(false)
-  const [resent, setResent] = useState(false)
+  const [isResending, setIsResending] = useState(false)
+  const [resendStatus, setResendStatus] = useState<'idle' | 'success' | 'error'>('idle')
   const inputRefs = useRef<(HTMLInputElement | null)[]>([])
 
   useEffect(() => {
@@ -68,13 +69,7 @@ export function OtpVerificationStep({
     inputRefs.current[nextIndex]?.focus()
   }
 
-  function fillDemoCode() {
-    setDigits(['1', '2', '3', '4', '5', '6'])
-    setError('')
-    inputRefs.current[5]?.focus()
-  }
-
-  function handleSubmit(e?: React.FormEvent) {
+  async function handleSubmit(e?: React.FormEvent) {
     if (e) e.preventDefault()
     const code = digits.join('')
     if (code.length < 6) {
@@ -85,15 +80,55 @@ export function OtpVerificationStep({
     setIsVerifying(true)
     setError('')
 
-    // Brief verification delay for authentic feedback
-    setTimeout(() => {
-      onVerify()
-    }, 600)
+    try {
+      const res = await fetch('/api/auth/verify-otp', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, code }),
+      })
+
+      const data = await res.json().catch(() => ({}))
+
+      if (res.ok && data.success) {
+        onSuccess()
+      } else {
+        setError('Invalid verification code. Please check your email.')
+      }
+    } catch {
+      setError('Unable to verify code. Please check your connection and try again.')
+    } finally {
+      setIsVerifying(false)
+    }
   }
 
-  function handleResend() {
-    setResent(true)
-    setTimeout(() => setResent(false), 3000)
+  async function handleResend() {
+    if (isResending) return
+    setIsResending(true)
+    setError('')
+    setResendStatus('idle')
+
+    try {
+      const res = await fetch('/api/auth/send-otp', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email }),
+      })
+
+      if (res.ok) {
+        setResendStatus('success')
+        setDigits(['', '', '', '', '', ''])
+        inputRefs.current[0]?.focus()
+        setTimeout(() => setResendStatus('idle'), 4000)
+      } else {
+        setResendStatus('error')
+        setTimeout(() => setResendStatus('idle'), 4000)
+      }
+    } catch {
+      setResendStatus('error')
+      setTimeout(() => setResendStatus('idle'), 4000)
+    } finally {
+      setIsResending(false)
+    }
   }
 
   const isComplete = digits.every((d) => d.length === 1)
@@ -124,28 +159,10 @@ export function OtpVerificationStep({
         <span className="font-medium text-ink">{email || 'your email'}</span>.
       </p>
 
-      {/* Demo Code Banner */}
-      <div className="mt-5 flex items-center justify-between rounded-2xl border border-line/80 bg-bg-warm/70 p-3.5 text-xs text-ink">
-        <div className="flex items-center gap-2">
-          <Sparkles size={14} className="shrink-0 text-amber-600" />
-          <span>
-            <strong>Demo Code:</strong> <span className="font-mono font-bold tracking-wider">123456</span>{' '}
-            <span className="text-muted">(or enter any 6 digits)</span>
-          </span>
-        </div>
-        <button
-          type="button"
-          onClick={fillDemoCode}
-          className="ml-2 whitespace-nowrap rounded-lg bg-surface px-2.5 py-1 text-[0.72rem] font-semibold text-primary shadow-xs transition-colors hover:bg-primary hover:text-primary-ink"
-        >
-          Autofill
-        </button>
-      </div>
-
       <form className="mt-6 flex flex-col gap-5" onSubmit={handleSubmit}>
         {/* 6 Digit Input Slots */}
         <div>
-          <label className="block text-center text-xs font-semibold uppercase tracking-wider text-muted mb-3">
+          <label className="mb-3 block text-center text-xs font-semibold uppercase tracking-wider text-muted">
             Security Verification Code
           </label>
           <div className="flex items-center justify-center gap-2 sm:gap-3">
@@ -163,7 +180,7 @@ export function OtpVerificationStep({
                 onChange={(e) => handleChange(i, e.target.value)}
                 onKeyDown={(e) => handleKeyDown(i, e)}
                 onPaste={handlePaste}
-                className="h-12 w-10 sm:h-14 sm:w-12 rounded-xl border border-line bg-bg/50 text-center font-mono text-xl sm:text-2xl font-bold text-ink transition-all focus:border-primary focus:bg-surface focus:outline-none focus:ring-2 focus:ring-primary/20"
+                className="h-12 w-10 rounded-xl border border-line bg-bg/50 text-center font-mono text-xl font-bold text-ink transition-all focus:border-primary focus:bg-surface focus:outline-none focus:ring-2 focus:ring-primary/20 sm:h-14 sm:w-12 sm:text-2xl"
                 aria-label={`Digit ${i + 1}`}
               />
             ))}
@@ -171,15 +188,21 @@ export function OtpVerificationStep({
         </div>
 
         {error && (
-          <div className="rounded-xl border border-danger/30 bg-danger/10 px-4 py-2 text-center text-xs text-danger">
+          <div className="rounded-xl border border-danger/30 bg-danger/10 px-4 py-2.5 text-center text-xs text-danger">
             {error}
           </div>
         )}
 
-        {resent && (
+        {resendStatus === 'success' && (
           <div className="flex items-center justify-center gap-1.5 text-xs text-emerald-700">
             <CheckCircle2 size={13} />
-            <span>New demo code generated: 123456</span>
+            <span>A new verification code has been dispatched to your email.</span>
+          </div>
+        )}
+
+        {resendStatus === 'error' && (
+          <div className="text-center text-xs text-danger">
+            Failed to send code. Please try again.
           </div>
         )}
 
@@ -203,9 +226,10 @@ export function OtpVerificationStep({
           <button
             type="button"
             onClick={handleResend}
-            className="font-medium text-primary underline underline-offset-2 transition-colors hover:text-accent"
+            disabled={isResending}
+            className="font-medium text-primary underline underline-offset-2 transition-colors hover:text-accent disabled:opacity-50"
           >
-            Resend code (Demo)
+            {isResending ? 'Sending...' : 'Resend code'}
           </button>
         </div>
       </form>

@@ -22,6 +22,8 @@ export function AuthPage({ title }: Props) {
   const [authState, setAuthState] = useState<'credentials' | 'otp' | 'success'>('credentials')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+  const [isSendingOtp, setIsSendingOtp] = useState(false)
+  const [sendOtpError, setSendOtpError] = useState('')
 
   const isLogin = title === 'Login'
   const intent = params?.get('intent')
@@ -57,16 +59,41 @@ export function AuthPage({ title }: Props) {
     }
   }, [authState, router, targetHref])
 
+  async function sendOtpAndProceed(targetEmail: string) {
+    setIsSendingOtp(true)
+    setSendOtpError('')
+
+    try {
+      const res = await fetch('/api/auth/send-otp', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: targetEmail }),
+      })
+      const data = await res.json().catch(() => ({}))
+
+      if (res.ok && data.success) {
+        setAuthState('otp')
+      } else {
+        setSendOtpError(data.error || 'Failed to dispatch verification code. Please check your email.')
+      }
+    } catch {
+      setSendOtpError('Network error while dispatching code. Please try again.')
+    } finally {
+      setIsSendingOtp(false)
+    }
+  }
+
   function onCredentialsSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault()
     if (!email || !password) return
-    setAuthState('otp')
+    sendOtpAndProceed(email)
   }
 
   function handleQuickDemo() {
-    setEmail('demo.investor@serene-investors.com')
+    const demoEmail = 'demo.investor@serene-investors.com'
+    setEmail(demoEmail)
     setPassword('demopassword')
-    setAuthState('otp')
+    sendOtpAndProceed(demoEmail)
   }
 
   function handleOtpSuccess() {
@@ -114,7 +141,7 @@ export function AuthPage({ title }: Props) {
         ) : authState === 'otp' ? (
           <OtpVerificationStep
             email={email}
-            onVerify={handleOtpSuccess}
+            onSuccess={handleOtpSuccess}
             onBack={() => setAuthState('credentials')}
             actionLabel="Verify & Log in"
           />
@@ -229,18 +256,38 @@ export function AuthPage({ title }: Props) {
                 />
               </div>
 
+              {sendOtpError && (
+                <div className="rounded-xl border border-danger/30 bg-danger/10 px-4 py-2.5 text-center text-xs text-danger">
+                  {sendOtpError}
+                </div>
+              )}
+
               {/* Action Buttons: Primary 'Log in' + Secondary 'Quick Demo Access' */}
               <div className="mt-2 flex flex-col gap-2.5">
-                <Button type="submit" className="w-full py-3 text-sm font-semibold tracking-wide">
-                  {isLogin ? 'Log in' : 'Create demo account'}
+                <Button
+                  type="submit"
+                  disabled={isSendingOtp}
+                  className="w-full py-3 text-sm font-semibold tracking-wide disabled:opacity-60"
+                >
+                  {isSendingOtp ? (
+                    <span className="flex items-center justify-center gap-2">
+                      <span className="h-4 w-4 animate-spin rounded-full border-2 border-primary-ink border-t-transparent" />
+                      Sending verification code...
+                    </span>
+                  ) : isLogin ? (
+                    'Log in'
+                  ) : (
+                    'Create demo account'
+                  )}
                 </Button>
 
                 {isLogin ? (
                   <Button
                     type="button"
                     variant="ghost"
+                    disabled={isSendingOtp}
                     onClick={handleQuickDemo}
-                    className="w-full border border-line/70 bg-bg-warm/40 py-2.5 text-xs font-medium text-muted transition-colors hover:border-line hover:bg-bg-warm hover:text-ink"
+                    className="w-full border border-line/70 bg-bg-warm/40 py-2.5 text-xs font-medium text-muted transition-colors hover:border-line hover:bg-bg-warm hover:text-ink disabled:opacity-60"
                   >
                     <Sparkles size={14} className="mr-1.5 text-amber-600" />
                     Quick Demo Access
