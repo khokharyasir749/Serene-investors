@@ -143,9 +143,6 @@ export function UserProfileDropdown({ user }: Props) {
             >
               <Settings size={15} className="text-muted" />
               <span>Account Settings</span>
-              <span className="ml-auto rounded-md bg-bg-warm px-1.5 py-0.5 text-[0.65rem] text-muted">
-                Demo
-              </span>
             </Link>
           </div>
 

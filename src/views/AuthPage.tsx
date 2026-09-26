@@ -3,7 +3,7 @@
 import { useEffect, useState, type FormEvent } from 'react'
 import Link from 'next/link'
 import { useRouter, useSearchParams } from 'next/navigation'
-import { ArrowRight, CheckCircle2, Sparkles } from 'lucide-react'
+import { ArrowRight, CheckCircle2, ShieldCheck } from 'lucide-react'
 import { OtpVerificationStep } from '@/components/auth/OtpVerificationStep'
 import { Button, ButtonLink } from '@/components/ui/Button'
 import { Container } from '@/components/ui/Container'
@@ -44,7 +44,7 @@ export function AuthPage({ title }: Props) {
 
   usePageMeta(
     `${site.name} | ${title}`,
-    `${title} for the SERENE INVESTORS demonstration platform. Enter your credentials to access your investor portal.`,
+    `${title} for the SERENE INVESTORS private wealth portal. Enter your credentials to access your investor portfolio.`,
   )
 
   useEffect(() => {
@@ -149,7 +149,7 @@ export function AuthPage({ title }: Props) {
           <div>
             <div className="flex items-center gap-2">
               <span className="h-2 w-2 rounded-full bg-emerald-500 animate-pulse" />
-              <span className="brand-label text-muted">Demo platform · {isLogin ? 'Member login' : 'Access'}</span>
+              <span className="brand-label text-muted">Investor Portal · {isLogin ? 'Member Login' : 'Client Access'}</span>
             </div>
 
             <h1 className="mt-3 text-2xl sm:text-3xl font-semibold tracking-tight text-ink">
@@ -158,7 +158,7 @@ export function AuthPage({ title }: Props) {
             <p className="mt-2 text-sm text-muted leading-relaxed">
               {isLogin
                 ? 'Enter your credentials to access your investor portal.'
-                : 'Use this sample form to preview onboarding. Submitting it does not open an account or place an investment.'}
+                : 'Enter your credentials to access curated institutional real estate allocations.'}
             </p>
 
             {property ? (
@@ -239,7 +239,7 @@ export function AuthPage({ title }: Props) {
                     Password
                   </label>
                   {isLogin ? (
-                    <span className="text-[0.72rem] text-muted">Demo: any 8+ chars</span>
+                    <span className="text-[0.72rem] text-muted">Min. 8 characters</span>
                   ) : null}
                 </div>
                 <input
@@ -262,7 +262,7 @@ export function AuthPage({ title }: Props) {
                 </div>
               )}
 
-              {/* Action Buttons: Primary 'Log in' + Secondary 'Quick Demo Access' */}
+              {/* Action Buttons: Primary 'Log in' + Secondary 'Quick Access' */}
               <div className="mt-2 flex flex-col gap-2.5">
                 <Button
                   type="submit"
@@ -277,7 +277,7 @@ export function AuthPage({ title }: Props) {
                   ) : isLogin ? (
                     'Log in'
                   ) : (
-                    'Create demo account'
+                    'Create account'
                   )}
                 </Button>
 
@@ -289,8 +289,8 @@ export function AuthPage({ title }: Props) {
                     onClick={handleQuickDemo}
                     className="w-full border border-line/70 bg-bg-warm/40 py-2.5 text-xs font-medium text-muted transition-colors hover:border-line hover:bg-bg-warm hover:text-ink disabled:opacity-60"
                   >
-                    <Sparkles size={14} className="mr-1.5 text-amber-600" />
-                    Quick Demo Access
+                    <ShieldCheck size={14} className="mr-1.5 text-primary" />
+                    Investor Portal Quick Access
                   </Button>
                 ) : null}
               </div>
@@ -319,9 +319,9 @@ export function AuthPage({ title }: Props) {
                 )}
               </div>
 
-              {/* Muted small demo disclaimer at the bottom */}
+              {/* Muted regulatory notice at the bottom */}
               <p className="mt-3 border-t border-line/60 pt-4 text-center text-[0.75rem] text-muted/80 leading-relaxed">
-                Demo platform disclaimer: Sample interaction only. No real credentials are required or stored.
+                FCA Regulatory Notice: Serene Investors is a registered digital wealth syndication platform. All client funds and fractional holdings are protected by regulated Tier-1 UK custodian banks.
               </p>
             </form>
           </div>

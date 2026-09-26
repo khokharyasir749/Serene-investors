@@ -12,15 +12,15 @@ type Shared = {
 
 const variants: Record<Variant, string> = {
   primary:
-    'relative overflow-hidden bg-primary text-primary-ink shadow-xs hover:bg-accent hover:shadow-lg hover:shadow-primary/15 before:absolute before:inset-0 before:-translate-x-full before:bg-gradient-to-r before:from-transparent before:via-white/20 before:to-transparent before:transition-transform before:duration-700 hover:before:translate-x-full',
+    'bg-primary text-primary-ink border border-primary/25 shadow-xs hover:bg-accent hover:border-accent',
   secondary:
-    'bg-accent text-accent-ink border border-ink/[0.08] hover:bg-primary hover:text-primary-ink hover:border-primary/20 hover:shadow-md hover:shadow-primary/10',
+    'bg-surface text-ink border border-ink/[0.12] hover:bg-bg-warm hover:border-ink/20 shadow-2xs',
   ghost:
-    'bg-transparent text-ink hover:text-primary hover:bg-ink/[0.04] hover:backdrop-blur-xs border border-transparent hover:border-ink/[0.08]',
+    'bg-transparent text-ink hover:text-primary hover:bg-ink/[0.04] border border-transparent hover:border-ink/[0.08]',
 }
 
 const base =
-  'group inline-flex items-center justify-center rounded-pill px-5 py-2.5 text-sm font-medium transition-all duration-300 ease-out hover:-translate-y-0.5 active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40 focus-visible:ring-offset-2 focus-visible:ring-offset-bg disabled:pointer-events-none disabled:opacity-45 disabled:hover:translate-y-0 disabled:hover:scale-100 disabled:shadow-none'
+  'inline-flex items-center justify-center rounded-pill px-5 py-2.5 text-sm font-medium transition-all duration-200 ease-out active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40 focus-visible:ring-offset-2 focus-visible:ring-offset-bg disabled:pointer-events-none disabled:opacity-45 cursor-pointer select-none'
 
 export function Button({
   variant = 'primary',

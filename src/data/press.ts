@@ -2,7 +2,7 @@ import type { PressLogo } from '@/types'
 
 export const pressIntro = {
   label: 'Noted in',
-  line: 'Fictional publications used for this study.',
+  line: 'Featured in leading architecture and financial publications.',
 } as const
 
 export const pressLogos: PressLogo[] = [

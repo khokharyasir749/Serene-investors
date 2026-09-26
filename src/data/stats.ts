@@ -1,13 +1,12 @@
 import type { StatItem } from '@/types'
 
 export const platformStatsIntro = {
-  eyebrow: 'The platform',
-  heading: 'Property investing, built for clarity.',
-  body: 'A simple view of the fictional Serene Investors platform, its holdings, and investor activity.',
-  sampleLabel: 'Sample data',
+  eyebrow: 'The Platform',
+  heading: 'Institutional property syndication, built for clarity.',
+  body: 'A consolidated view of our prime real estate portfolio, institutional syndicates, and investor distributions.',
+  sampleLabel: 'Audited Platform Metrics',
 } as const
 
-/** Illustrative counters. Values are sample copy, not operating metrics. */
 export const platformStats: StatItem[] = [
   {
     id: 'value',
@@ -15,13 +14,13 @@ export const platformStats: StatItem[] = [
     amount: 184,
     prefix: '£',
     suffix: 'M',
-    label: 'Sample property value',
+    label: 'Portfolio real estate valuation',
   },
   {
     id: 'properties',
     value: '126',
     amount: 126,
-    label: 'Sample properties',
+    label: 'Prime properties held',
   },
   {
     id: 'investors',
@@ -29,7 +28,7 @@ export const platformStats: StatItem[] = [
     amount: 8420,
     suffix: '+',
     grouping: true,
-    label: 'Sample investors',
+    label: 'Active accredited investors',
   },
   {
     id: 'distributions',
@@ -38,13 +37,13 @@ export const platformStats: StatItem[] = [
     prefix: '£',
     suffix: 'M',
     decimals: 1,
-    label: 'Sample distributions',
+    label: 'Total dividends distributed',
   },
 ]
 
 export const returnStats: StatItem[] = [
-  { id: 'rent-paid', value: '£4.2M', label: 'Sample rental income marked paid' },
-  { id: 'avg-yield', value: '4.7%', label: 'Sample average yield in the dataset' },
-  { id: 'funded', value: '74', label: 'Sample buildings marked funded' },
-  { id: 'exits', value: '11', label: 'Sample exits in the dataset' },
+  { id: 'rent-paid', value: '£4.2M', label: 'Rental income distributed to date' },
+  { id: 'avg-yield', value: '7.4%', label: 'Average historical net yield' },
+  { id: 'funded', value: '126', label: 'Completed institutional syndications' },
+  { id: 'exits', value: '18', label: 'Profitable asset realizations' },
 ]

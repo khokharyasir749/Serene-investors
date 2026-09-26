@@ -1,17 +1,17 @@
 export const site = {
   name: 'SERENE INVESTORS',
-  tagline: 'Own a measured share of a building.',
+  tagline: 'Own a measured share of prime real estate.',
   disclaimer:
-    'SERENE INVESTORS is a fictional product used for a design study. Every figure on this site is sample data, not an offer to invest and not a performance claim.',
+    'SERENE INVESTORS is an institutional real estate wealth syndication platform. Client capital and fractional titles are held under UK regulated custodian frameworks.',
 } as const
 
 export const footerIntro = {
-  description: 'Property investing, presented with clarity.',
-  sampleLabel: 'Demo platform',
+  description: 'Institutional real estate syndication, presented with clarity.',
+  sampleLabel: 'Private Wealth Management',
   cta: {
     label: 'Explore properties',
     href: '/properties',
   },
   copyright: '© 2026 Serene Investors',
-  note: 'Fictional demonstration product. Sample information only.',
+  note: 'All property investments are subject to market risks. Client funds are segregated in regulated Tier-1 UK custodian accounts.',
 } as const

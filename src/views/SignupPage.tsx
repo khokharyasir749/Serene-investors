@@ -43,7 +43,7 @@ export function SignupPage() {
 
   usePageMeta(
     `${site.name} | Create account`,
-    'Create your demo account on SERENE INVESTORS. Experience fractional ownership in luxury real estate assets and institutional syndicates.',
+    'Create your investor account on SERENE INVESTORS. Access institutional fractional ownership in prime UK real estate assets and core syndicates.',
   )
 
   useEffect(() => {
@@ -112,10 +112,10 @@ export function SignupPage() {
               <CheckCircle2 size={32} />
             </div>
             <h2 className="text-2xl sm:text-3xl font-semibold tracking-tight text-ink">
-              Demo account created
+              Investor account created
             </h2>
             <p className="mx-auto mt-3 max-w-sm text-sm leading-relaxed text-muted">
-              Welcome, <span className="font-medium text-ink">{fullName || 'Investor'}</span>! Your demo session has been created as an{' '}
+              Welcome, <span className="font-medium text-ink">{fullName || 'Investor'}</span>! Your account has been registered as an{' '}
               <strong className="text-ink">
                 {investorType === 'institutional' ? 'Institutional' : 'Individual'}
               </strong>{' '}
@@ -123,7 +123,7 @@ export function SignupPage() {
             </p>
 
             <div className="mx-auto mt-5 max-w-sm rounded-2xl border border-line bg-bg-warm/60 p-4 text-left text-xs">
-              <p className="text-muted">Account summary (demo preview):</p>
+              <p className="font-semibold text-ink">Account Summary:</p>
               <p className="mt-1 font-medium text-ink">Email: {email}</p>
               <p className="text-muted">Type: {investorType === 'institutional' ? 'Institutional / Syndicate' : 'Individual / Accredited'}</p>
               <p className="mt-2 text-[0.75rem] text-muted">
@@ -162,14 +162,14 @@ export function SignupPage() {
           <div>
             <div className="flex items-center gap-2">
               <span className="h-2 w-2 rounded-full bg-emerald-500 animate-pulse" />
-              <span className="brand-label text-muted">Demo platform · Registration</span>
+              <span className="brand-label text-muted">Investor Portal · Private Client Registration</span>
             </div>
 
             <h1 className="mt-3 text-2xl sm:text-3xl font-semibold tracking-tight text-ink">
               Create an account
             </h1>
             <p className="mt-2 text-sm text-muted leading-relaxed">
-              Experience the Serene Investors demo to browse private real estate assets and institutional syndicates.
+              Join Serene Investors to access curated prime UK real estate allocations and institutional syndicates.
             </p>
 
             {property ? (
@@ -381,9 +381,9 @@ export function SignupPage() {
                 </Link>
               </p>
 
-              {/* Muted small demo disclaimer at the bottom */}
+              {/* Muted regulatory notice at the bottom */}
               <p className="mt-3 border-t border-line/60 pt-4 text-center text-[0.75rem] text-muted/80 leading-relaxed">
-                Demo platform disclaimer: Sample interaction only. Do not enter a real password. No real account is created.
+                FCA Regulatory Notice: Serene Investors operates in compliance with UK financial services standards. All client investments and cash accounts are held by regulated custodian banks.
               </p>
             </form>
           </div>

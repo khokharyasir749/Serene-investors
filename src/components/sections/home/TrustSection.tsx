@@ -1,5 +1,5 @@
 import { useRef } from 'react'
-import { FileText, Sparkles } from 'lucide-react'
+import { FileText, ShieldCheck } from 'lucide-react'
 import type { TrustItem } from '@/types'
 import { TrustPoint } from '@/components/cards/TrustPoint'
 import { TrustRecordCard } from '@/components/ui/TrustRecordCard'
@@ -84,7 +84,7 @@ export function TrustSection({ items }: Props) {
                   {item.id === 'documentation' ? (
                     <FileText size={20} strokeWidth={1.8} />
                   ) : (
-                    <Sparkles size={20} strokeWidth={1.8} />
+                    <ShieldCheck size={20} strokeWidth={1.8} />
                   )}
                 </div>
                 <h3 className="m-0 max-w-[16ch] text-[1.35rem] font-semibold leading-snug tracking-[-0.02em] text-ink text-balance">{item.title}</h3>

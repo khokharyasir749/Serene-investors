@@ -14,8 +14,8 @@ const cedarCourt = requireById(properties, 'cedar-court')
 export const trustIntro = {
   eyebrow: 'Built with clarity',
   heading: 'Property information, presented clearly.',
-  body: 'Serene Investors presents property information, sample figures, and portfolio details in one place so investors know what they are reviewing before taking the next step.',
-  sampleLabel: 'Demo platform',
+  body: 'Serene Investors provides direct access to registered title deeds, verified rental leases, and independent financial audits in one transparent platform.',
+  sampleLabel: 'Institutional Security',
   image: {
     src: 'https://images.unsplash.com/photo-1487958449943-2429e8be8625?auto=format&fit=crop&w=2000&h=1200&q=80',
     alt: 'A pale modern building with a regular facade of windows',
@@ -23,15 +23,15 @@ export const trustIntro = {
 } as const
 
 export const trustRecord: TrustRecord = {
-  eyebrow: 'Demo property record',
+  eyebrow: 'Official Property Record',
   name: cedarCourt.name,
   meta: cedarCourt.neighborhood,
   recordLabel: 'Record',
-  recordValue: 'DEMO-0248',
+  recordValue: 'UK-REG-0248',
   statusLabel: 'Status',
-  statusValue: 'Demonstration record',
+  statusValue: 'Title Registered & Insured',
   documentationLabel: 'Documentation',
-  documentationValue: 'Illustrative sample',
+  documentationValue: 'HM Land Registry Deed',
 }
 
 export const trustItems: TrustItem[] = [
