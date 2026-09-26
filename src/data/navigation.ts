@@ -22,6 +22,7 @@ export const footerColumns: FooterColumn[] = [
       { id: 'f-funds', label: 'Funds', href: '/funds' },
       { id: 'f-how', label: 'How it works', href: '/how-it-works' },
       { id: 'f-start', label: 'Get started', href: '/get-started' },
+      { id: 'f-signup', label: 'Create account', href: '/signup' },
     ],
   },
   {

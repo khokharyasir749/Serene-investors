@@ -1,0 +1,349 @@
+'use client'
+
+import { useState, type FormEvent } from 'react'
+import Link from 'next/link'
+import { useSearchParams } from 'next/navigation'
+import { CheckCircle2, ShieldCheck, User, Building2 } from 'lucide-react'
+import { Button, ButtonLink } from '@/components/ui/Button'
+import { Container } from '@/components/ui/Container'
+import { funds, properties, site } from '@/data'
+import { usePageMeta } from '@/hooks/usePageMeta'
+import { cn } from '@/lib/cn'
+
+export function SignupPage() {
+  const params = useSearchParams()
+  const [submitted, setSubmitted] = useState(false)
+  const [fullName, setFullName] = useState('')
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  const [confirmPassword, setConfirmPassword] = useState('')
+  const [investorType, setInvestorType] = useState<'individual' | 'institutional'>('individual')
+  const [errorMessage, setErrorMessage] = useState('')
+
+  const intent = params?.get('intent')
+  const relatedId = params?.get('id')
+  const property = intent === 'property' ? properties.find((item) => item.id === relatedId) : undefined
+  const fund = intent === 'fund' ? funds.find((item) => item.id === relatedId) : undefined
+
+  const loginHref =
+    intent && relatedId
+      ? `/login?intent=${encodeURIComponent(intent)}&id=${encodeURIComponent(relatedId)}`
+      : '/login'
+
+  usePageMeta(
+    `${site.name} | Create account`,
+    'Create your demo account on SERENE INVESTORS. Experience fractional ownership in luxury real estate assets and institutional syndicates.',
+  )
+
+  function onSubmit(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault()
+    setErrorMessage('')
+
+    if (password.length < 8) {
+      setErrorMessage('Password must be at least 8 characters long.')
+      return
+    }
+
+    if (password !== confirmPassword) {
+      setErrorMessage('Passwords do not match. Please ensure both passwords match.')
+      return
+    }
+
+    setSubmitted(true)
+  }
+
+  return (
+    <Container as="section" className="flex justify-center py-12 md:py-16 lg:py-20">
+      <div className="w-full max-w-lg rounded-3xl border border-line bg-surface/90 p-7 sm:p-10 shadow-xl backdrop-blur-xl transition-all">
+        {submitted ? (
+          <div className="py-2 text-center" role="status">
+            <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-emerald-100 text-emerald-800">
+              <CheckCircle2 size={32} />
+            </div>
+            <h2 className="text-2xl sm:text-3xl font-semibold tracking-tight text-ink">
+              Demo account created
+            </h2>
+            <p className="mx-auto mt-3 max-w-sm text-sm leading-relaxed text-muted">
+              Welcome, <span className="font-medium text-ink">{fullName || 'Investor'}</span>! Your demo session has been created as an{' '}
+              <strong className="text-ink">
+                {investorType === 'institutional' ? 'Institutional' : 'Individual'}
+              </strong>{' '}
+              investor.
+            </p>
+
+            <div className="mx-auto mt-5 max-w-sm rounded-2xl border border-line bg-bg-warm/60 p-4 text-left text-xs">
+              <p className="text-muted">Account summary (demo preview):</p>
+              <p className="mt-1 font-medium text-ink">Email: {email}</p>
+              <p className="text-muted">Type: {investorType === 'institutional' ? 'Institutional / Syndicate' : 'Individual / Accredited'}</p>
+              <p className="mt-2 text-[0.75rem] text-muted">
+                This is a simulation on {site.name}. No financial commitments have been made and no credentials are saved.
+              </p>
+            </div>
+
+            <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
+              {property ? (
+                <>
+                  <ButtonLink href={`/properties/${property.id}`} className="w-full sm:w-auto">
+                    View {property.name}
+                  </ButtonLink>
+                  <ButtonLink href="/properties" variant="ghost" className="w-full sm:w-auto">
+                    Browse properties
+                  </ButtonLink>
+                </>
+              ) : fund ? (
+                <>
+                  <ButtonLink href={`/funds/${fund.id}`} className="w-full sm:w-auto">
+                    View {fund.name}
+                  </ButtonLink>
+                  <ButtonLink href="/funds" variant="ghost" className="w-full sm:w-auto">
+                    Explore funds
+                  </ButtonLink>
+                </>
+              ) : (
+                <>
+                  <ButtonLink href="/properties" className="w-full sm:w-auto">
+                    Browse properties
+                  </ButtonLink>
+                  <ButtonLink href="/funds" variant="ghost" className="w-full sm:w-auto">
+                    Explore funds
+                  </ButtonLink>
+                </>
+              )}
+            </div>
+
+            <div className="mt-8 border-t border-line pt-4 text-xs text-muted">
+              Already have an account?{' '}
+              <Link
+                href={loginHref}
+                className="font-semibold text-primary underline underline-offset-4 transition-colors hover:text-accent"
+              >
+                Log in
+              </Link>
+            </div>
+          </div>
+        ) : (
+          <div>
+            <div className="flex items-center gap-2">
+              <span className="h-2 w-2 rounded-full bg-emerald-500 animate-pulse" />
+              <span className="brand-label text-muted">Demo platform · Registration</span>
+            </div>
+
+            <h1 className="mt-3 text-2xl sm:text-3xl font-semibold tracking-tight text-ink">
+              Create an account
+            </h1>
+            <p className="mt-2 text-sm text-muted leading-relaxed">
+              Experience the Serene Investors demo to browse private real estate assets and institutional syndicates.
+            </p>
+
+            {property ? (
+              <div className="mt-4 flex items-center justify-between rounded-xl border border-line bg-bg-warm/60 px-4 py-2.5 text-xs text-ink">
+                <span>
+                  Continuing from sample property: <strong>{property.name}</strong>
+                </span>
+                <Link
+                  href={`/properties/${property.id}`}
+                  className="font-medium text-primary underline underline-offset-2 hover:text-accent"
+                >
+                  View
+                </Link>
+              </div>
+            ) : null}
+
+            {fund ? (
+              <div className="mt-4 flex items-center justify-between rounded-xl border border-line bg-bg-warm/60 px-4 py-2.5 text-xs text-ink">
+                <span>
+                  Continuing from sample fund: <strong>{fund.name}</strong>
+                </span>
+                <Link
+                  href={`/funds/${fund.id}`}
+                  className="font-medium text-primary underline underline-offset-2 hover:text-accent"
+                >
+                  View
+                </Link>
+              </div>
+            ) : null}
+
+            <form className="mt-6 flex flex-col gap-4" onSubmit={onSubmit}>
+              {/* Investor Type (Radio pills) */}
+              <div>
+                <span className="block text-xs font-semibold uppercase tracking-wider text-muted">
+                  Investor Type
+                </span>
+                <div className="mt-2 grid grid-cols-2 gap-3" role="radiogroup" aria-label="Investor type">
+                  <button
+                    type="button"
+                    role="radio"
+                    aria-checked={investorType === 'individual'}
+                    onClick={() => setInvestorType('individual')}
+                    className={cn(
+                      'flex flex-col items-start rounded-2xl border p-3.5 text-left transition-all',
+                      investorType === 'individual'
+                        ? 'border-primary bg-primary/5 text-ink ring-1 ring-primary'
+                        : 'border-line bg-bg/50 text-muted hover:border-ink/20 hover:text-ink',
+                    )}
+                  >
+                    <span className="flex items-center gap-1.5 text-sm font-semibold text-ink">
+                      <User size={15} className={investorType === 'individual' ? 'text-primary' : 'text-muted'} />
+                      Individual
+                    </span>
+                    <span className="mt-1 text-xs text-muted leading-tight">
+                      Personal wealth & accredited
+                    </span>
+                  </button>
+
+                  <button
+                    type="button"
+                    role="radio"
+                    aria-checked={investorType === 'institutional'}
+                    onClick={() => setInvestorType('institutional')}
+                    className={cn(
+                      'flex flex-col items-start rounded-2xl border p-3.5 text-left transition-all',
+                      investorType === 'institutional'
+                        ? 'border-primary bg-primary/5 text-ink ring-1 ring-primary'
+                        : 'border-line bg-bg/50 text-muted hover:border-ink/20 hover:text-ink',
+                    )}
+                  >
+                    <span className="flex items-center gap-1.5 text-sm font-semibold text-ink">
+                      <Building2 size={15} className={investorType === 'institutional' ? 'text-primary' : 'text-muted'} />
+                      Institutional
+                    </span>
+                    <span className="mt-1 text-xs text-muted leading-tight">
+                      Family office & syndicates
+                    </span>
+                  </button>
+                </div>
+              </div>
+
+              {/* Full Name */}
+              <div>
+                <label
+                  htmlFor="signup-name"
+                  className="block text-xs font-semibold uppercase tracking-wider text-muted"
+                >
+                  Full Name
+                </label>
+                <input
+                  id="signup-name"
+                  type="text"
+                  name="fullName"
+                  autoComplete="name"
+                  required
+                  value={fullName}
+                  onChange={(e) => setFullName(e.target.value)}
+                  placeholder="e.g. Eleanor Vance"
+                  className="mt-1.5 w-full rounded-xl border border-line bg-bg/50 px-4 py-3 text-sm text-ink placeholder:text-muted/60 transition-colors focus:border-primary focus:bg-surface focus:outline-none focus:ring-1 focus:ring-primary"
+                />
+              </div>
+
+              {/* Email */}
+              <div>
+                <label
+                  htmlFor="signup-email"
+                  className="block text-xs font-semibold uppercase tracking-wider text-muted"
+                >
+                  Email
+                </label>
+                <input
+                  id="signup-email"
+                  type="email"
+                  name="email"
+                  autoComplete="email"
+                  required
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  placeholder="name@example.com"
+                  className="mt-1.5 w-full rounded-xl border border-line bg-bg/50 px-4 py-3 text-sm text-ink placeholder:text-muted/60 transition-colors focus:border-primary focus:bg-surface focus:outline-none focus:ring-1 focus:ring-primary"
+                />
+              </div>
+
+              {/* Password */}
+              <div>
+                <label
+                  htmlFor="signup-password"
+                  className="block text-xs font-semibold uppercase tracking-wider text-muted"
+                >
+                  Password
+                </label>
+                <input
+                  id="signup-password"
+                  type="password"
+                  name="password"
+                  autoComplete="new-password"
+                  required
+                  minLength={8}
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  placeholder="At least 8 characters"
+                  className="mt-1.5 w-full rounded-xl border border-line bg-bg/50 px-4 py-3 text-sm text-ink placeholder:text-muted/60 transition-colors focus:border-primary focus:bg-surface focus:outline-none focus:ring-1 focus:ring-primary"
+                />
+              </div>
+
+              {/* Confirm Password */}
+              <div>
+                <label
+                  htmlFor="signup-confirm-password"
+                  className="block text-xs font-semibold uppercase tracking-wider text-muted"
+                >
+                  Confirm Password
+                </label>
+                <input
+                  id="signup-confirm-password"
+                  type="password"
+                  name="confirmPassword"
+                  autoComplete="new-password"
+                  required
+                  minLength={8}
+                  value={confirmPassword}
+                  onChange={(e) => setConfirmPassword(e.target.value)}
+                  placeholder="Re-enter password"
+                  className="mt-1.5 w-full rounded-xl border border-line bg-bg/50 px-4 py-3 text-sm text-ink placeholder:text-muted/60 transition-colors focus:border-primary focus:bg-surface focus:outline-none focus:ring-1 focus:ring-primary"
+                />
+                {confirmPassword && password && (
+                  <p className="mt-1.5 text-xs">
+                    {password === confirmPassword ? (
+                      <span className="flex items-center gap-1 text-emerald-700">
+                        <CheckCircle2 size={13} /> Passwords match
+                      </span>
+                    ) : (
+                      <span className="text-danger">Passwords do not match</span>
+                    )}
+                  </p>
+                )}
+              </div>
+
+              {errorMessage && (
+                <div className="rounded-xl border border-danger/30 bg-danger/10 px-4 py-2.5 text-xs text-danger">
+                  {errorMessage}
+                </div>
+              )}
+
+              {/* Demo Platform Disclaimer */}
+              <div className="flex items-start gap-2.5 rounded-xl border border-line/60 bg-bg-warm/50 p-3 text-xs text-muted leading-relaxed">
+                <ShieldCheck size={16} className="mt-0.5 shrink-0 text-muted" />
+                <span>
+                  <strong>Demo platform disclaimer:</strong> Sample interaction only. Do not enter a real password. No real account is created.
+                </span>
+              </div>
+
+              {/* Primary Submit Button */}
+              <Button type="submit" className="mt-2 w-full py-3 text-sm font-semibold tracking-wide">
+                Create account
+              </Button>
+
+              {/* Inter-page Link to Login */}
+              <p className="mt-2 text-center text-xs text-muted">
+                Already have an account?{' '}
+                <Link
+                  href={loginHref}
+                  className="font-semibold text-primary underline underline-offset-4 transition-colors hover:text-accent"
+                >
+                  Log in
+                </Link>
+              </p>
+            </form>
+          </div>
+        )}
+      </div>
+    </Container>
+  )
+}

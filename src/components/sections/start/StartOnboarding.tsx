@@ -146,7 +146,10 @@ export function StartOnboarding() {
               <Button type="button" variant="ghost" onClick={onboard.back}>
                 Back to review
               </Button>
-              <ButtonLink href="/properties" className="min-h-11">
+              <ButtonLink href="/signup" className="min-h-11">
+                Create demo account
+              </ButtonLink>
+              <ButtonLink href="/properties" variant="ghost" className="min-h-11">
                 Explore properties
               </ButtonLink>
               <ButtonLink href="/funds" variant="ghost" className="min-h-11">
