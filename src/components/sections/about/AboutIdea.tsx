@@ -13,12 +13,12 @@ export function AboutIdea() {
   useDepthParallax(rootRef, [{ selector: '[data-about-idea-image]', yPercent: 4 }])
 
   return (
-    <section ref={rootRef} className="about-idea" aria-labelledby="about-idea-heading">
-      <div className="about-idea__layout mx-auto max-w-[var(--container-wide)]">
+    <section ref={rootRef} className="about-idea py-20 px-6" aria-labelledby="about-idea-heading">
+      <div className="about-idea__layout max-w-7xl mx-auto mb-14">
         <h2
           data-reveal-heading
           id="about-idea-heading"
-          className="max-w-[14ch] text-[clamp(2.4rem,5.2vw,4.5rem)] font-semibold leading-[1.06] tracking-[-0.03em] text-balance"
+          className="max-w-[14ch] text-[clamp(2.4rem,5.2vw,4.5rem)] font-semibold leading-[1.06] tracking-[-0.03em] text-balance text-ink"
         >
           {aboutIdea.statement}
         </h2>
@@ -30,7 +30,7 @@ export function AboutIdea() {
         </p>
       </div>
 
-      <figure data-reveal-item data-depth-stage className="about-idea__media m-0">
+      <figure data-reveal-item data-depth-stage className="about-idea__media max-w-7xl mx-auto m-0 overflow-hidden rounded-2xl">
         <img
           data-about-idea-image
           src={aboutIdea.image.src}
@@ -39,6 +39,7 @@ export function AboutIdea() {
           height={1000}
           loading="lazy"
           decoding="async"
+          className="block w-full min-h-[22rem] lg:min-h-[32rem] object-cover rounded-2xl"
         />
       </figure>
     </section>

@@ -96,13 +96,13 @@ export function PinnedStorySection({
       className={`pinned-story${activePinned ? ' pinned-story--active' : ''}${scrubbed ? ' pinned-story--scrub' : ''} ${className ?? ''}`}
       aria-labelledby={headingId}
     >
-      <div ref={pinRef} className="pinned-story__pin">
+      <div ref={pinRef} className="pinned-story__pin max-w-7xl mx-auto px-6 py-20 min-h-[500px] lg:min-h-screen flex flex-col justify-center">
         <h2 id={headingId} className="sr-only">
           {sectionLabel}
         </h2>
 
-        <div className="pinned-story__grid">
-          <div className="pinned-story__copy-stage">
+        <div className="pinned-story__grid grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div className="pinned-story__copy-stage relative min-h-[320px] lg:min-h-[440px] flex flex-col justify-center">
             {states.map((state, index) => (
               <StoryCopy
                 key={state.id}
@@ -113,7 +113,7 @@ export function PinnedStorySection({
               />
             ))}
           </div>
-          <div className="pinned-story__visual-stage" data-depth-stage>
+          <div className="pinned-story__visual-stage relative min-h-[360px] lg:min-h-[460px] flex flex-col justify-center" data-depth-stage>
             {states.map((state, index) => (
               <StoryVisual
                 key={state.id}
@@ -128,7 +128,7 @@ export function PinnedStorySection({
         </div>
 
         {footer ? (
-          <div className="pinned-story__footer mx-auto max-w-[var(--container-wide)]">{footer}</div>
+          <div className="pinned-story__footer mt-12 w-full">{footer}</div>
         ) : null}
       </div>
     </section>

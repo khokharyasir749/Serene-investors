@@ -17,17 +17,17 @@ export function LearnArticleHero({ guide }: Props) {
   useDepthParallax(rootRef, [{ selector: '[data-learn-article-image]', yPercent: 5 }])
 
   return (
-    <header ref={rootRef} className="learn-article-hero">
-      <div className="learn-article-hero__copy mx-auto max-w-[var(--container-wide)]">
-        <p data-reveal-heading className="property-hero__mark">
+    <header ref={rootRef} className="learn-article-hero pt-20 pb-12 px-6">
+      <div className="learn-article-hero__copy max-w-7xl mx-auto mb-12">
+        <p data-reveal-heading className="text-xs font-semibold uppercase tracking-[0.14em] text-muted m-0">
           Illustrative sample
         </p>
-        <p data-reveal-heading className="learn-kicker mt-5">
+        <p data-reveal-heading className="text-xs font-mono font-bold px-3 py-1 bg-emerald-100 text-emerald-800 rounded-full inline-block mt-4">
           {guide.category}
         </p>
         <h1
           data-reveal-heading
-          className="mt-3 max-w-[14ch] text-[clamp(2.4rem,5vw,4.35rem)] font-semibold leading-[1.06] tracking-[-0.03em] text-balance"
+          className="mt-4 max-w-[14ch] text-[clamp(2.4rem,5vw,4.35rem)] font-semibold leading-[1.06] tracking-[-0.03em] text-balance text-ink"
         >
           {guide.title}
         </h1>
@@ -39,7 +39,7 @@ export function LearnArticleHero({ guide }: Props) {
         </p>
       </div>
 
-      <figure data-reveal-item data-depth-stage className="learn-article-hero__media m-0">
+      <figure data-reveal-item data-depth-stage className="learn-article-hero__media max-w-7xl mx-auto m-0 overflow-hidden rounded-2xl">
         <img
           data-learn-article-image
           src={guide.image}
@@ -48,6 +48,7 @@ export function LearnArticleHero({ guide }: Props) {
           height={1000}
           loading="eager"
           fetchPriority="high"
+          className="block w-full min-h-[22rem] lg:min-h-[32rem] object-cover rounded-2xl"
         />
       </figure>
     </header>

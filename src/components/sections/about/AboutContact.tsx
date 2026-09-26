@@ -17,15 +17,15 @@ export function AboutContact() {
     <section
       ref={rootRef}
       id="contact"
-      className="about-contact"
+      className="about-contact py-20 px-6"
       aria-labelledby="contact-heading"
     >
-      <div className="about-contact__layout mx-auto max-w-[var(--container-wide)]">
+      <div className="about-contact__layout max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
         <div>
           <h2
             data-reveal-heading
             id="contact-heading"
-            className="max-w-[12ch] text-[clamp(2.1rem,3.8vw,3.4rem)] font-semibold leading-[1.1] tracking-[-0.03em] text-balance"
+            className="max-w-[12ch] text-[clamp(2.1rem,3.8vw,3.4rem)] font-semibold leading-[1.1] tracking-[-0.03em] text-balance text-ink"
           >
             {aboutContact.heading}
           </h2>
@@ -37,34 +37,51 @@ export function AboutContact() {
           </p>
         </div>
 
-        <div data-reveal-item>
+        <div data-reveal-item className="p-8 rounded-2xl bg-surface border border-line shadow-sm max-w-xl w-full">
           {submitted ? (
             <div className="demo-confirm" role="status">
-              <p className="font-medium tracking-tight">{aboutContact.confirmHeading}</p>
+              <p className="font-semibold text-lg tracking-tight text-ink">{aboutContact.confirmHeading}</p>
               <p className="mt-2 text-sm text-muted">{aboutContact.confirmBody}</p>
-              <div className="page-actions">
-                <ButtonLink to="/get-started" className="min-h-11">
+              <div className="page-actions mt-6">
+                <ButtonLink href="/get-started" className="min-h-11">
                   Get started
                 </ButtonLink>
               </div>
             </div>
           ) : (
-            <form onSubmit={onSubmit}>
-              <label className="demo-field">
+            <form onSubmit={onSubmit} className="space-y-5">
+              <label className="block text-sm font-medium text-ink">
                 <span>Name</span>
-                <input type="text" name="name" autoComplete="name" required />
+                <input
+                  type="text"
+                  name="name"
+                  autoComplete="name"
+                  required
+                  className="mt-1.5 block w-full px-4 py-2.5 rounded-xl border border-line bg-bg text-ink focus:outline-none focus:ring-2 focus:ring-primary"
+                />
               </label>
-              <label className="demo-field">
+              <label className="block text-sm font-medium text-ink">
                 <span>Email</span>
-                <input type="email" name="email" autoComplete="email" required />
+                <input
+                  type="email"
+                  name="email"
+                  autoComplete="email"
+                  required
+                  className="mt-1.5 block w-full px-4 py-2.5 rounded-xl border border-line bg-bg text-ink focus:outline-none focus:ring-2 focus:ring-primary"
+                />
               </label>
-              <label className="demo-field">
+              <label className="block text-sm font-medium text-ink">
                 <span>Message</span>
-                <textarea name="message" required />
+                <textarea
+                  name="message"
+                  required
+                  rows={4}
+                  className="mt-1.5 block w-full px-4 py-2.5 rounded-xl border border-line bg-bg text-ink focus:outline-none focus:ring-2 focus:ring-primary"
+                />
               </label>
-              <p className="demo-note">Sample interaction only.</p>
-              <div className="page-actions">
-                <Button type="submit" className="min-h-11">
+              <p className="text-xs text-muted">Sample interaction only.</p>
+              <div className="page-actions pt-2">
+                <Button type="submit" className="min-h-11 w-full sm:w-auto">
                   Send demo inquiry
                 </Button>
               </div>

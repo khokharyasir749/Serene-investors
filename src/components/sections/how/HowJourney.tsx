@@ -7,6 +7,7 @@ import { HowPageVisual } from '@/components/sections/how/HowJourneyVisuals'
 import { useFloatingMotion } from '@/hooks/useFloatingMotion'
 import { useHowJourney } from '@/hooks/useHowJourney'
 import { usePointerTilt } from '@/hooks/usePointerTilt'
+import { cn } from '@/lib/cn'
 
 function JourneyCopy({
   state,
@@ -19,27 +20,59 @@ function JourneyCopy({
   stacked: boolean
   order: number
 }) {
+  const headingText = state.heading
+  let subtitleText = state.subtitle || ''
+  if (
+    state.id === 'choose' ||
+    (headingText.toLowerCase() === 'choose' && subtitleText.startsWith('A '))
+  ) {
+    subtitleText = subtitleText.replace(/^A\s+/, 'a ')
+  }
+
   return (
     <div
       data-how-copy
       data-how-id={state.id}
-      className={active ? 'how-journey__copy is-active' : 'how-journey__copy'}
+      className={cn(
+        'how-journey__copy w-full',
+        stacked
+          ? 'lg:absolute lg:inset-0 lg:flex lg:flex-col lg:justify-center'
+          : 'mb-12 lg:mb-0',
+        active ? 'is-active' : stacked ? 'lg:pointer-events-none' : '',
+      )}
       style={{ '--how-order': order } as CSSProperties}
       aria-hidden={stacked && !active ? true : undefined}
       inert={stacked && !active ? true : undefined}
     >
-      <p className="how-kicker">{state.kicker}</p>
-      {state.number ? (
-        <p className="how-journey__number" aria-hidden="true">
-          {state.number}
+      <div className="flex items-center gap-3 mb-4">
+        {state.number ? (
+          <span className="text-xs font-mono font-bold px-3 py-1 bg-emerald-100 text-emerald-800 rounded-full inline-block">
+            {state.number}
+          </span>
+        ) : null}
+        <span className="text-xs font-semibold uppercase tracking-[0.16em] text-ink/60">
+          {state.kicker}
+        </span>
+      </div>
+
+      <h2 className="text-3xl lg:text-4xl font-semibold mb-4 text-ink flex flex-wrap items-baseline gap-2">
+        <span>{headingText}</span>
+        {subtitleText ? (
+          <span className="text-ink/80 font-normal">{subtitleText}</span>
+        ) : null}
+      </h2>
+
+      {state.body ? (
+        <p className="text-lg text-ink/70 leading-relaxed mb-4 max-w-xl">
+          {state.body}
         </p>
       ) : null}
-      <h2 className="how-journey__heading">
-        <span>{state.heading}</span>
-        {state.subtitle ? <span>{state.subtitle}</span> : null}
-      </h2>
-      {state.body ? <p className="how-journey__body">{state.body}</p> : null}
-      {state.note ? <p className="how-journey__note">{state.note}</p> : null}
+
+      {state.note ? (
+        <p className="text-xs font-medium uppercase tracking-wider text-ink/40">
+          {state.note}
+        </p>
+      ) : null}
     </div>
   )
 }
@@ -73,12 +106,12 @@ export function HowJourney() {
     <section
       ref={rootRef}
       id="how-journey"
-      className={`how-journey${activePinned ? ' how-journey--pinned' : ''}`}
+      className={cn('how-journey bg-bg-warm relative overflow-hidden', activePinned && 'how-journey--pinned')}
       aria-label="How a sample investment moves from choose to receive"
     >
-      <div ref={pinRef} className="how-journey__pin">
-        <div className="how-journey__grid">
-          <div className="how-journey__copy-stage">
+      <div ref={pinRef} className="how-journey__pin max-w-7xl mx-auto px-6 py-20 min-h-[500px] lg:min-h-screen flex flex-col justify-center">
+        <div className="how-journey__grid grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div className="how-journey__copy-stage relative min-h-[320px] lg:min-h-[440px] flex flex-col justify-center">
             {howPageJourney.map((state, index) => (
               <JourneyCopy
                 key={state.id}
@@ -90,13 +123,23 @@ export function HowJourney() {
             ))}
           </div>
 
-          <div className="how-journey__visual-stage" data-depth-stage>
+          <div className="how-journey__visual-stage relative min-h-[360px] lg:min-h-[460px] flex flex-col justify-center" data-depth-stage>
             {howPageJourney.map((state, index) => (
               <div
                 key={state.id}
                 data-how-visual
                 data-how-id={state.id}
-                className={index === activeIndex ? 'how-journey__visual is-active' : 'how-journey__visual'}
+                className={cn(
+                  'how-journey__visual w-full',
+                  activePinned
+                    ? 'lg:absolute lg:inset-0 lg:flex lg:flex-col lg:justify-center'
+                    : 'mb-12 lg:mb-0',
+                  index === activeIndex
+                    ? 'is-active'
+                    : activePinned
+                      ? 'lg:pointer-events-none'
+                      : '',
+                )}
                 style={{ '--how-order': index * 2 + 1 } as CSSProperties}
                 aria-hidden={activePinned && index !== activeIndex ? true : undefined}
                 inert={activePinned && index !== activeIndex ? true : undefined}
@@ -107,15 +150,23 @@ export function HowJourney() {
           </div>
         </div>
 
-        <ol className="how-journey__steps" aria-hidden="true">
-          {howPageJourney.map((state, index) => (
-            <li key={state.id} className={index === activeIndex ? 'is-active' : undefined}>
-              {state.number}
-            </li>
-          ))}
-        </ol>
-        <div className="how-journey__progress-track">
-          <span data-how-progress className="how-journey__progress" />
+        <div className="mt-10 pt-4 border-t border-line/60">
+          <ol className="flex items-center gap-6 text-xs font-mono font-medium text-ink/40 list-none p-0 m-0" aria-hidden="true">
+            {howPageJourney.map((state, index) => (
+              <li
+                key={state.id}
+                className={cn(
+                  'transition-colors duration-200',
+                  index === activeIndex ? 'text-emerald-800 font-bold' : 'text-ink/40',
+                )}
+              >
+                {state.number}
+              </li>
+            ))}
+          </ol>
+          <div className="how-journey__progress-track h-1 w-full max-w-xs bg-line/80 overflow-hidden mt-3 rounded-full">
+            <span data-how-progress className="how-journey__progress block h-full w-full bg-primary origin-left scale-x-0" />
+          </div>
         </div>
       </div>
     </section>

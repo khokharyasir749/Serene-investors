@@ -172,12 +172,12 @@ export function AboutPaths() {
   useSectionReveal(rootRef, { items: '[data-about-path]', media: '[data-about-path-image]', depth: true })
 
   return (
-    <section ref={rootRef} className="about-paths" aria-labelledby="about-paths-heading">
-      <div className="mx-auto max-w-[var(--container-wide)]">
+    <section ref={rootRef} className="about-paths py-20 px-6" aria-labelledby="about-paths-heading">
+      <div className="mx-auto max-w-7xl">
         <h2
           data-reveal-heading
           id="about-paths-heading"
-          className="max-w-[14ch] text-[clamp(2.1rem,3.8vw,3.4rem)] font-semibold leading-[1.1] tracking-[-0.03em] text-balance"
+          className="max-w-[14ch] text-[clamp(2.1rem,3.8vw,3.4rem)] font-semibold leading-[1.1] tracking-[-0.03em] text-balance text-ink"
         >
           {aboutPaths.heading}
         </h2>
@@ -188,7 +188,7 @@ export function AboutPaths() {
           {aboutPaths.body}
         </p>
 
-        <div className="about-paths__grid">
+        <div className="about-paths__grid grid grid-cols-1 lg:grid-cols-2 gap-12 mt-12">
           <DirectPath />
           <FundsPath />
         </div>

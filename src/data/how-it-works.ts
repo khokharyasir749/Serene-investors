@@ -50,7 +50,7 @@ export const howPageJourney: StoryState[] = [
     number: '01',
     kicker: howItWorksIntro.eyebrow,
     heading: 'Choose',
-    subtitle: 'A property or a fund.',
+    subtitle: 'a property or a fund.',
     body: 'Open a sample listing or a diversified fund and review the published figures. Both paths use the same demonstration catalogue.',
     note: 'Illustrative sample',
   },
