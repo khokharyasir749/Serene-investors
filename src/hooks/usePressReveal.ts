@@ -43,6 +43,9 @@ export function usePressReveal(rootRef: RefObject<HTMLElement | null>) {
             duration: 0.55,
             stagger: 0.09,
             ease: 'power3.out',
+            onComplete: () => {
+              gsap.set(marks, { clearProps: 'clipPath' })
+            },
           },
           '-=0.1',
         )

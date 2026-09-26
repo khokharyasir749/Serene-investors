@@ -10,6 +10,9 @@ export type PressLogo = {
   id: string
   name: string
   src: string
+  quote?: string
+  date?: string
+  href?: string
 }
 
 export type StatItem = {
