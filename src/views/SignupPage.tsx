@@ -3,7 +3,7 @@
 import { useState, type FormEvent } from 'react'
 import Link from 'next/link'
 import { useSearchParams } from 'next/navigation'
-import { CheckCircle2, ShieldCheck, User, Building2 } from 'lucide-react'
+import { CheckCircle2, User, Building2 } from 'lucide-react'
 import { Button, ButtonLink } from '@/components/ui/Button'
 import { Container } from '@/components/ui/Container'
 import { funds, properties, site } from '@/data'
@@ -317,14 +317,6 @@ export function SignupPage() {
                 </div>
               )}
 
-              {/* Demo Platform Disclaimer */}
-              <div className="flex items-start gap-2.5 rounded-xl border border-line/60 bg-bg-warm/50 p-3 text-xs text-muted leading-relaxed">
-                <ShieldCheck size={16} className="mt-0.5 shrink-0 text-muted" />
-                <span>
-                  <strong>Demo platform disclaimer:</strong> Sample interaction only. Do not enter a real password. No real account is created.
-                </span>
-              </div>
-
               {/* Primary Submit Button */}
               <Button type="submit" className="mt-2 w-full py-3 text-sm font-semibold tracking-wide">
                 Create account
@@ -339,6 +331,11 @@ export function SignupPage() {
                 >
                   Log in
                 </Link>
+              </p>
+
+              {/* Muted small demo disclaimer at the bottom */}
+              <p className="mt-3 border-t border-line/60 pt-4 text-center text-[0.75rem] text-muted/80 leading-relaxed">
+                Demo platform disclaimer: Sample interaction only. Do not enter a real password. No real account is created.
               </p>
             </form>
           </div>
