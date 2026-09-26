@@ -76,9 +76,17 @@ export function PropertyFilters({
           <label className="property-field">
             <span>Location</span>
             <select
-              className={cn('property-select', filters.location !== 'all' && 'property-select--active')}
+              className={cn(
+                'property-select',
+                filters.location !== 'all' &&
+                  filters.location !== 'All locations' &&
+                  'property-select--active',
+              )}
               value={filters.location}
-              onChange={(event) => onChange('location', event.target.value)}
+              onChange={(event) => {
+                const value = event.target.value
+                onChange('location', !value || value === 'all' || value === 'All locations' ? 'all' : value)
+              }}
             >
               <option value="all">All locations</option>
               {locations.map((location) => (
@@ -92,9 +100,20 @@ export function PropertyFilters({
           <label className="property-field">
             <span>Investment</span>
             <select
-              className={cn('property-select', filters.size !== 'all' && 'property-select--active')}
+              className={cn(
+                'property-select',
+                filters.size !== 'all' &&
+                  (filters.size as string) !== 'Any size' &&
+                  'property-select--active',
+              )}
               value={filters.size}
-              onChange={(event) => onChange('size', event.target.value as SizeFilter)}
+              onChange={(event) => {
+                const value = event.target.value
+                onChange(
+                  'size',
+                  !value || value === 'all' || value === 'Any size' ? 'all' : (value as SizeFilter),
+                )
+              }}
             >
               {sizeOptions.map((option) => (
                 <option key={option.id} value={option.id}>
@@ -107,9 +126,22 @@ export function PropertyFilters({
           <label className="property-field">
             <span>Status</span>
             <select
-              className={cn('property-select', filters.status !== 'all' && 'property-select--active')}
+              className={cn(
+                'property-select',
+                filters.status !== 'all' &&
+                  (filters.status as string) !== 'Any status' &&
+                  'property-select--active',
+              )}
               value={filters.status}
-              onChange={(event) => onChange('status', event.target.value as StatusFilter)}
+              onChange={(event) => {
+                const value = event.target.value
+                onChange(
+                  'status',
+                  !value || value === 'all' || value === 'Any status'
+                    ? 'all'
+                    : (value as StatusFilter),
+                )
+              }}
             >
               {statusOptions.map((option) => (
                 <option key={option.id} value={option.id}>

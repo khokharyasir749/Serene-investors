@@ -53,6 +53,8 @@ export type Property = {
   name: string
   neighborhood: string
   city: string
+  location?: string
+  region?: string
   type: PropertyType
   image: string
   imageAlt: string

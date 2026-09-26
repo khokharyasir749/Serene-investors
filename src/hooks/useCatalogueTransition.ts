@@ -16,9 +16,8 @@ export function useCatalogueTransition(
   const latestRef = useRef(properties)
   const firstRef = useRef(true)
   const incomingRef = useRef(false)
-  latestRef.current = properties
-
   useLayoutEffect(() => {
+    latestRef.current = properties
     const root = rootRef.current
     if (!root) return
 

@@ -35,26 +35,74 @@ const featuredOrder = [
   'the-glass-pavilion',
 ]
 
-function matchesSize(amount: number, size: SizeFilter) {
-  if (!size || size === 'all') return true
+function matchesSize(amount: number, size: SizeFilter | string | undefined | null) {
+  if (!size || size === 'all' || size === 'Any size' || size === '') return true
   if (size === 'under-7500') return amount < 7500
   if (size === 'mid') return amount >= 7500 && amount <= 10000
-  return amount > 10000
+  if (size === 'over-10000') return amount > 10000
+  return true
+}
+
+function matchesLocation(
+  property: Property,
+  selectedLocation: LocationFilter | string | undefined | null,
+): boolean {
+  if (
+    !selectedLocation ||
+    selectedLocation === 'all' ||
+    selectedLocation === 'All locations' ||
+    selectedLocation === ''
+  ) {
+    return true
+  }
+
+  const target = selectedLocation.trim().toLowerCase()
+  const loc = property.location?.toLowerCase()
+  const reg = property.region?.toLowerCase()
+  const neighborhood = property.neighborhood?.toLowerCase()
+  const city = property.city?.toLowerCase()
+  const combined = `${property.neighborhood || ''}, ${property.city || ''}`.toLowerCase()
+
+  return (
+    loc === target ||
+    reg === target ||
+    neighborhood === target ||
+    city === target ||
+    combined === target
+  )
+}
+
+function matchesType(type: PropertyType, filter: TypeFilter | string | undefined | null): boolean {
+  if (!filter || filter === 'all' || filter === 'All properties' || filter === '') return true
+  return type.toLowerCase() === filter.toLowerCase()
+}
+
+function matchesStatus(
+  status: PropertyStatus,
+  filter: StatusFilter | string | undefined | null,
+): boolean {
+  if (!filter || filter === 'all' || filter === 'Any status' || filter === '') return true
+  return status.toLowerCase() === filter.toLowerCase()
 }
 
 export function useCatalogue(items: Property[]) {
   const [filters, setFilters] = useState<CatalogueFilters>(DEFAULT_CATALOGUE_FILTERS)
 
   const locations = useMemo(() => {
-    return [...new Set(items.map((item) => item.neighborhood))].filter(Boolean).sort()
+    const set = new Set<string>()
+    items.forEach((item) => {
+      if (item.city) set.add(item.city)
+      if (item.neighborhood) set.add(item.neighborhood)
+    })
+    return [...set].filter(Boolean).sort()
   }, [items])
 
   const visible = useMemo(() => {
     const next = items.filter((item) => {
-      if (filters.type && filters.type !== 'all' && item.type !== filters.type) return false
-      if (filters.location && filters.location !== 'all' && item.neighborhood !== filters.location) return false
-      if (filters.status && filters.status !== 'all' && item.status !== filters.status) return false
-      if (filters.size && !matchesSize(item.sampleMinInvestment, filters.size)) return false
+      if (!matchesType(item.type, filters.type)) return false
+      if (!matchesLocation(item, filters.location)) return false
+      if (!matchesStatus(item.status, filters.status)) return false
+      if (!matchesSize(item.sampleMinInvestment, filters.size)) return false
       return true
     })
 
@@ -70,7 +118,17 @@ export function useCatalogue(items: Property[]) {
   }, [filters, items])
 
   function update<K extends keyof CatalogueFilters>(key: K, value: CatalogueFilters[K]) {
-    setFilters((current) => ({ ...current, [key]: value }))
+    let normalized = value
+    if (key === 'location' && (value === 'All locations' || value === '')) {
+      normalized = 'all' as CatalogueFilters[K]
+    } else if (key === 'size' && (value === ('Any size' as any) || value === '')) {
+      normalized = 'all' as CatalogueFilters[K]
+    } else if (key === 'type' && (value === ('All properties' as any) || value === '')) {
+      normalized = 'all' as CatalogueFilters[K]
+    } else if (key === 'status' && (value === ('Any status' as any) || value === '')) {
+      normalized = 'all' as CatalogueFilters[K]
+    }
+    setFilters((current) => ({ ...current, [key]: normalized }))
   }
 
   function reset() {
@@ -78,11 +136,11 @@ export function useCatalogue(items: Property[]) {
   }
 
   const isFiltered =
-    filters.type !== DEFAULT_CATALOGUE_FILTERS.type ||
-    filters.location !== DEFAULT_CATALOGUE_FILTERS.location ||
-    filters.size !== DEFAULT_CATALOGUE_FILTERS.size ||
-    filters.status !== DEFAULT_CATALOGUE_FILTERS.status ||
-    filters.sort !== DEFAULT_CATALOGUE_FILTERS.sort
+    Boolean(filters.type && filters.type !== 'all' && filters.type !== ('All properties' as any)) ||
+    Boolean(filters.location && filters.location !== 'all' && filters.location !== 'All locations') ||
+    Boolean(filters.size && filters.size !== 'all' && filters.size !== ('Any size' as any)) ||
+    Boolean(filters.status && filters.status !== 'all' && filters.status !== ('Any status' as any)) ||
+    Boolean(filters.sort && filters.sort !== 'featured')
 
   return { filters, isFiltered, locations, reset, update, visible }
 }
