@@ -45,7 +45,7 @@ function IosStatusBar({ dark = false, currencyPill = false }: { dark?: boolean; 
 
 export function StakeHero() {
   return (
-    <section className="relative overflow-hidden bg-[#F7F5EF] pt-8 pb-16 lg:pb-24">
+    <section className="relative overflow-hidden bg-[#F7F5EF] pt-8 pb-32 lg:pb-44">
       {/* Ambient background glow */}
       <div className="absolute top-1/4 right-10 -z-10 h-[500px] w-[500px] rounded-full bg-[#00A663]/10 blur-3xl pointer-events-none" />
 
@@ -98,12 +98,11 @@ export function StakeHero() {
           </div>
 
           {/* ================= RIGHT 3-PHONE TILTED CLUSTER ================= */}
-          {/* Controlled height and overflow-hidden for natural edge bleed */}
-          <div className="relative lg:col-span-6 h-[540px] lg:h-[580px] w-full overflow-hidden select-none">
+          <div className="relative lg:col-span-6 h-[580px] lg:h-[640px] w-full select-none">
             <div className="absolute inset-0 w-full h-full">
 
               {/* --- PHONE 1: TOP-LEFT / BACK LAYER (Property Detail) --- */}
-              <div className="absolute -top-6 left-2 lg:-left-4 w-[245px] lg:w-[265px] h-[480px] -rotate-[16deg] rounded-[38px] bg-[#12161A] p-[4px] shadow-[0_22px_50px_-12px_rgba(0,0,0,0.35),0_0_0_1px_rgba(255,255,255,0.12)] z-10 opacity-95 transition-transform duration-300 hover:-rotate-[13deg]">
+              <div className="absolute -top-6 left-6 lg:left-4 w-[245px] lg:w-[265px] h-[480px] -rotate-[16deg] rounded-[38px] bg-[#12161A] p-[4px] shadow-[0_22px_50px_-12px_rgba(0,0,0,0.35),0_0_0_1px_rgba(255,255,255,0.12)] z-10 opacity-95 transition-transform duration-300 hover:-rotate-[13deg]">
                 <div className="relative h-full w-full overflow-hidden rounded-[34px] bg-white flex flex-col justify-between text-left">
                   
                   {/* Top Section */}
@@ -115,7 +114,7 @@ export function StakeHero() {
                     <IosStatusBar />
 
                     {/* Navigation Bar inside App */}
-                    <div className="flex justify-between items-center px-3.5 pt-1 text-[9px]">
+                    <div className="flex justify-between items-center px-4 pt-1 text-[9px]">
                       <span className="font-bold text-gray-500 cursor-pointer text-xs">‹</span>
                       <span className="font-bold text-[#00A663] bg-[#E8F8F0] px-2 py-0.5 rounded-full text-[8.5px]">
                         Available
@@ -128,7 +127,7 @@ export function StakeHero() {
 
                     {/* Studio One Tower Hero Image with Pagination */}
                     <div
-                      className="mx-2.5 mt-1.5 h-26 rounded-xl bg-cover bg-center relative overflow-hidden shadow-xs"
+                      className="mx-3 mt-1.5 h-26 rounded-xl bg-cover bg-center relative overflow-hidden shadow-xs"
                       style={{ backgroundImage: 'url("https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=600&q=80")' }}
                     >
                       <div className="absolute bottom-1.5 flex justify-center w-full gap-1 items-center">
@@ -142,7 +141,7 @@ export function StakeHero() {
                     </div>
 
                     {/* Specs & Pricing matching exact reference screenshot */}
-                    <div className="p-3 pb-1 space-y-1 text-left">
+                    <div className="px-4 pt-2 pb-1 space-y-1 text-left">
                       <div className="text-[8.5px] text-gray-500 font-semibold flex items-center justify-between">
                         <div className="flex items-center gap-1.5">
                           <span>🛏 2</span>
@@ -207,7 +206,7 @@ export function StakeHero() {
               </div>
 
               {/* --- FLOATING OVERLAY: POLAROID BADGE --- */}
-              <div className="absolute top-[6%] left-[190px] lg:left-[210px] z-30 -rotate-[10deg] rounded-2xl bg-white p-2 shadow-2xl border border-black/5 flex flex-col items-center w-[105px] text-center transition-transform hover:scale-105">
+              <div className="absolute top-[6%] left-[200px] lg:left-[225px] z-30 -rotate-[10deg] rounded-2xl bg-white p-2 shadow-2xl border border-black/5 flex flex-col items-center w-[105px] text-center transition-transform hover:scale-105">
                 <div
                   className="h-12 w-full rounded-lg bg-cover bg-center mb-1"
                   style={{ backgroundImage: 'url("https://images.unsplash.com/photo-1518684079-3c830dcef090?auto=format&fit=crop&w=400&q=80")' }}
@@ -303,7 +302,7 @@ export function StakeHero() {
               </div>
 
               {/* --- PHONE 3: BOTTOM-CENTER (Foreground Sharp Screen) --- */}
-              <div className="absolute top-[300px] lg:top-[320px] left-[105px] lg:left-[130px] w-[245px] lg:w-[265px] h-[460px] -rotate-[16deg] rounded-[38px] bg-[#12161A] p-[4px] shadow-[0_22px_50px_-12px_rgba(0,0,0,0.35),0_0_0_1px_rgba(255,255,255,0.12)] z-30 opacity-100">
+              <div className="absolute top-[310px] lg:top-[330px] left-[130px] lg:left-[155px] w-[245px] lg:w-[265px] h-[460px] -rotate-[16deg] rounded-[38px] bg-[#12161A] p-[4px] shadow-[0_22px_50px_-12px_rgba(0,0,0,0.35),0_0_0_1px_rgba(255,255,255,0.12)] z-30 opacity-100">
                 <div className="relative h-full w-full overflow-hidden rounded-[34px] bg-white flex flex-col text-left">
                   {/* Dynamic Island */}
                   <div className="h-3.5 w-18 bg-black rounded-full mx-auto mt-2 shrink-0" />
@@ -364,11 +363,11 @@ export function StakeHero() {
               </div>
 
               {/* Bottom Edge Fade-Out Mask matching Stake reference */}
-              <div className="absolute -bottom-6 left-0 right-0 h-40 lg:h-52 bg-gradient-to-t from-[#F7F5EF] via-[#F7F5EF]/85 to-transparent pointer-events-none z-35" />
+              <div className="absolute -bottom-2 left-0 right-0 h-48 lg:h-60 bg-gradient-to-t from-[#F7F5EF] via-[#F7F5EF]/90 to-transparent pointer-events-none z-35" />
 
               {/* --- FLOATING OVERLAY: RENT NOTIFICATION BADGE --- */}
               {/* Positioned cleanly across Phone 3 with Stake brand icon */}
-              <div className="absolute bottom-12 left-16 lg:left-24 z-40 bg-white/95 backdrop-blur-md rounded-2xl px-4 py-2.5 shadow-2xl border border-black/5 flex items-center gap-3 transition-transform hover:scale-105">
+              <div className="absolute bottom-16 lg:bottom-20 left-16 lg:left-24 z-40 bg-white/95 backdrop-blur-md rounded-2xl px-4 py-2.5 shadow-2xl border border-black/5 flex items-center gap-3 transition-transform hover:scale-105">
                 {/* Stake App Icon simulation with pink accent */}
                 <div className="size-8 rounded-xl bg-[#0D1117] flex items-center justify-center text-white relative shadow-xs">
                   <span className="font-mono text-xs font-black text-emerald-400">k</span>
