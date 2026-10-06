@@ -2,11 +2,12 @@ import { AppDownloadSection } from '@/components/sections/home/AppDownloadSectio
 import { BackersSection } from '@/components/sections/home/BackersSection'
 import { FeaturedHoldingsSection } from '@/components/sections/home/FeaturedHoldingsSection'
 import { StakeHero } from '@/components/hero'
-import { PhoneJourneySection } from '@/components/sections/home/PhoneJourneySection'
+import { InteractiveJourney } from '@/components/interactive-journey'
 import { ProductModulesSection } from '@/components/sections/home/ProductModulesSection'
+import { HowYouEarn } from '@/components/products'
 import { PlatformStatsSection } from '@/components/sections/home/PlatformStatsSection'
 import { PressSection } from '@/components/sections/home/PressSection'
-import { RewardsSection } from '@/components/sections/home/RewardsSection'
+import { RewardsTiers } from '@/components/rewards'
 import { TestimonialsSection } from '@/components/sections/home/TestimonialsSection'
 import { TrustSection } from '@/components/sections/home/TrustSection'
 import { ValueStorySection } from '@/components/sections/home/ValueStorySection'
@@ -16,7 +17,6 @@ import {
   featuredProperties,
   platformStats,
   pressLogos,
-  rewards,
   site,
   testimonials,
   trustItems,
@@ -34,11 +34,14 @@ export function HomePage() {
       {/* Monotone Media / Publication Trust Strip */}
       <PressSection logos={pressLogos} />
 
-      {/* Stake Section 1: "Easily from your phone" 4-Stage Interactive Journey */}
-      <PhoneJourneySection />
+      {/* Stake/Serene Mobile Showcase 1: "Easily from your phone" 4-Stage Interactive Journey */}
+      <InteractiveJourney />
 
       {/* Stake Section 2: Two-Column Product Modules (Properties vs Funds) */}
       <ProductModulesSection />
+
+      {/* Stake/Serene Mobile Showcase 2: "So, how do I make money?" (3 Stacked Horizontal Rows) */}
+      <HowYouEarn />
 
       {/* Live Financial & Indicator Ticker */}
       <MarketTickerBand />
@@ -52,8 +55,8 @@ export function HomePage() {
       {/* Real-time Interactive Yield Modeling */}
       <InvestmentYieldCalculator />
 
-      {/* Investor Tiers & Benefits */}
-      <RewardsSection items={rewards} />
+      {/* Stake/Serene Mobile Showcase 3: Investor Tiers & Benefits (4 Smartphone App Screens) */}
+      <RewardsTiers />
 
       {/* Narrative & Institutional Value Pillars */}
       <ValueStorySection />
