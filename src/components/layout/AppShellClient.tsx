@@ -39,7 +39,7 @@ export function AppShellClient({ children }: Props) {
       <main id="main" tabIndex={-1}>
         {children}
       </main>
-      <SiteFooter />
+      {pathname !== '/' && <SiteFooter />}
     </div>
   )
 }

@@ -2,14 +2,10 @@
 
 import React from 'react'
 import {
-  Sparkles,
   Users,
   Trophy,
   Check,
   Percent,
-  Crown,
-  Shield,
-  Zap,
   ArrowRight,
   Wifi,
   Battery,
