@@ -304,10 +304,9 @@ export function StakeHero() {
                 </div>
               </div>
 
-              {/* --- PHONE 3: BOTTOM-CENTER (Foreground with Depth Blur) --- */}
-              {/* Width: 250px - 280px, blurred foreground effect, compact Funds preview */}
-              <div className="absolute -bottom-24 lg:-bottom-28 left-[120px] lg:left-[160px] w-[250px] lg:w-[280px] aspect-[9/19] -rotate-[16deg] rounded-[44px] bg-[#0D1117] p-[6px] shadow-[0_30px_70px_-10px_rgba(0,0,0,0.5)] border border-white/10 z-30 blur-[1px] opacity-90 transition-all duration-300 hover:blur-none hover:opacity-100">
-                <div className="relative h-full w-full overflow-hidden rounded-[38px] bg-white flex flex-col text-left">
+              {/* --- PHONE 3: BOTTOM-CENTER (Foreground Sharp Screen) --- */}
+              <div className="absolute -bottom-20 lg:-bottom-24 left-[110px] lg:left-[140px] w-[270px] lg:w-[300px] aspect-[9/19.5] -rotate-[16deg] rounded-[48px] bg-[#0D1117] p-[7px] shadow-[0_30px_70px_-10px_rgba(0,0,0,0.45)] border border-white/10 z-30 opacity-100">
+                <div className="relative h-full w-full overflow-hidden rounded-[40px] bg-white flex flex-col text-left">
                   {/* Dynamic Island */}
                   <div className="h-3.5 w-18 bg-black rounded-full mx-auto mt-1.5 shrink-0" />
                   
@@ -365,6 +364,9 @@ export function StakeHero() {
 
                 </div>
               </div>
+
+              {/* Bottom Edge Fade-Out Mask matching Stake reference */}
+              <div className="absolute -bottom-6 left-0 right-0 h-40 lg:h-52 bg-gradient-to-t from-[#F7F5EF] via-[#F7F5EF]/85 to-transparent pointer-events-none z-35" />
 
               {/* --- FLOATING OVERLAY: RENT NOTIFICATION BADGE --- */}
               {/* Positioned cleanly across Phone 3 with Stake brand icon */}

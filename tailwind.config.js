@@ -100,6 +100,9 @@ export default {
         float: 'float 5s ease-in-out infinite',
         'pulse-glow': 'pulseGlow 4s ease-in-out infinite',
       },
+      zIndex: {
+        35: '35',
+      },
     },
   },
   plugins: [],
