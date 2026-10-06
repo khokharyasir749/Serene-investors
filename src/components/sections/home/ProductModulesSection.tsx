@@ -1,6 +1,6 @@
 'use client'
 
-import { Building2, Layers, ArrowUpRight, Play, CheckCircle2 } from 'lucide-react'
+import { Building2, Layers, Play, CheckCircle2 } from 'lucide-react'
 import { Link } from '@/components/ui/Link'
 import { PhoneFrame } from '@/components/ui/mockups/PhoneFrame'
 

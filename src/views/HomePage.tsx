@@ -1,7 +1,7 @@
 import { AppDownloadSection } from '@/components/sections/home/AppDownloadSection'
 import { BackersSection } from '@/components/sections/home/BackersSection'
 import { FeaturedHoldingsSection } from '@/components/sections/home/FeaturedHoldingsSection'
-import { HeroSection } from '@/components/sections/home/HeroSection'
+import { StakeHero } from '@/components/hero'
 import { PhoneJourneySection } from '@/components/sections/home/PhoneJourneySection'
 import { ProductModulesSection } from '@/components/sections/home/ProductModulesSection'
 import { PlatformStatsSection } from '@/components/sections/home/PlatformStatsSection'
@@ -28,8 +28,8 @@ export function HomePage() {
 
   return (
     <>
-      {/* Stake Hero Architecture with 3-Phone Mockup */}
-      <HeroSection />
+      {/* Stake Hero Architecture with Layered Realistic Mobile Mockup */}
+      <StakeHero />
 
       {/* Monotone Media / Publication Trust Strip */}
       <PressSection logos={pressLogos} />
