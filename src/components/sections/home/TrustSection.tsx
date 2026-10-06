@@ -1,5 +1,5 @@
 import { useRef } from 'react'
-import { FileText, ShieldCheck } from 'lucide-react'
+import { FileText, Landmark, Scale, ShieldCheck } from 'lucide-react'
 import type { TrustItem } from '@/types'
 import { TrustPoint } from '@/components/cards/TrustPoint'
 import { TrustRecordCard } from '@/components/ui/TrustRecordCard'
@@ -81,8 +81,12 @@ export function TrustSection({ items }: Props) {
                 className="group relative rounded-2xl border border-white/65 bg-white/90 p-7 text-ink shadow-[inset_0_1px_0_rgba(255,255,255,0.8),0_12px_30px_-8px_rgba(0,0,0,0.2)] backdrop-blur-md transition-all duration-300 hover:z-50 hover:-translate-y-2 hover:scale-[1.03] hover:border-white/90 hover:shadow-2xl"
               >
                 <div className="mb-4 inline-flex size-10 items-center justify-center rounded-lg bg-[rgba(49,92,69,0.09)] text-primary transition-all duration-300 group-hover:scale-105 group-hover:bg-[rgba(49,92,69,0.15)]" aria-hidden="true">
-                  {item.id === 'documentation' ? (
+                  {item.id === 'custody' ? (
+                    <Landmark size={20} strokeWidth={1.8} />
+                  ) : item.id === 'registry' || item.id === 'documentation' ? (
                     <FileText size={20} strokeWidth={1.8} />
+                  ) : item.id === 'valuation' ? (
+                    <Scale size={20} strokeWidth={1.8} />
                   ) : (
                     <ShieldCheck size={20} strokeWidth={1.8} />
                   )}

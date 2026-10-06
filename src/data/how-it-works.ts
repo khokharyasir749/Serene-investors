@@ -2,8 +2,8 @@ import type { ProcessStep, StoryState } from '@/types'
 
 export const howItWorksIntro = {
   eyebrow: 'How it works',
-  heading: 'A simpler way to invest in property.',
-  body: 'Four steps from a named building to a line in your ledger. This is a demo flow. Figures on this site are sample data.',
+  heading: 'Real estate investing in 3 simple steps.',
+  body: 'Review vetted institutional assets, allocate from £500, and earn automated quarterly rental dividends with complete Land Registry transparency.',
   image: {
     src: 'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=2000&h=1200&q=80',
     alt: 'A low house at dusk, pool in the foreground, warm rooms lit from inside',
@@ -12,28 +12,23 @@ export const howItWorksIntro = {
 
 export const howItWorksSteps: ProcessStep[] = [
   {
-    id: 'choose',
-    title: 'Choose a property',
-    body: 'Browse selected residential properties and review the available information.',
+    id: 'browse',
+    title: 'Browse Institutional Assets',
+    body: 'Review vetted prime residential and commercial opportunities with comprehensive financial models, valuation reports, and verified legal deeds.',
   },
   {
-    id: 'invest',
-    title: 'Invest your amount',
-    body: 'Select how much you want to allocate to a property.',
-  },
-  {
-    id: 'track',
-    title: 'Track your holding',
-    body: 'Follow rental activity and your holding from your SERENE INVESTORS account.',
+    id: 'acquire',
+    title: 'Acquire Fractional Shares',
+    body: 'Start investing from £500. Secure digital title ownership with transparent pricing and zero hidden transaction fees.',
   },
   {
     id: 'receive',
-    title: 'Receive your share',
-    body: 'View fictional rental distributions and holding performance.',
+    title: 'Receive Quarterly Cash Dividends',
+    body: 'Collect passive rental income directly into your investor wallet with quarterly distributions and capital appreciation on exit.',
   },
 ]
 
-const storyHeadings = ['Choose', 'Invest', 'Track', 'Receive'] as const
+const storyHeadings = ['Browse', 'Acquire', 'Receive'] as const
 
 export const howItWorksStory: StoryState[] = howItWorksSteps.map((step, index) => ({
   id: step.id,
@@ -85,19 +80,19 @@ export const howPageJourney: StoryState[] = [
 
 export const howPageSummary = [
   {
-    id: 'summary-choose',
-    title: 'Choose',
-    body: 'Select a property or diversified fund.',
+    id: 'summary-browse',
+    title: 'Browse Institutional Assets',
+    body: 'Review vetted prime residential and commercial opportunities with comprehensive financial models, valuation reports, and verified legal deeds.',
   },
   {
-    id: 'summary-allocate',
-    title: 'Allocate',
-    body: 'Choose a sample investment amount.',
+    id: 'summary-acquire',
+    title: 'Acquire Fractional Shares',
+    body: 'Start investing from £500. Secure digital title ownership with transparent pricing and zero hidden transaction fees.',
   },
   {
-    id: 'summary-track',
-    title: 'Track',
-    body: 'Follow the sample portfolio and distributions.',
+    id: 'summary-receive',
+    title: 'Receive Quarterly Cash Dividends',
+    body: 'Collect passive rental income directly into your investor wallet with quarterly distributions and capital appreciation on exit.',
   },
 ] as const
 

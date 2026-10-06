@@ -36,23 +36,23 @@ export const trustRecord: TrustRecord = {
 
 export const trustItems: TrustItem[] = [
   {
-    id: 'documentation',
-    title: 'Property documentation',
-    body: 'Present sample ownership and property documentation alongside each fictional holding.',
+    id: 'custody',
+    title: 'Regulated Custody',
+    body: 'Client funds are held in segregated Tier-1 UK custodian accounts, fully insulated from platform operations.',
   },
   {
-    id: 'information',
-    title: 'Clear information',
-    body: 'Show sample property details, costs, status, and investment information in a consistent format.',
+    id: 'registry',
+    title: 'Land Registry Backed',
+    body: 'Every fraction represents legally binding shares in asset-specific SPVs registered directly with HM Land Registry.',
+  },
+  {
+    id: 'valuation',
+    title: 'Independent Valuations',
+    body: 'All property assets undergo formal quarterly appraisals and condition audits by independent RICS-accredited surveyors.',
   },
   {
     id: 'security',
-    title: 'Platform security',
-    body: 'Use standard secure account practices for fictional user accounts and platform access.',
-  },
-  {
-    id: 'disclosure',
-    title: 'Risk disclosure',
-    body: 'Present sample figures as illustrative and explain that property investing involves risk.',
+    title: 'Bank-Grade Encryption',
+    body: 'Enterprise 256-bit encryption, multi-factor biometric authentication, and institutional cyber controls protect every transaction.',
   },
 ]
