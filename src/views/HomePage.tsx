@@ -33,8 +33,8 @@ export function HomePage() {
   return (
     <>
       <HeroSection />
-      <MarketTickerBand />
       <PressSection logos={pressLogos} />
+      <MarketTickerBand />
       <HowItWorksSection />
       <FeaturedHoldingsSection properties={featuredProperties} />
       <PlatformStatsSection stats={platformStats} />

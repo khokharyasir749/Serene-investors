@@ -1,9 +1,9 @@
 import type { HeroCopy, HeroVisualContent } from '@/types'
 
 export const heroCopy: HeroCopy = {
-  eyebrow: 'Regulated Private Wealth • FCA Custody Tier-1',
-  headline: 'Prime Real Estate, Fractionally Owned.',
-  body: 'Acquire institutional-grade UK residential & commercial fractions from £500. Earn quarterly rental distributions and capital appreciation with full title transparency.',
+  eyebrow: '10%+ average returns in 2025/2026',
+  headline: 'Build your wealth through prime real estate',
+  body: 'Join thousands of people globally earning passive income from investing in curated residential and commercial real estate with Serene, from just £500.',
   primary: { label: 'Explore Properties', href: '/properties' },
   secondary: { label: 'Calculate Returns', href: '#yield-calculator' },
 }
