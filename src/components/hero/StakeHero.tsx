@@ -99,18 +99,17 @@ export function StakeHero() {
 
           {/* ================= RIGHT 3-PHONE TILTED CLUSTER ================= */}
           {/* Controlled height and overflow-hidden for natural edge bleed */}
-          <div className="relative lg:col-span-6 h-[600px] lg:h-[680px] w-full overflow-hidden select-none">
+          <div className="relative lg:col-span-6 h-[540px] lg:h-[580px] w-full overflow-hidden select-none">
             <div className="absolute inset-0 w-full h-full">
 
               {/* --- PHONE 1: TOP-LEFT / BACK LAYER (Property Detail) --- */}
-              {/* Width: 240px - 270px, sharp, in focus */}
-              <div className="absolute -top-8 left-2 lg:-left-4 w-[240px] lg:w-[270px] h-[520px] lg:h-[560px] -rotate-[16deg] rounded-[42px] bg-[#0D1117] p-[6px] shadow-2xl border border-white/10 z-10 opacity-95 transition-transform duration-300 hover:-rotate-[13deg]">
-                <div className="relative h-full w-full overflow-hidden rounded-[36px] bg-white flex flex-col justify-between text-left">
+              <div className="absolute -top-6 left-2 lg:-left-4 w-[245px] lg:w-[265px] h-[480px] -rotate-[16deg] rounded-[38px] bg-[#12161A] p-[4px] shadow-[0_22px_50px_-12px_rgba(0,0,0,0.35),0_0_0_1px_rgba(255,255,255,0.12)] z-10 opacity-95 transition-transform duration-300 hover:-rotate-[13deg]">
+                <div className="relative h-full w-full overflow-hidden rounded-[34px] bg-white flex flex-col justify-between text-left">
                   
                   {/* Top Section */}
                   <div>
                     {/* Dynamic Island */}
-                    <div className="h-3 w-16 bg-black rounded-full mx-auto mt-1.5" />
+                    <div className="h-3.5 w-18 bg-black rounded-full mx-auto mt-2" />
                     
                     {/* Authentic iOS Status Bar */}
                     <IosStatusBar />
@@ -129,7 +128,7 @@ export function StakeHero() {
 
                     {/* Studio One Tower Hero Image with Pagination */}
                     <div
-                      className="mx-2.5 mt-1.5 h-28 rounded-xl bg-cover bg-center relative overflow-hidden shadow-xs"
+                      className="mx-2.5 mt-1.5 h-26 rounded-xl bg-cover bg-center relative overflow-hidden shadow-xs"
                       style={{ backgroundImage: 'url("https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=600&q=80")' }}
                     >
                       <div className="absolute bottom-1.5 flex justify-center w-full gap-1 items-center">
@@ -208,7 +207,7 @@ export function StakeHero() {
               </div>
 
               {/* --- FLOATING OVERLAY: POLAROID BADGE --- */}
-              <div className="absolute top-[6%] left-[195px] lg:left-[215px] z-30 -rotate-[10deg] rounded-2xl bg-white p-2 shadow-2xl border border-black/5 flex flex-col items-center w-[105px] text-center transition-transform hover:scale-105">
+              <div className="absolute top-[6%] left-[190px] lg:left-[210px] z-30 -rotate-[10deg] rounded-2xl bg-white p-2 shadow-2xl border border-black/5 flex flex-col items-center w-[105px] text-center transition-transform hover:scale-105">
                 <div
                   className="h-12 w-full rounded-lg bg-cover bg-center mb-1"
                   style={{ backgroundImage: 'url("https://images.unsplash.com/photo-1518684079-3c830dcef090?auto=format&fit=crop&w=400&q=80")' }}
@@ -218,22 +217,21 @@ export function StakeHero() {
               </div>
 
               {/* --- PHONE 2: FRONT-RIGHT (Main Portfolio Screen) --- */}
-              {/* Width: 260px - 290px, sharp, unblocked */}
-              <div className="absolute top-4 right-2 lg:right-0 w-[260px] lg:w-[290px] h-[580px] lg:h-[620px] -rotate-[16deg] rounded-[44px] bg-[#0D1117] p-[6px] shadow-[0_30px_70px_-15px_rgba(11,53,40,0.35)] border border-white/10 z-20 transition-transform duration-300 hover:-rotate-[13deg]">
-                <div className="relative h-full w-full overflow-hidden rounded-[38px] bg-white flex flex-col justify-between text-left pb-2">
+              <div className="absolute top-2 right-2 lg:right-2 w-[255px] lg:w-[275px] h-[510px] -rotate-[16deg] rounded-[38px] bg-[#12161A] p-[4px] shadow-[0_22px_50px_-12px_rgba(0,0,0,0.35),0_0_0_1px_rgba(255,255,255,0.12)] z-20 transition-transform duration-300 hover:-rotate-[13deg]">
+                <div className="relative h-full w-full overflow-hidden rounded-[34px] bg-white flex flex-col justify-between text-left pb-2">
                   
                   <div>
                     {/* Dynamic Island */}
-                    <div className="h-3.5 w-18 bg-black rounded-full mx-auto mt-1.5" />
+                    <div className="h-3.5 w-18 bg-black rounded-full mx-auto mt-2" />
                     
                     {/* Status Bar with Currency Picker */}
                     <IosStatusBar currencyPill={true} />
 
                     {/* Title & Valuation */}
-                    <div className="px-4 pt-1 text-sm font-extrabold text-gray-950">Portfolio</div>
+                    <div className="px-3.5 pt-1 text-sm font-extrabold text-gray-950">Portfolio</div>
                     
-                    <div className="px-4 pt-0.5">
-                      <div className="text-[8px] font-bold text-gray-400 uppercase tracking-widest">PORTFOLIO VALUE</div>
+                    <div className="px-3.5 pt-0.5">
+                      <div className="text-[9px] font-semibold text-gray-400 uppercase tracking-wider">PORTFOLIO VALUE</div>
                       <div className="text-xl font-black tracking-tight text-gray-950 mt-0.5">
                         AED 306,500<span className="text-xs font-semibold text-gray-400">.00</span>
                       </div>
@@ -260,8 +258,8 @@ export function StakeHero() {
                     </div>
 
                     {/* All Time Returns Card */}
-                    <div className="mx-3 mt-2 rounded-xl bg-gray-50 border border-gray-100 p-2">
-                      <div className="flex justify-between items-center text-[8.5px] font-bold text-gray-600">
+                    <div className="mx-3 mt-1.5 rounded-xl bg-gray-50 border border-gray-100 p-1.5">
+                      <div className="flex justify-between items-center text-[8px] font-bold text-gray-600">
                         <span>All time returns</span>
                         <span className="text-emerald-700 bg-emerald-100 px-1 py-0.5 rounded text-[8px] font-black">30.8%</span>
                       </div>
@@ -273,7 +271,7 @@ export function StakeHero() {
                     </div>
 
                     {/* Dual Rent Card */}
-                    <div className="mx-3 mt-1.5 grid grid-cols-2 gap-1.5 text-[8px] bg-gray-50 p-1.5 rounded-xl border border-gray-100">
+                    <div className="mx-3 mt-1.5 grid grid-cols-2 gap-1 text-[8px] bg-gray-50 p-1.5 rounded-xl border border-gray-100">
                       <div>
                         <span className="text-gray-400 block text-[7px] font-semibold">July&apos;s rent</span>
                         <span className="font-extrabold text-gray-900 text-[9.5px]">AED 10,225.50</span>
@@ -285,8 +283,8 @@ export function StakeHero() {
                     </div>
 
                     {/* "My Stakes" Section matching reference */}
-                    <div className="mx-3 mt-2 space-y-1">
-                      <div className="flex justify-between items-center text-[8.5px] font-bold">
+                    <div className="mx-3 mt-1.5 space-y-1">
+                      <div className="flex justify-between items-center text-[8px] font-bold">
                         <span className="text-gray-900">My Stakes</span>
                         <span className="text-[#00A663] text-[7.5px]">View all (23) →</span>
                       </div>
@@ -305,10 +303,10 @@ export function StakeHero() {
               </div>
 
               {/* --- PHONE 3: BOTTOM-CENTER (Foreground Sharp Screen) --- */}
-              <div className="absolute -bottom-20 lg:-bottom-24 left-[110px] lg:left-[140px] w-[270px] lg:w-[300px] aspect-[9/19.5] -rotate-[16deg] rounded-[48px] bg-[#0D1117] p-[7px] shadow-[0_30px_70px_-10px_rgba(0,0,0,0.45)] border border-white/10 z-30 opacity-100">
-                <div className="relative h-full w-full overflow-hidden rounded-[40px] bg-white flex flex-col text-left">
+              <div className="absolute top-[300px] lg:top-[320px] left-[105px] lg:left-[130px] w-[245px] lg:w-[265px] h-[460px] -rotate-[16deg] rounded-[38px] bg-[#12161A] p-[4px] shadow-[0_22px_50px_-12px_rgba(0,0,0,0.35),0_0_0_1px_rgba(255,255,255,0.12)] z-30 opacity-100">
+                <div className="relative h-full w-full overflow-hidden rounded-[34px] bg-white flex flex-col text-left">
                   {/* Dynamic Island */}
-                  <div className="h-3.5 w-18 bg-black rounded-full mx-auto mt-1.5 shrink-0" />
+                  <div className="h-3.5 w-18 bg-black rounded-full mx-auto mt-2 shrink-0" />
                   
                   {/* iOS Status Bar with Cart Badge */}
                   <div className="flex justify-between items-center px-4 pt-1.5 text-[9px] font-semibold text-gray-900 select-none">
