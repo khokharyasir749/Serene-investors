@@ -1,132 +1,83 @@
 'use client'
 
-import { Link } from '@/components/ui/Link'
-import { ArrowRight, MapPin } from 'lucide-react'
+import { Search } from 'lucide-react'
+import { PhoneFrame } from '@/components/ui/mockups/PhoneFrame'
+import { PortfolioPhoneScreen } from '@/components/ui/mockups/PortfolioPhoneScreen'
+import { PropertyDetailPhoneScreen } from '@/components/ui/mockups/PropertyDetailPhoneScreen'
 
 export function HeroVisual() {
   return (
     <div
       data-hero-visual
-      className="relative order-2 w-full max-w-[34rem] sm:max-w-[36rem] mx-auto lg:order-2 lg:max-w-none"
+      className="relative order-2 mx-auto flex h-[490px] w-full max-w-[340px] items-center justify-center overflow-visible sm:h-[560px] sm:max-w-[420px] lg:h-[600px] lg:max-w-[460px] xl:max-w-[490px]"
     >
-      {/* Floating micro-pill badge attached to corner */}
+      {/* Ambient Radial Luxury Glow (Emerald & Warm Parchment) */}
       <div
-        data-hero-pill
-        className="absolute -top-3.5 right-4 sm:right-6 z-30 flex items-center gap-2 rounded-full border border-emerald-800/15 bg-surface/95 px-3.5 py-1.5 text-xs font-medium text-ink shadow-lg shadow-ink/[0.08] backdrop-blur-md transition-all duration-300 hover:scale-105"
+        className="pointer-events-none absolute -inset-6 rounded-full bg-gradient-to-tr from-emerald-500/20 via-emerald-400/10 to-amber-200/10 blur-3xl sm:-inset-12"
+        aria-hidden="true"
+      />
+
+      {/* Phone 2 (Back-Left, Angled / Tilted Behind: -13deg) */}
+      <div
+        data-hero-card="receipt"
+        className="absolute left-0 top-[3%] z-10 w-[220px] -rotate-[13deg] transition-all duration-700 ease-out hover:z-25 hover:rotate-[-9deg] sm:left-[2%] sm:top-[4%] sm:w-[265px] sm:-rotate-[14deg] lg:left-[4%] lg:w-[285px]"
       >
-        <span className="relative flex h-2 w-2">
-          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-500 opacity-75" />
-          <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-600" />
-        </span>
-        <span className="font-semibold text-emerald-950">Next Payout:</span>
-        <span className="text-muted">15 Oct 2026</span>
-        <span className="text-ink/30">•</span>
-        <span className="font-mono font-bold text-ink">£380.00 avg</span>
+        <PhoneFrame time="9:41" className="shadow-[0_20px_50px_rgba(20,28,22,0.28)]">
+          <PropertyDetailPhoneScreen />
+        </PhoneFrame>
       </div>
 
-      {/* Elevated floating luxury preview card matching Stake hero card */}
-      <article
-        data-hero-card="property"
-        className="group relative flex flex-col justify-between rounded-3xl border border-ink/[0.08] bg-surface/95 p-3.5 sm:p-4 shadow-2xl shadow-ink/10 backdrop-blur-md transition-all duration-500 ease-out hover:-translate-y-2 hover:border-ink/20 hover:shadow-[0_28px_60px_rgba(24,32,25,0.16)]"
+      {/* Floating Micro Asset Badge (Layered between Phone 1 and Phone 2) */}
+      <div
+        data-hero-pill
+        className="absolute left-[12%] top-[38%] z-30 flex -rotate-[6deg] items-center gap-2.5 rounded-2xl border border-ink/[0.08] bg-surface/95 p-1.5 pr-3 shadow-2xl shadow-ink/20 backdrop-blur-md transition-all duration-300 hover:rotate-0 hover:scale-105 sm:left-[18%] sm:top-[36%] sm:p-2 sm:pr-3.5 sm:-rotate-[8deg] lg:left-[20%]"
       >
-        <Link
-          href="/properties/courtyard-residences"
-          aria-label="The Mayfair Core Portfolio, London W1. View property opportunity."
-          className="flex flex-col h-full rounded-2xl text-inherit no-underline focus-visible:outline-2 focus-visible:outline-primary"
-        >
-          {/* High-resolution 16:10 aspect ratio image container */}
-          <div className="relative aspect-[16/10] w-full overflow-hidden rounded-2xl bg-bg-warm">
-            <img
-              data-hero-image
-              src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1600&h=1000&q=80"
-              alt="The Mayfair Core Portfolio, London W1 luxury facade"
-              width={1600}
-              height={1000}
-              fetchPriority="high"
-              className="block h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
-            />
+        <img
+          src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=120&h=120&q=80"
+          alt="Boulevard Point, Mayfair"
+          className="size-9 shrink-0 rounded-xl object-cover sm:size-11"
+        />
+        <div className="leading-tight">
+          <p className="text-[10px] font-bold text-ink sm:text-xs">
+            Boulevard Point, Mayfair
+          </p>
+          <p className="text-[8.5px] text-muted sm:text-[9.5px]">
+            Prime Residential W1
+          </p>
+        </div>
+        <div className="ml-1 rounded-full border border-emerald-300/60 bg-emerald-100/90 px-2 py-0.5 font-mono text-[9px] font-bold text-emerald-900 shadow-2xs sm:text-[10.5px]">
+          +10.4%
+        </div>
+      </div>
 
-            {/* Gentle bottom vignette gradient */}
-            <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/65 via-black/15 to-transparent opacity-75 transition-opacity duration-500 group-hover:opacity-90" />
+      {/* Phone 1 (Front-Right, Primary: +3deg) */}
+      <div
+        data-hero-card="property"
+        className="absolute right-0 top-0 z-20 w-[240px] rotate-[3deg] transition-all duration-700 ease-out hover:-translate-y-2 hover:rotate-0 hover:shadow-[0_30px_70px_rgba(20,28,22,0.35)] sm:right-[3%] sm:w-[285px] lg:right-[5%] lg:w-[305px]"
+      >
+        <PhoneFrame time="9:41" className="shadow-[0_30px_65px_rgba(20,28,22,0.35)]">
+          <PortfolioPhoneScreen />
+        </PhoneFrame>
+      </div>
 
-            {/* Top-Left Badge: Frosted location pill */}
-            <div className="absolute left-3 top-3 pointer-events-none z-10">
-              <span className="inline-flex items-center gap-1.5 rounded-full border border-ink/[0.08] bg-surface/90 px-2.5 py-1 text-[11px] font-medium text-ink shadow-xs backdrop-blur-md">
-                <MapPin size={11} className="text-primary shrink-0" strokeWidth={2.5} />
-                <span>Mayfair, London W1</span>
-              </span>
+      {/* Bottom Edge Phone 3 (Cutoff at bottom center) */}
+      <div
+        className="pointer-events-none absolute -bottom-[190px] left-[26%] z-15 w-[190px] -rotate-[3deg] opacity-80 transition-transform duration-700 sm:-bottom-[230px] sm:left-[30%] sm:w-[230px]"
+        aria-hidden="true"
+      >
+        <PhoneFrame time="9:41" showHomeIndicator={false}>
+          <div className="flex flex-col bg-bg-warm/50 p-2.5 pt-1">
+            <div className="flex items-center gap-1.5 rounded-xl border border-ink/[0.08] bg-surface px-2.5 py-1.5 shadow-2xs">
+              <Search size={11} className="text-muted" />
+              <span className="text-[9.5px] text-muted">Search prime UK properties...</span>
             </div>
-
-            {/* Top-Right Badge: Live tag "Open for Allocation" with pulse dot */}
-            <div className="absolute right-3 top-3 pointer-events-none z-10">
-              <span className="inline-flex items-center gap-1.5 rounded-full border border-emerald-800/15 bg-surface/90 px-2.5 py-1 text-[11px] font-semibold text-emerald-900 shadow-xs backdrop-blur-md font-mono">
-                <span className="relative flex h-2 w-2">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-500 opacity-75" />
-                  <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-600" />
-                </span>
-                <span>Open for Allocation</span>
-              </span>
-            </div>
-          </div>
-
-          {/* Sleek 4px Funding Progress Bar */}
-          <div className="mt-3.5 space-y-1.5 px-0.5">
-            <div className="flex items-center justify-between text-xs">
-              <span className="font-mono text-[11px] font-medium text-ink/75">
-                £2,640,000 / £3,000,000 funded (88%)
-              </span>
-            </div>
-            <div className="h-1 w-full overflow-hidden rounded-full bg-ink/[0.08]">
-              <div
-                className="h-full rounded-full bg-primary transition-all duration-700 ease-out"
-                style={{ width: '88%' }}
-              />
+            <div className="mt-2.5 flex gap-2">
+              <div className="h-12 w-16 rounded-lg bg-bg-warm" />
+              <div className="h-12 flex-1 rounded-lg bg-bg-warm" />
             </div>
           </div>
-
-          {/* Card Header & Information */}
-          <div className="mt-3.5 px-0.5">
-            <h2 className="text-xl font-semibold tracking-tight text-ink transition-colors duration-300 group-hover:text-primary sm:text-2xl">
-              The Mayfair Core Portfolio
-            </h2>
-            <p className="mt-1 text-xs text-muted sm:text-sm">
-              Prime Residential · 14 Luxury Units · Mayfair Conservation Area
-            </p>
-          </div>
-
-          {/* Institutional 3-Column Split KPI Grid */}
-          <div className="my-3.5 grid grid-cols-3 divide-x divide-ink/[0.08] rounded-xl border border-ink/[0.08] bg-bg-warm/40 py-2.5 text-center">
-            <div className="px-1.5 flex flex-col items-center justify-center">
-              <span className="text-[10px] font-mono uppercase tracking-wider text-ink/50">Net Yield</span>
-              <span className="mt-0.5 font-mono text-base font-bold tabular-nums text-ink sm:text-lg">7.4%</span>
-            </div>
-            <div className="px-1.5 flex flex-col items-center justify-center">
-              <span className="text-[10px] font-mono uppercase tracking-wider text-ink/50">3Y Target Return</span>
-              <span className="mt-0.5 font-mono text-base font-bold tabular-nums text-ink sm:text-lg">28.2%</span>
-            </div>
-            <div className="px-1.5 flex flex-col items-center justify-center">
-              <span className="text-[10px] font-mono uppercase tracking-wider text-ink/50">Funded</span>
-              <span className="mt-0.5 font-mono text-base font-bold tabular-nums text-ink sm:text-lg">88%</span>
-            </div>
-          </div>
-
-          {/* Card Footer & Micro-Interactions */}
-          <div className="mt-auto flex items-center justify-between border-t border-ink/[0.06] pt-3 px-0.5">
-            <span className="inline-flex items-center rounded-md bg-bg-warm px-2.5 py-1 text-xs font-medium text-muted">
-              From £500 min ticket
-            </span>
-            <span className="inline-flex items-center gap-1.5 text-xs font-semibold text-ink transition-colors duration-300 group-hover:text-primary sm:text-sm">
-              <span>View opportunity</span>
-              <ArrowRight
-                size={15}
-                strokeWidth={2}
-                aria-hidden="true"
-                className="transition-transform duration-300 group-hover:translate-x-1.5"
-              />
-            </span>
-          </div>
-        </Link>
-      </article>
+        </PhoneFrame>
+      </div>
     </div>
   )
 }
