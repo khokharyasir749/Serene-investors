@@ -323,54 +323,79 @@ export function StakeHero() {
                 </div>
               </div>
 
-              {/* --- PHONE 3: BOTTOM-CENTER (Shifted DOWN at top-[380px] lg:top-[420px], left-[140px] lg:left-[170px]) --- */}
-              <div className="absolute top-[380px] lg:top-[420px] left-[140px] lg:left-[170px] w-[275px] lg:w-[305px] h-[340px] -rotate-[16deg] rounded-[44px] bg-[#0D1117] p-[6px] shadow-[0_25px_60px_-10px_rgba(0,0,0,0.5)] border border-white/10 z-30 transition-transform duration-300 hover:-rotate-[13deg]">
-                <div className="relative h-full w-full overflow-hidden rounded-[38px] bg-white flex flex-col text-left">
+              {/* --- PHONE 3: BOTTOM-CENTER (Natural Bleed from Bottom Viewport) --- */}
+              <div className="absolute -bottom-28 lg:-bottom-32 left-[110px] lg:left-[140px] w-[290px] lg:w-[320px] aspect-[9/19.5] -rotate-[16deg] rounded-[48px] bg-[#0D1117] p-[7px] shadow-[0_30px_70px_-10px_rgba(0,0,0,0.5)] border border-white/10 z-30 transition-transform duration-300 hover:-rotate-[13deg]">
+                <div className="relative h-full w-full overflow-hidden rounded-[42px] bg-white flex flex-col text-left">
                   {/* Dynamic Island */}
-                  <div className="h-3.5 w-18 bg-black rounded-full mx-auto mt-2" />
+                  <div className="h-4 w-20 bg-black rounded-full mx-auto mt-2 shrink-0" />
                   
-                  {/* Status Bar with Cart Badge */}
-                  <div className="flex justify-between items-center px-4 pt-1.5 text-[9px] text-gray-500 font-semibold">
-                    <span className="font-bold text-gray-900">9:41</span>
-                    <div className="flex items-center gap-2">
-                      <span>🔖</span>
-                      <span className="bg-[#00A663] text-white px-2 py-0.5 rounded-full text-[8px] font-black shadow-2xs">
+                  {/* Clean Native iOS Status Bar with Cart Badge */}
+                  <div className="flex justify-between items-center px-5 pt-2 text-[10px] font-semibold text-gray-900 select-none">
+                    <span className="font-bold tracking-tight">9:41</span>
+                    
+                    <div className="flex items-center gap-1.5">
+                      {/* Cellular 4 Signal Bars */}
+                      <svg className="w-3.5 h-2.5 fill-current text-gray-800" viewBox="0 0 17 12">
+                        <rect x="0" y="9" width="3" height="3" rx="0.6" />
+                        <rect x="4.5" y="6" width="3" height="6" rx="0.6" />
+                        <rect x="9" y="3" width="3" height="9" rx="0.6" />
+                        <rect x="13.5" y="0" width="3" height="12" rx="0.6" />
+                      </svg>
+
+                      {/* WiFi Icon */}
+                      <svg className="w-3.5 h-2.5 fill-current text-gray-800" viewBox="0 0 16 12">
+                        <path d="M8 9.5a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3zm-4.24-2.83a6 6 0 0 1 8.48 0 .75.75 0 1 1-1.06 1.06 4.5 4.5 0 0 0-6.36 0 .75.75 0 0 1-1.06-1.06zm-2.83-2.83a10 10 0 0 1 14.14 0 .75.75 0 1 1-1.06 1.06 8.5 8.5 0 0 0-12.02 0 .75.75 0 0 1-1.06-1.06z" />
+                      </svg>
+
+                      {/* Battery Pill */}
+                      <div className="flex items-center text-gray-800">
+                        <div className="w-[18px] h-[9px] rounded-[3px] border border-current p-[1px] flex items-center">
+                          <div className="w-full h-full bg-[#00A663] rounded-[1.5px]" />
+                        </div>
+                        <div className="w-[1px] h-[3px] bg-current rounded-r-[0.5px] -ml-[0.5px]" />
+                      </div>
+
+                      {/* Green Cart Badge */}
+                      <span className="bg-[#00A663] text-white px-2 py-0.5 rounded-full text-[8.5px] font-black shadow-2xs ml-0.5">
                         🛒 1
                       </span>
                     </div>
                   </div>
 
-                  {/* Title */}
-                  <div className="px-4 pt-1 text-xs font-black text-gray-950">Funds &amp; Properties</div>
-
-                  {/* Navigation Filter Pills */}
-                  <div className="flex gap-3 px-4 pt-1 text-[9px] font-bold">
-                    <span className="text-[#00A663] border-b-2 border-[#00A663] pb-0.5">Available (7)</span>
-                    <span className="text-gray-400">Funded</span>
-                    <span className="text-gray-400">Exited</span>
+                  {/* Sub-tabs: Simple clean segmented text pills */}
+                  <div className="flex gap-4 px-5 pt-3 border-b border-gray-100">
+                    <span className="text-[#00A663] border-b-2 border-[#00A663] pb-1.5 font-bold text-[10px]">
+                      Available (7)
+                    </span>
+                    <span className="text-gray-400 font-semibold text-[10px] pb-1.5 cursor-pointer hover:text-gray-600">
+                      Funded
+                    </span>
+                    <span className="text-gray-400 font-semibold text-[10px] pb-1.5 cursor-pointer hover:text-gray-600">
+                      Exited
+                    </span>
                   </div>
 
-                  {/* Property Listing Card with Funding Progress */}
-                  <div className="mx-3 mt-2 rounded-2xl border border-gray-100 p-2 bg-gray-50/80 shadow-2xs">
+                  {/* Realistic In-App Listing Card */}
+                  <div className="mx-4 mt-3 rounded-2xl border border-gray-100 p-2.5 bg-gray-50/90 shadow-2xs">
                     <div
-                      className="h-20 rounded-xl bg-cover bg-center relative overflow-hidden"
+                      className="h-24 rounded-xl bg-cover bg-center relative overflow-hidden"
                       style={{ backgroundImage: 'url("https://images.unsplash.com/photo-1582407947304-fd86f028f716?auto=format&fit=crop&w=600&q=80")' }}
                     >
-                      <span className="absolute right-2 top-2 rounded-full bg-[#00A663] px-2 py-0.5 text-[8px] font-black text-white shadow-xs">
+                      <span className="absolute right-2 top-2 rounded-full bg-[#00A663] px-2 py-0.5 text-[8.5px] font-black text-white shadow-xs">
                         +12.4%
                       </span>
                     </div>
 
-                    <div className="p-1.5">
-                      <div className="text-[10px] font-black text-gray-900">Marina Gate, Dubai Marina</div>
-                      <p className="text-[8px] text-gray-500 font-medium">🛏 1 Bed • Ready • Dubai</p>
+                    <div className="p-2 pt-2.5">
+                      <div className="text-xs font-black text-gray-900">Marina Gate, Dubai Marina</div>
+                      <p className="text-[9px] text-gray-500 font-medium mt-0.5">🛏 1 Bed • Ready • Dubai</p>
 
-                      <div className="mt-1.5">
-                        <div className="flex justify-between text-[8px] font-bold text-gray-700 mb-0.5">
-                          <span>AED 1,840,000</span>
-                          <span className="text-[#00A663]">78% funded • 341 investors</span>
+                      <div className="mt-2.5">
+                        <div className="flex justify-between items-baseline mb-1">
+                          <span className="text-[11px] font-black text-gray-900">AED 1,840,000</span>
+                          <span className="text-[8.5px] font-bold text-[#00A663]">78% funded • 341 investors</span>
                         </div>
-                        <div className="h-1.5 w-full bg-gray-200 rounded-full overflow-hidden">
+                        <div className="h-1 w-full bg-gray-200 rounded-full overflow-hidden">
                           <div className="h-full bg-[#00A663] w-[78%]" />
                         </div>
                       </div>
