@@ -1,17 +1,30 @@
 :root {
-  /* Serene Investors: warm paper, charcoal type, botanical green accent. */
+  /* Stake / Serene Design System Tokens */
+  --stake-green: #00a663;
+  --stake-forest: #0b3528;
+  --stake-mint: #e8f8f0;
+  --slate-hero: #0d1117;
+  --slate-dark: #111827;
+  --muted-dark: #4b5563;
+  --muted-light: #64748b;
+  --dark-section: #060d17;
+  --dark-footer: #0b131f;
+  --border-light: rgba(0, 0, 0, 0.08);
+  --border-dark: rgba(255, 255, 255, 0.1);
+
+  /* Semantic palette */
   --bg: #f7f5ef;
   --bg-warm: #efede5;
   --surface: #ffffff;
   --ink: #182019;
   --muted: #5d665e;
   --subtle: #8a918b;
-  --primary: #315c45;
+  --primary: #00a663;
   --primary-ink: #ffffff;
-  --accent: #1f3d2e;
+  --accent: #0b3528;
   --accent-ink: #f7f5ef;
-  --soft: #dce7de;
-  --soft-ink: #1f3d2e;
+  --soft: #e8f8f0;
+  --soft-ink: #0b3528;
   --line: #d9ddd7;
   --danger: #7a4036;
 

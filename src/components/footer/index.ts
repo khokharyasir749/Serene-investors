@@ -1,0 +1,1 @@
+export { StakeFooter } from './StakeFooter'
