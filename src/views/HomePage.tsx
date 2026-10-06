@@ -1,23 +1,13 @@
-import { FeaturedHoldingsSection } from '@/components/sections/home/FeaturedHoldingsSection'
 import { StakeHero } from '@/components/hero'
+import { PressSection } from '@/components/sections/home/PressSection'
 import { InteractiveJourney } from '@/components/interactive-journey'
 import { DualProductBento } from '@/components/products'
 import { HowYouEarn } from '@/components/products'
-import { PlatformStatsSection } from '@/components/sections/home/PlatformStatsSection'
-import { PressSection } from '@/components/sections/home/PressSection'
 import { RewardsTiers } from '@/components/rewards'
 import { SecurityRegulation } from '@/components/trust'
 import { TestimonialsSection } from '@/components/sections/home/TestimonialsSection'
 import { StakeFooterComplete } from '@/components/footer'
-import { MarketTickerBand } from '@/components/home/MarketTickerBand'
-import { InvestmentYieldCalculator } from '@/components/calculator/InvestmentYieldCalculator'
-import {
-  featuredProperties,
-  platformStats,
-  pressLogos,
-  site,
-  testimonials,
-} from '@/data'
+import { pressLogos, site, testimonials } from '@/data'
 import { usePageMeta } from '@/hooks/usePageMeta'
 
 export function HomePage() {
@@ -25,43 +15,31 @@ export function HomePage() {
 
   return (
     <>
-      {/* 1. Stake Hero Architecture with Layered Realistic Mobile Mockup */}
+      {/* 1. Hero Architecture with Layered Realistic Mobile Mockups & Trust Pills */}
       <StakeHero />
 
-      {/* 2. Monotone Media / Publication Trust Strip */}
+      {/* 2. Media / Publication Trust Strip (TechCrunch, Forbes, TIME, CNN, Bloomberg, Arab News) */}
       <PressSection logos={pressLogos} />
 
-      {/* 3. Stake/Serene Mobile Showcase 1: "Easily from your phone" 4-Stage Interactive Journey */}
+      {/* 3. Interactive Journey: "Build a diversified real estate portfolio easily from your phone" */}
       <InteractiveJourney />
 
-      {/* 4. Stake Signature Bento: Properties vs Funds Bento Showcase with Pre-Header 4 Stats Bar */}
+      {/* 4. Products Bento: 2M+ stats bar, Properties vs Funds showcase */}
       <DualProductBento />
 
-      {/* 5. Stake/Serene Mobile Showcase 2: "So, how do I make money?" (3 Stacked Horizontal Rows) */}
+      {/* 5. How You Earn: "So, how do I make money?" - 3 alternating phone showcase rows */}
       <HowYouEarn />
 
-      {/* 6. Live Financial & Indicator Ticker */}
-      <MarketTickerBand />
-
-      {/* 7. Curated Holdings & Institutional Opportunities */}
-      <FeaturedHoldingsSection properties={featuredProperties} />
-
-      {/* 8. Platform Quantitative Traction */}
-      <PlatformStatsSection stats={platformStats} />
-
-      {/* 9. Real-time Interactive Yield Modeling */}
-      <InvestmentYieldCalculator />
-
-      {/* 10. Stake/Serene Mobile Showcase 3: Investor Tiers & Benefits (4 Smartphone App Screens) */}
+      {/* 6. Rewards Tiers: "The more you invest, the more you earn" - 4 smartphone app screens */}
       <RewardsTiers />
 
-      {/* 11. Stake Signature Security: "Safety never sleeps - Robustly regulated" + DFSA & CMA + 13 Backers */}
+      {/* 7. Security & Regulation: "Safety never sleeps - Robustly regulated" + 13 institutional logos */}
       <SecurityRegulation />
 
-      {/* 12. Client Testimonials */}
+      {/* 8. Testimonials: "Hear from our global investors" with video quote cards */}
       <TestimonialsSection items={testimonials} />
 
-      {/* 13. Stake Bottom App CTA Banner (Tilted Phone Mockup) + Compliant Dark Footer */}
+      {/* 9. Bottom App CTA Banner (Emerald card with peeking phone) + Compliant Dark Legal Footer */}
       <StakeFooterComplete />
     </>
   )

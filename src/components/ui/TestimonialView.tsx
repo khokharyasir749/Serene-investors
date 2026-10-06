@@ -1,5 +1,5 @@
 import { useLayoutEffect, useRef } from 'react'
-import { ChevronLeft, ChevronRight } from 'lucide-react'
+import { ChevronLeft, ChevronRight, Play } from 'lucide-react'
 import type { Testimonial } from '@/types'
 import { usePrefersReducedMotion } from '@/hooks/usePrefersReducedMotion'
 import { gsap, registerGsapPlugins } from '@/lib/gsap'
@@ -84,7 +84,7 @@ export function TestimonialSlide({ item, active }: SlideProps) {
           data-story-portrait
           data-stories-portrait
           data-depth="back"
-          className="story-portrait depth-lift m-0"
+          className="story-portrait depth-lift m-0 relative overflow-hidden rounded-3xl group cursor-pointer"
         >
           <img
             src={item.image}
@@ -93,7 +93,20 @@ export function TestimonialSlide({ item, active }: SlideProps) {
             height={1120}
             loading="eager"
             decoding="async"
+            className="rounded-3xl object-cover w-full h-full"
           />
+          <div className="absolute inset-0 bg-black/20 flex items-center justify-center transition-all group-hover:bg-black/10">
+            <div className="flex size-16 items-center justify-center rounded-full bg-white/95 text-[#00A663] shadow-2xl backdrop-blur-md transition-transform group-hover:scale-110">
+              <Play size={22} fill="#00A663" className="translate-x-0.5" />
+            </div>
+          </div>
+          <div className="absolute bottom-4 left-4 right-4 rounded-xl bg-black/60 backdrop-blur-md p-3 text-white flex items-center justify-between border border-white/10">
+            <div className="flex items-center gap-2">
+              <span className="size-2 rounded-full bg-[#00A663] animate-pulse" />
+              <span className="text-xs font-bold">{item.name}</span>
+            </div>
+            <span className="text-[10px] text-white/70 font-mono">{item.location} • Verified Investor</span>
+          </div>
         </figure>
 
         <div data-story-quote data-stories-quote data-depth="front">
@@ -168,7 +181,7 @@ export function TestimonialView({ item, index, total, onPrev, onNext }: ViewProp
         ref={portraitRef}
         data-story-portrait
         data-depth="back"
-        className="story-portrait depth-lift m-0"
+        className="story-portrait depth-lift m-0 relative overflow-hidden rounded-3xl group cursor-pointer"
       >
         <img
           src={item.image}
@@ -177,7 +190,20 @@ export function TestimonialView({ item, index, total, onPrev, onNext }: ViewProp
           height={1120}
           loading="lazy"
           decoding="async"
+          className="rounded-3xl object-cover w-full h-full"
         />
+        <div className="absolute inset-0 bg-black/20 flex items-center justify-center transition-all group-hover:bg-black/10">
+          <div className="flex size-16 items-center justify-center rounded-full bg-white/95 text-[#00A663] shadow-2xl backdrop-blur-md transition-transform group-hover:scale-110">
+            <Play size={22} fill="#00A663" className="translate-x-0.5" />
+          </div>
+        </div>
+        <div className="absolute bottom-4 left-4 right-4 rounded-xl bg-black/60 backdrop-blur-md p-3 text-white flex items-center justify-between border border-white/10">
+          <div className="flex items-center gap-2">
+            <span className="size-2 rounded-full bg-[#00A663] animate-pulse" />
+            <span className="text-xs font-bold">{item.name}</span>
+          </div>
+          <span className="text-[10px] text-white/70 font-mono">{item.location} • Verified Investor</span>
+        </div>
       </figure>
 
       <div data-story-quote data-depth="front">

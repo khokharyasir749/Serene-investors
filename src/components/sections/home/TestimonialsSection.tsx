@@ -6,7 +6,6 @@ import {
   TestimonialSlide,
   TestimonialView,
 } from '@/components/ui/TestimonialView'
-import { testimonialsIntro } from '@/data'
 import { usePointerTilt } from '@/hooks/usePointerTilt'
 import { useScrollDepth } from '@/hooks/useScrollDepth'
 import { useTestimonialsPin } from '@/hooks/useTestimonialsPin'
@@ -66,9 +65,17 @@ export function TestimonialsSection({ items }: Props) {
     >
       <div ref={pinRef} className={pinned ? 'stories-pin' : undefined}>
         <div className="mx-auto max-w-[var(--container-wide)]">
-          <p data-reveal-heading id="stories-heading" className="home-kicker text-muted">
-            {testimonialsIntro.eyebrow}
-          </p>
+          <div className="text-center max-w-2xl mx-auto mb-10">
+            <p className="font-mono text-xs font-bold uppercase tracking-[0.16em] text-[#00A663] mb-2">
+              GLOBAL COMMUNITY
+            </p>
+            <h2 id="stories-heading" className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-[#0D1117] leading-[1.12]">
+              Hear from our global investors
+            </h2>
+            <p className="mt-3 text-sm sm:text-base text-[#4B5563]">
+              Real stories from everyday and institutional investors building passive wealth with Serene.
+            </p>
+          </div>
 
           <div className="mt-10 lg:mt-14">
             {pinned ? (

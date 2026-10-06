@@ -90,9 +90,9 @@ export function StakeFooterComplete() {
               </div>
             </div>
 
-            {/* Right Column: Tilted Phone Mockup Extending Out of Edge */}
+            {/* Right Column: Tilted Phone Mockup Peeking from Card */}
             <div className="lg:col-span-5 relative flex justify-center lg:justify-end items-center">
-              <div className="relative w-full max-w-[280px] sm:max-w-[300px] transform lg:rotate-[8deg] lg:translate-x-4 lg:-translate-y-4 transition-transform duration-500 hover:rotate-0">
+              <div className="relative w-full max-w-[280px] sm:max-w-[300px] transform lg:rotate-[8deg] lg:translate-x-2 lg:translate-y-6 transition-transform duration-500 hover:rotate-0">
                 
                 {/* Outer Phone Frame */}
                 <div className="rounded-[44px] bg-[#0D1117] p-[7px] shadow-[0_30px_70px_-10px_rgba(0,0,0,0.6)] border border-white/20 select-none">
