@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { X } from 'lucide-react'
 
@@ -11,15 +11,20 @@ type Props = {
 }
 
 export function TopBanner({ onDismissChange }: Props) {
-  const [isVisible, setIsVisible] = useState<boolean>(() => {
-    if (typeof window === 'undefined') return true
+  const [isVisible, setIsVisible] = useState(true)
+  const [isRendered, setIsRendered] = useState(true)
+
+  useEffect(() => {
     try {
-      return sessionStorage.getItem(STORAGE_KEY) !== 'true'
+      if (sessionStorage.getItem(STORAGE_KEY) === 'true') {
+        setIsVisible(false)
+        setIsRendered(false)
+        onDismissChange?.(true)
+      }
     } catch {
-      return true
+      // Ignore
     }
-  })
-  const [isRendered, setIsRendered] = useState<boolean>(isVisible)
+  }, [onDismissChange])
 
   function handleDismiss() {
     setIsVisible(false)
