@@ -1,31 +1,44 @@
 'use client'
 
-import React, { useState } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import {
-  Compass,
-  Coins,
-  TrendingUp,
-  ArrowRightLeft,
-  Check,
-  CheckCircle2,
   ShoppingCart,
   Tag,
   Share2,
   Bookmark,
   ChevronLeft,
+  SlidersHorizontal,
+  Wallet,
+  Building2,
+  HelpCircle,
+  Eye,
+  Camera,
+  Coins,
 } from 'lucide-react'
 
 // Authentic iOS Status Bar Helper
-function PhoneStatusBar({ dark = false }: { dark?: boolean }) {
+function PhoneStatusBar({
+  dark = false,
+  currency = 'AED',
+}: {
+  dark?: boolean
+  currency?: string
+}) {
   return (
-    <div className={`flex justify-between items-center px-4 pt-1 text-[10px] font-semibold ${dark ? 'text-white' : 'text-gray-900'} select-none`}>
+    <div
+      className={`flex justify-between items-center px-4 pt-1.5 pb-1 text-[11px] font-semibold ${
+        dark ? 'text-white' : 'text-gray-900'
+      } select-none`}
+    >
       <span className="font-bold tracking-tight">9:41</span>
-      
-      <div className="flex items-center gap-1 bg-black/5 px-2 py-0.5 rounded-full text-[8.5px] font-bold text-gray-800">
-        <span className="size-1.5 rounded-full bg-[#00A663]" />
-        <span>AED</span>
-        <span className="text-[9px] text-gray-500 font-normal">›</span>
-      </div>
+
+      {currency && (
+        <div className="flex items-center gap-1 bg-black/[0.06] px-2 py-0.5 rounded-full text-[9px] font-bold text-gray-800">
+          <span className="size-1.5 rounded-full bg-[#00A663]" />
+          <span>{currency}</span>
+          <span className="text-[9px] text-gray-400 font-normal">›</span>
+        </div>
+      )}
 
       <div className="flex items-center gap-1.5 text-gray-800">
         <svg className="w-3.5 h-2.5 fill-current" viewBox="0 0 17 12">
@@ -35,8 +48,8 @@ function PhoneStatusBar({ dark = false }: { dark?: boolean }) {
           <rect x="13.5" y="0" width="3" height="12" rx="0.6" />
         </svg>
         <div className="flex items-center">
-          <div className="w-[16px] h-[8px] rounded-[2px] border border-current p-[1px] flex items-center">
-            <div className="w-full h-full bg-[#00A663] rounded-[0.5px]" />
+          <div className="w-[17px] h-[9px] rounded-[2.5px] border border-current p-[1px] flex items-center">
+            <div className="w-full h-full bg-[#00A663] rounded-[1px]" />
           </div>
         </div>
       </div>
@@ -44,161 +57,312 @@ function PhoneStatusBar({ dark = false }: { dark?: boolean }) {
   )
 }
 
+// Authentic VISA Logo SVG
+function VisaLogo() {
+  return (
+    <svg className="h-4 sm:h-5 w-auto" viewBox="0 0 50 16" fill="none">
+      <path
+        d="M19.5 0.5L12.8 15.5H8.4L5.1 3.5C4.9 2.7 4.7 2.4 4.1 2C3.1 1.4 1.5 0.9 0 0.6L0.1 0.5H7.1C8 0.5 8.8 1.1 9 2.1L10.7 11.2L15 0.5H19.5ZM36.8 10.7C36.8 6.6 31.1 6.4 31.2 4.6C31.2 4 31.8 3.4 33 3.3C33.6 3.2 35.2 3.2 36.9 4L37.6 0.8C36.6 0.4 35.3 0.1 33.7 0.1C29.6 0.1 26.7 2.3 26.6 5.4C26.6 7.7 28.7 9 30.3 9.8C31.9 10.6 32.5 11.1 32.5 11.8C32.5 12.9 31.2 13.4 29.9 13.4C27.8 13.4 26.6 13.1 25.6 12.6L24.8 15.9C26 16.5 28.2 16.9 30.5 16.9C34.8 16.9 36.8 14.8 36.8 10.7ZM47.6 15.5H51.5L48.1 0.5H44.5C43.6 0.5 42.9 1 42.6 1.7L36.4 15.5H40.9L41.8 13.1H47.1L47.6 15.5ZM43 9.9L45.2 3.9L46.5 9.9H43ZM25.7 0.5L22.2 15.5H18L21.5 0.5H25.7Z"
+        fill="#1434CB"
+      />
+    </svg>
+  )
+}
+
+// Authentic Mastercard Logo SVG
+function MastercardLogo() {
+  return (
+    <svg className="h-6 sm:h-7 w-auto" viewBox="0 0 38 24" fill="none">
+      <circle cx="12" cy="12" r="11" fill="#EB001B" />
+      <circle cx="26" cy="12" r="11" fill="#F79E1B" fillOpacity="0.9" />
+    </svg>
+  )
+}
+
+// Authentic Apple Pay Logo
+function ApplePayLogo() {
+  return (
+    <div className="flex items-center gap-1 font-semibold text-[#0F172A] tracking-tight">
+      <svg className="h-4 sm:h-5 w-auto fill-current" viewBox="0 0 170 170">
+        <path d="M150.37 130.25c-2.45 5.66-5.35 10.87-8.71 15.66-4.58 6.53-8.33 11.05-11.22 13.56-4.48 4.12-9.28 6.23-14.42 6.35-3.69 0-8.14-1.05-13.32-3.18-5.19-2.12-9.97-3.17-14.34-3.17-4.58 0-9.49 1.05-14.75 3.17-5.26 2.13-9.5 3.24-12.74 3.35-4.35.13-9.16-1.9-14.42-6.08-3.69-3.04-7.69-7.85-12.01-14.42-6-9.13-10.74-19.46-14.23-30.99-3.48-11.53-5.23-22.37-5.23-32.52 0-14.79 3.73-26.83 11.19-36.13 7.46-9.3 16.71-14.07 27.75-14.3 4.9.11 10.14 1.34 15.73 3.69 5.58 2.35 9.53 3.58 11.83 3.69 1.74 0 5.8-1.29 12.18-3.86 6.39-2.58 11.93-3.72 16.63-3.43 12.83 1.09 23.01 5.92 30.54 14.51-11.1 6.74-16.53 16.21-16.31 28.4.22 9.57 3.84 17.56 10.87 23.97 7.03 6.41 15.34 10.14 24.94 11.19-2.07 6.31-4.79 12.89-8.17 19.71zM119.22 33.04c0-7.39 2.66-14.46 7.99-21.21 5.33-6.74 12.01-11.03 20.04-12.83 1.2 7.72-.98 15.12-6.53 22.2-5.55 7.07-12.72 11.36-21.5 11.84z" />
+      </svg>
+      <span className="font-bold text-sm sm:text-base">Pay</span>
+    </div>
+  )
+}
+
+// UAE Flag SVG Icon
+function UaeFlagIcon() {
+  return (
+    <svg className="size-5 rounded-full overflow-hidden shrink-0 shadow-2xs" viewBox="0 0 32 32">
+      <rect x="0" y="0" width="32" height="10.66" fill="#00732F" />
+      <rect x="0" y="10.66" width="32" height="10.66" fill="#FFFFFF" />
+      <rect x="0" y="21.33" width="32" height="10.67" fill="#000000" />
+      <rect x="0" y="0" width="9.5" height="32" fill="#FF0000" />
+    </svg>
+  )
+}
+
 export function InteractiveJourney() {
+  // 4 steps corresponding 1-to-1 to the 4 user images:
+  // Step 0: First image (Invest)
+  // Step 1: Second image (Browse)
+  // Step 2: Third image (Earn)
+  // Step 3: Fourth image (Sell)
   const [activeStep, setActiveStep] = useState<number>(0)
+  const stepRefs = useRef<(HTMLDivElement | null)[]>([])
 
   const steps = [
     {
       id: 0,
-      kicker: 'Browse',
-      headline: 'Access prime real estate across multiple markets',
-      description: 'Sign up in less than 3 minutes and browse our collection of global properties and funds, sourced by experts.',
-      icon: Compass,
+      kicker: 'Invest',
+      headline: (
+        <>
+          Own a piece of the ones you
+          <br className="hidden sm:inline" /> love , from only USD 150
+        </>
+      ),
+      description:
+        'Invest in your favourite opportunities, no matter where you are in the world and leave the rest to us',
+      nextPreview: 'Earn',
+      type: 'invest',
     },
     {
       id: 1,
-      kicker: 'Invest',
-      headline: 'Grab a piece of the ones you love, from only AED 500',
-      description: 'Skip the hassle, and buy shares in your favourite deals, no matter where you are in the world.',
-      icon: Coins,
-      hasPaymentIcons: true,
+      kicker: 'Browse',
+      headline: (
+        <>
+          Access prime real estate
+          <br className="hidden sm:inline" /> across multiple markets
+        </>
+      ),
+      description:
+        'Sign up to Stake in a matter of minutes and explore a curated collection of real estate in global cities from just USD 150',
+      nextPreview: 'Invest',
+      type: 'browse',
     },
     {
       id: 2,
       kicker: 'Earn',
-      headline: 'Enjoy regular passive income with no effort',
-      description: 'Sit back and earn consistent rental income from your brand new real estate portfolio',
-      icon: TrendingUp,
-      walletPill: 'Paid directly to your Stake wallet',
+      headline: (
+        <>
+          Enjoy regular passive income
+          <br className="hidden sm:inline" /> with no effort
+        </>
+      ),
+      description:
+        'Sit back and earn consistent rental income from your brand new real estate portfolio',
+      nextPreview: 'Sell',
+      type: 'earn',
     },
     {
       id: 3,
       kicker: 'Sell',
-      headline: 'when you need it',
-      description: 'Realise your full investment appreciation at maturity or take early profits by selling within our community',
-      icon: ArrowRightLeft,
-      exitBadges: [
-        { label: 'Every 6 months', text: 'Sell during our Exit Windows' },
-        { label: '5 year hold', text: 'Full sale of properties and funds' },
-      ],
+      headline: (
+        <>
+          From entry to exit – liquidity
+          <br className="hidden sm:inline" /> when you need it
+        </>
+      ),
+      description:
+        'Realise your full investment appreciation at maturity or take early profits by selling within our community',
+      type: 'sell',
     },
   ]
+
+  // Automated Scroll-Driven Step Detection (Sticky Scrollytelling)
+  useEffect(() => {
+    const handleScroll = () => {
+      const viewportCenter = window.innerHeight / 2
+      let closestIndex = 0
+      let minDistance = Infinity
+
+      stepRefs.current.forEach((el, index) => {
+        if (!el) return
+        const rect = el.getBoundingClientRect()
+        const elementCenter = rect.top + rect.height / 2
+        const distance = Math.abs(elementCenter - viewportCenter)
+
+        if (distance < minDistance) {
+          minDistance = distance
+          closestIndex = index
+        }
+      })
+
+      setActiveStep((prev) => (prev !== closestIndex ? closestIndex : prev))
+    }
+
+    let ticking = false
+    const onScroll = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          handleScroll()
+          ticking = false
+        })
+        ticking = true
+      }
+    }
+
+    window.addEventListener('scroll', onScroll, { passive: true })
+    handleScroll()
+
+    return () => {
+      window.removeEventListener('scroll', onScroll)
+    }
+  }, [])
+
+  // Smooth scroll handler on manual click
+  const scrollToStep = (index: number) => {
+    setActiveStep(index)
+    const el = stepRefs.current[index]
+    if (el) {
+      el.scrollIntoView({
+        behavior: 'smooth',
+        block: 'center',
+      })
+    }
+  }
 
   return (
     <section
       id="how-it-works"
-      className="relative overflow-hidden bg-[#F7F5EF] py-20 px-6 lg:px-12 border-b border-black/[0.08]"
+      className="relative bg-[#F7F8F9] pt-20 sm:pt-28 pb-20 lg:pb-28 border-b border-black/[0.06] select-none"
     >
-      <div className="mx-auto max-w-7xl">
-        {/* Top Heading */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <p className="font-mono text-xs font-bold uppercase tracking-[0.16em] text-[#00A663] mb-3">
-            HOW IT WORKS
+      <div className="mx-auto max-w-7xl px-5 sm:px-8">
+        
+        {/* Top Centered Header (Exact Match to User Image) */}
+        <div className="text-center max-w-4xl mx-auto mb-16 sm:mb-24">
+          <p className="text-base sm:text-lg lg:text-xl font-medium text-[#00A663] mb-3 sm:mb-4">
+            How it works
           </p>
-          <h2 className="text-4xl lg:text-5xl font-extrabold tracking-tight text-[#0D1117] leading-[1.12] text-balance">
-            Build a diversified real estate portfolio easily from your phone
+          <h2 className="text-3xl sm:text-5xl lg:text-[62px] font-extrabold tracking-tight text-[#0F172A] leading-[1.12] text-balance">
+            Build a diversified real
+            <br />
+            estate portfolio easily
+            <br />
+            from your phone
           </h2>
-          <p className="mt-4 text-base sm:text-lg text-[#4B5563] max-w-xl mx-auto">
-            Experience institutional real estate syndication completely reimagined for modern mobile devices.
-          </p>
         </div>
 
-        {/* Main Grid: 5 cols Left (steps), 7 cols Right (phone stage) */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        {/* Step Navigation Pill Selector */}
+        <div className="flex justify-center mb-12 sm:mb-16">
+          <div className="inline-flex items-center gap-1.5 sm:gap-2 rounded-full bg-black/[0.04] p-1.5 border border-black/[0.05] shadow-2xs backdrop-blur-md">
+            {steps.map((step, idx) => {
+              const isActive = activeStep === idx
+              return (
+                <button
+                  key={step.id}
+                  type="button"
+                  onClick={() => scrollToStep(idx)}
+                  className={`px-4 sm:px-5 py-2 rounded-full text-xs sm:text-sm font-bold transition-all duration-300 cursor-pointer ${
+                    isActive
+                      ? 'bg-white text-[#0F172A] shadow-sm scale-105'
+                      : 'text-gray-500 hover:text-[#0F172A]'
+                  }`}
+                >
+                  <span className="text-[#00A663] mr-1.5">0{idx + 1}</span>
+                  {step.kicker}
+                </button>
+              )
+            })}
+          </div>
+        </div>
+
+        {/* 2-Column Scrollytelling Grid: Left Typography, Right Sticky Container */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-start relative">
           
           {/* =========================================================================
-              LEFT COLUMN: Interactive 4 Steps
+              LEFT COLUMN: Exact Typography, Spacing, and Badges per Image
               ========================================================================= */}
-          <div className="lg:col-span-5 space-y-4">
-            {steps.map((step) => {
-              const isActive = activeStep === step.id
-              const Icon = step.icon
+          <div className="lg:col-span-5 flex flex-col space-y-32 lg:space-y-48 py-6">
+            {steps.map((step, index) => {
+              const isActive = activeStep === index
 
               return (
                 <div
                   key={step.id}
-                  onClick={() => setActiveStep(step.id)}
-                  className={`group relative rounded-2xl p-5 sm:p-6 transition-all duration-300 cursor-pointer border ${
+                  ref={(el) => {
+                    stepRefs.current[index] = el
+                  }}
+                  data-step-index={index}
+                  onClick={() => scrollToStep(index)}
+                  className={`min-h-[46vh] lg:min-h-[58vh] flex flex-col justify-center cursor-pointer scroll-mt-24 transition-all duration-500 ${
                     isActive
-                      ? 'opacity-100 bg-white border-[#00A663]/30 shadow-lg ring-1 ring-[#00A663]/20 translate-x-1'
-                      : 'opacity-40 hover:opacity-80 bg-white/40 border-black/[0.05] hover:bg-white/80'
+                      ? 'opacity-100 translate-x-0'
+                      : 'opacity-20 hover:opacity-40 -translate-x-1'
                   }`}
                 >
-                  {/* Left Active Emerald Indicator */}
-                  {isActive && (
-                    <span
-                      className="absolute left-0 top-4 bottom-4 w-1.5 rounded-r-full bg-[#00A663]"
-                      aria-hidden="true"
-                    />
-                  )}
+                  <div className="relative pl-1 sm:pl-2">
+                    {/* Green Kicker */}
+                    <p className="text-base sm:text-lg font-bold text-[#00A663] tracking-tight">
+                      {step.kicker}
+                    </p>
 
-                  <div className="flex items-start gap-4">
-                    {/* Step Icon */}
-                    <div
-                      className={`flex size-11 shrink-0 items-center justify-center rounded-xl transition-colors duration-200 ${
-                        isActive
-                          ? 'bg-[#00A663] text-white shadow-xs'
-                          : 'bg-black/[0.05] text-[#0D1117]'
-                      }`}
-                    >
-                      <Icon size={20} strokeWidth={2.2} />
-                    </div>
+                    {/* Headline */}
+                    <h2 className="mt-3 text-3xl sm:text-4xl lg:text-[42px] font-extrabold text-[#0F172A] leading-[1.14] tracking-tight">
+                      {step.headline}
+                    </h2>
 
-                    <div className="flex-1 min-w-0">
-                      {/* Step Kicker */}
-                      <p className="text-xs font-bold uppercase tracking-wider text-[#00A663]">
-                        {step.kicker}
-                      </p>
+                    {/* Subtitle */}
+                    <p className="mt-4 text-base sm:text-lg text-[#64748B] leading-relaxed max-w-lg">
+                      {step.description}
+                    </p>
 
-                      {/* Step Headline */}
-                      <h3 className={`mt-1 font-bold tracking-tight text-[#0D1117] ${
-                        step.id === 2 ? 'text-2xl sm:text-3xl font-extrabold' : 'text-xl'
-                      }`}>
-                        {step.headline}
-                      </h3>
+                    {/* STEP 0 (Invest) Payments row: VISA, Mastercard, Apple Pay */}
+                    {step.type === 'invest' && (
+                      <div className="mt-8 flex items-center gap-5 sm:gap-6">
+                        <VisaLogo />
+                        <MastercardLogo />
+                        <ApplePayLogo />
+                      </div>
+                    )}
 
-                      {/* Step Description */}
-                      <p className="mt-1.5 text-xs sm:text-[0.875rem] leading-relaxed text-[#4B5563]">
-                        {step.description}
-                      </p>
-
-                      {/* Invest: Mini Payment Icons */}
-                      {step.hasPaymentIcons && (
-                        <div className="mt-3 flex items-center gap-2 pt-1">
-                          <span className="rounded-md bg-black/[0.04] px-2 py-0.5 text-[10px] font-bold text-[#0D1117]">
-                            VISA
-                          </span>
-                          <span className="rounded-md bg-black/[0.04] px-2 py-0.5 text-[10px] font-bold text-[#0D1117]">
-                            Mastercard
-                          </span>
-                          <span className="rounded-md bg-black/[0.04] px-2 py-0.5 text-[10px] font-bold text-[#0D1117]">
-                            Apple Pay
-                          </span>
+                    {/* STEP 1 (Browse) Badges row: App Store & Google Play */}
+                    {step.type === 'browse' && (
+                      <div className="mt-8 flex items-center gap-3">
+                        {/* App Store Badge */}
+                        <div className="flex items-center gap-2 bg-black text-white px-3.5 py-2 rounded-xl shadow-md border border-black hover:opacity-90 transition-opacity">
+                          <svg className="size-5 fill-current" viewBox="0 0 170 170">
+                            <path d="M150.37 130.25c-2.45 5.66-5.35 10.87-8.71 15.66-4.58 6.53-8.33 11.05-11.22 13.56-4.48 4.12-9.28 6.23-14.42 6.35-3.69 0-8.14-1.05-13.32-3.18-5.19-2.12-9.97-3.17-14.34-3.17-4.58 0-9.49 1.05-14.75 3.17-5.26 2.13-9.5 3.24-12.74 3.35-4.35.13-9.16-1.9-14.42-6.08-3.69-3.04-7.69-7.85-12.01-14.42-6-9.13-10.74-19.46-14.23-30.99-3.48-11.53-5.23-22.37-5.23-32.52 0-14.79 3.73-26.83 11.19-36.13 7.46-9.3 16.71-14.07 27.75-14.3 4.9.11 10.14 1.34 15.73 3.69 5.58 2.35 9.53 3.58 11.83 3.69 1.74 0 5.8-1.29 12.18-3.86 6.39-2.58 11.93-3.72 16.63-3.43 12.83 1.09 23.01 5.92 30.54 14.51-11.1 6.74-16.53 16.21-16.31 28.4.22 9.57 3.84 17.56 10.87 23.97 7.03 6.41 15.34 10.14 24.94 11.19-2.07 6.31-4.79 12.89-8.17 19.71zM119.22 33.04c0-7.39 2.66-14.46 7.99-21.21 5.33-6.74 12.01-11.03 20.04-12.83 1.2 7.72-.98 15.12-6.53 22.2-5.55 7.07-12.72 11.36-21.5 11.84z" />
+                          </svg>
+                          <div className="text-left leading-none">
+                            <span className="block text-[8.5px] text-gray-300 uppercase tracking-tight">Download on the</span>
+                            <span className="block text-xs font-bold text-white tracking-tight mt-0.5">App Store</span>
+                          </div>
                         </div>
-                      )}
 
-                      {/* Earn: Exact Video Bottom Pill */}
-                      {step.walletPill && (
-                        <div className="mt-3 inline-flex items-center gap-2 rounded-xl bg-white border border-gray-200 px-3.5 py-2 shadow-xs text-xs font-semibold text-gray-800">
-                          <span className="flex size-4 items-center justify-center rounded-md bg-[#00A663] text-white">
-                            <Check size={11} strokeWidth={3} />
-                          </span>
-                          <span>{step.walletPill}</span>
+                        {/* Google Play Badge */}
+                        <div className="flex items-center gap-2 bg-black text-white px-3.5 py-2 rounded-xl shadow-md border border-black hover:opacity-90 transition-opacity">
+                          <svg className="size-4.5" viewBox="0 0 24 24">
+                            <path fill="#4285F4" d="M3.6 1.4L13.7 11.5L3.6 21.6c-.3-.2-.6-.6-.6-1.1V2.5c0-.5.3-.9.6-1.1z" />
+                            <path fill="#34A853" d="M17.1 8.1L13.7 11.5L3.6 1.4C3.9 1.2 4.4 1.1 5 1.4l12.1 6.7z" />
+                            <path fill="#EA4335" d="M17.1 14.9L5 21.6c-.6.3-1.1.2-1.4 0l10.1-10.1l3.4 3.4z" />
+                            <path fill="#FBBC05" d="M20.5 10.4l-3.4-1.9l-3.4 3l3.4 3l3.4-1.9c.8-.5.8-1.7 0-2.2z" />
+                          </svg>
+                          <div className="text-left leading-none">
+                            <span className="block text-[8.5px] text-gray-300 uppercase tracking-tight">GET IT ON</span>
+                            <span className="block text-xs font-bold text-white tracking-tight mt-0.5">Google Play</span>
+                          </div>
                         </div>
-                      )}
+                      </div>
+                    )}
 
-                      {/* Sell: Exit Windows & Hold Badges */}
-                      {step.exitBadges && (
-                        <div className="mt-3 flex flex-wrap gap-2 pt-1">
-                          {step.exitBadges.map((badge, idx) => (
-                            <div key={idx} className="rounded-lg bg-black/[0.04] px-2.5 py-1 text-[11px] text-[#4B5563]">
-                              <span className="font-bold text-[#0D1117]">{badge.label}: </span>
-                              <span>{badge.text}</span>
-                            </div>
-                          ))}
-                        </div>
-                      )}
-                    </div>
+                    {/* STEP 2 (Earn) Wallet Pill: Paid directly to your Stake wallet */}
+                    {step.type === 'earn' && (
+                      <div className="mt-8 flex items-center gap-2.5 text-sm sm:text-base font-semibold text-[#0F172A]">
+                        <span className="text-[#00A663]">
+                          <Wallet size={19} strokeWidth={2.4} />
+                        </span>
+                        <span>Paid directly to your Stake wallet</span>
+                      </div>
+                    )}
+
+                    {/* Faint hint of the next step at bottom (like in screenshot) */}
+                    {step.nextPreview && (
+                      <div className="mt-20 pt-6 opacity-15 pointer-events-none select-none">
+                        <p className="text-lg font-bold text-[#00A663]">{step.nextPreview}</p>
+                      </div>
+                    )}
                   </div>
                 </div>
               )
@@ -206,405 +370,419 @@ export function InteractiveJourney() {
           </div>
 
           {/* =========================================================================
-              RIGHT COLUMN SHOWCASE (Dynamic Container & Floating Assets)
+              RIGHT COLUMN: Sticky Rounded Card Container with Realistic Mockup & Stickers
               ========================================================================= */}
-          <div className="lg:col-span-7">
+          <div className="lg:col-span-7 sticky top-10 lg:top-14 h-[calc(100vh-5rem)] flex items-center justify-center">
+            
+            {/* Dynamic Card Container whose background color & size matches user screenshot with refined proportions */}
             <div
-              className={`rounded-[36px] p-8 sm:p-12 relative flex items-center justify-center min-h-[580px] overflow-visible border shadow-sm transition-colors duration-500 ${
-                activeStep === 2
-                  ? 'bg-[#FEEFC3]/80 border-amber-200/60'
-                  : 'bg-[#E8F8F0]/70 border-[#00A663]/15'
+              className={`w-full max-w-[540px] lg:max-w-[565px] h-[470px] sm:h-[500px] lg:h-[515px] rounded-[2rem] sm:rounded-[2.5rem] p-0 relative shadow-2xl overflow-hidden transition-colors duration-700 select-none flex justify-center items-start pt-7 sm:pt-9 ${
+                activeStep === 0
+                  ? 'bg-[#0E1726]' // 1st Image: Deep Dark Navy
+                  : activeStep === 1
+                  ? 'bg-[#22C55E]' // 2nd Image: Vibrant Emerald Green
+                  : activeStep === 2
+                  ? 'bg-[#FBBF24]' // 3rd Image: Warm Golden Amber
+                  : 'bg-[#F4F6F8]' // 4th Image: Light Neutral Gray
               }`}
             >
-              
               {/* =============================================================
-                  STEP 0: BROWSE STATE
+                  PROPERTY 1 (IMAGE 1): INVEST STATE
+                  - Navy rounded container
+                  - Realistic Phone with waterfront residence
+                  - Green Shopping Cart circular sticker (top-left)
+                  - Circular Dubai Marina skyline badge (top-right)
+                  - Floating "AED 500" Invest pill across center-bottom
                   ============================================================= */}
               {activeStep === 0 && (
-                <>
-                  {/* Floating Polaroid Badge 1 */}
-                  <div className="absolute -left-2 sm:-left-4 top-1/4 z-30 w-44 sm:w-52 rounded-2xl border border-black/[0.08] bg-white p-2.5 sm:p-3 shadow-2xl backdrop-blur-md">
-                    <div className="relative h-20 sm:h-24 w-full rounded-xl overflow-hidden mb-2">
-                      <img
-                        src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=400&q=80"
-                        alt="Marina Gate"
-                        className="h-full w-full object-cover"
-                      />
-                      <span className="absolute right-2 top-2 rounded-full bg-[#00A663] px-2 py-0.5 text-[10px] font-bold text-white shadow-2xs">
-                        +10.4%
-                      </span>
-                    </div>
-                    <p className="text-[11px] font-bold text-[#0D1117] truncate">Marina Gate Tower</p>
-                    <p className="text-[9.5px] text-[#64748B]">Dubai Marina • Prime Waterfront</p>
+                <div className="w-full h-full relative flex justify-center items-start animate-in fade-in zoom-in-95 duration-500">
+                  
+                  {/* Sticker 1: Green Shopping Cart Circle (Top Left) */}
+                  <div className="absolute top-5 left-3 sm:left-5 z-30 size-16 sm:size-18 rounded-full bg-[#00D084] text-white flex items-center justify-center shadow-2xl transition-transform hover:scale-105">
+                    <ShoppingCart size={28} strokeWidth={2.4} />
                   </div>
 
-                  {/* Floating Polaroid Badge 2 */}
-                  <div className="absolute -right-2 sm:-right-4 bottom-1/4 z-30 flex items-center gap-3 rounded-2xl border border-black/[0.08] bg-white p-3 sm:p-3.5 shadow-2xl backdrop-blur-md">
-                    <div className="flex size-9 sm:size-10 shrink-0 items-center justify-center rounded-xl bg-[#00A663] text-white shadow-2xs">
-                      <ShoppingCart size={18} />
-                    </div>
-                    <div>
-                      <div className="flex items-center gap-1">
-                        <span className="size-1.5 rounded-full bg-[#00A663]" />
-                        <span className="text-[10px] font-bold uppercase text-[#00A663]">Order Confirmed</span>
-                      </div>
-                      <p className="text-xs sm:text-[13px] font-bold text-[#0D1117]">Shares Acquired</p>
-                      <p className="text-[10px] text-[#64748B]">AED 500 • Deed Allocated</p>
-                    </div>
+                  {/* Sticker 2: Circular Dubai Marina Cityscape Badge (Top Right) */}
+                  <div className="absolute top-4 right-3 sm:right-5 z-10 size-26 sm:size-30 rounded-full border-4 border-white shadow-2xl overflow-hidden">
+                    <img
+                      src="/images/journey/dubai-marina.jpg"
+                      alt="Dubai Marina"
+                      className="size-full object-cover"
+                    />
                   </div>
 
-                  {/* Central Phone Mockup */}
-                  <div className="w-[280px] sm:w-[290px] rounded-[44px] bg-[#12161A] p-[5px] shadow-2xl select-none relative z-10">
-                    <div className="rounded-[39px] overflow-hidden bg-white relative flex flex-col justify-between text-[#0D1117] h-[510px] p-3.5">
-                      {/* Dynamic Island */}
-                      <div className="h-3.5 w-18 bg-black rounded-full mx-auto shrink-0 mb-1" />
-                      <PhoneStatusBar />
-
-                      {/* Top Segmented Tabs */}
-                      <div className="mt-2 flex items-center justify-between rounded-xl bg-black/[0.04] p-1 text-[11px] font-semibold text-[#64748B]">
-                        <span className="rounded-lg bg-white px-2.5 py-1 text-[#0D1117] font-bold shadow-2xs">
-                          Available (7)
-                        </span>
-                        <span className="px-2 py-1">Funded</span>
-                        <span className="px-2 py-1">Exited</span>
+                  {/* Phone Mockup (Half-screen cut off at bottom of card) */}
+                  <div className="w-[315px] sm:w-[345px] lg:w-[365px] h-[600px] sm:h-[660px] rounded-t-[42px] sm:rounded-t-[46px] bg-[#1a202c] p-[3.5px] shadow-2xl relative z-20 border-[3.5px] border-[#334155]/60 shrink-0">
+                    <div className="h-full rounded-t-[38px] sm:rounded-t-[42px] overflow-hidden bg-white relative flex flex-col text-[#0F172A] pb-3">
+                      
+                      {/* Dynamic Island Notch */}
+                      <div className="pt-2 sm:pt-2.5">
+                        <div className="h-4.5 w-22 bg-black rounded-full mx-auto" />
                       </div>
 
-                      {/* Featured Property Card */}
-                      <div className="mt-2 rounded-2xl border border-black/[0.08] overflow-hidden bg-white shadow-2xs">
-                        <div className="relative h-28 w-full">
-                          <img
-                            src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=600&q=80"
-                            alt="Marina Gate, Dubai Marina"
-                            className="h-full w-full object-cover"
-                          />
-                          <span className="absolute left-2 top-2 rounded-full bg-[#0B3528]/90 px-2 py-0.5 text-[9px] font-bold text-white">
-                            Prime Tower
-                          </span>
-                          <span className="absolute right-2 top-2 rounded-full bg-white/95 px-2 py-0.5 text-[9px] font-extrabold text-[#00A663]">
-                            +12.4% Est. Return
-                          </span>
+                      {/* Top Action Icons inside screen */}
+                      <div className="px-4 pt-1 flex items-center justify-end gap-2 z-10">
+                        <div className="size-7 rounded-full bg-white/90 backdrop-blur-md flex items-center justify-center shadow-xs">
+                          <Bookmark size={14} className="text-[#0F172A]" />
                         </div>
-                        
-                        <div className="p-2.5">
-                          <h4 className="text-[11px] font-bold text-[#0D1117]">Marina Gate 1, Dubai Marina</h4>
-                          <p className="text-[9.5px] text-[#64748B]">Luxury Waterfront Residence</p>
-                          
-                          <div className="mt-2 flex items-center justify-between text-[10px]">
-                            <span className="font-extrabold text-[#0D1117]">AED 1,450,000</span>
-                            <span className="text-[#00A663] font-bold">84% Funded</span>
-                          </div>
-                          <div className="mt-1 h-1.5 w-full rounded-full bg-black/[0.06] overflow-hidden">
-                            <div className="h-full w-[84%] rounded-full bg-[#00A663]" />
-                          </div>
+                        <div className="size-7 rounded-full bg-white/90 backdrop-blur-md flex items-center justify-center shadow-xs">
+                          <Share2 size={14} className="text-[#0F172A]" />
                         </div>
                       </div>
 
-                      {/* Secondary Compact Card */}
-                      <div className="mt-2 flex items-center gap-2.5 rounded-xl border border-black/[0.08] p-2 bg-[#F8FAF9]">
+                      {/* Phone Main Media (Waterfront yachts / apartments) */}
+                      <div className="relative -mt-9 h-56 w-full overflow-hidden">
                         <img
-                          src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=200&q=80"
-                          alt="Boulevard Point"
-                          className="size-10 rounded-lg object-cover"
+                          src="/images/journey/dubai-marina.jpg"
+                          alt="Marina luxury residence"
+                          className="size-full object-cover"
                         />
-                        <div className="flex-1 min-w-0">
-                          <p className="text-[10.5px] font-bold text-[#0D1117] truncate">Boulevard Point, Downtown</p>
-                          <p className="text-[9px] text-[#64748B]">Downtown Dubai • 8.1% Net</p>
-                          <span className="text-[9px] font-bold text-[#00A663]">92% Funded</span>
-                        </div>
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
                       </div>
 
-                      {/* Home Indicator */}
-                      <div className="mt-auto pt-2 pb-1 flex justify-center">
-                        <div className="h-1 w-24 bg-black/20 rounded-full" />
+                      {/* Floating AED 500 Invest Glass Card (Center/Bottom Overlay) */}
+                      <div className="absolute bottom-44 sm:bottom-50 left-3.5 right-3.5 z-30 rounded-2xl bg-white/95 backdrop-blur-md border-2 border-white shadow-2xl p-3 sm:p-3.5 flex items-center justify-between">
+                        <div className="flex items-center gap-2">
+                          <UaeFlagIcon />
+                          <div>
+                            <span className="text-base sm:text-lg font-extrabold text-[#0F172A]">AED 500</span>
+                            <span className="text-xs text-gray-400 font-medium ml-1.5">~$136.15</span>
+                          </div>
+                        </div>
+                        <button
+                          type="button"
+                          className="bg-[#0F172A] hover:bg-[#1E293B] text-white text-xs font-bold px-5 py-2.5 rounded-xl shadow-md transition-transform active:scale-95"
+                        >
+                          Invest
+                        </button>
+                      </div>
+
+                      {/* Bottom Property Specs & Tour Pills */}
+                      <div className="px-3.5 space-y-2 mt-2">
+                        <div className="flex items-center justify-between text-[11px] text-gray-600 px-1 font-semibold">
+                          <span>🛏️ 2</span>
+                          <span>🚿 3</span>
+                          <span>🔲 #1020</span>
+                          <span>📐 170 sqm</span>
+                        </div>
+
+                        <div className="flex items-center gap-2 pt-1">
+                          <div className="flex-1 flex items-center justify-center gap-1.5 rounded-xl border border-gray-200 py-1.5 text-[11px] font-semibold text-gray-700">
+                            <Eye size={12} className="text-[#00A663]" />
+                            <span>Virtual Tour</span>
+                          </div>
+                          <div className="flex-1 flex items-center justify-center gap-1.5 rounded-xl border border-gray-200 py-1.5 text-[11px] font-semibold text-gray-700">
+                            <Camera size={12} className="text-[#00A663]" />
+                            <span>6 photos</span>
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </div>
-                </>
+                </div>
               )}
 
               {/* =============================================================
-                  STEP 1: INVEST STATE
+                  PROPERTY 2 (IMAGE 2): BROWSE STATE
+                  - Vibrant Green rounded container (matching screenshot exactly)
+                  - Half-screen phone width ~355px cut off at bottom of card
+                  - Left tilted skyscraper sticker
+                  - Top-right tilted Ferris wheel sticker
+                  - Bottom-right Burj Al Arab sticker
                   ============================================================= */}
               {activeStep === 1 && (
-                <>
-                  {/* Floating Confirmation Badge */}
-                  <div className="absolute -right-2 sm:-right-4 bottom-1/4 z-30 flex items-center gap-3 rounded-2xl border border-black/[0.08] bg-white p-3.5 shadow-2xl">
-                    <div className="flex size-10 shrink-0 items-center justify-center rounded-xl bg-[#00A663] text-white">
-                      <CheckCircle2 size={20} />
-                    </div>
-                    <div>
-                      <p className="text-xs font-bold text-[#0D1117]">Order Confirmed</p>
-                      <p className="text-[10px] text-[#00A663] font-semibold">AED 2,500 allocated</p>
-                    </div>
+                <div className="w-full h-full relative flex justify-center items-start animate-in fade-in zoom-in-95 duration-500">
+                  
+                  {/* Sticker 1: Tilted Skyscraper Photo (Left, -14deg) */}
+                  <div className="absolute top-1/4 -left-2 sm:left-1 z-10 -rotate-[14deg] border-4 border-white rounded-2xl shadow-2xl overflow-hidden w-26 sm:w-30 h-32 sm:h-38 bg-white">
+                    <img
+                      src="/images/journey/residential.jpg"
+                      alt="Modern Skyscrapers"
+                      className="size-full object-cover"
+                    />
                   </div>
 
-                  {/* Central Phone Mockup */}
-                  <div className="w-[280px] sm:w-[290px] rounded-[44px] bg-[#12161A] p-[5px] shadow-2xl select-none relative z-10">
-                    <div className="rounded-[39px] overflow-hidden bg-white relative flex flex-col justify-between text-[#0D1117] h-[510px] p-3.5">
-                      <div className="h-3.5 w-18 bg-black rounded-full mx-auto shrink-0 mb-1" />
+                  {/* Sticker 2: Tilted Ferris Wheel Architecture Photo (Top Right, +14deg) */}
+                  <div className="absolute top-5 right-2 sm:right-5 z-10 rotate-[14deg] border-4 border-white rounded-2xl shadow-2xl overflow-hidden w-26 sm:w-30 h-32 sm:h-38 bg-white">
+                    <img
+                      src="https://images.unsplash.com/photo-1580674684081-7617fbf3d745?auto=format&fit=crop&w=400&q=80"
+                      alt="Dubai Architecture"
+                      className="size-full object-cover"
+                    />
+                  </div>
+
+                  {/* Sticker 3: Burj Al Arab in turquoise ocean (Bottom Right, +4deg) */}
+                  <div className="absolute bottom-6 right-2 sm:right-4 z-30 rotate-[4deg] border-4 border-white rounded-2xl shadow-2xl overflow-hidden w-28 sm:w-34 h-28 sm:h-34 bg-white">
+                    <img
+                      src="/images/journey/burj-al-arab.jpg"
+                      alt="Burj Al Arab"
+                      className="size-full object-cover"
+                    />
+                  </div>
+
+                  {/* Phone Mockup (Exact half-screen size cut off at bottom of green card) */}
+                  <div className="w-[315px] sm:w-[345px] lg:w-[365px] h-[600px] sm:h-[660px] rounded-t-[42px] sm:rounded-t-[46px] bg-[#1a202c] p-[3.5px] shadow-2xl relative z-20 border-[3.5px] border-[#334155]/60 shrink-0">
+                    <div className="h-full rounded-t-[38px] sm:rounded-t-[42px] overflow-hidden bg-white relative flex flex-col text-[#0F172A] p-3.5">
+                      
+                      {/* Dynamic Island */}
+                      <div className="h-4.5 w-22 bg-black rounded-full mx-auto shrink-0 mb-1" />
                       <PhoneStatusBar />
 
-                      <div className="mt-2 space-y-2.5">
-                        <div className="rounded-xl border border-black/[0.08] bg-[#F8FAF9] p-2.5">
-                          <span className="text-[9.5px] font-bold uppercase tracking-wider text-[#64748B]">Target Property</span>
-                          <p className="text-xs font-bold text-[#0D1117] mt-0.5">Marina Gate Tower 1</p>
-                          <p className="text-[10px] text-[#00A663] font-semibold">Min: AED 500 / USD 136</p>
-                        </div>
-
-                        <div className="rounded-2xl border border-[#00A663]/30 bg-white p-3 text-center shadow-xs">
-                          <span className="text-[9.5px] uppercase font-bold text-[#64748B]">Investment Amount</span>
-                          <p className="text-2xl font-black text-[#0D1117] tracking-tight mt-1">AED 2,500</p>
-                          <div className="mt-2 flex items-center justify-between text-[9.5px] text-[#64748B]">
-                            <span>Min: AED 500</span>
-                            <span className="text-[#00A663] font-bold">5 Stake Shares</span>
-                            <span>Max: AED 250k</span>
-                          </div>
-                          <div className="mt-1.5 h-2 w-full rounded-full bg-[#E8F8F0] p-0.5">
-                            <div className="h-full w-[35%] rounded-full bg-[#00A663]" />
-                          </div>
-                        </div>
-
-                        <div className="rounded-xl bg-[#E8F8F0] p-2.5 border border-[#00A663]/20 space-y-1 text-xs">
-                          <div className="flex justify-between text-[10.5px]">
-                            <span className="text-[#0B3528]">Est. Annual Rental Payout:</span>
-                            <span className="font-extrabold text-[#00A663]">+AED 165.00 / yr</span>
-                          </div>
-                          <div className="flex justify-between text-[10.5px]">
-                            <span className="text-[#0B3528]">Projected Capital Growth:</span>
-                            <span className="font-extrabold text-[#00A663]">+AED 620.00</span>
-                          </div>
+                      {/* Header: Properties & Icons */}
+                      <div className="mt-1 flex items-center justify-between px-1">
+                        <h3 className="text-lg font-extrabold text-[#0F172A]">Properties</h3>
+                        <div className="flex items-center gap-2.5 text-gray-700">
+                          <Bookmark size={16} />
+                          <SlidersHorizontal size={16} />
                         </div>
                       </div>
 
-                      <button
-                        type="button"
-                        className="mt-3 flex w-full items-center justify-center gap-1.5 rounded-xl bg-[#00A663] py-2.5 text-xs font-bold text-white shadow-md"
-                      >
-                        <Coins size={14} />
-                        Invest AED 2,500 Now
-                      </button>
+                      {/* Segmented Tabs: Available (7), Funded (213), Exited (3) */}
+                      <div className="mt-2 flex items-center justify-between border-b border-gray-100 pb-1.5 text-xs font-semibold text-gray-400">
+                        <span className="text-[#0F172A] font-bold border-b-2 border-[#00A663] pb-1">
+                          Available (7)
+                        </span>
+                        <span className="pb-1">Funded (213)</span>
+                        <span className="pb-1">Exited (3)</span>
+                        <SlidersHorizontal size={13} className="text-gray-400" />
+                      </div>
 
-                      <div className="pt-2 pb-1 flex justify-center">
-                        <div className="h-1 w-24 bg-black/20 rounded-full" />
+                      {/* Featured Property Card: Marina Gate, Dubai Marina */}
+                      <div className="mt-2.5 rounded-2xl border border-gray-100 overflow-hidden shadow-xs bg-white">
+                        <div className="relative h-44 sm:h-48 w-full">
+                          <img
+                            src="/images/journey/dubai-marina.jpg"
+                            alt="Marina Gate"
+                            className="size-full object-cover"
+                          />
+                          {/* Capital Growth Pill */}
+                          <span className="absolute top-2.5 left-2.5 rounded-full bg-white/95 px-2.5 py-1 text-[10px] font-bold text-[#00A663] shadow-xs flex items-center gap-1">
+                            <span>🌱</span> Capital growth
+                          </span>
+
+                          {/* Image Carousel Dots */}
+                          <div className="absolute bottom-2.5 left-1/2 -translate-x-1/2 flex gap-1.5">
+                            <span className="size-1.5 rounded-full bg-white shadow-xs" />
+                            <span className="size-1.5 rounded-full bg-white/50" />
+                            <span className="size-1.5 rounded-full bg-white/50" />
+                            <span className="size-1.5 rounded-full bg-white/50" />
+                          </div>
+                        </div>
+
+                        <div className="p-3">
+                          <h4 className="text-xs sm:text-sm font-extrabold text-[#0F172A]">
+                            Marina Gate, Dubai Marina
+                          </h4>
+                          <div className="mt-1 flex items-center gap-2 text-[11px] text-gray-500 font-medium">
+                            <span>🛏️ 2</span>
+                            <span>•</span>
+                            <span>🏢 #1020</span>
+                            <span>•</span>
+                            <span>🔑 Rented</span>
+                            <span>•</span>
+                            <span>🇦🇪 Dubai</span>
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </div>
-                </>
+                </div>
               )}
 
               {/* =============================================================
-                  STEP 2: EARN STATE (Exact Match to Video Spec!)
+                  PROPERTY 3 (IMAGE 3): EARN STATE
+                  - Warm Golden Amber rounded container
+                  - Realistic Half-Screen Phone
+                  - Floating Stake Rent Notification (Top/Center)
+                  - Floating "All time returns" Card (Bottom)
                   ============================================================= */}
               {activeStep === 2 && (
-                <>
-                  {/* Floating 1: Top-Right Rent Notification */}
-                  <div className="absolute top-1/4 -right-2 sm:right-4 lg:-right-4 z-30 bg-white rounded-2xl px-4 py-3 shadow-2xl border border-black/5 flex items-center gap-3 w-64">
-                    {/* Dark icon with pink accent dot + 'k' */}
-                    <div className="size-10 rounded-xl bg-[#12161A] text-white flex items-center justify-center shrink-0 relative shadow-sm">
-                      <span className="font-black text-sm text-white">k</span>
+                <div className="w-full h-full relative flex justify-center items-start animate-in fade-in zoom-in-95 duration-500">
+                  
+                  {/* Floating Notification 1: Stake Rent Paid Notification (Top) */}
+                  <div className="absolute top-20 left-3 right-3 sm:left-5 sm:right-5 z-30 rounded-2xl bg-white shadow-2xl border border-black/5 p-3.5 flex items-center gap-3">
+                    <div className="size-10 rounded-xl bg-[#0F172A] text-white flex items-center justify-center shrink-0 relative shadow-sm">
+                      <span className="font-black text-sm text-[#00A663]">k</span>
                       <span className="size-2 rounded-full bg-pink-500 absolute top-1 right-1" />
                     </div>
                     <div className="min-w-0">
                       <p className="text-[10px] font-bold tracking-wider text-gray-400 uppercase">
-                        Stake • JUST NOW
+                        Stake
                       </p>
-                      <p className="text-xs font-extrabold text-[#0D1117] leading-snug truncate">
+                      <p className="text-xs sm:text-sm font-extrabold text-[#0F172A] leading-snug truncate">
                         You&apos;ve been paid AED 18,000 in rent
                       </p>
                     </div>
                   </div>
 
-                  {/* Floating 2: Bottom Center-Right Returns Card */}
-                  <div className="absolute bottom-14 -left-4 sm:left-4 lg:-left-4 z-30 bg-white rounded-2xl p-4 shadow-2xl border border-black/5 w-64">
+                  {/* Floating Card 2: All Time Returns (Bottom) */}
+                  <div className="absolute bottom-10 left-3 right-3 sm:left-5 sm:right-5 z-30 rounded-2xl bg-white shadow-2xl border border-black/5 p-4 sm:p-5">
                     <div className="flex items-center justify-between">
-                      <span className="text-xs font-semibold text-gray-500">All time returns</span>
-                      <span className="rounded-full bg-[#E8F8F0] px-2 py-0.5 text-[10px] font-extrabold text-[#00A663]">
+                      <span className="text-xs font-semibold text-gray-500">
+                        All time returns
+                      </span>
+                    </div>
+                    <div className="mt-1 flex items-center gap-2.5">
+                      <p className="text-2xl sm:text-3xl font-black text-[#0F172A] tracking-tight">
+                        AED 89,000
+                      </p>
+                      <span className="rounded-full bg-[#D1FAE5] px-2.5 py-0.5 text-xs font-bold text-[#059669]">
                         30.8%
                       </span>
                     </div>
-                    <p className="mt-1 text-2xl font-black text-[#0D1117] tracking-tight">
-                      AED 89,000
-                    </p>
-                    {/* Two-tone emerald progress bar */}
-                    <div className="mt-3 h-2 w-full rounded-full bg-gray-100 flex overflow-hidden">
-                      <div className="h-full w-[65%] bg-[#00A663]" />
-                      <div className="h-full w-[35%] bg-emerald-300" />
+
+                    {/* Dual-color Progress Bar: 75% Green, 25% Yellow */}
+                    <div className="mt-3.5 h-2.5 w-full rounded-full bg-gray-100 flex overflow-hidden">
+                      <div className="h-full w-[75%] bg-[#00A663]" />
+                      <div className="h-full w-[25%] bg-[#FBBF24]" />
                     </div>
                   </div>
 
-                  {/* Central Phone Mockup (Portfolio Screen) */}
-                  <div className="w-[280px] sm:w-[290px] rounded-[44px] bg-[#12161A] p-[5px] shadow-2xl select-none relative z-10">
-                    <div className="rounded-[39px] overflow-hidden bg-white relative flex flex-col justify-between text-[#0D1117] h-[510px] p-3.5">
-                      <div className="h-3.5 w-18 bg-black rounded-full mx-auto shrink-0 mb-1" />
+                  {/* Phone Mockup (Half-screen cut off at bottom of card) */}
+                  <div className="w-[315px] sm:w-[345px] lg:w-[365px] h-[600px] sm:h-[660px] rounded-t-[42px] sm:rounded-t-[46px] bg-[#1a202c] p-[3.5px] shadow-2xl relative z-10 border-[3.5px] border-[#334155]/60 shrink-0">
+                    <div className="h-full rounded-t-[38px] sm:rounded-t-[42px] overflow-hidden bg-white relative flex flex-col text-[#0F172A] p-3.5">
+                      
+                      {/* Dynamic Island */}
+                      <div className="h-4.5 w-22 bg-black rounded-full mx-auto shrink-0 mb-1" />
                       <PhoneStatusBar />
 
-                      <div className="mt-2 space-y-2.5">
-                        <div className="flex items-center justify-between pb-1 border-b border-gray-100">
-                          <h4 className="text-sm font-extrabold text-[#0D1117]">Portfolio</h4>
-                          <span className="text-[10px] font-bold text-[#00A663] bg-[#E8F8F0] px-2 py-0.5 rounded-full">
-                            Active
-                          </span>
-                        </div>
-
-                        {/* Mini Card: Portfolio Value */}
-                        <div className="rounded-2xl bg-gradient-to-br from-[#0B3528] to-[#041a12] p-3.5 text-white">
-                          <span className="text-[9.5px] uppercase font-bold tracking-wider text-emerald-300">
-                            Portfolio value
-                          </span>
-                          <p className="text-xl font-black mt-0.5 tracking-tight">
-                            AED 17,500.00
-                          </p>
-                          <div className="mt-2 flex items-center justify-between text-[10px] text-emerald-200">
-                            <span>Monthly rental yield</span>
-                            <span className="font-extrabold text-white">6.2%</span>
-                          </div>
-                        </div>
-
-                        {/* Holdings Breakdown */}
-                        <div className="space-y-1.5 pt-1">
-                          <p className="text-[10px] font-bold uppercase tracking-wider text-gray-400">
-                            Current Assets
-                          </p>
-
-                          <div className="flex items-center justify-between rounded-xl bg-[#F8FAF9] p-2 border border-black/[0.04]">
-                            <div>
-                              <p className="text-[11px] font-bold text-[#0D1117]">Boulevard Point</p>
-                              <p className="text-[9px] text-gray-500">Downtown Dubai</p>
-                            </div>
-                            <span className="text-[11px] font-black text-[#00A663]">+AED 2,130</span>
-                          </div>
-
-                          <div className="flex items-center justify-between rounded-xl bg-[#F8FAF9] p-2 border border-black/[0.04]">
-                            <div>
-                              <p className="text-[11px] font-bold text-[#0D1117]">Marina Gate 1</p>
-                              <p className="text-[9px] text-gray-500">Dubai Marina</p>
-                            </div>
-                            <span className="text-[11px] font-black text-[#00A663]">+AED 1,420</span>
-                          </div>
-
-                          <div className="flex items-center justify-between rounded-xl bg-[#F8FAF9] p-2 border border-black/[0.04]">
-                            <div>
-                              <p className="text-[11px] font-bold text-[#0D1117]">Studio One Tower</p>
-                              <p className="text-[9px] text-gray-500">Dubai Marina</p>
-                            </div>
-                            <span className="text-[11px] font-black text-[#00A663]">+AED 826</span>
-                          </div>
+                      {/* Header: Portfolio & Currency Badge */}
+                      <div className="mt-1 flex items-center justify-between px-1">
+                        <h3 className="text-lg font-extrabold text-[#0F172A]">Portfolio</h3>
+                        <div className="flex items-center gap-1 bg-black/[0.06] px-2 py-0.5 rounded-full text-[11px] font-bold text-gray-800">
+                          <span>🇦🇪</span>
+                          <span>AED</span>
+                          <span className="text-gray-400">›</span>
                         </div>
                       </div>
 
-                      <div className="rounded-xl bg-[#E8F8F0] p-2 text-center text-[9.5px] font-bold text-[#0B3528]">
-                        ✓ Rental payouts credited automatically
-                      </div>
-
-                      <div className="pt-1 pb-1 flex justify-center">
-                        <div className="h-1 w-24 bg-black/20 rounded-full" />
+                      {/* Action Circles Bar */}
+                      <div className="mt-3.5 flex items-center justify-around py-2.5 border-b border-gray-100">
+                        <div className="size-9 rounded-full bg-gray-100 flex items-center justify-center text-gray-600">
+                          <Coins size={15} />
+                        </div>
+                        <div className="size-9 rounded-full bg-gray-100 flex items-center justify-center text-gray-600">
+                          <Wallet size={15} />
+                        </div>
+                        <div className="size-9 rounded-full bg-gray-100 flex items-center justify-center text-gray-600">
+                          <Building2 size={15} />
+                        </div>
                       </div>
                     </div>
                   </div>
-                </>
+                </div>
               )}
 
               {/* =============================================================
-                  STEP 3: SELL STATE (Exact Match to Video Spec!)
+                  PROPERTY 4 (IMAGE 4): SELL STATE
+                  - Soft Light Gray rounded container
+                  - Half-screen phone width ~355px cut off at bottom of card
+                  - Tilted left photo card (Palm Jumeirah aerial)
+                  - Tilted top-right photo card (Resort towers with pool)
+                  - Green circular Price Tag sticker (Bottom-Right)
                   ============================================================= */}
               {activeStep === 3 && (
-                <>
-                  {/* Floating 1: Left Polaroid Photo Badge (-8deg) */}
-                  <div className="absolute top-1/3 -left-6 z-30 -rotate-[8deg] bg-white p-2 rounded-2xl shadow-2xl w-28 text-center transition-transform hover:scale-105">
+                <div className="w-full h-full relative flex justify-center items-start animate-in fade-in zoom-in-95 duration-500">
+                  
+                  {/* Sticker 1: Tilted Palm Jumeirah Aerial Photo (Left, -14deg) */}
+                  <div className="absolute top-1/4 -left-2 sm:left-1 z-10 -rotate-[14deg] border-4 border-white rounded-2xl shadow-2xl overflow-hidden w-26 sm:w-30 h-32 sm:h-38 bg-white">
                     <img
-                      src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=300&q=80"
-                      alt="Waterfront Canal"
-                      className="h-20 w-full object-cover rounded-xl mb-1.5"
+                      src="/images/journey/palm-aerial.jpg"
+                      alt="Palm Jumeirah"
+                      className="size-full object-cover"
                     />
-                    <p className="text-[10px] font-bold text-[#0D1117] truncate">Waterfront</p>
-                    <p className="text-[8.5px] text-[#00A663] font-semibold">Exit Ready</p>
                   </div>
 
-                  {/* Floating 2: Right Polaroid Photo Badge (+10deg) */}
-                  <div className="absolute top-12 -right-4 z-30 rotate-[10deg] bg-white p-2 rounded-2xl shadow-2xl w-28 text-center transition-transform hover:scale-105">
+                  {/* Sticker 2: Tilted Pool Towers Photo (Top Right, +12deg) */}
+                  <div className="absolute top-5 right-2 sm:right-5 z-10 rotate-[12deg] border-4 border-white rounded-2xl shadow-2xl overflow-hidden w-26 sm:w-30 h-32 sm:h-38 bg-white">
                     <img
-                      src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=300&q=80"
-                      alt="Modern Apartment"
-                      className="h-20 w-full object-cover rounded-xl mb-1.5"
+                      src="/images/journey/tower-pool.jpg"
+                      alt="Towers and pool"
+                      className="size-full object-cover"
                     />
-                    <p className="text-[10px] font-bold text-[#0D1117] truncate">Hittin Views</p>
-                    <p className="text-[8.5px] text-[#00A663] font-semibold">Fund Closed</p>
                   </div>
 
-                  {/* Floating 3: Green Tag Action Circle */}
-                  <div className="absolute bottom-20 -right-2 z-40 size-16 rounded-full bg-[#00A663] text-white flex items-center justify-center shadow-2xl transition-transform hover:scale-110 active:scale-95">
-                    <Tag size={26} strokeWidth={2.2} className="rotate-[-20deg]" />
+                  {/* Sticker 3: Green Circular Price Tag Badge (Bottom Right) */}
+                  <div className="absolute bottom-6 right-2 sm:right-4 z-30 size-16 sm:size-18 rounded-full bg-[#00D084] text-white flex items-center justify-center shadow-2xl transition-transform hover:scale-105">
+                    <Tag size={28} strokeWidth={2.4} className="-rotate-12" />
                   </div>
 
-                  {/* Central Phone Mockup (HITTIN Fund Screen) */}
-                  <div className="w-[280px] sm:w-[290px] rounded-[44px] bg-[#12161A] p-[5px] shadow-2xl select-none relative z-10">
-                    <div className="rounded-[39px] overflow-hidden bg-white relative flex flex-col justify-between text-[#0D1117] h-[510px] p-3.5">
-                      <div className="h-3.5 w-18 bg-black rounded-full mx-auto shrink-0 mb-1" />
-                      <PhoneStatusBar />
+                  {/* Phone Mockup (Half-screen cut off at bottom of card) */}
+                  <div className="w-[315px] sm:w-[345px] lg:w-[365px] h-[600px] sm:h-[660px] rounded-t-[42px] sm:rounded-t-[46px] bg-[#1a202c] p-[3.5px] shadow-2xl relative z-20 border-[3.5px] border-[#334155]/60 shrink-0">
+                    <div className="h-full rounded-t-[38px] sm:rounded-t-[42px] overflow-hidden bg-white relative flex flex-col text-[#0F172A] p-3.5">
+                      
+                      {/* Dynamic Island */}
+                      <div className="h-4.5 w-22 bg-black rounded-full mx-auto shrink-0 mb-1" />
+                      <PhoneStatusBar currency="" />
 
-                      {/* Top Bar with back, share, bookmark icons */}
+                      {/* Top Action Bar: Back chevron, Bookmark, Info/Question */}
                       <div className="mt-1 flex items-center justify-between px-1 text-gray-700">
-                        <ChevronLeft size={18} className="cursor-pointer" />
-                        <span className="text-[11px] font-bold">Opportunity</span>
-                        <div className="flex items-center gap-2">
-                          <Share2 size={14} className="cursor-pointer" />
-                          <Bookmark size={14} className="cursor-pointer" />
+                        <div className="size-7 rounded-full bg-gray-100 flex items-center justify-center">
+                          <ChevronLeft size={16} />
+                        </div>
+                        <div className="flex items-center gap-1.5">
+                          <div className="size-7 rounded-full bg-gray-100 flex items-center justify-center">
+                            <Bookmark size={14} />
+                          </div>
+                          <div className="size-7 rounded-full bg-gray-100 flex items-center justify-center">
+                            <HelpCircle size={14} />
+                          </div>
                         </div>
                       </div>
 
-                      {/* Commercial Real Estate Image titled "HITTIN" */}
-                      <div
-                        className="mt-2 h-36 rounded-2xl bg-cover bg-center relative overflow-hidden shadow-xs"
-                        style={{ backgroundImage: 'url("https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=500&q=80")' }}
-                      >
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
-                        
-                        <div className="absolute top-2 left-2 rounded-full bg-black/60 backdrop-blur-xs px-2 py-0.5 text-[8.5px] font-bold text-white">
-                          4 photos • Fund closed
+                      {/* Featured Media: Commercial Plaza titled "HITTIN" */}
+                      <div className="mt-2 relative h-40 sm:h-44 w-full rounded-2xl overflow-hidden shadow-xs">
+                        <img
+                          src="/images/journey/hittin.jpg"
+                          alt="HITTIN Plaza"
+                          className="size-full object-cover"
+                        />
+                        {/* Vertical "HITTIN" Sign Banner */}
+                        <div className="absolute top-3 right-3 bg-black/60 backdrop-blur-xs text-white text-[9.5px] font-black uppercase px-1.5 py-0.5 rounded tracking-wider">
+                          HITTIN
                         </div>
 
-                        <div className="absolute bottom-2 left-2 text-white">
-                          <p className="text-[10px] font-bold tracking-wider text-emerald-300 uppercase">Commercial</p>
-                          <h4 className="text-sm font-black tracking-tight leading-tight">HITTIN</h4>
-                        </div>
-
-                        {/* Pagination Dots */}
-                        <div className="absolute bottom-2 right-2 flex gap-1">
-                          <span className="size-1.5 rounded-full bg-white" />
+                        {/* Image Carousel Dots */}
+                        <div className="absolute bottom-2.5 right-3 flex gap-1">
+                          <span className="size-1.5 rounded-full bg-white shadow-xs" />
+                          <span className="size-1.5 rounded-full bg-white/50" />
                           <span className="size-1.5 rounded-full bg-white/50" />
                           <span className="size-1.5 rounded-full bg-white/50" />
                         </div>
                       </div>
 
-                      {/* Primary Metrics: Stake coverage */}
-                      <div className="mt-2 rounded-2xl bg-[#F8FAF9] p-3 border border-black/[0.06] space-y-1">
-                        <p className="text-[9.5px] font-bold uppercase tracking-wider text-gray-500">
+                      {/* Action Row Under Image: 6 photos & Fund member */}
+                      <div className="mt-2 flex items-center justify-between text-[11px] font-semibold text-gray-700 px-1">
+                        <div className="flex items-center gap-1.5">
+                          <Camera size={13} className="text-[#00A663]" />
+                          <span>6 photos</span>
+                        </div>
+                        <div className="flex items-center gap-1.5">
+                          <Building2 size={13} className="text-[#00A663]" />
+                          <span>Fund member...</span>
+                        </div>
+                      </div>
+
+                      {/* Stake Coverage Card */}
+                      <div className="mt-2.5 rounded-2xl border border-gray-100 bg-[#F8FAF9] p-3 text-center space-y-1">
+                        <p className="text-[10px] font-semibold uppercase tracking-wider text-gray-500">
                           Stake coverage
                         </p>
-                        <p className="text-lg font-black text-[#0D1117] tracking-tight">
+                        <p className="text-xl font-black text-[#0D3B4C] tracking-tight">
                           SAR 120,000,000
                         </p>
-                        <div className="flex items-center justify-between text-[10px] text-gray-500 pt-1 border-t border-black/[0.04]">
-                          <span>561 investors</span>
-                          <span className="font-bold text-[#00A663]">18 days left</span>
+                        <div className="pt-1 flex items-center justify-center gap-2 text-[10.5px]">
+                          <span className="rounded-full bg-white border border-gray-200 px-2.5 py-0.5 font-bold text-gray-700">
+                            368 Investors
+                          </span>
+                          <span className="rounded-full bg-white border border-gray-200 px-2.5 py-0.5 font-bold text-gray-700">
+                            ⏱️ 15 days left
+                          </span>
                         </div>
-                      </div>
-
-                      {/* Action Button */}
-                      <button
-                        type="button"
-                        className="mt-2 flex w-full items-center justify-center gap-1.5 rounded-xl bg-[#0D1117] py-2.5 text-xs font-bold text-white shadow-md active:scale-95"
-                      >
-                        <ArrowRightLeft size={13} />
-                        Sell Stake &amp; Cash Out
-                      </button>
-
-                      <div className="pt-1 pb-1 flex justify-center">
-                        <div className="h-1 w-24 bg-black/20 rounded-full" />
                       </div>
                     </div>
                   </div>
-                </>
+                </div>
               )}
 
             </div>

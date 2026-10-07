@@ -133,8 +133,42 @@ export function Navbar() {
   const [langMenuOpen, setLangMenuOpen] = useState(false)
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [selectedLang, setSelectedLang] = useState<'English' | 'العربية'>('English')
+  const [isNavHidden, setIsNavHidden] = useState(false)
   
   const navRef = useRef<HTMLDivElement>(null)
+
+  // Auto-hide navbar when locked in Scrollytelling Journey or scrolling downwards
+  useEffect(() => {
+    let lastScrollY = window.scrollY
+    let ticking = false
+
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY
+
+      if (currentScrollY > 120 && currentScrollY > lastScrollY + 15) {
+        setIsNavHidden(true)
+      } else if (currentScrollY < lastScrollY - 10 || currentScrollY <= 80) {
+        setIsNavHidden(false)
+      }
+
+      lastScrollY = currentScrollY
+      ticking = false
+    }
+
+    const onScroll = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(handleScroll)
+        ticking = true
+      }
+    }
+
+    window.addEventListener('scroll', onScroll, { passive: true })
+    handleScroll()
+
+    return () => {
+      window.removeEventListener('scroll', onScroll)
+    }
+  }, [pathname])
 
   // Close menus on outside click or Escape
   useEffect(() => {
@@ -166,7 +200,15 @@ export function Navbar() {
   }, [pathname])
 
   return (
-    <div ref={navRef} className="sticky top-0 z-[1000] w-full select-none" data-site-sticky>
+    <div
+      ref={navRef}
+      className={`sticky top-0 z-[1000] w-full select-none transition-all duration-500 ease-in-out ${
+        isNavHidden
+          ? '-translate-y-full opacity-0 pointer-events-none'
+          : 'translate-y-0 opacity-100 pointer-events-auto'
+      }`}
+      data-site-sticky
+    >
       {/* 1. Optional Top Notification Banner */}
       <TopBanner />
 
