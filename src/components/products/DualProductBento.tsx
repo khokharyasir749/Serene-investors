@@ -137,22 +137,50 @@ export function DualProductBento() {
                   </p>
                 </div>
 
-                {/* Main Phone Mockup (Submerged/Cropped at bottom) */}
-                <div className="relative z-10 w-[310px] sm:w-[350px] lg:w-[380px] shrink-0 rounded-[44px] bg-[#1E293B] p-2.5 sm:p-3 border-[3.5px] border-[#334155]/60 shadow-[0_25px_60px_rgba(0,0,0,0.35)]">
-                  {/* Side Buttons */}
-                  <div className="absolute -left-[5px] top-20 h-7 w-[3px] rounded-l-xs bg-[#475569]" />
-                  <div className="absolute -left-[5px] top-32 h-11 w-[3px] rounded-l-xs bg-[#475569]" />
-                  <div className="absolute -right-[5px] top-24 h-14 w-[3px] rounded-r-xs bg-[#475569]" />
+                {/* Main Phone Mockup (Submerged/Cropped at bottom - Realistic Titanium Frame) */}
+                <div className="relative z-10 w-[310px] sm:w-[350px] lg:w-[380px] shrink-0 rounded-[52px] bg-[#161a20] p-[3.5px] shadow-[0_30px_70px_-15px_rgba(0,0,0,0.45),0_0_0_1px_rgba(255,255,255,0.08)] border border-[#3b4452]/80 select-none">
+                  {/* Outer Metallic Chamfer Highlight */}
+                  <div className="pointer-events-none absolute inset-0 rounded-[51px] ring-1 ring-inset ring-white/10" aria-hidden="true" />
 
-                  {/* Phone Screen Canvas */}
-                  <div className="rounded-[34px] bg-white overflow-hidden flex flex-col text-left pb-14">
-                    
-                    {/* Top Notch / Dynamic Island */}
-                    <div className="relative z-30 pt-2 pb-1 bg-white flex justify-center items-center">
-                      <div className="h-5 w-24 sm:w-26 rounded-full bg-black flex items-center justify-end px-2.5">
-                        <div className="size-1.5 rounded-full bg-[#1e293b]" />
+                  {/* Chassis Hardware Buttons */}
+                  <div className="absolute -left-[2px] top-[46px] h-[2px] w-[3.5px] bg-[#0c0f14]" aria-hidden="true" />
+                  <div className="absolute -left-[5.5px] top-[76px] h-[18px] w-[4px] rounded-l-[2px] bg-[#2d3440] border-l border-y border-[#525d70]/80 shadow-xs" aria-hidden="true" />
+                  <div className="absolute -left-[5.5px] top-[108px] h-[42px] w-[4px] rounded-l-[2px] bg-[#2d3440] border-l border-y border-[#525d70]/80 shadow-xs" aria-hidden="true" />
+                  <div className="absolute -left-[5.5px] top-[160px] h-[42px] w-[4px] rounded-l-[2px] bg-[#2d3440] border-l border-y border-[#525d70]/80 shadow-xs" aria-hidden="true" />
+                  <div className="absolute -left-[2px] bottom-[72px] h-[2px] w-[3.5px] bg-[#0c0f14]" aria-hidden="true" />
+
+                  <div className="absolute -right-[2px] top-[46px] h-[2px] w-[3.5px] bg-[#0c0f14]" aria-hidden="true" />
+                  <div className="absolute -right-[5.5px] top-[116px] h-[64px] w-[4px] rounded-r-[2px] bg-[#2d3440] border-r border-y border-[#525d70]/80 shadow-xs" aria-hidden="true" />
+                  <div className="absolute -right-[2px] bottom-[72px] h-[2px] w-[3.5px] bg-[#0c0f14]" aria-hidden="true" />
+
+                  {/* Inner OLED Pitch-Black Bezel */}
+                  <div className="relative h-full w-full rounded-[48px] bg-black p-[3.5px] overflow-hidden flex flex-col shadow-inner">
+                    {/* Phone Screen Canvas */}
+                    <div className="rounded-[44px] bg-white overflow-hidden flex flex-col text-left pb-14">
+                      
+                      {/* Top Status Bar & Dynamic Island */}
+                      <div className="relative z-30 pt-2 pb-1.5 px-6 bg-white flex items-center justify-between text-[11px] font-semibold text-[#0D1117]">
+                        <span className="w-12 text-left font-semibold text-[13px] tracking-tight">9:41</span>
+                        <div className="h-[25px] w-[105px] rounded-full bg-black flex items-center justify-end px-2.5 shadow-sm">
+                          <div className="size-2.5 rounded-full bg-[#0a0d14] ring-1 ring-[#1b2230] flex items-center justify-center">
+                            <div className="size-1 rounded-full bg-[#20293d]" />
+                          </div>
+                        </div>
+                        <div className="flex w-12 items-center justify-end gap-1.5">
+                          <svg className="size-3.5 shrink-0" viewBox="0 0 16 16" fill="currentColor">
+                            <rect x="1" y="11" width="2" height="4" rx="0.5" />
+                            <rect x="5" y="8" width="2" height="7" rx="0.5" />
+                            <rect x="9" y="5" width="2" height="10" rx="0.5" />
+                            <rect x="13" y="2" width="2" height="13" rx="0.5" />
+                          </svg>
+                          <div className="flex items-center">
+                            <div className="flex h-3 w-5 items-center rounded-[3.5px] border-[1.2px] border-current p-[1.5px]">
+                              <div className="h-full w-3.5 rounded-[1.5px] bg-[#00A663]" />
+                            </div>
+                            <div className="h-1.5 w-[1.5px] rounded-r-xs bg-current" />
+                          </div>
+                        </div>
                       </div>
-                    </div>
 
                     {/* Hero Property Photo Container */}
                     <div className="relative h-48 sm:h-52 w-full overflow-hidden bg-gray-100">
@@ -266,8 +294,9 @@ export function DualProductBento() {
                     </div>
                   </div>
                 </div>
-
               </div>
+
+            </div>
 
               {/* Right Column (Editorial Text & Actions) */}
               <div className="lg:col-span-6 space-y-6 lg:pl-4">
@@ -383,82 +412,105 @@ export function DualProductBento() {
                   </p>
                 </div>
 
-                {/* Main Phone Mockup (Submerged/Cropped at bottom - Same width as Card 1) */}
-                <div className="relative z-10 w-[310px] sm:w-[350px] lg:w-[380px] shrink-0 rounded-[44px] bg-[#1E293B] p-2.5 sm:p-3 border-[3.5px] border-[#334155]/60 shadow-[0_25px_60px_rgba(0,0,0,0.35)]">
-                  {/* Side Buttons */}
-                  <div className="absolute -left-[5px] top-20 h-7 w-[3px] rounded-l-xs bg-[#475569]" />
-                  <div className="absolute -left-[5px] top-32 h-11 w-[3px] rounded-l-xs bg-[#475569]" />
-                  <div className="absolute -right-[5px] top-24 h-14 w-[3px] rounded-r-xs bg-[#475569]" />
+                {/* Main Phone Mockup (Submerged/Cropped at bottom - Realistic Titanium Frame) */}
+                <div className="relative z-10 w-[310px] sm:w-[350px] lg:w-[380px] shrink-0 rounded-[52px] bg-[#161a20] p-[3.5px] shadow-[0_30px_70px_-15px_rgba(0,0,0,0.45),0_0_0_1px_rgba(255,255,255,0.08)] border border-[#3b4452]/80 select-none">
+                  {/* Outer Metallic Chamfer Highlight */}
+                  <div className="pointer-events-none absolute inset-0 rounded-[51px] ring-1 ring-inset ring-white/10" aria-hidden="true" />
 
-                  {/* Phone Screen Canvas */}
-                  <div className="rounded-[34px] bg-white overflow-hidden flex flex-col text-left pb-14">
-                    
-                    {/* Top Status Bar & Dynamic Island */}
-                    <div className="relative z-30 pt-2 pb-1.5 px-4 bg-white flex items-center justify-between text-[11px] font-semibold text-[#0F172A]">
-                      <span className="w-10 text-left">9:41</span>
-                      <div className="h-5 w-24 sm:w-26 rounded-full bg-black flex items-center justify-end px-2.5 shadow-xs">
-                        <div className="size-1.5 rounded-full bg-[#1e293b]" />
-                      </div>
-                      <div className="flex w-10 items-center justify-end gap-1">
-                        <div className="h-2 w-3 rounded-2xs border border-current p-[0.5px]">
-                          <div className="h-full w-full bg-[#00A663] rounded-3xs" />
-                        </div>
-                      </div>
-                    </div>
+                  {/* Chassis Hardware Buttons */}
+                  <div className="absolute -left-[2px] top-[46px] h-[2px] w-[3.5px] bg-[#0c0f14]" aria-hidden="true" />
+                  <div className="absolute -left-[5.5px] top-[76px] h-[18px] w-[4px] rounded-l-[2px] bg-[#2d3440] border-l border-y border-[#525d70]/80 shadow-xs" aria-hidden="true" />
+                  <div className="absolute -left-[5.5px] top-[108px] h-[42px] w-[4px] rounded-l-[2px] bg-[#2d3440] border-l border-y border-[#525d70]/80 shadow-xs" aria-hidden="true" />
+                  <div className="absolute -left-[5.5px] top-[160px] h-[42px] w-[4px] rounded-l-[2px] bg-[#2d3440] border-l border-y border-[#525d70]/80 shadow-xs" aria-hidden="true" />
+                  <div className="absolute -left-[2px] bottom-[72px] h-[2px] w-[3.5px] bg-[#0c0f14]" aria-hidden="true" />
 
-                    {/* Section Label inside Phone */}
-                    <div className="px-4 py-2 border-b border-gray-100 flex items-center justify-between">
-                      <span className="text-xs font-bold text-[#0F172A]">Private Funds</span>
-                    </div>
+                  <div className="absolute -right-[2px] top-[46px] h-[2px] w-[3.5px] bg-[#0c0f14]" aria-hidden="true" />
+                  <div className="absolute -right-[5.5px] top-[116px] h-[64px] w-[4px] rounded-r-[2px] bg-[#2d3440] border-r border-y border-[#525d70]/80 shadow-xs" aria-hidden="true" />
+                  <div className="absolute -right-[2px] bottom-[72px] h-[2px] w-[3.5px] bg-[#0c0f14]" aria-hidden="true" />
 
-                    {/* Phone Inner Fund Card Details */}
-                    <div className="p-3.5 sm:p-4 space-y-3 bg-white">
+                  {/* Inner OLED Pitch-Black Bezel */}
+                  <div className="relative h-full w-full rounded-[48px] bg-black p-[3.5px] overflow-hidden flex flex-col shadow-inner">
+                    {/* Phone Screen Canvas */}
+                    <div className="rounded-[44px] bg-white overflow-hidden flex flex-col text-left pb-14">
                       
-                      {/* Fund Hero Image */}
-                      <div className="relative h-44 sm:h-48 w-full rounded-2xl overflow-hidden bg-gray-100 shadow-2xs">
-                        <img
-                          src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=600&q=80"
-                          alt="Al Khuzama Real Estate Fund"
-                          className="h-full w-full object-cover"
-                        />
-                        <span className="absolute left-2.5 top-2.5 rounded-full bg-[#0B3528]/90 px-2.5 py-0.5 text-[9.5px] font-bold text-white shadow-xs">
-                          Exclusive Fund
-                        </span>
-                      </div>
-
-                      {/* Title & Fund Size */}
-                      <div>
-                        <h4 className="text-[14.5px] sm:text-[16px] font-bold text-[#0F172A] leading-tight">
-                          Al Khuzama Real Estate Fund
-                        </h4>
-                        <p className="text-[10px] sm:text-[11px] text-[#64748B] mt-0.5">
-                          SAR 85M fund size
-                        </p>
-                      </div>
-
-                      {/* Allocation Progress */}
-                      <div className="space-y-1.5">
-                        <div className="flex items-center justify-between text-[10px] sm:text-[11px]">
-                          <span className="font-semibold text-[#0F172A]">Allocation Progress</span>
-                          <span className="font-bold text-[#00A663]">92% funded</span>
+                      {/* Top Status Bar & Dynamic Island */}
+                      <div className="relative z-30 pt-2 pb-1.5 px-6 bg-white flex items-center justify-between text-[11px] font-semibold text-[#0D1117]">
+                        <span className="w-12 text-left font-semibold text-[13px] tracking-tight">9:41</span>
+                        <div className="h-[25px] w-[105px] rounded-full bg-black flex items-center justify-end px-2.5 shadow-sm">
+                          <div className="size-2.5 rounded-full bg-[#0a0d14] ring-1 ring-[#1b2230] flex items-center justify-center">
+                            <div className="size-1 rounded-full bg-[#20293d]" />
+                          </div>
                         </div>
-                        <div className="h-1.5 sm:h-2 w-full rounded-full bg-gray-100 overflow-hidden">
-                          <div className="h-full w-[92%] rounded-full bg-[#00A663]" />
+                        <div className="flex w-12 items-center justify-end gap-1.5">
+                          <svg className="size-3.5 shrink-0" viewBox="0 0 16 16" fill="currentColor">
+                            <rect x="1" y="11" width="2" height="4" rx="0.5" />
+                            <rect x="5" y="8" width="2" height="7" rx="0.5" />
+                            <rect x="9" y="5" width="2" height="10" rx="0.5" />
+                            <rect x="13" y="2" width="2" height="13" rx="0.5" />
+                          </svg>
+                          <div className="flex items-center">
+                            <div className="flex h-3 w-5 items-center rounded-[3.5px] border-[1.2px] border-current p-[1.5px]">
+                              <div className="h-full w-3.5 rounded-[1.5px] bg-[#00A663]" />
+                            </div>
+                            <div className="h-1.5 w-[1.5px] rounded-r-xs bg-current" />
+                          </div>
                         </div>
                       </div>
 
-                      {/* Distribution & Allocation Info Box */}
-                      <div className="rounded-xl bg-[#F8FAF9] p-3 text-[10.5px] sm:text-[11px] space-y-2 border border-black/[0.04]">
-                        <div className="flex justify-between items-center">
-                          <span className="text-[#64748B]">Target Distribution:</span>
-                          <strong className="text-[#0F172A] font-bold">Quarterly Dividends</strong>
-                        </div>
-                        <div className="flex justify-between items-center">
-                          <span className="text-[#64748B]">Minimum Allocation:</span>
-                          <strong className="text-[#00A663] font-bold">SAR 1,000 / USD 266</strong>
-                        </div>
+                      {/* Section Label inside Phone */}
+                      <div className="px-5 py-2 border-b border-gray-100 flex items-center justify-between">
+                        <span className="text-xs font-bold text-[#0F172A]">Private Funds</span>
                       </div>
 
+                      {/* Phone Inner Fund Card Details */}
+                      <div className="p-3.5 sm:p-4 space-y-3 bg-white">
+                        
+                        {/* Fund Hero Image */}
+                        <div className="relative h-44 sm:h-48 w-full rounded-2xl overflow-hidden bg-gray-100 shadow-2xs">
+                          <img
+                            src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=600&q=80"
+                            alt="Al Khuzama Real Estate Fund"
+                            className="h-full w-full object-cover"
+                          />
+                          <span className="absolute left-2.5 top-2.5 rounded-full bg-[#0B3528]/90 px-2.5 py-0.5 text-[9.5px] font-bold text-white shadow-xs">
+                            Exclusive Fund
+                          </span>
+                        </div>
+
+                        {/* Title & Fund Size */}
+                        <div>
+                          <h4 className="text-[14.5px] sm:text-[16px] font-bold text-[#0F172A] leading-tight">
+                            Al Khuzama Real Estate Fund
+                          </h4>
+                          <p className="text-[10px] sm:text-[11px] text-[#64748B] mt-0.5">
+                            SAR 85M fund size
+                          </p>
+                        </div>
+
+                        {/* Allocation Progress */}
+                        <div className="space-y-1.5">
+                          <div className="flex items-center justify-between text-[10px] sm:text-[11px]">
+                            <span className="font-semibold text-[#0F172A]">Allocation Progress</span>
+                            <span className="font-bold text-[#00A663]">92% funded</span>
+                          </div>
+                          <div className="h-1.5 sm:h-2 w-full rounded-full bg-gray-100 overflow-hidden">
+                            <div className="h-full w-[92%] rounded-full bg-[#00A663]" />
+                          </div>
+                        </div>
+
+                        {/* Distribution & Allocation Info Box */}
+                        <div className="rounded-xl bg-[#F8FAF9] p-3 text-[10.5px] sm:text-[11px] space-y-2 border border-black/[0.04]">
+                          <div className="flex justify-between items-center">
+                            <span className="text-[#64748B]">Target Distribution:</span>
+                            <strong className="text-[#0F172A] font-bold">Quarterly Dividends</strong>
+                          </div>
+                          <div className="flex justify-between items-center">
+                            <span className="text-[#64748B]">Minimum Allocation:</span>
+                            <strong className="text-[#00A663] font-bold">SAR 1,000 / USD 266</strong>
+                          </div>
+                        </div>
+
+                      </div>
                     </div>
                   </div>
                 </div>
