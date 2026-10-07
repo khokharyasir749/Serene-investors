@@ -301,8 +301,14 @@ export function StakeHero() {
                 </div>
               </div>
 
-              {/* --- PHONE 3: BOTTOM-CENTER (Foreground Sharp Screen) --- */}
-              <div className="absolute top-[310px] lg:top-[330px] left-[130px] lg:left-[155px] w-[245px] lg:w-[265px] h-[460px] -rotate-[16deg] rounded-[38px] bg-[#12161A] p-[4px] shadow-[0_22px_50px_-12px_rgba(0,0,0,0.35),0_0_0_1px_rgba(255,255,255,0.12)] z-30 opacity-100">
+              {/* --- PHONE 3: BOTTOM-CENTER (Foreground Sharp Screen with Bottom Fade-Out Mask) --- */}
+              <div 
+                className="absolute top-[310px] lg:top-[330px] left-[130px] lg:left-[155px] w-[245px] lg:w-[265px] h-[440px] -rotate-[16deg] rounded-[38px] bg-[#12161A] p-[4px] shadow-[0_22px_50px_-12px_rgba(0,0,0,0.35),0_0_0_1px_rgba(255,255,255,0.12)] z-30 opacity-100"
+                style={{
+                  WebkitMaskImage: 'linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 28%, rgba(0,0,0,0) 65%)',
+                  maskImage: 'linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 28%, rgba(0,0,0,0) 65%)',
+                }}
+              >
                 <div className="relative h-full w-full overflow-hidden rounded-[34px] bg-white flex flex-col text-left">
                   {/* Dynamic Island */}
                   <div className="h-3.5 w-18 bg-black rounded-full mx-auto mt-2 shrink-0" />
@@ -366,8 +372,8 @@ export function StakeHero() {
               <div className="absolute -bottom-2 left-0 right-0 h-48 lg:h-60 bg-gradient-to-t from-[#F7F5EF] via-[#F7F5EF]/90 to-transparent pointer-events-none z-35" />
 
               {/* --- FLOATING OVERLAY: RENT NOTIFICATION BADGE --- */}
-              {/* Positioned cleanly across Phone 3 with Stake brand icon */}
-              <div className="absolute bottom-16 lg:bottom-20 left-16 lg:left-24 z-40 bg-white/95 backdrop-blur-md rounded-2xl px-4 py-2.5 shadow-2xl border border-black/5 flex items-center gap-3 transition-transform hover:scale-105">
+              {/* Positioned tilted across Phone 3 matching exact Stake reference */}
+              <div className="absolute top-[385px] lg:top-[410px] left-[75px] lg:left-[100px] z-40 -rotate-[16deg] bg-white/95 backdrop-blur-md rounded-2xl px-4 py-2.5 shadow-2xl border border-black/5 flex items-center gap-3 transition-transform hover:scale-105">
                 {/* Stake App Icon simulation with pink accent */}
                 <div className="size-8 rounded-xl bg-[#0D1117] flex items-center justify-center text-white relative shadow-xs">
                   <span className="font-mono text-xs font-black text-emerald-400">k</span>
