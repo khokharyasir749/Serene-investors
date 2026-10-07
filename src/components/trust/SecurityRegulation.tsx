@@ -96,25 +96,25 @@ export function SecurityRegulation() {
             ========================================================================= */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-24">
           
-          {/* Card A (Left): Dual regulated narrative */}
+          {/* Card A (Left): Narrative card */}
           <div className="lg:col-span-5 rounded-[32px] bg-white/[0.04] p-8 sm:p-10 border border-white/10 backdrop-blur-sm flex flex-col justify-between hover:bg-white/[0.06] transition-colors">
             <div>
               <div className="flex size-14 items-center justify-center rounded-2xl bg-[#00A663]/20 border border-[#00A663]/30 text-[#A7F3D0] mb-6">
-                <Scale size={26} />
+                {activeTab === 'dual' ? <Scale size={26} /> : <Lock size={26} />}
               </div>
 
               <span className="font-mono text-xs uppercase tracking-wider text-[#A7F3D0] font-bold">
-                {activeTab === 'dual' ? 'INSTITUTIONAL OVERSIGHT' : 'LEGAL STRUCTURE'}
+                {activeTab === 'dual' ? 'INSTITUTIONAL OVERSIGHT' : 'LEGAL TITLES'}
               </span>
 
               <h3 className="text-2xl sm:text-3xl font-bold text-white tracking-tight mt-2 leading-snug">
-                {activeTab === 'dual' ? 'Dual regulated' : 'Direct ownership in your name'}
+                {activeTab === 'dual' ? 'Dual regulated' : 'Ownership protection'}
               </h3>
 
               <p className="mt-4 text-sm sm:text-base text-slate-300 leading-relaxed">
                 {activeTab === 'dual'
-                  ? 'Invest with the complete assurance that we are dual regulated by the most prestigious regulators in the Middle East and adhere strictly to UK FCA custody tier standards.'
-                  : 'Each property is purchased through an independent Special Purpose Vehicle (SPV). Investors receive digital share certificates and verified Land Registry deeds allocating direct pro-rata equity.'}
+                  ? 'Invest with the assurance that we are dual regulated by the most prestigious regulators in the Middle East.'
+                  : 'We provide verifiable ownership documents, celebrated partnerships with government entities like DIFC and Absher, and the backing of industry giants such as Aramco.'}
               </p>
             </div>
 
@@ -132,51 +132,101 @@ export function SecurityRegulation() {
           {/* Card B (Right): Split Regulatory Authority Items */}
           <div className="lg:col-span-7 space-y-6">
             
-            {/* Top item: DFSA */}
-            <div className="rounded-[30px] bg-white/[0.04] p-7 sm:p-8 border border-white/10 backdrop-blur-sm hover:bg-white/[0.06] transition-colors">
-              <div className="flex items-start gap-4 sm:gap-5">
-                <div className="flex size-12 sm:size-14 shrink-0 items-center justify-center rounded-2xl bg-emerald-500/15 border border-emerald-400/25 text-[#A7F3D0]">
-                  <Landmark size={24} />
-                </div>
-                <div className="flex-1">
-                  <div className="flex items-center gap-2">
-                    <span className="rounded-full bg-emerald-500/20 px-2.5 py-0.5 text-[10px] font-bold font-mono text-[#A7F3D0]">
-                      UAE • DIFC
-                    </span>
-                    <span className="text-xs text-slate-400">• Licence No. F005380</span>
+            {activeTab === 'dual' ? (
+              <>
+                {/* Top item: DFSA */}
+                <div className="rounded-[30px] bg-white/[0.04] p-7 sm:p-8 border border-white/10 backdrop-blur-sm hover:bg-white/[0.06] transition-colors">
+                  <div className="flex items-start gap-4 sm:gap-5">
+                    <div className="flex size-12 sm:size-14 shrink-0 items-center justify-center rounded-2xl bg-emerald-500/15 border border-emerald-400/25 text-[#A7F3D0]">
+                      <Landmark size={24} />
+                    </div>
+                    <div className="flex-1">
+                      <div className="flex items-center gap-2">
+                        <span className="rounded-full bg-emerald-500/20 px-2.5 py-0.5 text-[10px] font-bold font-mono text-[#A7F3D0]">
+                          UAE • DIFC
+                        </span>
+                        <span className="text-xs text-slate-400">• DFSA Operator Licence</span>
+                      </div>
+                      <h4 className="text-xl font-bold text-white tracking-tight mt-1.5">
+                        Regulated by the DFSA in the UAE
+                      </h4>
+                      <p className="mt-2 text-sm text-slate-300 leading-relaxed">
+                        An independent regulator of financial services conducted in or from the DIFC, a purpose-built financial free zone in Dubai. Stake also holds an Islamic Finance Window endorsement.
+                      </p>
+                    </div>
                   </div>
-                  <h4 className="text-xl font-bold text-white tracking-tight mt-1.5">
-                    Regulated by the DFSA in the UAE
-                  </h4>
-                  <p className="mt-2 text-sm text-slate-300 leading-relaxed">
-                    An independent regulator of financial services conducted in or from the DIFC, a purpose-built financial free zone in Dubai. Stake operates under a Category 4 DFSA prudential licence.
-                  </p>
                 </div>
-              </div>
-            </div>
 
-            {/* Bottom item: CMA */}
-            <div className="rounded-[30px] bg-white/[0.04] p-7 sm:p-8 border border-white/10 backdrop-blur-sm hover:bg-white/[0.06] transition-colors">
-              <div className="flex items-start gap-4 sm:gap-5">
-                <div className="flex size-12 sm:size-14 shrink-0 items-center justify-center rounded-2xl bg-blue-500/15 border border-blue-400/25 text-blue-300">
-                  <Award size={24} />
-                </div>
-                <div className="flex-1">
-                  <div className="flex items-center gap-2">
-                    <span className="rounded-full bg-blue-500/20 px-2.5 py-0.5 text-[10px] font-bold font-mono text-blue-300">
-                      SAUDI ARABIA • CMA
-                    </span>
-                    <span className="text-xs text-slate-400">• FinTech Lab Authorised</span>
+                {/* Bottom item: CMA */}
+                <div className="rounded-[30px] bg-white/[0.04] p-7 sm:p-8 border border-white/10 backdrop-blur-sm hover:bg-white/[0.06] transition-colors">
+                  <div className="flex items-start gap-4 sm:gap-5">
+                    <div className="flex size-12 sm:size-14 shrink-0 items-center justify-center rounded-2xl bg-blue-500/15 border border-blue-400/25 text-blue-300">
+                      <Award size={24} />
+                    </div>
+                    <div className="flex-1">
+                      <div className="flex items-center gap-2">
+                        <span className="rounded-full bg-blue-500/20 px-2.5 py-0.5 text-[10px] font-bold font-mono text-blue-300">
+                          SAUDI ARABIA • CMA
+                        </span>
+                        <span className="text-xs text-slate-400">• FinTech Lab Permit: 05-53-2023</span>
+                      </div>
+                      <h4 className="text-xl font-bold text-white tracking-tight mt-1.5">
+                        Regulated by the CMA in Saudi Arabia
+                      </h4>
+                      <p className="mt-2 text-sm text-slate-300 leading-relaxed">
+                        We’re regulated by the Capital Markets Authority (CMA) in Saudi Arabia to enter under its FinTech Lab and licensed to launch real estate investment fund opportunities in and from the Kingdom.
+                      </p>
+                    </div>
                   </div>
-                  <h4 className="text-xl font-bold text-white tracking-tight mt-1.5">
-                    Regulated by the CMA in Saudi Arabia
-                  </h4>
-                  <p className="mt-2 text-sm text-slate-300 leading-relaxed">
-                    We&apos;re regulated by the Capital Markets Authority (CMA) in Saudi Arabia, enabling qualified cross-border property and institutional funds syndication with statutory investor protection.
-                  </p>
                 </div>
-              </div>
-            </div>
+              </>
+            ) : (
+              <>
+                {/* Ownership item 1: DIFC & DLD */}
+                <div className="rounded-[30px] bg-white/[0.04] p-7 sm:p-8 border border-white/10 backdrop-blur-sm hover:bg-white/[0.06] transition-colors">
+                  <div className="flex items-start gap-4 sm:gap-5">
+                    <div className="flex size-12 sm:size-14 shrink-0 items-center justify-center rounded-2xl bg-emerald-500/15 border border-emerald-400/25 text-[#A7F3D0]">
+                      <Landmark size={24} />
+                    </div>
+                    <div className="flex-1">
+                      <div className="flex items-center gap-2">
+                        <span className="rounded-full bg-emerald-500/20 px-2.5 py-0.5 text-[10px] font-bold font-mono text-[#A7F3D0]">
+                          DUBAI LAND DEPARTMENT
+                        </span>
+                      </div>
+                      <h4 className="text-xl font-bold text-white tracking-tight mt-1.5">
+                        Share Certificates and Title Deeds in Dubai
+                      </h4>
+                      <p className="mt-2 text-sm text-slate-300 leading-relaxed">
+                        Share Certificates are backed by the Dubai International Financial Centre (DIFC), and Title Deeds are issued by the Dubai Land Department (DLD).
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Ownership item 2: Saudi Fund Units */}
+                <div className="rounded-[30px] bg-white/[0.04] p-7 sm:p-8 border border-white/10 backdrop-blur-sm hover:bg-white/[0.06] transition-colors">
+                  <div className="flex items-start gap-4 sm:gap-5">
+                    <div className="flex size-12 sm:size-14 shrink-0 items-center justify-center rounded-2xl bg-blue-500/15 border border-blue-400/25 text-blue-300">
+                      <Award size={24} />
+                    </div>
+                    <div className="flex-1">
+                      <div className="flex items-center gap-2">
+                        <span className="rounded-full bg-blue-500/20 px-2.5 py-0.5 text-[10px] font-bold font-mono text-blue-300">
+                          AUTHORIZED ADMINISTRATORS
+                        </span>
+                      </div>
+                      <h4 className="text-xl font-bold text-white tracking-tight mt-1.5">
+                        Fund Unit Certificates in Saudi Arabia
+                      </h4>
+                      <p className="mt-2 text-sm text-slate-300 leading-relaxed">
+                        Subscription certificates and fund unit registries are issued by professional licensed fund administrators in Saudi Arabia.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </>
+            )}
 
           </div>
 

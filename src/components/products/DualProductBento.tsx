@@ -13,10 +13,10 @@ export function DualProductBento() {
   const [isPlayingVideo, setIsPlayingVideo] = useState(false)
 
   const stats = [
-    { label: 'Registered users', value: '2M+' },
-    { label: 'Property transactions', value: '£1.5B+', sub: 'AED 1.5B+' },
+    { label: 'Registered users', value: '800K+' },
+    { label: 'Property transactions', value: 'AED 1.5B+' },
     { label: 'User nationalities', value: '202+' },
-    { label: 'Total distributed', value: '£236M+', sub: 'AED 236.9M+' },
+    { label: 'Total distributed', value: 'AED 45M+' },
   ]
 
   return (
@@ -43,11 +43,6 @@ export function DualProductBento() {
                 <p className="mt-1.5 text-xs sm:text-sm font-semibold text-[#4B5563]">
                   {stat.label}
                 </p>
-                {stat.sub && (
-                  <p className="text-[11px] text-[#64748B] font-mono mt-0.5">
-                    {stat.sub}
-                  </p>
-                )}
               </div>
             ))}
           </div>
@@ -127,19 +122,17 @@ export function DualProductBento() {
                             <span className="absolute right-2.5 top-2.5 rounded-full bg-white/95 px-2 py-0.5 text-[9.5px] font-extrabold text-[#00A663]">
                               7.8% Net Yield
                             </span>
-                          </div>
-
-                          <div className="p-3">
-                            <p className="text-xs font-bold text-[#0D1117]">Park Islands, Dubai Marina</p>
-                            <p className="text-[10px] text-[#64748B]">Purchase price: £1.3M / AED 6.1M</p>
+                          </div>                          <div className="p-3">
+                            <p className="text-xs font-bold text-[#0D1117]">Marina Gate 1, Dubai Marina</p>
+                            <p className="text-[10px] text-[#64748B]">Purchase price: AED 1,450,000</p>
 
                             <div className="mt-2.5">
                               <div className="flex justify-between text-[10px] font-semibold text-[#0D1117] mb-1">
                                 <span>Funding Progress</span>
-                                <span className="text-[#00A663]">75% funded</span>
+                                <span className="text-[#00A663]">84% funded</span>
                               </div>
                               <div className="h-1.5 w-full rounded-full bg-black/[0.06] overflow-hidden">
-                                <div className="h-full w-[75%] rounded-full bg-[#00A663]" />
+                                <div className="h-full w-[84%] rounded-full bg-[#00A663]" />
                               </div>
                             </div>
                           </div>
@@ -148,7 +141,7 @@ export function DualProductBento() {
                         {/* Quick Trust Pill */}
                         <div className="flex items-center gap-2 rounded-xl bg-[#E8F8F0] p-2 text-[10px] text-[#0B3528] font-semibold">
                           <CheckCircle2 size={13} className="text-[#00A663] shrink-0" />
-                          <span>FCA &amp; DFSA Protected SPV Deeds</span>
+                          <span>Regulated by DFSA • DIFC Title Deeds</span>
                         </div>
                       </div>
 
@@ -156,7 +149,7 @@ export function DualProductBento() {
                         type="button"
                         className="mt-3 flex w-full items-center justify-center gap-1.5 rounded-xl bg-[#00A663] py-2 text-xs font-bold text-white shadow-2xs hover:bg-[#0B3528] transition-colors"
                       >
-                        Invest from £500
+                        Invest from AED 500
                       </button>
                     </div>
                   </DeviceFrame>
@@ -168,7 +161,7 @@ export function DualProductBento() {
               <div className="lg:col-span-6 space-y-6">
                 <span className="inline-flex items-center gap-1.5 rounded-full bg-[#E8F8F0] px-3.5 py-1 text-xs font-bold text-[#00A663] border border-[#00A663]/25">
                   <Building size={13} />
-                  FRACTIONAL PROPERTIES
+                  PROPERTIES
                 </span>
 
                 <h3 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-[#0D1117] leading-tight">
@@ -176,7 +169,7 @@ export function DualProductBento() {
                 </h3>
 
                 <p className="text-base sm:text-lg text-[#4B5563] leading-relaxed">
-                  Own shares of individual properties with high-yield and appreciation potential in Dubai / Prime markets. Benefit from effortless digital management, regular passive rental distributions, and complete Land Registry transparency.
+                  Own shares of individual properties with high-yield and appreciation potential in Dubai. Benefit from effortless digital management, regular passive rental distributions, and complete Land Registry transparency.
                 </p>
 
                 <div className="flex flex-wrap items-center gap-4 pt-2">
@@ -219,7 +212,7 @@ export function DualProductBento() {
               <div className="lg:col-span-6 space-y-6 order-2 lg:order-1">
                 <span className="inline-flex items-center gap-1.5 rounded-full bg-[#0B3528]/10 px-3.5 py-1 text-xs font-bold text-[#0B3528] border border-[#0B3528]/20">
                   <PieChart size={13} />
-                  INSTITUTIONAL FUNDS
+                  FUNDS
                 </span>
 
                 <h3 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-[#0D1117] leading-tight">
@@ -227,7 +220,7 @@ export function DualProductBento() {
                 </h3>
 
                 <p className="text-base sm:text-lg text-[#4B5563] leading-relaxed">
-                  Own units of exclusive commercial, residential and mixed-use funds across regional high-growth corridors. Gain diversified exposure managed by tier-1 institutional asset managers with targeted internal rates of return.
+                  Own units of exclusive commercial, residential and mixed-use funds across Saudi and other countries. Gain diversified exposure managed by tier-1 institutional asset managers with targeted internal rates of return.
                 </p>
 
                 <div className="flex flex-wrap items-center gap-4 pt-2">
@@ -281,33 +274,33 @@ export function DualProductBento() {
                           </span>
                         </div>
 
-                        {/* Fund Card: Riyadh Income Generating Fund */}
+                        {/* Fund Card: Al Khuzama Real Estate Fund */}
                         <div className="rounded-2xl border border-black/[0.08] overflow-hidden bg-white shadow-2xs">
                           <div className="relative h-28 w-full">
                             <img
                               src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=500&q=80"
-                              alt="Riyadh Income Generating Fund"
+                              alt="Al Khuzama Real Estate Fund"
                               className="h-full w-full object-cover"
                             />
-                            <span className="absolute left-2.5 top-2.5 rounded-full bg-[#0B3528]/90 px-2 py-0.5 text-[9.5px] font-bold text-white">
-                              Institutional Fund
+                            <span className="absolute left-2.5 top-2.5 rounded-full bg-[#0B3528]/90 px-2.5 py-0.5 text-[9.5px] font-bold text-white">
+                              Exclusive Fund
                             </span>
-                            <span className="absolute right-2.5 top-2.5 rounded-full bg-white/95 px-2 py-0.5 text-[9.5px] font-extrabold text-[#00A663]">
-                              14.2% Target IRR
+                            <span className="absolute right-2.5 top-2.5 rounded-full bg-white/95 px-2.5 py-0.5 text-[9.5px] font-extrabold text-[#00A663]">
+                              +32.2% Return
                             </span>
                           </div>
 
                           <div className="p-3">
-                            <p className="text-xs font-bold text-[#0D1117]">Riyadh Income Generating Fund</p>
-                            <p className="text-[10px] text-[#64748B]">SAR 120M fund coverage</p>
+                            <p className="text-xs font-bold text-[#0D1117]">Al Khuzama Real Estate Fund</p>
+                            <p className="text-[10px] text-[#64748B]">SAR 85M fund size</p>
 
                             <div className="mt-2.5">
                               <div className="flex justify-between text-[10px] font-semibold text-[#0D1117] mb-1">
                                 <span>Allocation Progress</span>
-                                <span className="text-[#00A663]">75% funded</span>
+                                <span className="text-[#00A663]">92% funded</span>
                               </div>
                               <div className="h-1.5 w-full rounded-full bg-black/[0.06] overflow-hidden">
-                                <div className="h-full w-[75%] rounded-full bg-[#00A663]" />
+                                <div className="h-full w-[92%] rounded-full bg-[#00A663]" />
                               </div>
                             </div>
                           </div>
@@ -317,11 +310,11 @@ export function DualProductBento() {
                         <div className="rounded-xl bg-[#F8FAF9] p-2 text-[10px] text-[#4B5563] space-y-1 border border-black/[0.06]">
                           <div className="flex justify-between">
                             <span>Target Distribution:</span>
-                            <strong className="text-[#0D1117]">Quarterly Cash Dividends</strong>
+                            <strong className="text-[#0D1117]">Quarterly Dividends</strong>
                           </div>
                           <div className="flex justify-between">
                             <span>Minimum Allocation:</span>
-                            <strong className="text-[#00A663]">£2,500 / SAR 12,000</strong>
+                            <strong className="text-[#00A663]">SAR 1,000 / USD 266</strong>
                           </div>
                         </div>
                       </div>

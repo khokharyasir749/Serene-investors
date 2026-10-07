@@ -41,7 +41,7 @@ export function StakeFooterComplete() {
               </h2>
 
               <p className="text-base sm:text-lg text-emerald-50/90 leading-relaxed max-w-lg">
-                Join over 2,000,000 users worldwide building wealth through fractionally owned, high-performing global real estate assets. Start with just £500 / AED 2,000.
+                Join thousands of users worldwide building wealth through fractionally owned, high-performing global real estate assets. Start with just USD 150 / AED 500.
               </p>
 
               {/* App Store and Google Play Badges */}
@@ -114,7 +114,7 @@ export function StakeFooterComplete() {
                       {/* Balance Box */}
                       <div className="rounded-2xl bg-gradient-to-br from-[#0B3528] to-[#041a12] p-3.5 text-white">
                         <span className="font-mono text-[9px] text-emerald-300">TOTAL VALUE</span>
-                        <p className="text-xl font-black mt-0.5">£306,500.00</p>
+                        <p className="text-xl font-black mt-0.5">AED 1,236,000.00</p>
                         <p className="text-[9.5px] text-emerald-200 mt-0.5">+30.8% Total Gain</p>
                       </div>
 
@@ -126,21 +126,21 @@ export function StakeFooterComplete() {
                           className="size-10 rounded-lg object-cover shrink-0"
                         />
                         <div className="flex-1 min-w-0">
-                          <p className="text-[11px] font-bold text-[#0D1117] truncate">Marina Gate Tower</p>
-                          <p className="text-[9.5px] text-[#00A663] font-semibold">+£320.00 Monthly Rent</p>
+                          <p className="text-[11px] font-bold text-[#0D1117] truncate">Marina Gate 1</p>
+                          <p className="text-[9.5px] text-[#00A663] font-semibold">+AED 1,420.00 Monthly Rent</p>
                         </div>
                       </div>
 
                       {/* Second Holding Card */}
                       <div className="rounded-xl border border-black/[0.08] p-2.5 flex items-center gap-2.5 bg-[#F8FAF9]">
                         <img
-                          src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=200&q=80"
-                          alt="Mayfair Core"
+                          src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=200&q=80"
+                          alt="Boulevard Point"
                           className="size-10 rounded-lg object-cover shrink-0"
                         />
                         <div className="flex-1 min-w-0">
-                          <p className="text-[11px] font-bold text-[#0D1117] truncate">The Mayfair Core</p>
-                          <p className="text-[9.5px] text-[#00A663] font-semibold">+£1,130.00 Dividend</p>
+                          <p className="text-[11px] font-bold text-[#0D1117] truncate">Boulevard Point</p>
+                          <p className="text-[9.5px] text-[#00A663] font-semibold">+AED 2,130.00 Monthly Rent</p>
                         </div>
                       </div>
                     </div>
@@ -174,16 +174,20 @@ export function StakeFooterComplete() {
             {/* Brand & Quick Products */}
             <div className="col-span-2 space-y-4">
               <div className="flex items-center gap-2.5">
-                <div className="flex size-9 items-center justify-center rounded-xl bg-gradient-to-br from-[#00A663] to-[#0B3528] text-white">
-                  <span className="font-mono text-base font-black">S</span>
-                </div>
-                <span className="font-heading text-xl font-extrabold tracking-tight text-white">
-                  SERENE <span className="text-[#00A663]">INVESTORS</span>
-                </span>
+                <Link href="/" aria-label="Stake Home" className="inline-flex items-center select-none group">
+                  <span className="font-heading text-[28px] font-black tracking-[-0.035em] text-white leading-none flex items-center">
+                    <span>sta</span>
+                    <span className="relative inline-flex items-center">
+                      <span className="text-white">k</span>
+                      <span className="absolute bottom-[2.5px] -right-[1.5px] w-[5.5px] h-[3.8px] bg-[#00A663] rounded-[1px] transform rotate-[18deg]" />
+                    </span>
+                    <span>e</span>
+                  </span>
+                </Link>
               </div>
 
               <p className="max-w-sm text-sm text-slate-400 leading-relaxed">
-                The leading digital fractional real estate and private investment platform. Regulated custody, seamless rental cash flows, and institutional portfolio access.
+                Stake is the modern digital real estate investment platform. Regulated custody, seamless rental cash flows, and institutional portfolio access across Dubai and Saudi Arabia.
               </p>
 
               {/* Quick Product Links */}
@@ -252,28 +256,24 @@ export function StakeFooterComplete() {
           <div className="pt-10 text-[11px] leading-relaxed text-slate-400 space-y-4">
             
             <p>
-              <strong>DFSA Regulatory Notice:</strong> Serene Investors (Stake MENA Limited) is regulated by the Dubai Financial Services Authority (&quot;DFSA&quot;) under licence number F005380 to conduct financial promotions, arrange deals in investments, and arrange custody. Our registered office is located at Unit 201, Level 2, Gate Avenue, Dubai International Financial Centre (DIFC), PO Box 507211, Dubai, United Arab Emirates.
+              <strong>DFSA Regulatory Notice:</strong> Stake Properties Limited is regulated by the Dubai Financial Services Authority (DFSA) as an Operator of a Property Investment Crowdfunding Platform. At present there are no regulatory restrictions imposed on Stake by the DFSA. Stake platform consists of the website and mobile app. By using Stake, you agree to be bound by the Terms &amp; Conditions, Cookie Notice and Privacy Policy. All investments through Stake carry risk and are not guaranteed. Past performance is not a reliable indicator of future results. Please read Key Risks before investing. Stake Properties Limited also has an Islamic Finance Window endorsement from the DFSA. Stake is authorised to offer Shariah compliant investments. Registered Office: Unit 186, 188, 190, Level 1, Gate Avenue - South Zone, DIFC, PO Box 507211, Dubai, UAE.
             </p>
 
             <p>
-              <strong>Saudi Arabia CMA Permit:</strong> In the Kingdom of Saudi Arabia, Serene operates within the Capital Market Authority (&quot;CMA&quot;) FinTech Lab experimental permit framework, authorizing digital equity crowdfunding and real estate funds distribution in compliance with the Capital Market Law.
+              <strong>Saudi Arabia CMA FinTech Lab Notice:</strong> Stake Financial Technology Company is regulated by the Capital Market Authority (CMA) in Saudi Arabia to enter under its FinTech Lab and licensed to launch real estate investment fund opportunities in and from the Kingdom. The Stake platform operates under the regulatory framework established by the CMA for innovative financial technologies. By using Stake, you agree to abide by our Terms &amp; Conditions, Cookie Notice, and Privacy Policy. Registered Address: Unit 109, Rubeen Plaza, Northern Ring Br Road, Hittin District, Riyadh 13512, Saudi Arabia. Permit Number: 05-53-2023.
             </p>
 
             <p>
-              <strong>Shariah Compliance Certification:</strong> All investment opportunities and operational structures are vetted and certified for Shariah compliance by independent Islamic financial jurists (Dar Al Sharia Advisory). Fractional equity, rental yields, and secondary market transfers are fully compliant with Islamic financial principles, prohibiting Riba (usury) and Gharar (excessive uncertainty).
-            </p>
-
-            <p>
-              <strong>Investment Risk Warning:</strong> Investments in fractional real estate and single-asset funds carry risk, including the loss of invested capital and lack of liquidity. Dividends and capital growth are not guaranteed and past performance is no indicator of future yield. Secondary market liquidity windows are subject to buyer matching and prevailing market conditions. Please read all Key Investment Information Documents (&quot;KIID&quot;) before committing funds.
+              <strong>Risk Warning:</strong> All investments carry risk. Past performance is not a reliable indicator of future results. Property values and rental yields can fluctuate. Investors may not recoup the full amount originally invested.
             </p>
 
             <div className="flex flex-wrap items-center justify-between gap-4 pt-6 border-t border-white/10 text-xs text-slate-500">
-              <p>&copy; {new Date().getFullYear()} Serene Investors Ltd. All rights reserved.</p>
+              <p>&copy; {new Date().getFullYear()} Stake. All rights reserved.</p>
               <div className="flex flex-wrap gap-4 text-slate-400">
-                <Link href="/legal/terms" className="hover:text-white transition-colors">Terms of Service</Link>
-                <Link href="/legal/privacy" className="hover:text-white transition-colors">Privacy Policy</Link>
-                <Link href="/legal/cookies" className="hover:text-white transition-colors">Cookie Policy</Link>
-                <Link href="/legal/regulatory" className="hover:text-white transition-colors">Regulatory Disclosures</Link>
+                <Link href="/legal/terms" className="hover:text-white transition-colors">Terms of use</Link>
+                <Link href="/legal/risks" className="hover:text-white transition-colors">Key risks</Link>
+                <Link href="/legal/privacy" className="hover:text-white transition-colors">Privacy policy</Link>
+                <Link href="/legal/cookies" className="hover:text-white transition-colors">Cookies notice</Link>
               </div>
             </div>
 

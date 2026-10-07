@@ -1,41 +1,51 @@
 import type { Testimonial } from '@/types'
 
 export const testimonialsIntro = {
-  eyebrow: 'Investor stories',
-  heading: 'A simpler experience for property investors.',
-  body: 'Fictional stories from people using the Serene Investors demo platform to explore property investing.',
-  sampleLabel: 'Fictional testimonials',
+  eyebrow: 'SUCCESS STORIES',
+  heading: 'Hear from our global investors',
+  body: 'Real stories from investors worldwide building passive income with Stake.',
+  sampleLabel: 'Global investors',
 } as const
 
 export const testimonials: Testimonial[] = [
   {
-    id: 'sofia-rahman',
-    name: 'Sofia Rahman',
-    role: 'Product Designer',
+    id: 'venus',
+    name: 'Venus',
+    role: 'Stake Investor',
     location: 'Dubai',
     quote:
-      'I wanted a clearer way to explore property opportunities without turning the experience into a financial dashboard.',
-    image: 'https://picsum.photos/seed/serene-sofia-rahman/900/1120',
-    imageAlt: 'Editorial portrait used for Sofia Rahman, a fictional demo investor',
+      'I really enjoyed using the app! Being able to actually own a stake in a property with just a button, literally like you’re shopping for a property, that’s a really cool concept honestly.',
+    image: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=900&q=80',
+    imageAlt: 'Portrait of Venus, Stake Investor',
   },
   {
-    id: 'daniel-mercer',
-    name: 'Daniel Mercer',
-    role: 'Architect',
-    location: 'London',
+    id: 'david',
+    name: 'David',
+    role: 'Stake Investor',
+    location: 'United Kingdom',
     quote:
-      'The property information is presented in a way that makes the first step feel straightforward and considered.',
-    image: 'https://picsum.photos/seed/serene-daniel-mercer/900/1120',
-    imageAlt: 'Editorial portrait used for Daniel Mercer, a fictional demo investor',
+      'Solving that problem of not necessarily having to explore too many different investment opportunities, while still having the opportunity to invest with a couple of clicks into an asset that I’m really interested in.',
+    image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=900&q=80',
+    imageAlt: 'Portrait of David, Stake Investor',
   },
   {
-    id: 'amina-khan',
-    name: 'Amina Khan',
-    role: 'Founder',
-    location: 'Lahore',
+    id: 'dan',
+    name: 'Dan',
+    role: 'Stake Investor',
+    location: 'Saudi Arabia',
     quote:
-      'I like being able to compare different property options while keeping the important information easy to scan.',
-    image: 'https://picsum.photos/seed/serene-amina-khan/900/1120',
-    imageAlt: 'Editorial portrait used for Amina Khan, a fictional demo investor',
+      'Liquidity in property is sometimes tough, but with the Stake exit windows it just makes life so much easier if you want to sell certain stakes – you just put them on the secondary market.',
+    image: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=900&q=80',
+    imageAlt: 'Portrait of Dan, Stake Investor',
+  },
+  {
+    id: 'muhammad-waqas',
+    name: 'Muhammad Waqas Ahmad',
+    role: 'Stake Investor',
+    location: 'UAE',
+    quote:
+      'I started investing in Stake and the platform is very easy to understand and trade. The transparency and regular rent distributions make it the best platform in the region.',
+    image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=900&q=80',
+    imageAlt: 'Portrait of Muhammad Waqas Ahmad, Stake Investor',
   },
 ]

@@ -22,17 +22,17 @@ export function HowYouEarn() {
         {/* Section Heading */}
         <div className="text-center max-w-2xl mx-auto mb-20 sm:mb-28">
           <p className="font-mono text-xs font-bold uppercase tracking-[0.16em] text-[#00A663] mb-3">
-            INVESTMENT RETURNS
+            IT’S YOUR MONEY, GROW IT
           </p>
           <h2 className="text-4xl lg:text-5xl font-extrabold tracking-tight text-[#0D1117] leading-[1.12]">
             So, how do I make money?
           </h2>
           <p className="mt-4 text-base sm:text-lg text-[#4B5563]">
-            Three proven avenues of wealth generation engineered into every single fractional property asset.
+            Join thousands of real estate investors who made an average of <span className="font-bold text-[#00A663]">10.2%</span> in 2025
           </p>
         </div>
 
-        {/* 3 STACKED HORIZONTAL SHOWCASE ROWS (NO generic 3-col card grid) */}
+        {/* 3 STACKED HORIZONTAL SHOWCASE ROWS */}
         <div className="space-y-28 sm:space-y-36">
 
           {/* =========================================================================
@@ -47,9 +47,9 @@ export function HowYouEarn() {
                   <div className="space-y-3">
                     {/* Header */}
                     <div className="flex items-center justify-between pb-2 border-b border-black/[0.06]">
-                      <span className="text-xs font-bold text-[#0D1117]">My Wallet</span>
+                      <span className="text-xs font-bold text-[#0D1117]">Stake Wallet</span>
                       <span className="rounded-full bg-[#E8F8F0] px-2 py-0.5 text-[10px] font-bold text-[#00A663]">
-                        Active Tier-1
+                        Verified
                       </span>
                     </div>
 
@@ -59,9 +59,9 @@ export function HowYouEarn() {
                         TOTAL CASH BALANCE
                       </span>
                       <p className="text-2xl font-black tracking-tight text-white mt-0.5">
-                        £20,150.00
+                        AED 92,690.00
                       </p>
-                      <p className="text-[10px] text-emerald-200 mt-1">AED 92,690 equivalent</p>
+                      <p className="text-[10px] text-emerald-200 mt-1">USD 25,230 equivalent</p>
 
                       {/* Deposit / Withdraw Action Buttons */}
                       <div className="mt-4 grid grid-cols-2 gap-2">
@@ -94,11 +94,11 @@ export function HowYouEarn() {
                             <Wallet size={13} />
                           </div>
                           <div>
-                            <p className="text-[11px] font-bold text-[#0D1117]">Marina Gate Tower</p>
+                            <p className="text-[11px] font-bold text-[#0D1117]">Boulevard Point</p>
                             <p className="text-[9.5px] text-[#64748B]">Monthly Rent Deposit</p>
                           </div>
                         </div>
-                        <span className="text-[11.5px] font-extrabold text-[#00A663]">+£320.00</span>
+                        <span className="text-[11.5px] font-extrabold text-[#00A663]">+AED 2,130.00</span>
                       </div>
 
                       <div className="flex items-center justify-between rounded-xl bg-[#F8FAF9] p-2.5 border border-black/[0.06]">
@@ -107,11 +107,11 @@ export function HowYouEarn() {
                             <Wallet size={13} />
                           </div>
                           <div>
-                            <p className="text-[11px] font-bold text-[#0D1117]">The Mayfair Core</p>
-                            <p className="text-[9.5px] text-[#64748B]">Quarterly Dividend</p>
+                            <p className="text-[11px] font-bold text-[#0D1117]">Marina Gate 1</p>
+                            <p className="text-[9.5px] text-[#64748B]">Monthly Rent Deposit</p>
                           </div>
                         </div>
-                        <span className="text-[11.5px] font-extrabold text-[#00A663]">+£1,130.00</span>
+                        <span className="text-[11.5px] font-extrabold text-[#00A663]">+AED 1,420.00</span>
                       </div>
 
                       <div className="flex items-center justify-between rounded-xl bg-[#F8FAF9] p-2.5 border border-black/[0.06]">
@@ -120,11 +120,11 @@ export function HowYouEarn() {
                             <Wallet size={13} />
                           </div>
                           <div>
-                            <p className="text-[11px] font-bold text-[#0D1117]">Cedar Court</p>
+                            <p className="text-[11px] font-bold text-[#0D1117]">Studio One Tower</p>
                             <p className="text-[9.5px] text-[#64748B]">Monthly Rent Deposit</p>
                           </div>
                         </div>
-                        <span className="text-[11.5px] font-extrabold text-[#00A663]">+£245.00</span>
+                        <span className="text-[11.5px] font-extrabold text-[#00A663]">+AED 826.00</span>
                       </div>
                     </div>
                   </div>
@@ -148,17 +148,17 @@ export function HowYouEarn() {
               </h3>
 
               <p className="text-base sm:text-lg text-[#4B5563] leading-relaxed max-w-xl">
-                Build new income streams with automated monthly and quarterly rental disbursements deposited directly from tenant leases straight to your wallet.
+                Build new income streams with rental payments from income generating properties and funds, paid straight to your Stake wallet.
               </p>
 
               {/* Large Stat Blocks */}
               <div className="grid grid-cols-2 gap-6 pt-4 border-t border-black/[0.08]">
                 <div>
                   <p className="font-mono text-3xl sm:text-4xl font-black text-[#0D1117] tracking-tight">
-                    £90M+
+                    AED 31M+
                   </p>
                   <p className="text-xs sm:text-sm text-[#64748B] mt-1 font-medium">
-                    Total Rental Income Paid (AED 90.5M+)
+                    Total Rental Income Paid
                   </p>
                 </div>
                 <div>
@@ -234,7 +234,7 @@ export function HowYouEarn() {
                     {/* Chart Card */}
                     <div className="rounded-2xl bg-[#0B3528] p-4 text-white">
                       <span className="text-[9px] uppercase font-bold text-emerald-300">Capital Value</span>
-                      <p className="text-2xl font-black text-white mt-0.5">£306,500.00</p>
+                      <p className="text-2xl font-black text-white mt-0.5">AED 1,236,000.00</p>
                       
                       {/* Growth Curve */}
                       <div className="mt-3 h-14 w-full">
@@ -263,7 +263,7 @@ export function HowYouEarn() {
                       <div className="flex items-center justify-between rounded-xl bg-[#F8FAF9] p-2.5 border border-black/[0.06]">
                         <div>
                           <p className="text-[11px] font-bold text-[#0D1117]">Boulevard Point</p>
-                          <p className="text-[9px] text-[#64748B]">Prime Mayfair W1</p>
+                          <p className="text-[9px] text-[#64748B]">Downtown Dubai</p>
                         </div>
                         <span className="rounded-full bg-[#E8F8F0] px-2 py-0.5 text-[10px] font-bold text-[#00A663]">
                           +10.4% Apprec.
@@ -272,11 +272,11 @@ export function HowYouEarn() {
 
                       <div className="flex items-center justify-between rounded-xl bg-[#F8FAF9] p-2.5 border border-black/[0.06]">
                         <div>
-                          <p className="text-[11px] font-bold text-[#0D1117]">The Mayfair Core</p>
-                          <p className="text-[9px] text-[#64748B]">London Luxury Portfolio</p>
+                          <p className="text-[11px] font-bold text-[#0D1117]">Marina Gate 1</p>
+                          <p className="text-[9px] text-[#64748B]">Dubai Marina</p>
                         </div>
                         <span className="rounded-full bg-[#E8F8F0] px-2 py-0.5 text-[10px] font-bold text-[#00A663]">
-                          +8.4% Apprec.
+                          +12.4% Apprec.
                         </span>
                       </div>
                     </div>
@@ -376,14 +376,14 @@ export function HowYouEarn() {
               </h3>
 
               <p className="text-base sm:text-lg text-[#4B5563] leading-relaxed max-w-xl">
-                Exit your investments at full holding maturity or take early profits by selling fractional shares during our regular bi-annual liquidity windows.
+                Exit your investments at maturity or take early profits by selling during our bi-annual exit windows.
               </p>
 
               {/* Large Stat Blocks */}
               <div className="grid grid-cols-2 gap-6 pt-4 border-t border-black/[0.08]">
                 <div>
                   <p className="font-mono text-3xl sm:text-4xl font-black text-[#0D1117] tracking-tight">
-                    45
+                    38+
                   </p>
                   <p className="text-xs sm:text-sm text-[#64748B] mt-1 font-medium">
                     Properties Fully Exited
@@ -391,10 +391,10 @@ export function HowYouEarn() {
                 </div>
                 <div>
                   <p className="font-mono text-3xl sm:text-4xl font-black text-[#00A663] tracking-tight">
-                    £236.9M+
+                    AED 33M+
                   </p>
                   <p className="text-xs sm:text-sm text-[#64748B] mt-1 font-medium">
-                    Total Distributed (AED 236.9M+)
+                    Total Traded During Exit Windows
                   </p>
                 </div>
               </div>

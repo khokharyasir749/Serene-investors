@@ -95,10 +95,15 @@ export default {
           '0%, 100%': { opacity: '0.4', transform: 'scale(1)' },
           '50%': { opacity: '0.8', transform: 'scale(1.04)' },
         },
+        marquee: {
+          '0%': { transform: 'translateX(0%)' },
+          '100%': { transform: 'translateX(-50%)' },
+        },
       },
       animation: {
         float: 'float 5s ease-in-out infinite',
         'pulse-glow': 'pulseGlow 4s ease-in-out infinite',
+        marquee: 'marquee 28s linear infinite',
       },
       zIndex: {
         35: '35',

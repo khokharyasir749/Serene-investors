@@ -1,17 +1,17 @@
 export const site = {
-  name: 'SERENE INVESTORS',
-  tagline: 'Own a measured share of prime real estate.',
+  name: 'Stake',
+  tagline: 'Invest in Dubai and Saudi Arabia Real Estate.',
   disclaimer:
-    'SERENE INVESTORS is an institutional real estate wealth syndication platform. Client capital and fractional titles are held under UK regulated custodian frameworks.',
+    'Stake (Stake MENA Limited) is regulated by the Dubai Financial Services Authority (DFSA) and CMA FinTech Lab framework in Saudi Arabia.',
 } as const
 
 export const footerIntro = {
-  description: 'Institutional real estate syndication, presented with clarity.',
-  sampleLabel: 'Private Wealth Management',
+  description: 'The modern way for anyone to invest in real estate.',
+  sampleLabel: 'Real Estate Investment Platform',
   cta: {
     label: 'Explore properties',
     href: '/properties',
   },
-  copyright: '© 2026 Serene Investors',
-  note: 'All property investments are subject to market risks. Client funds are segregated in regulated Tier-1 UK custodian accounts.',
+  copyright: '© 2026 Stake (Stake MENA Limited)',
+  note: 'All property investments are subject to market risks. Client funds are segregated in regulated Tier-1 custodian accounts.',
 } as const

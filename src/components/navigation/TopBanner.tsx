@@ -51,12 +51,12 @@ export function TopBanner({ onDismissChange }: Props) {
         {/* Centered Message */}
         <div className="mx-auto flex items-center justify-center text-xs sm:text-[13px] font-medium tracking-tight text-[#F7F5EF]/95 leading-snug">
           <span>
-            Cedar Court is open as a sample listing this week.{' '}
+            Our highest yielding opportunity to-date is live now on Stake Saudi!{' '}
             <Link
-              href="/properties/cedar-court"
-              className="font-semibold text-white underline underline-offset-2 transition-colors hover:text-[#00A663]"
+              href="/register"
+              className="font-semibold text-emerald-300 underline underline-offset-2 transition-colors hover:text-white"
             >
-              View listing
+              Invest now &rarr;
             </Link>
           </span>
         </div>

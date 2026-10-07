@@ -5,9 +5,8 @@ import { DualProductBento } from '@/components/products'
 import { HowYouEarn } from '@/components/products'
 import { RewardsTiers } from '@/components/rewards'
 import { SecurityRegulation } from '@/components/trust'
-import { TestimonialsSection } from '@/components/sections/home/TestimonialsSection'
 import { StakeFooterComplete } from '@/components/footer'
-import { pressLogos, site, testimonials } from '@/data'
+import { pressLogos, site } from '@/data'
 import { usePageMeta } from '@/hooks/usePageMeta'
 
 export function HomePage() {
@@ -36,10 +35,7 @@ export function HomePage() {
       {/* 7. Security & Regulation: "Safety never sleeps - Robustly regulated" + 13 institutional logos */}
       <SecurityRegulation />
 
-      {/* 8. Testimonials: "Hear from our global investors" with video quote cards */}
-      <TestimonialsSection items={testimonials} />
-
-      {/* 9. Bottom App CTA Banner (Emerald card with peeking phone) + Compliant Dark Legal Footer */}
+      {/* 8. Bottom App CTA Banner (Emerald card with peeking phone) + Compliant Dark Legal Footer */}
       <StakeFooterComplete />
     </>
   )

@@ -5,8 +5,8 @@ import { AppShellClient } from '@/components/layout/AppShellClient'
 import './globals.css'
 
 export const metadata: Metadata = {
-  title: 'Serene Investors — Fractional Property & Funds Investment',
-  description: 'Experience property investment designed for clarity, steady returns, and long-term peace of mind.',
+  title: 'Stake | Invest in Dubai and Saudi Arabia Real Estate',
+  description: 'Thousands of investors worldwide use Stake to access income-generating real estate deals in high-growth markets, starting from just USD 136 / AED 500.',
 }
 
 export default function RootLayout({ children }: { children: ReactNode }) {

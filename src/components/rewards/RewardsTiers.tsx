@@ -30,27 +30,27 @@ const TIERS: TierData[] = [
   {
     id: 'plus',
     name: 'Plus Tier',
-    threshold: '£15,000',
-    thresholdAed: 'AED 70k',
-    badgeLabel: 'Auto-Reinvest',
+    threshold: 'AED 75,000',
+    thresholdAed: 'USD 20k',
+    badgeLabel: 'Auto-Invest',
     headerBg: 'bg-gradient-to-b from-[#00A663] to-[#0B3528]',
     badgeBg: 'bg-emerald-400/20 border-emerald-400/30 text-emerald-100',
     badgeTextColor: 'text-[#00A663]',
     primaryColor: '#00A663',
-    keyPerk: 'Automatic Reinvest Feature',
+    keyPerk: 'Auto-Invest Feature',
     perks: [
       'Automatic dividend reinvestment',
-      '£15,000 / AED 70k invested threshold',
-      'Instant quarterly rental payouts',
+      'AED 75,000 / USD 20k invested threshold',
+      'Instant monthly rental distributions',
       'Quarterly investment portfolio insights',
       'Zero platform exit processing fee',
     ],
   },
   {
-    id: 'pro',
-    name: 'Pro Tier',
-    threshold: '£50,000',
-    thresholdAed: 'AED 230k',
+    id: 'elite',
+    name: 'Elite Tier',
+    threshold: 'AED 200,000',
+    thresholdAed: 'USD 50k',
     badgeLabel: '1% Cashback',
     headerBg: 'bg-gradient-to-b from-[#7C3AED] to-[#4C1D95]',
     badgeBg: 'bg-purple-400/20 border-purple-400/30 text-purple-100',
@@ -60,17 +60,17 @@ const TIERS: TierData[] = [
     isPopular: true,
     perks: [
       '1.0% Instant cashback on investments',
-      '£50,000 / AED 230k invested threshold',
+      'AED 200,000 / USD 50k invested threshold',
       '48-Hour priority access to new listings',
       'Dedicated private wealth relationship manager',
       'Automatic dividend reinvestment included',
     ],
   },
   {
-    id: 'elite',
-    name: 'Elite Tier',
-    threshold: '£150,000',
-    thresholdAed: 'AED 690k',
+    id: 'private',
+    name: 'Private Tier',
+    threshold: 'AED 500,000',
+    thresholdAed: 'USD 135k',
     badgeLabel: '2% Cashback',
     headerBg: 'bg-gradient-to-b from-[#D97706] to-[#78350F]',
     badgeBg: 'bg-amber-400/20 border-amber-400/30 text-amber-100',
@@ -79,29 +79,29 @@ const TIERS: TierData[] = [
     keyPerk: '2.0% Instant Investment Cashback',
     perks: [
       '2.0% Instant cashback on investments',
-      '£150,000 / AED 690k invested threshold',
+      'AED 500,000 / USD 135k invested threshold',
       'Guaranteed allocation on oversubscribed deals',
       'Direct invitations to quarterly VIP investor webinars',
-      'Bespoke tax and cross-border structuring guidance',
+      'Golden Visa concierge assistance included',
     ],
   },
   {
-    id: 'prestige',
-    name: 'Prestige Tier',
-    threshold: '£280,000',
-    thresholdAed: 'AED 1.29M',
+    id: 'vip',
+    name: 'VIP Tier',
+    threshold: 'AED 1,000,000+',
+    thresholdAed: 'USD 270k+',
     badgeLabel: '3% + Lounge',
     headerBg: 'bg-gradient-to-b from-[#1E293B] via-[#0F172A] to-black',
     badgeBg: 'bg-amber-400/20 border-amber-400/40 text-amber-200',
     badgeTextColor: 'text-amber-500',
     primaryColor: '#F59E0B',
-    keyPerk: '3.0% Cashback & Private Lounge Access',
+    keyPerk: '3.0% Cashback & Private Club Access',
     perks: [
       '3.0% Instant cashback on all investments',
-      '£280,000 / AED 1.29M invested threshold',
-      'Global private investor lounge access (London & Dubai)',
+      'AED 1,000,000+ invested threshold',
+      'Global private investor club & DIFC lounge access',
       'Off-market institutional property acquisitions',
-      'Direct advisory access to Serene executive team',
+      'Direct advisory access to executive deal team',
     ],
   },
 ]
@@ -118,13 +118,13 @@ export function RewardsTiers() {
         {/* Section Heading */}
         <div className="text-center max-w-3xl mx-auto mb-16">
           <p className="font-mono text-xs font-bold uppercase tracking-[0.16em] text-[#00A663] mb-3">
-            SERENE REWARDS &amp; TIERS
+            REWARDING INVESTING EXPERIENCE
           </p>
           <h2 className="text-4xl lg:text-5xl font-extrabold tracking-tight text-[#0D1117] leading-[1.12]">
-            The more you invest, the more you earn
+            Start earning rewards as you grow your investments
           </h2>
           <p className="mt-4 text-base sm:text-lg text-[#4B5563]">
-            Unlock higher cashback yields, private event invitations, and VIP services as your portfolio grows.
+            Get cashback, referral bonuses, and exclusive perks to enhance your investment journey. From early access to funds to premium insights, the more you invest, the more you earn.
           </p>
         </div>
 
@@ -138,9 +138,9 @@ export function RewardsTiers() {
               <Percent size={22} strokeWidth={2.2} />
             </div>
             <div>
-              <h3 className="text-lg font-bold text-[#0D1117]">Earn cashback up to 3%</h3>
+              <h3 className="text-lg font-bold text-[#0D1117]">Earn cashback</h3>
               <p className="mt-1 text-sm text-[#4B5563] leading-relaxed">
-                Receive instant cash rebates credited straight into your investment wallet the moment you allocate funds.
+                Get up to 3% of your investment added to your Rewards wallet, helping you grow your portfolio faster.
               </p>
             </div>
           </div>
@@ -153,7 +153,7 @@ export function RewardsTiers() {
             <div>
               <h3 className="text-lg font-bold text-[#0D1117]">Share and earn</h3>
               <p className="mt-1 text-sm text-[#4B5563] leading-relaxed">
-                Invite friends and fellow investors to earn up to £500 / AED 2,300 bonus cash per funded referral.
+                Invite your friends to join Stake - when they invest, you both earn. Everyone wins when you spread the word!
               </p>
             </div>
           </div>
@@ -166,7 +166,7 @@ export function RewardsTiers() {
             <div>
               <h3 className="text-lg font-bold text-[#0D1117]">Level up</h3>
               <p className="mt-1 text-sm text-[#4B5563] leading-relaxed">
-                Seamlessly progress through higher tiers automatically based on your total verified holdings on Serene.
+                The more you invest, the faster you move through the tiers - unlocking bigger perks, bonuses, and exclusive offers.
               </p>
             </div>
           </div>
@@ -207,7 +207,7 @@ export function RewardsTiers() {
 
                   {/* App Navigation Title */}
                   <p className="font-mono text-[9px] uppercase tracking-widest text-white/70 font-semibold mb-2">
-                    SERENE INVESTOR CLUB
+                    STAKE REWARDS
                   </p>
 
                   {/* Tier Name */}
