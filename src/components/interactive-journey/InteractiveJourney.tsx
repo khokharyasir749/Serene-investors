@@ -16,41 +16,41 @@ import {
   Coins,
 } from 'lucide-react'
 
-// Authentic iOS Status Bar Helper
-function PhoneStatusBar({
-  dark = false,
-  currency = 'AED',
+// Authentic iPhone Top Status Bar & Centered Dynamic Island
+function PhoneTopBar({
+  className = '',
+  light = false,
 }: {
-  dark?: boolean
-  currency?: string
+  className?: string
+  light?: boolean
 }) {
   return (
     <div
-      className={`flex justify-between items-center px-4 pt-1.5 pb-1 text-[11px] font-semibold ${
-        dark ? 'text-white' : 'text-gray-900'
-      } select-none`}
+      className={`relative z-30 pt-3 pb-1 px-4 flex items-center justify-between text-xs font-semibold select-none ${
+        light ? 'text-white' : 'text-[#0D1117]'
+      } ${className}`}
     >
-      <span className="font-bold tracking-tight">9:41</span>
-
-      {currency && (
-        <div className="flex items-center gap-1 bg-black/[0.06] px-2 py-0.5 rounded-full text-[9px] font-bold text-gray-800">
-          <span className="size-1.5 rounded-full bg-[#00A663]" />
-          <span>{currency}</span>
-          <span className="text-[9px] text-gray-400 font-normal">›</span>
+      <span className="w-10 text-left font-semibold text-[11px] tracking-tight">9:41</span>
+      
+      {/* Centered Dynamic Island - Protected with generous top clearance (pt-3), never cut off */}
+      <div className="h-[18px] w-[72px] rounded-full bg-black flex items-center justify-end px-2 shadow-xs shrink-0">
+        <div className="size-2 rounded-full bg-[#0a0d14] ring-1 ring-[#1b2230] flex items-center justify-center">
+          <div className="size-0.5 rounded-full bg-[#20293d]" />
         </div>
-      )}
+      </div>
 
-      <div className="flex items-center gap-1.5 text-gray-800">
-        <svg className="w-3.5 h-2.5 fill-current" viewBox="0 0 17 12">
-          <rect x="0" y="9" width="3" height="3" rx="0.6" />
-          <rect x="4.5" y="6" width="3" height="6" rx="0.6" />
-          <rect x="9" y="3" width="3" height="9" rx="0.6" />
-          <rect x="13.5" y="0" width="3" height="12" rx="0.6" />
+      <div className="flex w-10 items-center justify-end gap-1">
+        <svg className="size-3 shrink-0" viewBox="0 0 16 16" fill="currentColor">
+          <rect x="1" y="11" width="2" height="4" rx="0.5" />
+          <rect x="5" y="8" width="2" height="7" rx="0.5" />
+          <rect x="9" y="5" width="2" height="10" rx="0.5" />
+          <rect x="13" y="2" width="2" height="13" rx="0.5" />
         </svg>
         <div className="flex items-center">
-          <div className="w-[17px] h-[9px] rounded-[2.5px] border border-current p-[1px] flex items-center">
-            <div className="w-full h-full bg-[#00A663] rounded-[1px]" />
+          <div className="flex h-2.5 w-4 items-center rounded-[2.5px] border-[1.2px] border-current p-[1px]">
+            <div className="h-full w-2.5 rounded-[0.8px] bg-[#00A663]" />
           </div>
+          <div className="h-1.5 w-[1px] rounded-r-xs bg-current" />
         </div>
       </div>
     </div>
@@ -412,67 +412,65 @@ export function InteractiveJourney() {
                   </div>
 
                   {/* Phone Mockup (Half-screen cut off at bottom of card) */}
-                  <div className="w-[315px] sm:w-[345px] lg:w-[365px] h-[600px] sm:h-[660px] rounded-t-[42px] sm:rounded-t-[46px] bg-[#1a202c] p-[3.5px] shadow-2xl relative z-20 border-[3.5px] border-[#334155]/60 shrink-0">
-                    <div className="h-full rounded-t-[38px] sm:rounded-t-[42px] overflow-hidden bg-white relative flex flex-col text-[#0F172A] pb-3">
+                  <div className="w-[245px] sm:w-[255px] lg:w-[265px] h-[540px] sm:h-[580px] lg:h-[600px] rounded-t-[44px] bg-[#161a20] p-[3px] shadow-2xl relative z-20 border border-[#374151]/80 shrink-0">
+                    <div className="h-full rounded-t-[41px] overflow-hidden bg-white relative flex flex-col text-[#0F172A] pb-3">
                       
-                      {/* Dynamic Island Notch */}
-                      <div className="pt-2 sm:pt-2.5">
-                        <div className="h-4.5 w-22 bg-black rounded-full mx-auto" />
-                      </div>
-
-                      {/* Top Action Icons inside screen */}
-                      <div className="px-4 pt-1 flex items-center justify-end gap-2 z-10">
-                        <div className="size-7 rounded-full bg-white/90 backdrop-blur-md flex items-center justify-center shadow-xs">
-                          <Bookmark size={14} className="text-[#0F172A]" />
-                        </div>
-                        <div className="size-7 rounded-full bg-white/90 backdrop-blur-md flex items-center justify-center shadow-xs">
-                          <Share2 size={14} className="text-[#0F172A]" />
-                        </div>
-                      </div>
+                      {/* Top Status Bar & Dynamic Island */}
+                      <PhoneTopBar className="bg-white" />
 
                       {/* Phone Main Media (Waterfront yachts / apartments) */}
-                      <div className="relative -mt-9 h-56 w-full overflow-hidden">
+                      <div className="relative h-48 sm:h-52 w-full overflow-hidden bg-gray-100">
                         <img
                           src="/images/journey/dubai-marina.jpg"
                           alt="Marina luxury residence"
                           className="size-full object-cover"
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
+
+                        {/* Top Action Icons inside media */}
+                        <div className="absolute top-2.5 right-3 flex items-center gap-1.5 z-10">
+                          <div className="size-6.5 rounded-full bg-white/90 backdrop-blur-md flex items-center justify-center shadow-xs">
+                            <Bookmark size={12} className="text-[#0F172A]" />
+                          </div>
+                          <div className="size-6.5 rounded-full bg-white/90 backdrop-blur-md flex items-center justify-center shadow-xs">
+                            <Share2 size={12} className="text-[#0F172A]" />
+                          </div>
+                        </div>
                       </div>
 
                       {/* Floating AED 500 Invest Glass Card (Center/Bottom Overlay) */}
-                      <div className="absolute bottom-44 sm:bottom-50 left-3.5 right-3.5 z-30 rounded-2xl bg-white/95 backdrop-blur-md border-2 border-white shadow-2xl p-3 sm:p-3.5 flex items-center justify-between">
-                        <div className="flex items-center gap-2">
+                      <div className="absolute bottom-46 sm:bottom-52 left-2.5 right-2.5 z-30 rounded-2xl bg-white/95 backdrop-blur-md border border-white shadow-xl p-2.5 flex items-center justify-between">
+                        <div className="flex items-center gap-1.5 min-w-0">
                           <UaeFlagIcon />
-                          <div>
-                            <span className="text-base sm:text-lg font-extrabold text-[#0F172A]">AED 500</span>
-                            <span className="text-xs text-gray-400 font-medium ml-1.5">~$136.15</span>
+                          <div className="truncate">
+                            <span className="text-xs sm:text-sm font-extrabold text-[#0F172A]">AED 500</span>
+                            <span className="text-[10px] text-gray-400 font-medium ml-1">~$136.15</span>
                           </div>
                         </div>
                         <button
                           type="button"
-                          className="bg-[#0F172A] hover:bg-[#1E293B] text-white text-xs font-bold px-5 py-2.5 rounded-xl shadow-md transition-transform active:scale-95"
+                          className="bg-[#0F172A] hover:bg-[#1E293B] text-white text-[11px] font-bold px-3 py-1.5 rounded-xl shadow-md transition-transform active:scale-95 shrink-0"
                         >
                           Invest
                         </button>
                       </div>
 
                       {/* Bottom Property Specs & Tour Pills */}
-                      <div className="px-3.5 space-y-2 mt-2">
-                        <div className="flex items-center justify-between text-[11px] text-gray-600 px-1 font-semibold">
+                      <div className="px-2.5 space-y-2 mt-2">
+                        <div className="flex items-center justify-between text-[10px] text-gray-600 px-0.5 font-semibold">
                           <span>🛏️ 2</span>
                           <span>🚿 3</span>
                           <span>🔲 #1020</span>
                           <span>📐 170 sqm</span>
                         </div>
 
-                        <div className="flex items-center gap-2 pt-1">
-                          <div className="flex-1 flex items-center justify-center gap-1.5 rounded-xl border border-gray-200 py-1.5 text-[11px] font-semibold text-gray-700">
-                            <Eye size={12} className="text-[#00A663]" />
+                        <div className="flex items-center gap-1.5 pt-0.5">
+                          <div className="flex-1 flex items-center justify-center gap-1 rounded-xl border border-gray-200 py-1.5 text-[10px] font-semibold text-gray-700">
+                            <Eye size={11} className="text-[#00A663]" />
                             <span>Virtual Tour</span>
                           </div>
-                          <div className="flex-1 flex items-center justify-center gap-1.5 rounded-xl border border-gray-200 py-1.5 text-[11px] font-semibold text-gray-700">
-                            <Camera size={12} className="text-[#00A663]" />
+                          <div className="flex-1 flex items-center justify-center gap-1 rounded-xl border border-gray-200 py-1.5 text-[10px] font-semibold text-gray-700">
+                            <Camera size={11} className="text-[#00A663]" />
                             <span>6 photos</span>
                           </div>
                         </div>
@@ -521,66 +519,67 @@ export function InteractiveJourney() {
                   </div>
 
                   {/* Phone Mockup (Exact half-screen size cut off at bottom of green card) */}
-                  <div className="w-[315px] sm:w-[345px] lg:w-[365px] h-[600px] sm:h-[660px] rounded-t-[42px] sm:rounded-t-[46px] bg-[#1a202c] p-[3.5px] shadow-2xl relative z-20 border-[3.5px] border-[#334155]/60 shrink-0">
-                    <div className="h-full rounded-t-[38px] sm:rounded-t-[42px] overflow-hidden bg-white relative flex flex-col text-[#0F172A] p-3.5">
+                  <div className="w-[245px] sm:w-[255px] lg:w-[265px] h-[540px] sm:h-[580px] lg:h-[600px] rounded-t-[44px] bg-[#161a20] p-[3px] shadow-2xl relative z-20 border border-[#374151]/80 shrink-0">
+                    <div className="h-full rounded-t-[41px] overflow-hidden bg-white relative flex flex-col text-[#0F172A]">
                       
-                      {/* Dynamic Island */}
-                      <div className="h-4.5 w-22 bg-black rounded-full mx-auto shrink-0 mb-1" />
-                      <PhoneStatusBar />
+                      {/* Top Status Bar & Dynamic Island */}
+                      <PhoneTopBar className="bg-white border-b border-gray-100/60" />
 
-                      {/* Header: Properties & Icons */}
-                      <div className="mt-1 flex items-center justify-between px-1">
-                        <h3 className="text-lg font-extrabold text-[#0F172A]">Properties</h3>
-                        <div className="flex items-center gap-2.5 text-gray-700">
-                          <Bookmark size={16} />
-                          <SlidersHorizontal size={16} />
-                        </div>
-                      </div>
-
-                      {/* Segmented Tabs: Available (7), Funded (213), Exited (3) */}
-                      <div className="mt-2 flex items-center justify-between border-b border-gray-100 pb-1.5 text-xs font-semibold text-gray-400">
-                        <span className="text-[#0F172A] font-bold border-b-2 border-[#00A663] pb-1">
-                          Available (7)
-                        </span>
-                        <span className="pb-1">Funded (213)</span>
-                        <span className="pb-1">Exited (3)</span>
-                        <SlidersHorizontal size={13} className="text-gray-400" />
-                      </div>
-
-                      {/* Featured Property Card: Marina Gate, Dubai Marina */}
-                      <div className="mt-2.5 rounded-2xl border border-gray-100 overflow-hidden shadow-xs bg-white">
-                        <div className="relative h-44 sm:h-48 w-full">
-                          <img
-                            src="/images/journey/dubai-marina.jpg"
-                            alt="Marina Gate"
-                            className="size-full object-cover"
-                          />
-                          {/* Capital Growth Pill */}
-                          <span className="absolute top-2.5 left-2.5 rounded-full bg-white/95 px-2.5 py-1 text-[10px] font-bold text-[#00A663] shadow-xs flex items-center gap-1">
-                            <span>🌱</span> Capital growth
-                          </span>
-
-                          {/* Image Carousel Dots */}
-                          <div className="absolute bottom-2.5 left-1/2 -translate-x-1/2 flex gap-1.5">
-                            <span className="size-1.5 rounded-full bg-white shadow-xs" />
-                            <span className="size-1.5 rounded-full bg-white/50" />
-                            <span className="size-1.5 rounded-full bg-white/50" />
-                            <span className="size-1.5 rounded-full bg-white/50" />
+                      <div className="p-2.5 sm:p-3 flex flex-col flex-1">
+                        {/* Header: Properties & Icons */}
+                        <div className="flex items-center justify-between px-0.5">
+                          <h3 className="text-base sm:text-lg font-extrabold text-[#0F172A]">Properties</h3>
+                          <div className="flex items-center gap-2 text-gray-700">
+                            <Bookmark size={15} />
+                            <SlidersHorizontal size={15} />
                           </div>
                         </div>
 
-                        <div className="p-3">
-                          <h4 className="text-xs sm:text-sm font-extrabold text-[#0F172A]">
-                            Marina Gate, Dubai Marina
-                          </h4>
-                          <div className="mt-1 flex items-center gap-2 text-[11px] text-gray-500 font-medium">
-                            <span>🛏️ 2</span>
-                            <span>•</span>
-                            <span>🏢 #1020</span>
-                            <span>•</span>
-                            <span>🔑 Rented</span>
-                            <span>•</span>
-                            <span>🇦🇪 Dubai</span>
+                        {/* Segmented Tabs: Available (7), Funded (213), Exited (3) */}
+                        <div className="mt-1.5 flex items-center justify-between border-b border-gray-100 pb-1.5 text-[11px] font-semibold text-gray-400">
+                          <span className="text-[#0F172A] font-bold border-b-2 border-[#00A663] pb-1">
+                            Available (7)
+                          </span>
+                          <span className="pb-1">Funded (213)</span>
+                          <span className="pb-1">Exited (3)</span>
+                          <SlidersHorizontal size={12} className="text-gray-400" />
+                        </div>
+
+                        {/* Featured Property Card: Marina Gate, Dubai Marina */}
+                        <div className="mt-2 rounded-2xl border border-gray-100 overflow-hidden shadow-xs bg-white">
+                          <div className="relative h-36 sm:h-40 w-full">
+                            <img
+                              src="/images/journey/dubai-marina.jpg"
+                              alt="Marina Gate"
+                              className="size-full object-cover"
+                            />
+                            {/* Capital Growth Pill */}
+                            <span className="absolute top-2 left-2 rounded-full bg-white/95 px-2 py-0.5 text-[9.5px] font-bold text-[#00A663] shadow-xs flex items-center gap-1">
+                              <span>🌱</span> Capital growth
+                            </span>
+
+                            {/* Image Carousel Dots */}
+                            <div className="absolute bottom-2 left-1/2 -translate-x-1/2 flex gap-1">
+                              <span className="size-1.5 rounded-full bg-white shadow-xs" />
+                              <span className="size-1.5 rounded-full bg-white/50" />
+                              <span className="size-1.5 rounded-full bg-white/50" />
+                              <span className="size-1.5 rounded-full bg-white/50" />
+                            </div>
+                          </div>
+
+                          <div className="p-2.5">
+                            <h4 className="text-xs sm:text-sm font-extrabold text-[#0F172A] truncate">
+                              Marina Gate, Dubai Marina
+                            </h4>
+                            <div className="mt-1 flex items-center gap-1.5 text-[10px] text-gray-500 font-medium truncate">
+                              <span>🛏️ 2</span>
+                              <span>•</span>
+                              <span>🏢 #1020</span>
+                              <span>•</span>
+                              <span>🔑 Rented</span>
+                              <span>•</span>
+                              <span>🇦🇪 Dubai</span>
+                            </div>
                           </div>
                         </div>
                       </div>
@@ -639,33 +638,34 @@ export function InteractiveJourney() {
                   </div>
 
                   {/* Phone Mockup (Half-screen cut off at bottom of card) */}
-                  <div className="w-[315px] sm:w-[345px] lg:w-[365px] h-[600px] sm:h-[660px] rounded-t-[42px] sm:rounded-t-[46px] bg-[#1a202c] p-[3.5px] shadow-2xl relative z-10 border-[3.5px] border-[#334155]/60 shrink-0">
-                    <div className="h-full rounded-t-[38px] sm:rounded-t-[42px] overflow-hidden bg-white relative flex flex-col text-[#0F172A] p-3.5">
+                  <div className="w-[245px] sm:w-[255px] lg:w-[265px] h-[540px] sm:h-[580px] lg:h-[600px] rounded-t-[44px] bg-[#161a20] p-[3px] shadow-2xl relative z-10 border border-[#374151]/80 shrink-0">
+                    <div className="h-full rounded-t-[41px] overflow-hidden bg-white relative flex flex-col text-[#0F172A]">
                       
-                      {/* Dynamic Island */}
-                      <div className="h-4.5 w-22 bg-black rounded-full mx-auto shrink-0 mb-1" />
-                      <PhoneStatusBar />
+                      {/* Top Status Bar & Dynamic Island */}
+                      <PhoneTopBar className="bg-white border-b border-gray-100/60" />
 
-                      {/* Header: Portfolio & Currency Badge */}
-                      <div className="mt-1 flex items-center justify-between px-1">
-                        <h3 className="text-lg font-extrabold text-[#0F172A]">Portfolio</h3>
-                        <div className="flex items-center gap-1 bg-black/[0.06] px-2 py-0.5 rounded-full text-[11px] font-bold text-gray-800">
-                          <span>🇦🇪</span>
-                          <span>AED</span>
-                          <span className="text-gray-400">›</span>
+                      <div className="p-2.5 sm:p-3 flex flex-col flex-1">
+                        {/* Header: Portfolio & Currency Badge */}
+                        <div className="flex items-center justify-between px-0.5">
+                          <h3 className="text-base sm:text-lg font-extrabold text-[#0F172A]">Portfolio</h3>
+                          <div className="flex items-center gap-1 bg-black/[0.06] px-2 py-0.5 rounded-full text-[10.5px] font-bold text-gray-800">
+                            <span>🇦🇪</span>
+                            <span>AED</span>
+                            <span className="text-gray-400">›</span>
+                          </div>
                         </div>
-                      </div>
 
-                      {/* Action Circles Bar */}
-                      <div className="mt-3.5 flex items-center justify-around py-2.5 border-b border-gray-100">
-                        <div className="size-9 rounded-full bg-gray-100 flex items-center justify-center text-gray-600">
-                          <Coins size={15} />
-                        </div>
-                        <div className="size-9 rounded-full bg-gray-100 flex items-center justify-center text-gray-600">
-                          <Wallet size={15} />
-                        </div>
-                        <div className="size-9 rounded-full bg-gray-100 flex items-center justify-center text-gray-600">
-                          <Building2 size={15} />
+                        {/* Action Circles Bar */}
+                        <div className="mt-3 flex items-center justify-around py-2 border-b border-gray-100">
+                          <div className="size-8.5 rounded-full bg-gray-100 flex items-center justify-center text-gray-600">
+                            <Coins size={14} />
+                          </div>
+                          <div className="size-8.5 rounded-full bg-gray-100 flex items-center justify-center text-gray-600">
+                            <Wallet size={14} />
+                          </div>
+                          <div className="size-8.5 rounded-full bg-gray-100 flex items-center justify-center text-gray-600">
+                            <Building2 size={14} />
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -708,76 +708,77 @@ export function InteractiveJourney() {
                   </div>
 
                   {/* Phone Mockup (Half-screen cut off at bottom of card) */}
-                  <div className="w-[315px] sm:w-[345px] lg:w-[365px] h-[600px] sm:h-[660px] rounded-t-[42px] sm:rounded-t-[46px] bg-[#1a202c] p-[3.5px] shadow-2xl relative z-20 border-[3.5px] border-[#334155]/60 shrink-0">
-                    <div className="h-full rounded-t-[38px] sm:rounded-t-[42px] overflow-hidden bg-white relative flex flex-col text-[#0F172A] p-3.5">
+                  <div className="w-[245px] sm:w-[255px] lg:w-[265px] h-[540px] sm:h-[580px] lg:h-[600px] rounded-t-[44px] bg-[#161a20] p-[3px] shadow-2xl relative z-20 border border-[#374151]/80 shrink-0">
+                    <div className="h-full rounded-t-[41px] overflow-hidden bg-white relative flex flex-col text-[#0F172A]">
                       
-                      {/* Dynamic Island */}
-                      <div className="h-4.5 w-22 bg-black rounded-full mx-auto shrink-0 mb-1" />
-                      <PhoneStatusBar currency="" />
+                      {/* Top Status Bar & Dynamic Island */}
+                      <PhoneTopBar className="bg-white border-b border-gray-100/60" />
 
-                      {/* Top Action Bar: Back chevron, Bookmark, Info/Question */}
-                      <div className="mt-1 flex items-center justify-between px-1 text-gray-700">
-                        <div className="size-7 rounded-full bg-gray-100 flex items-center justify-center">
-                          <ChevronLeft size={16} />
-                        </div>
-                        <div className="flex items-center gap-1.5">
-                          <div className="size-7 rounded-full bg-gray-100 flex items-center justify-center">
-                            <Bookmark size={14} />
+                      <div className="p-2.5 sm:p-3 flex flex-col flex-1">
+                        {/* Top Action Bar: Back chevron, Bookmark, Info/Question */}
+                        <div className="flex items-center justify-between px-0.5 text-gray-700">
+                          <div className="size-6.5 rounded-full bg-gray-100 flex items-center justify-center">
+                            <ChevronLeft size={15} />
                           </div>
-                          <div className="size-7 rounded-full bg-gray-100 flex items-center justify-center">
-                            <HelpCircle size={14} />
+                          <div className="flex items-center gap-1.5">
+                            <div className="size-6.5 rounded-full bg-gray-100 flex items-center justify-center">
+                              <Bookmark size={13} />
+                            </div>
+                            <div className="size-6.5 rounded-full bg-gray-100 flex items-center justify-center">
+                              <HelpCircle size={13} />
+                            </div>
                           </div>
                         </div>
-                      </div>
 
-                      {/* Featured Media: Commercial Plaza titled "HITTIN" */}
-                      <div className="mt-2 relative h-40 sm:h-44 w-full rounded-2xl overflow-hidden shadow-xs">
-                        <img
-                          src="/images/journey/hittin.jpg"
-                          alt="HITTIN Plaza"
-                          className="size-full object-cover"
-                        />
-                        {/* Vertical "HITTIN" Sign Banner */}
-                        <div className="absolute top-3 right-3 bg-black/60 backdrop-blur-xs text-white text-[9.5px] font-black uppercase px-1.5 py-0.5 rounded tracking-wider">
-                          HITTIN
+                        {/* Featured Media: Commercial Plaza titled "HITTIN" */}
+                        <div className="mt-1.5 relative h-32 sm:h-36 w-full rounded-2xl overflow-hidden shadow-xs">
+                          <img
+                            src="/images/journey/hittin.jpg"
+                            alt="HITTIN Plaza"
+                            className="size-full object-cover"
+                          />
+                          {/* Vertical "HITTIN" Sign Banner */}
+                          <div className="absolute top-2 right-2 bg-black/60 backdrop-blur-xs text-white text-[9px] font-black uppercase px-1.5 py-0.5 rounded tracking-wider">
+                            HITTIN
+                          </div>
+
+                          {/* Image Carousel Dots */}
+                          <div className="absolute bottom-2 right-2.5 flex gap-1">
+                            <span className="size-1.5 rounded-full bg-white shadow-xs" />
+                            <span className="size-1.5 rounded-full bg-white/50" />
+                            <span className="size-1.5 rounded-full bg-white/50" />
+                            <span className="size-1.5 rounded-full bg-white/50" />
+                          </div>
                         </div>
 
-                        {/* Image Carousel Dots */}
-                        <div className="absolute bottom-2.5 right-3 flex gap-1">
-                          <span className="size-1.5 rounded-full bg-white shadow-xs" />
-                          <span className="size-1.5 rounded-full bg-white/50" />
-                          <span className="size-1.5 rounded-full bg-white/50" />
-                          <span className="size-1.5 rounded-full bg-white/50" />
+                        {/* Action Row Under Image: 6 photos & Fund member */}
+                        <div className="mt-1.5 flex items-center justify-between text-[10px] font-semibold text-gray-700 px-0.5">
+                          <div className="flex items-center gap-1">
+                            <Camera size={12} className="text-[#00A663]" />
+                            <span>6 photos</span>
+                          </div>
+                          <div className="flex items-center gap-1">
+                            <Building2 size={12} className="text-[#00A663]" />
+                            <span>Fund member...</span>
+                          </div>
                         </div>
-                      </div>
 
-                      {/* Action Row Under Image: 6 photos & Fund member */}
-                      <div className="mt-2 flex items-center justify-between text-[11px] font-semibold text-gray-700 px-1">
-                        <div className="flex items-center gap-1.5">
-                          <Camera size={13} className="text-[#00A663]" />
-                          <span>6 photos</span>
-                        </div>
-                        <div className="flex items-center gap-1.5">
-                          <Building2 size={13} className="text-[#00A663]" />
-                          <span>Fund member...</span>
-                        </div>
-                      </div>
-
-                      {/* Stake Coverage Card */}
-                      <div className="mt-2.5 rounded-2xl border border-gray-100 bg-[#F8FAF9] p-3 text-center space-y-1">
-                        <p className="text-[10px] font-semibold uppercase tracking-wider text-gray-500">
-                          Stake coverage
-                        </p>
-                        <p className="text-xl font-black text-[#0D3B4C] tracking-tight">
-                          SAR 120,000,000
-                        </p>
-                        <div className="pt-1 flex items-center justify-center gap-2 text-[10.5px]">
-                          <span className="rounded-full bg-white border border-gray-200 px-2.5 py-0.5 font-bold text-gray-700">
-                            368 Investors
-                          </span>
-                          <span className="rounded-full bg-white border border-gray-200 px-2.5 py-0.5 font-bold text-gray-700">
-                            ⏱️ 15 days left
-                          </span>
+                        {/* Stake Coverage Card */}
+                        <div className="mt-2 rounded-2xl border border-gray-100 bg-[#F8FAF9] p-2 sm:p-2.5 text-center space-y-1">
+                          <p className="text-[9.5px] font-semibold uppercase tracking-wider text-gray-500">
+                            Stake coverage
+                          </p>
+                          <p className="text-base sm:text-lg font-black text-[#0D3B4C] tracking-tight">
+                            SAR 120,000,000
+                          </p>
+                          <div className="pt-0.5 flex items-center justify-center gap-1.5 text-[9.5px]">
+                            <span className="rounded-full bg-white border border-gray-200 px-2 py-0.5 font-bold text-gray-700">
+                              368 Investors
+                            </span>
+                            <span className="rounded-full bg-white border border-gray-200 px-2 py-0.5 font-bold text-gray-700">
+                              ⏱️ 15 days left
+                            </span>
+                          </div>
                         </div>
                       </div>
                     </div>

@@ -6,7 +6,6 @@ import {
   ArrowUpRight,
   TrendingUp,
   Clock,
-  Sparkles,
   ArrowDownLeft,
   ArrowLeftRight,
   Plus,
@@ -25,7 +24,7 @@ export function HowYouEarn() {
       className="relative overflow-hidden bg-white py-24 px-6 lg:px-12 border-b border-black/[0.08]"
       aria-label="How Investors Make Money"
     >
-      <div className="mx-auto max-w-7xl">
+      <div className="max-w-7xl mx-auto px-6 py-20">
         {/* Section Heading */}
         <div className="text-center max-w-2xl mx-auto mb-20 sm:mb-28">
           <p className="font-mono text-xs font-bold uppercase tracking-[0.16em] text-[#00A663] mb-3">
@@ -46,162 +45,220 @@ export function HowYouEarn() {
               ROW 1: Passive Income
               Left: Phone Wallet with Green Circle | Right: Editorial Text & Large Stats
               ========================================================================= */}
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-            {/* Left: DeviceFrame displaying in-app "Wallet" with Green Circle Backdrop */}
-            <div className="lg:col-span-6 flex justify-center relative">
-              {/* Solid Light-Green Circle Backdrop */}
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            {/* Left Column (Phone with Green Circle Backdrop - Straight Front-Facing View) */}
+            <div className="lg:col-span-6 flex items-center justify-center relative py-6 sm:py-8 select-none">
+              {/* Backdrop Circle */}
               <div
-                className="w-[330px] h-[330px] sm:w-[410px] sm:h-[410px] rounded-full bg-[#52D88A] absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 -z-10 pointer-events-none"
+                className="absolute h-[380px] w-[380px] sm:h-[440px] sm:w-[440px] rounded-full bg-[#52D48E] -z-10 shadow-lg left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none"
                 aria-hidden="true"
               />
 
-              <DeviceFrame
-                aspectRatio="aspect-[9/17.5]"
-                className="max-w-[280px] sm:max-w-[290px] shadow-[0_25px_65px_-15px_rgba(11,53,40,0.3)]"
-              >
-                <div className="flex-1 bg-white p-3.5 flex flex-col justify-between">
-                  <div className="space-y-2.5">
-                    {/* Header */}
-                    <div className="flex items-center justify-between pb-1">
-                      <span className="text-[15px] font-bold text-[#0D1117]">Wallet</span>
-                      <div className="flex items-center gap-1 rounded-full border border-gray-200/90 bg-white px-2 py-0.5 text-[10px] font-semibold text-[#0D1117] shadow-2xs">
-                        <span className="text-[10px]">🇦🇪</span>
+              {/* Phone Chassis (Straight Front-Facing Angle like Picture 2 - Normal Mobile Proportion) */}
+              <div className="relative w-[280px] sm:w-[295px] aspect-[9/18] rounded-[46px] bg-[#161a20] p-[5.5px] shadow-[0_25px_65px_-15px_rgba(0,0,0,0.35),0_0_0_1px_rgba(255,255,255,0.08)] border border-[#3b4452]/70 select-none">
+                {/* Physical Side Buttons */}
+                <div className="absolute -left-[7.5px] top-20 h-5 w-[3px] rounded-l bg-[#2d3440] border-l border-y border-[#525d70]/80 shadow-xs" aria-hidden="true" />
+                <div className="absolute -left-[7.5px] top-29 h-10 w-[3px] rounded-l bg-[#2d3440] border-l border-y border-[#525d70]/80 shadow-xs" aria-hidden="true" />
+                <div className="absolute -left-[7.5px] top-42 h-10 w-[3px] rounded-l bg-[#2d3440] border-l border-y border-[#525d70]/80 shadow-xs" aria-hidden="true" />
+                <div className="absolute -right-[7.5px] top-30 h-14 w-[3px] rounded-r bg-[#2d3440] border-r border-y border-[#525d70]/80 shadow-xs" aria-hidden="true" />
+
+                {/* Screen Container */}
+                <div className="relative h-full w-full overflow-hidden rounded-[41px] bg-white flex flex-col justify-between">
+                  {/* Top Portion (Status, Header, Card, Actions, Transactions) */}
+                  <div className="flex flex-col">
+                    {/* Status Bar */}
+                    <div className="relative pt-2.5 pb-0.5 px-5 flex items-center justify-between text-xs font-semibold text-gray-900 select-none">
+                      <span className="w-14 text-left font-semibold text-[13px] tracking-tight">9:41</span>
+                      
+                      {/* Perfectly Centered Dynamic Island */}
+                      <div className="absolute left-1/2 -translate-x-1/2 top-2.5 h-[18px] w-24 rounded-full bg-black flex items-center justify-end px-2.5 shadow-xs pointer-events-none">
+                        <div className="size-2 rounded-full bg-[#111] ring-1 ring-[#222] flex items-center justify-center">
+                          <div className="size-0.5 rounded-full bg-[#1f2937]" />
+                        </div>
+                      </div>
+
+                      <div className="flex w-14 items-center justify-end gap-1.5">
+                        {/* 4-bar cellular */}
+                        <svg className="size-3.5 shrink-0" viewBox="0 0 16 16" fill="currentColor">
+                          <rect x="1" y="11" width="2" height="4" rx="0.5" />
+                          <rect x="5" y="8" width="2" height="7" rx="0.5" />
+                          <rect x="9" y="5" width="2" height="10" rx="0.5" />
+                          <rect x="13" y="2" width="2" height="13" rx="0.5" />
+                        </svg>
+                        {/* WiFi */}
+                        <svg className="size-3.5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                          <path d="M5 12.55a11 11 0 0 1 14.08 0" />
+                          <path d="M1.42 9a16 16 0 0 1 21.16 0" />
+                          <path d="M8.53 16.11a6 6 0 0 1 6.95 0" />
+                          <line x1="12" y1="20" x2="12.01" y2="20" strokeWidth="3" />
+                        </svg>
+                        {/* Battery pill */}
+                        <div className="flex items-center">
+                          <div className="h-3 w-5 rounded-[3.5px] border-[1.2px] border-current p-[1.5px] flex items-center">
+                            <div className="h-full w-3 rounded-[1px] bg-gray-900" />
+                          </div>
+                          <div className="h-1.5 w-[1.5px] bg-current rounded-r-xs" />
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Screen Header */}
+                    <div className="px-5 pt-1.5 pb-1 flex items-center justify-between">
+                      <h4 className="text-xl font-bold text-gray-900 tracking-tight">Wallet</h4>
+                      <div className="flex items-center gap-1.5 rounded-full bg-gray-100 px-2 py-0.5 text-xs font-semibold text-gray-800 shadow-2xs">
+                        <span className="text-xs">🇦🇪</span>
                         <span>AED</span>
-                        <span className="text-gray-400 text-[9px]">&gt;</span>
+                        <span className="text-gray-400 text-xs">›</span>
                       </div>
                     </div>
 
-                    {/* Balance Card with Geometric Aesthetic */}
-                    <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-[#0B4D36] via-[#0A432E] to-[#05281B] p-4 text-white shadow-xs">
-                      {/* Decorative angled facets */}
-                      <div className="absolute right-0 top-0 h-full w-24 bg-white/[0.04] skew-x-12 pointer-events-none" />
-                      <div className="relative z-10 text-center py-1">
-                        <p className="text-[10.5px] font-medium text-white/80">Total balance</p>
-                        <p className="text-[20px] sm:text-[22px] font-black tracking-tight text-white mt-0.5">
-                          <span className="text-xs font-bold text-white/90 mr-1">AED</span>
-                          20,150.00
-                        </p>
+                    {/* Balance Carousel Card */}
+                    <div className="relative overflow-hidden pl-4 pr-0 mt-1">
+                      <div className="flex gap-2.5 items-stretch">
+                        {/* Active Main Card */}
+                        <div className="relative w-[86%] shrink-0 rounded-2xl bg-[#00A663] text-white p-4 shadow-md text-center overflow-hidden">
+                          {/* Decorative subtle background shapes */}
+                          <div className="absolute -right-3 -top-6 w-24 h-24 rounded-2xl bg-white/[0.08] rotate-12 pointer-events-none" />
+                          <div className="absolute -left-6 -bottom-6 w-24 h-24 rounded-2xl bg-black/[0.1] -rotate-12 pointer-events-none" />
+                          
+                          <div className="relative z-10 py-0.5">
+                            <p className="text-[11px] font-medium text-white/85">Total balance</p>
+                            <p className="text-[21px] font-extrabold tracking-tight text-white mt-0.5">
+                              <span className="text-xs font-bold text-white/90 mr-1">AED</span>
+                              20,150.00
+                            </p>
+                          </div>
+                        </div>
+
+                        {/* Second Card Peek on the right */}
+                        <div className="w-[18%] shrink-0 rounded-l-2xl bg-[#00A663] opacity-90 shadow-md" />
                       </div>
                     </div>
 
-                    {/* Carousel Indicator Dots */}
-                    <div className="flex items-center justify-center gap-1.5 pt-0.5">
-                      <div className="w-3 h-1 rounded-full bg-[#00A663]" />
+                    {/* 2 Carousel Indicator Dots */}
+                    <div className="flex items-center justify-center gap-1.5 pt-2">
+                      <div className="w-5 h-1 rounded-full bg-[#00A663]" />
                       <div className="size-1 rounded-full bg-gray-200" />
                     </div>
 
-                    {/* 4 Circular Action Buttons */}
-                    <div className="grid grid-cols-4 gap-2 pt-0.5 text-center">
-                      <div className="flex flex-col items-center gap-1">
-                        <div className="size-8 sm:size-9 rounded-full bg-[#0F172A] text-white flex items-center justify-center shadow-2xs">
-                          <ArrowLeftRight size={13} />
+                    {/* 4 Action Buttons Row */}
+                    <div className="grid grid-cols-4 gap-2 px-3 pt-3 text-center">
+                      <div className="flex flex-col items-center">
+                        <div className="size-10 rounded-full bg-[#0F172A] text-white flex items-center justify-center shadow-xs">
+                          <ArrowLeftRight size={15} />
                         </div>
-                        <span className="text-[9px] font-medium text-[#0D1117]">Invest</span>
+                        <span className="text-[10px] font-semibold text-gray-800 mt-1">Invest</span>
                       </div>
-                      <div className="flex flex-col items-center gap-1">
-                        <div className="size-8 sm:size-9 rounded-full bg-[#0F172A] text-white flex items-center justify-center shadow-2xs">
-                          <Plus size={14} strokeWidth={2.5} />
+                      <div className="flex flex-col items-center">
+                        <div className="size-10 rounded-full bg-[#0F172A] text-white flex items-center justify-center shadow-xs">
+                          <Plus size={18} strokeWidth={2.5} />
                         </div>
-                        <span className="text-[9px] font-medium text-[#0D1117]">Deposit</span>
+                        <span className="text-[10px] font-semibold text-gray-800 mt-1">Deposit</span>
                       </div>
-                      <div className="flex flex-col items-center gap-1">
-                        <div className="size-8 sm:size-9 rounded-full bg-[#0F172A] text-white flex items-center justify-center shadow-2xs">
-                          <ArrowUpRight size={13} />
+                      <div className="flex flex-col items-center">
+                        <div className="size-10 rounded-full border border-gray-200 bg-white text-gray-800 flex items-center justify-center shadow-2xs">
+                          <ArrowUpRight size={15} />
                         </div>
-                        <span className="text-[9px] font-medium text-[#0D1117]">Withdraw</span>
+                        <span className="text-[10px] font-semibold text-gray-800 mt-1">Withdraw</span>
                       </div>
-                      <div className="flex flex-col items-center gap-1">
-                        <div className="size-8 sm:size-9 rounded-full bg-gray-100 text-[#0F172A] flex items-center justify-center">
-                          <Settings size={13} />
+                      <div className="flex flex-col items-center">
+                        <div className="size-10 rounded-full border border-gray-200 bg-white text-gray-800 flex items-center justify-center shadow-2xs">
+                          <Settings size={15} />
                         </div>
-                        <span className="text-[9px] font-medium text-[#0D1117]">Settings</span>
+                        <span className="text-[10px] font-semibold text-gray-800 mt-1">Settings</span>
                       </div>
                     </div>
 
-                    {/* Transactions Section */}
-                    <div className="space-y-1.5 pt-1">
+                    {/* Transactions Feed */}
+                    <div className="px-4 pt-3 space-y-1.5">
                       <div className="flex items-center justify-between">
-                        <span className="text-[11.5px] font-bold text-[#0D1117]">Transactions</span>
-                        <span className="text-[9px] font-semibold text-gray-400 hover:text-gray-600">View all</span>
+                        <span className="text-xs font-bold text-gray-900">Transactions</span>
+                        <span className="text-[10px] font-semibold text-gray-400 hover:text-gray-600 cursor-pointer">View all</span>
                       </div>
 
                       {/* Filter Pills */}
-                      <div className="flex items-center gap-1.5 overflow-x-auto pb-0.5 scrollbar-none text-[9px]">
-                        <span className="rounded-full bg-[#0F172A] text-white px-2.5 py-0.5 font-medium shrink-0">All</span>
+                      <div className="flex items-center gap-1.5 overflow-x-hidden text-[9.5px] pt-0.5">
+                        <span className="rounded-full bg-[#0F172A] text-white px-2.5 py-0.5 font-semibold shrink-0">All</span>
                         <span className="rounded-full border border-gray-200 text-gray-500 px-2.5 py-0.5 font-medium shrink-0">Investments</span>
                         <span className="rounded-full border border-gray-200 text-gray-500 px-2.5 py-0.5 font-medium shrink-0">Incoming</span>
                         <span className="rounded-full border border-gray-200 text-gray-500 px-2.5 py-0.5 font-medium shrink-0">Outgoing</span>
+                        <span className="rounded-full border border-gray-200 text-gray-500 px-2.5 py-0.5 font-medium shrink-0">Exit</span>
                       </div>
 
-                      {/* Month Header */}
-                      <p className="text-[9px] font-medium text-gray-400 pt-0.5">July 2023</p>
+                      {/* Date Header */}
+                      <p className="text-[9.5px] font-medium text-gray-400 pt-0.5">July 2023</p>
 
-                      {/* Item 1 */}
-                      <div className="flex items-center justify-between py-0.5">
+                      {/* Transaction Item 1 */}
+                      <div className="flex items-center justify-between py-1">
                         <div className="flex items-center gap-2">
-                          <div className="size-7 rounded-full overflow-hidden shrink-0 border border-black/5 bg-gray-100">
+                          <div className="size-8 rounded-full overflow-hidden shrink-0 border border-black/5 bg-gray-100 flex items-center justify-center">
                             <img src="/images/journey/dubai-marina.jpg" alt="Park Tower" className="w-full h-full object-cover" />
                           </div>
                           <div>
-                            <p className="text-[10px] font-bold text-[#0D1117] leading-tight">1 bed in Park Tower</p>
-                            <p className="text-[8.5px] text-[#64748B]">Rent Payment</p>
+                            <p className="text-[10.5px] font-bold text-gray-900 leading-tight">1 bed in Park Tower</p>
+                            <p className="text-[9px] text-[#64748B]">Rent Payment</p>
                           </div>
                         </div>
                         <div className="text-right">
-                          <p className="text-[10px] font-extrabold text-[#00A663]">+ AED 320</p>
-                          <p className="text-[8px] text-gray-400">6th July &apos;23</p>
+                          <p className="text-[10.5px] font-extrabold text-[#00A663]">+ AED 320</p>
+                          <p className="text-[8.5px] text-gray-400">6th July &apos;23</p>
                         </div>
                       </div>
 
-                      {/* Item 2 */}
-                      <div className="flex items-center justify-between py-0.5">
+                      {/* Transaction Item 2 */}
+                      <div className="flex items-center justify-between py-1">
                         <div className="flex items-center gap-2">
-                          <div className="size-7 rounded-full bg-amber-50 text-amber-500 flex items-center justify-center shrink-0 border border-amber-200/60">
-                            <ArrowDownLeft size={13} strokeWidth={2.5} />
+                          <div className="size-8 rounded-full bg-amber-50 text-amber-500 flex items-center justify-center shrink-0 border border-amber-200/60">
+                            <ArrowDownLeft size={15} strokeWidth={2.5} />
                           </div>
                           <div>
-                            <p className="text-[10px] font-bold text-[#0D1117] leading-tight">Emirates NBD ****34</p>
-                            <p className="text-[8.5px] text-amber-500 font-medium">Pending deposit</p>
+                            <p className="text-[10.5px] font-bold text-gray-900 leading-tight">Emirates NBD ****34</p>
+                            <p className="text-[9px] text-amber-500 font-medium">Pending deposit</p>
                           </div>
                         </div>
                         <div className="text-right">
-                          <p className="text-[10px] font-bold text-[#0D1117]">+ AED 6,000</p>
-                          <p className="text-[8px] text-gray-400">6th July &apos;23</p>
+                          <p className="text-[10.5px] font-bold text-gray-900">+ AED 6,000</p>
+                          <p className="text-[8.5px] text-gray-400">6th July &apos;23</p>
                         </div>
                       </div>
                     </div>
                   </div>
 
-                  {/* Bottom Navigation Bar (5 tabs) */}
-                  <div className="pt-2 border-t border-gray-100 grid grid-cols-5 text-center text-[8px] text-gray-400">
-                    <div className="flex flex-col items-center gap-0.5">
-                      <Building size={11} />
-                      <span>Properties</span>
+                  {/* Bottom Tab Bar (5 iOS navigation tabs) */}
+                  <div className="pt-2 pb-1 border-t border-gray-100">
+                    <div className="grid grid-cols-5 text-center text-[8.5px] text-gray-400">
+                      <div className="flex flex-col items-center gap-0.5">
+                        <Building size={14} />
+                        <span>Properties</span>
+                      </div>
+                      <div className="flex flex-col items-center gap-0.5 text-gray-900 font-bold relative">
+                        <Wallet size={14} className="text-gray-900" />
+                        <span>Wallet</span>
+                        <div className="w-4 h-0.5 bg-gray-900 rounded-full mt-0.5" />
+                      </div>
+                      <div className="flex flex-col items-center gap-0.5">
+                        <PieChart size={14} />
+                        <span>Portfolio</span>
+                      </div>
+                      <div className="flex flex-col items-center gap-0.5">
+                        <Star size={14} />
+                        <span>Rewards</span>
+                      </div>
+                      <div className="flex flex-col items-center gap-0.5">
+                        <User size={14} />
+                        <span>Profile</span>
+                      </div>
                     </div>
-                    <div className="flex flex-col items-center gap-0.5 text-[#0D1117] font-bold">
-                      <Wallet size={11} className="text-[#0D1117]" />
-                      <span>Wallet</span>
-                    </div>
-                    <div className="flex flex-col items-center gap-0.5">
-                      <PieChart size={11} />
-                      <span>Portfolio</span>
-                    </div>
-                    <div className="flex flex-col items-center gap-0.5">
-                      <Star size={11} />
-                      <span>Rewards</span>
-                    </div>
-                    <div className="flex flex-col items-center gap-0.5">
-                      <User size={11} />
-                      <span>Profile</span>
-                    </div>
+                    {/* iOS Home Indicator */}
+                    <div className="w-28 h-1 bg-black/80 rounded-full mx-auto mt-2 mb-1" />
                   </div>
                 </div>
-              </DeviceFrame>
+              </div>
             </div>
 
-            {/* Right: Editorial text & stats */}
+            {/* Right Column (Editorial & Stats) */}
             <div className="lg:col-span-6 space-y-6">
-              <h3 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-[#0D1117] leading-tight">
+              <h3 className="text-4xl sm:text-5xl font-extrabold tracking-tight text-[#0D1117] leading-[1.12]">
                 Earn consistent passive income
               </h3>
 
@@ -209,10 +266,10 @@ export function HowYouEarn() {
                 Build new income streams with rental payments from income generating properties and funds
               </p>
 
-              {/* Large Stat Blocks */}
-              <div className="grid grid-cols-2 gap-6 pt-4 border-t border-black/[0.08]">
+              {/* Stats Row */}
+              <div className="flex gap-12 pt-6">
                 <div>
-                  <p className="font-mono text-3xl sm:text-4xl font-black text-[#0D1117] tracking-tight">
+                  <p className="text-3xl font-extrabold text-[#0D1117] tracking-tight">
                     AED 90.5M+
                   </p>
                   <p className="text-xs sm:text-sm text-[#64748B] mt-1 font-medium">
@@ -220,8 +277,8 @@ export function HowYouEarn() {
                   </p>
                 </div>
                 <div>
-                  <p className="font-mono text-3xl sm:text-4xl font-black text-[#00A663] tracking-tight">
-                    5.30%
+                  <p className="text-3xl font-extrabold text-[#0D1117] tracking-tight">
+                    5.30<span className="text-[#00A663]">%</span>
                   </p>
                   <p className="text-xs sm:text-sm text-[#64748B] mt-1 font-medium">
                     Average Rental Yield in 2025

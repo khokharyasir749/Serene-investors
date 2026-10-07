@@ -2,10 +2,7 @@
 
 import React from 'react'
 import {
-  Users,
-  Trophy,
   Check,
-  Percent,
   ArrowRight,
   Wifi,
   Battery,
@@ -106,69 +103,137 @@ const TIERS: TierData[] = [
   },
 ]
 
+// Authentic Reference Icons matching the design screenshot
+function CashbackCardIcon() {
+  return (
+    <svg
+      className="size-8 sm:size-9 md:size-10 text-[#00A663]"
+      viewBox="0 0 36 36"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2.2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <rect x="3" y="6" width="30" height="22" rx="4" />
+      <line x1="3" y1="13" x2="33" y2="13" />
+      <line x1="8" y1="21" x2="13" y2="21" />
+      <path
+        d="M26.5 19.5c-.7-.8-1.8-.8-2.5 0-.7.8-.7 2 0 2.8l2.5 2.5 2.5-2.5c.7-.8.7-2 0-2.8-.7-.8-1.8-.8-2.5 0z"
+        strokeWidth="1.8"
+      />
+    </svg>
+  )
+}
+
+function ShareEarnIcon() {
+  return (
+    <svg
+      className="size-8 sm:size-9 md:size-10 text-[#00A663]"
+      viewBox="0 0 36 36"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2.2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <circle cx="15" cy="11" r="4.5" />
+      <path d="M7 26c0-4.5 4-7.5 9-7.5" />
+      <path d="M22 20.5a3.5 3.5 0 0 1 3.5 3.5" />
+      <path d="M25.5 19.5v4.5h-4.5" />
+      <path d="M27.5 25.5a3.5 3.5 0 0 1-3.5-3.5" />
+      <path d="M24 26.5v-4.5h4.5" />
+    </svg>
+  )
+}
+
+function LevelUpIcon() {
+  return (
+    <svg
+      className="size-8 sm:size-9 md:size-10 text-[#00A663]"
+      viewBox="0 0 36 36"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2.2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <path d="M4 19h7l2.5 4h9l2.5-4h7v9a3 3 0 0 1-3 3H7a3 3 0 0 1-3-3v-9z" />
+      <circle cx="18" cy="11" r="5" />
+      <path d="M18 8v6M16 9.5h3.5a1 1 0 0 1 0 2H16.5a1 1 0 0 0 0 2H20" strokeWidth="1.6" />
+    </svg>
+  )
+}
+
 export function RewardsTiers() {
   return (
     <section
       id="rewards"
-      className="relative overflow-hidden bg-[#F7F5EF] py-24 px-6 lg:px-12 border-b border-black/[0.08]"
+      className="relative overflow-hidden bg-white py-20 sm:py-28 px-6 lg:px-12 border-b border-black/[0.06]"
       aria-label="Rewards & Investor Tiers"
     >
       <div className="mx-auto max-w-7xl">
         
-        {/* Section Heading */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <p className="font-mono text-xs font-bold uppercase tracking-[0.16em] text-[#00A663] mb-3">
-            REWARDING INVESTING EXPERIENCE
+        {/* Section Heading & Subtitle & Button matching reference screenshot */}
+        <div className="text-center max-w-3xl mx-auto">
+          {/* Green Kicker / Eyebrow */}
+          <p className="text-xs sm:text-sm font-semibold text-[#00A663] mb-3 sm:mb-4 tracking-normal">
+            Rewarding investing experience
           </p>
-          <h2 className="text-4xl lg:text-5xl font-extrabold tracking-tight text-[#0D1117] leading-[1.12]">
-            Start earning rewards as you grow your investments
+
+          {/* Main H2 Heading with exact line break and typography */}
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-[52px] font-extrabold tracking-tight text-[#0F172A] leading-[1.15]">
+            Start earning rewards as
+            <br />
+            you grow your investments
           </h2>
-          <p className="mt-4 text-base sm:text-lg text-[#4B5563]">
+
+          {/* Subtitle / Description */}
+          <p className="mt-4 sm:mt-5 text-sm sm:text-base md:text-[17px] text-[#64748B] leading-relaxed max-w-2xl mx-auto">
             Get cashback, referral bonuses, and exclusive perks to enhance your investment journey. From early access to funds to premium insights, the more you invest, the more you earn.
           </p>
+
+          {/* Centered Dark CTA Button */}
+          <div className="mt-7 sm:mt-8 flex justify-center">
+            <a
+              href="/rewards"
+              className="inline-flex items-center justify-center rounded-xl bg-[#0F172A] hover:bg-[#1E293B] text-white px-7 py-3 text-sm font-semibold shadow-xs transition-all active:scale-95"
+            >
+              Learn about Rewards
+            </a>
+          </div>
         </div>
 
-        {/* =========================================================================
-            TOP: 3 Micro-Feature Highlights
-            ========================================================================= */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto mb-20">
-          {/* Micro-feature 1: Cashback */}
-          <div className="flex items-start gap-4 rounded-2xl bg-white p-6 border border-black/[0.06] shadow-xs">
-            <div className="flex size-12 shrink-0 items-center justify-center rounded-xl bg-[#E8F8F0] text-[#00A663]">
-              <Percent size={22} strokeWidth={2.2} />
+        {/* 3 Circular Micro-Features in Mint Circles with exact icons and bold labels */}
+        <div className="mt-14 sm:mt-18 mb-20 sm:mb-24 grid grid-cols-3 max-w-3xl mx-auto gap-4 sm:gap-8 items-start justify-center">
+          {/* 1. Earn cashback */}
+          <div className="flex flex-col items-center text-center group cursor-pointer">
+            <div className="size-18 sm:size-20 md:size-22 rounded-full bg-[#E6F9F0] text-[#00A663] flex items-center justify-center transition-transform duration-200 group-hover:scale-105 shadow-2xs">
+              <CashbackCardIcon />
             </div>
-            <div>
-              <h3 className="text-lg font-bold text-[#0D1117]">Earn cashback</h3>
-              <p className="mt-1 text-sm text-[#4B5563] leading-relaxed">
-                Get up to 3% of your investment added to your Rewards wallet, helping you grow your portfolio faster.
-              </p>
-            </div>
+            <p className="mt-4 sm:mt-5 text-sm sm:text-base md:text-lg font-extrabold text-[#0F172A] tracking-tight">
+              Earn cashback
+            </p>
           </div>
 
-          {/* Micro-feature 2: Share and earn */}
-          <div className="flex items-start gap-4 rounded-2xl bg-white p-6 border border-black/[0.06] shadow-xs">
-            <div className="flex size-12 shrink-0 items-center justify-center rounded-xl bg-[#E8F8F0] text-[#00A663]">
-              <Users size={22} strokeWidth={2.2} />
+          {/* 2. Share and earn */}
+          <div className="flex flex-col items-center text-center group cursor-pointer">
+            <div className="size-18 sm:size-20 md:size-22 rounded-full bg-[#E6F9F0] text-[#00A663] flex items-center justify-center transition-transform duration-200 group-hover:scale-105 shadow-2xs">
+              <ShareEarnIcon />
             </div>
-            <div>
-              <h3 className="text-lg font-bold text-[#0D1117]">Share and earn</h3>
-              <p className="mt-1 text-sm text-[#4B5563] leading-relaxed">
-                Invite your friends to join Stake - when they invest, you both earn. Everyone wins when you spread the word!
-              </p>
-            </div>
+            <p className="mt-4 sm:mt-5 text-sm sm:text-base md:text-lg font-bold text-[#0F172A] tracking-tight">
+              Share and earn
+            </p>
           </div>
 
-          {/* Micro-feature 3: Level up */}
-          <div className="flex items-start gap-4 rounded-2xl bg-white p-6 border border-black/[0.06] shadow-xs">
-            <div className="flex size-12 shrink-0 items-center justify-center rounded-xl bg-[#E8F8F0] text-[#00A663]">
-              <Trophy size={22} strokeWidth={2.2} />
+          {/* 3. Level up */}
+          <div className="flex flex-col items-center text-center group cursor-pointer">
+            <div className="size-18 sm:size-20 md:size-22 rounded-full bg-[#E6F9F0] text-[#00A663] flex items-center justify-center transition-transform duration-200 group-hover:scale-105 shadow-2xs">
+              <LevelUpIcon />
             </div>
-            <div>
-              <h3 className="text-lg font-bold text-[#0D1117]">Level up</h3>
-              <p className="mt-1 text-sm text-[#4B5563] leading-relaxed">
-                The more you invest, the faster you move through the tiers - unlocking bigger perks, bonuses, and exclusive offers.
-              </p>
-            </div>
+            <p className="mt-4 sm:mt-5 text-sm sm:text-base md:text-lg font-bold text-[#0F172A] tracking-tight">
+              Level up
+            </p>
           </div>
         </div>
 

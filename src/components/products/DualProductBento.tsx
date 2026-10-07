@@ -138,9 +138,9 @@ export function DualProductBento() {
                 </div>
 
                 {/* Main Phone Mockup (Submerged/Cropped at bottom - Realistic Titanium Frame) */}
-                <div className="relative z-10 w-[310px] sm:w-[350px] lg:w-[380px] shrink-0 rounded-[52px] bg-[#161a20] p-[3.5px] shadow-[0_30px_70px_-15px_rgba(0,0,0,0.45),0_0_0_1px_rgba(255,255,255,0.08)] border border-[#3b4452]/80 select-none">
+                <div className="relative z-10 w-[270px] sm:w-[290px] lg:w-[305px] shrink-0 rounded-[48px] bg-[#161a20] p-[3.5px] shadow-[0_30px_70px_-15px_rgba(0,0,0,0.45),0_0_0_1px_rgba(255,255,255,0.08)] border border-[#3b4452]/80 select-none">
                   {/* Outer Metallic Chamfer Highlight */}
-                  <div className="pointer-events-none absolute inset-0 rounded-[51px] ring-1 ring-inset ring-white/10" aria-hidden="true" />
+                  <div className="pointer-events-none absolute inset-0 rounded-[47px] ring-1 ring-inset ring-white/10" aria-hidden="true" />
 
                   {/* Chassis Hardware Buttons */}
                   <div className="absolute -left-[2px] top-[46px] h-[2px] w-[3.5px] bg-[#0c0f14]" aria-hidden="true" />
@@ -154,16 +154,16 @@ export function DualProductBento() {
                   <div className="absolute -right-[2px] bottom-[72px] h-[2px] w-[3.5px] bg-[#0c0f14]" aria-hidden="true" />
 
                   {/* Inner OLED Pitch-Black Bezel */}
-                  <div className="relative h-full w-full rounded-[48px] bg-black p-[3.5px] overflow-hidden flex flex-col shadow-inner">
+                  <div className="relative h-full w-full rounded-[44px] bg-black p-[3.5px] overflow-hidden flex flex-col shadow-inner">
                     {/* Phone Screen Canvas */}
-                    <div className="rounded-[44px] bg-white overflow-hidden flex flex-col text-left pb-14">
+                    <div className="rounded-[40px] bg-white overflow-hidden flex flex-col text-left pb-14">
                       
                       {/* Top Status Bar & Dynamic Island */}
-                      <div className="relative z-30 pt-2 pb-1.5 px-6 bg-white flex items-center justify-between text-[11px] font-semibold text-[#0D1117]">
+                      <div className="relative z-30 pt-2 pb-1.5 px-5 bg-white flex items-center justify-between text-[11px] font-semibold text-[#0D1117]">
                         <span className="w-12 text-left font-semibold text-[13px] tracking-tight">9:41</span>
-                        <div className="h-[25px] w-[105px] rounded-full bg-black flex items-center justify-end px-2.5 shadow-sm">
-                          <div className="size-2.5 rounded-full bg-[#0a0d14] ring-1 ring-[#1b2230] flex items-center justify-center">
-                            <div className="size-1 rounded-full bg-[#20293d]" />
+                        <div className="h-[22px] w-[88px] rounded-full bg-black flex items-center justify-end px-2.5 shadow-sm">
+                          <div className="size-2 rounded-full bg-[#0a0d14] ring-1 ring-[#1b2230] flex items-center justify-center">
+                            <div className="size-0.5 rounded-full bg-[#20293d]" />
                           </div>
                         </div>
                         <div className="flex w-12 items-center justify-end gap-1.5">
@@ -413,9 +413,9 @@ export function DualProductBento() {
                 </div>
 
                 {/* Main Phone Mockup (Submerged/Cropped at bottom - Realistic Titanium Frame) */}
-                <div className="relative z-10 w-[310px] sm:w-[350px] lg:w-[380px] shrink-0 rounded-[52px] bg-[#161a20] p-[3.5px] shadow-[0_30px_70px_-15px_rgba(0,0,0,0.45),0_0_0_1px_rgba(255,255,255,0.08)] border border-[#3b4452]/80 select-none">
+                <div className="relative z-10 w-[270px] sm:w-[290px] lg:w-[305px] shrink-0 rounded-[48px] bg-[#161a20] p-[3.5px] shadow-[0_30px_70px_-15px_rgba(0,0,0,0.45),0_0_0_1px_rgba(255,255,255,0.08)] border border-[#3b4452]/80 select-none">
                   {/* Outer Metallic Chamfer Highlight */}
-                  <div className="pointer-events-none absolute inset-0 rounded-[51px] ring-1 ring-inset ring-white/10" aria-hidden="true" />
+                  <div className="pointer-events-none absolute inset-0 rounded-[47px] ring-1 ring-inset ring-white/10" aria-hidden="true" />
 
                   {/* Chassis Hardware Buttons */}
                   <div className="absolute -left-[2px] top-[46px] h-[2px] w-[3.5px] bg-[#0c0f14]" aria-hidden="true" />
@@ -429,16 +429,16 @@ export function DualProductBento() {
                   <div className="absolute -right-[2px] bottom-[72px] h-[2px] w-[3.5px] bg-[#0c0f14]" aria-hidden="true" />
 
                   {/* Inner OLED Pitch-Black Bezel */}
-                  <div className="relative h-full w-full rounded-[48px] bg-black p-[3.5px] overflow-hidden flex flex-col shadow-inner">
+                  <div className="relative h-full w-full rounded-[44px] bg-black p-[3.5px] overflow-hidden flex flex-col shadow-inner">
                     {/* Phone Screen Canvas */}
-                    <div className="rounded-[44px] bg-white overflow-hidden flex flex-col text-left pb-14">
+                    <div className="rounded-[40px] bg-white overflow-hidden flex flex-col text-left pb-14">
                       
                       {/* Top Status Bar & Dynamic Island */}
-                      <div className="relative z-30 pt-2 pb-1.5 px-6 bg-white flex items-center justify-between text-[11px] font-semibold text-[#0D1117]">
+                      <div className="relative z-30 pt-2 pb-1.5 px-5 bg-white flex items-center justify-between text-[11px] font-semibold text-[#0D1117]">
                         <span className="w-12 text-left font-semibold text-[13px] tracking-tight">9:41</span>
-                        <div className="h-[25px] w-[105px] rounded-full bg-black flex items-center justify-end px-2.5 shadow-sm">
-                          <div className="size-2.5 rounded-full bg-[#0a0d14] ring-1 ring-[#1b2230] flex items-center justify-center">
-                            <div className="size-1 rounded-full bg-[#20293d]" />
+                        <div className="h-[22px] w-[88px] rounded-full bg-black flex items-center justify-end px-2.5 shadow-sm">
+                          <div className="size-2 rounded-full bg-[#0a0d14] ring-1 ring-[#1b2230] flex items-center justify-center">
+                            <div className="size-0.5 rounded-full bg-[#20293d]" />
                           </div>
                         </div>
                         <div className="flex w-12 items-center justify-end gap-1.5">
