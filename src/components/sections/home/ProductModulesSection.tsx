@@ -5,10 +5,10 @@ import { Link } from '@/components/ui/Link'
 import { PhoneFrame } from '@/components/ui/mockups/PhoneFrame'
 
 const STATS = [
-  { value: '2M+', label: 'Registered users' },
-  { value: '£1.5B+', label: 'Property transactions' },
-  { value: '200+', label: 'User nationalities' },
-  { value: '£236M+', label: 'Total distributed' },
+  { prefix: '2', suffix: 'M+', label: 'Registered users' },
+  { prefix: 'AED 1.5', suffix: 'B+', label: 'Property transactions' },
+  { prefix: '202', suffix: '+', label: 'User nationalities' },
+  { prefix: 'AED 236.9', suffix: 'M+', label: 'Total distributed' },
 ]
 
 export function ProductModulesSection() {
@@ -20,22 +20,25 @@ export function ProductModulesSection() {
     >
       <div className="mx-auto max-w-[var(--container-wide)] px-5 md:px-8">
         {/* Centered Header & 4 Key Stats */}
-        <div className="mx-auto max-w-3xl text-center">
-          <p className="font-mono text-xs font-semibold uppercase tracking-[0.16em] text-primary">
-            INVESTMENT PRODUCTS
+        <div className="mx-auto max-w-4xl text-center">
+          <p className="text-sm sm:text-base font-semibold text-[#00A663] tracking-tight">
+            Leading digital real estate platform
           </p>
-          <h2 className="mt-3 text-[clamp(2.15rem,4vw,3.6rem)] font-bold leading-[1.12] tracking-tight text-ink text-balance">
-            Build a global and diversified real estate portfolio
+          <h2 className="mt-3 sm:mt-4 text-3xl sm:text-5xl lg:text-[54px] font-extrabold leading-[1.14] tracking-tight text-[#0F172A] text-balance">
+            Build a global and diversified
+            <br />
+            real estate portfolio
           </h2>
 
           {/* 4 Key Stats Row */}
-          <div className="mt-10 grid grid-cols-2 gap-4 sm:grid-cols-4 sm:gap-6 border-y border-ink/[0.08] py-6">
+          <div className="mt-12 sm:mt-16 grid grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-10">
             {STATS.map((stat) => (
               <div key={stat.label} className="text-center">
-                <p className="font-mono text-2xl sm:text-3xl font-extrabold tracking-tight text-ink">
-                  {stat.value}
+                <p className="text-3xl sm:text-4xl lg:text-[44px] font-extrabold text-[#0F172A] tracking-tight leading-none">
+                  <span>{stat.prefix}</span>
+                  <span className="text-[#00A663]">{stat.suffix}</span>
                 </p>
-                <p className="mt-1 text-xs sm:text-[0.8125rem] text-muted font-medium">
+                <p className="mt-2 text-xs sm:text-sm font-medium text-[#64748B]">
                   {stat.label}
                 </p>
               </div>

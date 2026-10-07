@@ -3,9 +3,17 @@
 import React, { useState } from 'react'
 import {
   Play,
-  Building,
-  CheckCircle2,
   PieChart,
+  ChevronLeft,
+  Bookmark,
+  Share2,
+  Bed,
+  Bath,
+  Maximize2,
+  Camera,
+  Users,
+  Clock,
+  Zap,
 } from 'lucide-react'
 import { DeviceFrame } from '@/components/common/DeviceFrame'
 
@@ -13,52 +21,66 @@ export function DualProductBento() {
   const [isPlayingVideo, setIsPlayingVideo] = useState(false)
 
   const stats = [
-    { label: 'Registered users', value: '800K+' },
-    { label: 'Property transactions', value: 'AED 1.5B+' },
-    { label: 'User nationalities', value: '202+' },
-    { label: 'Total distributed', value: 'AED 45M+' },
+    {
+      prefix: '2',
+      suffix: 'M+',
+      label: 'Registered users',
+    },
+    {
+      prefix: 'AED 1.5',
+      suffix: 'B+',
+      label: 'Property transactions',
+    },
+    {
+      prefix: '202',
+      suffix: '+',
+      label: 'User nationalities',
+    },
+    {
+      prefix: 'AED 236.9',
+      suffix: 'M+',
+      label: 'Total distributed',
+    },
   ]
 
   return (
     <section
       id="products-bento"
-      className="relative overflow-hidden bg-white py-20 px-6 lg:px-12 border-b border-black/[0.08]"
+      className="relative overflow-hidden bg-[#F8FAF9] py-20 px-6 lg:px-12 border-b border-black/[0.08]"
       aria-label="Properties and Funds Bento Showcase"
     >
       <div className="mx-auto max-w-7xl">
         
         {/* =========================================================================
-            PRE-HEADER: Clean Horizontal 4-Stat Bar Directly Above Cards
+            HEADER & 4-STAT SHOWCASE (Exact Match to User Screenshot)
             ========================================================================= */}
-        <div className="mb-20 rounded-2xl bg-[#F7F5EF] p-6 sm:p-8 border border-black/[0.06] shadow-xs">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8 divide-y md:divide-y-0 md:divide-x divide-black/[0.08]">
-            {stats.map((stat, idx) => (
-              <div
-                key={stat.label}
-                className={`text-center ${idx > 0 ? 'pt-4 md:pt-0' : ''}`}
-              >
-                <p className="font-mono text-3xl sm:text-4xl lg:text-5xl font-black text-[#0D1117] tracking-tight">
-                  {stat.value}
+        <div className="text-center max-w-4xl mx-auto mb-16 sm:mb-20">
+          {/* Eyebrow */}
+          <p className="text-sm sm:text-base font-semibold text-[#00A663] tracking-tight">
+            Leading digital real estate platform
+          </p>
+
+          {/* Headline */}
+          <h2 className="mt-3 sm:mt-4 text-3xl sm:text-5xl lg:text-[54px] font-extrabold tracking-tight text-[#0F172A] leading-[1.14] text-balance">
+            Build a global and diversified
+            <br />
+            real estate portfolio
+          </h2>
+
+          {/* 4 Open Stats Directly Below Headline */}
+          <div className="mt-12 sm:mt-16 grid grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-10">
+            {stats.map((stat) => (
+              <div key={stat.label} className="text-center">
+                <p className="text-3xl sm:text-4xl lg:text-[44px] font-extrabold text-[#0F172A] tracking-tight leading-none">
+                  <span>{stat.prefix}</span>
+                  <span className="text-[#00A663]">{stat.suffix}</span>
                 </p>
-                <p className="mt-1.5 text-xs sm:text-sm font-semibold text-[#4B5563]">
+                <p className="mt-2 text-xs sm:text-sm font-medium text-[#64748B]">
                   {stat.label}
                 </p>
               </div>
             ))}
           </div>
-        </div>
-
-        {/* Section Headline */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <p className="font-mono text-xs font-bold uppercase tracking-[0.16em] text-[#00A663] mb-3">
-            LEADING DIGITAL REAL ESTATE PLATFORM
-          </p>
-          <h2 className="text-4xl lg:text-5xl font-extrabold tracking-tight text-[#0D1117] leading-[1.12]">
-            Build a global and diversified real estate portfolio
-          </h2>
-          <p className="mt-4 text-base sm:text-lg text-[#4B5563]">
-            Target individual high-performing residential units or institutional single-asset funds in prime global markets.
-          </p>
         </div>
 
         {/* =========================================================================
@@ -67,125 +89,221 @@ export function DualProductBento() {
         <div className="space-y-12">
 
           {/* -----------------------------------------------------------------------
-              BENTO CARD 1 (Properties): Left Phone Peek | Right Editorial Content
+              BENTO CARD 1 (Properties): Left Green Phone Mockup | Right Editorial
               ----------------------------------------------------------------------- */}
-          <div className="rounded-[36px] bg-[#E8F8F0]/40 border border-[#00A663]/20 p-8 sm:p-12 lg:p-14 overflow-hidden relative shadow-sm">
-            
-            {/* Ambient Background Glow */}
-            <div
-              className="pointer-events-none absolute -left-20 -top-20 size-80 rounded-full bg-[#00A663]/10 blur-3xl"
-              aria-hidden="true"
-            />
-
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
+          <div className="rounded-[32px] sm:rounded-[40px] bg-white border border-black/[0.06] p-6 sm:p-10 lg:p-12 overflow-hidden relative shadow-[0_4px_30px_rgba(0,0,0,0.03)]">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 items-center">
               
-              {/* Left Column (Phone Showcase Peek) */}
-              <div className="lg:col-span-6 relative flex justify-center items-center min-h-[460px]">
+              {/* Left Column (Green Showcase Container - Crops bottom half of phone) */}
+              <div className="lg:col-span-6 relative rounded-[28px] sm:rounded-[36px] bg-[#22C55E] pt-7 sm:pt-9 px-4 sm:px-6 flex justify-center items-start h-[440px] sm:h-[480px] lg:h-[500px] overflow-hidden shadow-inner">
                 
-                {/* Floating Polaroid Badge "+10.4% Boulevard Point" */}
-                <div className="absolute -left-2 sm:left-4 top-10 z-20 w-44 sm:w-48 rounded-2xl border border-black/[0.08] bg-white p-2.5 sm:p-3 shadow-xl backdrop-blur-md">
-                  <div className="relative h-20 w-full rounded-xl overflow-hidden mb-2">
+                {/* Floating Polaroid Sticker 1: Top-Right (Boulevard Point) */}
+                <div className="absolute right-0 sm:right-3 lg:right-5 top-16 sm:top-20 z-20 w-36 sm:w-42 rounded-2xl bg-white p-2.5 sm:p-3 shadow-2xl rotate-[8deg] border border-black/5 transition-transform hover:rotate-0 duration-300">
+                  <div className="relative h-20 sm:h-22 w-full rounded-xl overflow-hidden mb-1.5 bg-gray-100">
                     <img
-                      src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=400&q=80"
-                      alt="Boulevard Point"
+                      src="/images/journey/residential.jpg"
+                      alt="Boulevard Point, Downtown Dubai"
                       className="h-full w-full object-cover"
                     />
-                    <span className="absolute right-2 top-2 rounded-full bg-[#00A663] px-2 py-0.5 text-[9.5px] font-extrabold text-white">
-                      +10.4%
-                    </span>
                   </div>
-                  <p className="text-[11px] font-bold text-[#0D1117] truncate">Boulevard Point</p>
-                  <p className="text-[9.5px] text-[#64748B]">Downtown • Fully Funded</p>
+                  <p className="text-[10px] sm:text-[11.5px] font-bold text-[#0F172A] leading-tight">
+                    Boulevard Point,
+                  </p>
+                  <p className="text-[10px] sm:text-[11.5px] font-bold text-[#0F172A] leading-tight">
+                    Downtown Dubai
+                  </p>
+                  <p className="text-[11px] sm:text-xs font-extrabold text-[#00A663] mt-1">
+                    +10.4%
+                  </p>
                 </div>
 
-                {/* Main Phone Peek Container */}
-                <div className="w-[min(100%,310px)] relative z-10">
-                  <DeviceFrame className="shadow-[0_25px_65px_-15px_rgba(11,53,40,0.35)]">
-                    <div className="flex-1 bg-white p-3.5 flex flex-col justify-between">
-                      <div className="space-y-3">
-                        <div className="flex items-center justify-between pb-1 border-b border-black/[0.06]">
-                          <span className="text-[10.5px] font-bold text-[#0D1117]">Properties</span>
-                          <span className="text-[9.5px] font-bold text-[#00A663]">Available Now</span>
+                {/* Floating Polaroid Sticker 2: Bottom-Left (Marina Gate) */}
+                <div className="absolute -left-5 sm:-left-3 bottom-0 sm:bottom-2 z-20 w-36 sm:w-42 rounded-2xl bg-white p-2.5 sm:p-3 shadow-2xl -rotate-[14deg] border border-black/5 transition-transform hover:rotate-0 duration-300">
+                  <div className="relative h-20 sm:h-22 w-full rounded-xl overflow-hidden mb-1.5 bg-gray-100">
+                    <img
+                      src="/images/journey/dubai-marina.jpg"
+                      alt="Marina Gate, Dubai Marina"
+                      className="h-full w-full object-cover"
+                    />
+                  </div>
+                  <p className="text-[10px] sm:text-[11.5px] font-bold text-[#0F172A] leading-tight">
+                    Marina Gate,
+                  </p>
+                  <p className="text-[10px] sm:text-[11.5px] font-bold text-[#0F172A] leading-tight">
+                    Marina
+                  </p>
+                  <p className="text-[11px] sm:text-xs font-extrabold text-[#00A663] mt-1">
+                    +12.4%
+                  </p>
+                </div>
+
+                {/* Main Phone Mockup (Submerged/Cropped at bottom) */}
+                <div className="relative z-10 w-[310px] sm:w-[350px] lg:w-[380px] shrink-0 rounded-[44px] bg-[#1E293B] p-2.5 sm:p-3 border-[3.5px] border-[#334155]/60 shadow-[0_25px_60px_rgba(0,0,0,0.35)]">
+                  {/* Side Buttons */}
+                  <div className="absolute -left-[5px] top-20 h-7 w-[3px] rounded-l-xs bg-[#475569]" />
+                  <div className="absolute -left-[5px] top-32 h-11 w-[3px] rounded-l-xs bg-[#475569]" />
+                  <div className="absolute -right-[5px] top-24 h-14 w-[3px] rounded-r-xs bg-[#475569]" />
+
+                  {/* Phone Screen Canvas */}
+                  <div className="rounded-[34px] bg-white overflow-hidden flex flex-col text-left pb-14">
+                    
+                    {/* Top Notch / Dynamic Island */}
+                    <div className="relative z-30 pt-2 pb-1 bg-white flex justify-center items-center">
+                      <div className="h-5 w-24 sm:w-26 rounded-full bg-black flex items-center justify-end px-2.5">
+                        <div className="size-1.5 rounded-full bg-[#1e293b]" />
+                      </div>
+                    </div>
+
+                    {/* Hero Property Photo Container */}
+                    <div className="relative h-48 sm:h-52 w-full overflow-hidden bg-gray-100">
+                      <img
+                        src="/images/journey/dubai-marina.jpg"
+                        alt="Park Islands, Dubai Marina"
+                        className="h-full w-full object-cover"
+                      />
+
+                      {/* Top Overlaid Action Buttons */}
+                      <div className="absolute top-2.5 inset-x-2.5 flex items-center justify-between z-10">
+                        <div className="size-7 sm:size-8 rounded-full bg-white/90 backdrop-blur-xs flex items-center justify-center text-[#0F172A] shadow-xs">
+                          <ChevronLeft size={16} strokeWidth={2.5} />
                         </div>
-
-                        {/* Property Card: Park Islands */}
-                        <div className="rounded-2xl border border-black/[0.08] overflow-hidden bg-white shadow-2xs">
-                          <div className="relative h-28 w-full">
-                            <img
-                              src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=500&q=80"
-                              alt="Park Islands, Dubai Marina"
-                              className="h-full w-full object-cover"
-                            />
-                            <span className="absolute left-2.5 top-2.5 rounded-full bg-[#0B3528]/90 px-2 py-0.5 text-[9.5px] font-bold text-white">
-                              Prime Waterfront
-                            </span>
-                            <span className="absolute right-2.5 top-2.5 rounded-full bg-white/95 px-2 py-0.5 text-[9.5px] font-extrabold text-[#00A663]">
-                              7.8% Net Yield
-                            </span>
-                          </div>                          <div className="p-3">
-                            <p className="text-xs font-bold text-[#0D1117]">Marina Gate 1, Dubai Marina</p>
-                            <p className="text-[10px] text-[#64748B]">Purchase price: AED 1,450,000</p>
-
-                            <div className="mt-2.5">
-                              <div className="flex justify-between text-[10px] font-semibold text-[#0D1117] mb-1">
-                                <span>Funding Progress</span>
-                                <span className="text-[#00A663]">84% funded</span>
-                              </div>
-                              <div className="h-1.5 w-full rounded-full bg-black/[0.06] overflow-hidden">
-                                <div className="h-full w-[84%] rounded-full bg-[#00A663]" />
-                              </div>
-                            </div>
+                        <div className="flex items-center gap-1.5">
+                          <div className="size-7 sm:size-8 rounded-full bg-white/90 backdrop-blur-xs flex items-center justify-center text-[#0F172A] shadow-xs">
+                            <Bookmark size={14} strokeWidth={2} />
                           </div>
-                        </div>
-
-                        {/* Quick Trust Pill */}
-                        <div className="flex items-center gap-2 rounded-xl bg-[#E8F8F0] p-2 text-[10px] text-[#0B3528] font-semibold">
-                          <CheckCircle2 size={13} className="text-[#00A663] shrink-0" />
-                          <span>Regulated by DFSA • DIFC Title Deeds</span>
+                          <div className="size-7 sm:size-8 rounded-full bg-white/90 backdrop-blur-xs flex items-center justify-center text-[#0F172A] shadow-xs">
+                            <Share2 size={13} strokeWidth={2} />
+                          </div>
                         </div>
                       </div>
 
-                      <button
-                        type="button"
-                        className="mt-3 flex w-full items-center justify-center gap-1.5 rounded-xl bg-[#00A663] py-2 text-xs font-bold text-white shadow-2xs hover:bg-[#0B3528] transition-colors"
-                      >
-                        Invest from AED 500
-                      </button>
+                      {/* 4 Carousel Dots */}
+                      <div className="absolute bottom-2.5 inset-x-0 flex items-center justify-center gap-1 z-10">
+                        <div className="w-2.5 h-1 rounded-full bg-white" />
+                        <div className="size-1 rounded-full bg-white/60" />
+                        <div className="size-1 rounded-full bg-white/60" />
+                        <div className="size-1 rounded-full bg-white/60" />
+                      </div>
                     </div>
-                  </DeviceFrame>
+
+                    {/* Property Card Details */}
+                    <div className="p-3.5 sm:p-4 space-y-2.5 sm:space-y-3 bg-white">
+                      {/* Title */}
+                      <h4 className="text-[14.5px] sm:text-[16px] font-bold text-[#0F172A] leading-tight">
+                        Park Islands, Dubai Marina
+                      </h4>
+
+                      {/* Meta Specs */}
+                      <div className="flex items-center gap-2 text-[10.5px] sm:text-[11.5px] font-medium text-[#64748B]">
+                        <div className="flex items-center gap-1">
+                          <Bed size={13} className="text-[#64748B]" />
+                          <span>2</span>
+                        </div>
+                        <span className="text-gray-300">|</span>
+                        <div className="flex items-center gap-1">
+                          <Bath size={13} className="text-[#64748B]" />
+                          <span>3</span>
+                        </div>
+                        <span className="text-gray-300">|</span>
+                        <span className="font-semibold text-gray-500">#1020</span>
+                        <span className="text-gray-300">|</span>
+                        <div className="flex items-center gap-1">
+                          <Maximize2 size={12} className="text-[#64748B]" />
+                          <span>170 sqm</span>
+                        </div>
+                      </div>
+
+                      {/* Action Pills */}
+                      <div className="grid grid-cols-2 gap-2 pt-0.5">
+                        <div className="flex items-center justify-center gap-1.5 py-1.5 px-2.5 rounded-full border border-gray-200 bg-white text-[10.5px] sm:text-[11px] font-semibold text-[#0F172A] shadow-2xs">
+                          <div className="size-3.5 rounded-full border border-[#00A663] text-[#00A663] flex items-center justify-center text-[7.5px] font-extrabold leading-none">
+                            3D
+                          </div>
+                          <span>Virtual Tour</span>
+                        </div>
+                        <div className="flex items-center justify-center gap-1.5 py-1.5 px-2.5 rounded-full border border-gray-200 bg-white text-[10.5px] sm:text-[11px] font-semibold text-[#0F172A] shadow-2xs">
+                          <Camera size={13} className="text-[#64748B]" />
+                          <span>6 photos</span>
+                        </div>
+                      </div>
+
+                      {/* Price */}
+                      <div className="flex items-baseline gap-1.5 pt-0.5">
+                        <span className="text-base sm:text-[17px] font-extrabold text-[#00A663]">
+                          AED 1,305,990
+                        </span>
+                        <span className="text-[10px] sm:text-[11px] text-[#64748B]">purchase price</span>
+                      </div>
+
+                      {/* Badges */}
+                      <div className="flex items-center gap-2">
+                        <div className="flex items-center gap-1 rounded-full bg-[#F1F5F9] px-2.5 py-1 text-[9.5px] sm:text-[10px] font-medium text-[#475569]">
+                          <Users size={11} className="text-[#64748B]" />
+                          <span>368 Investors</span>
+                        </div>
+                        <div className="flex items-center gap-1 rounded-full bg-[#F1F5F9] px-2.5 py-1 text-[9.5px] sm:text-[10px] font-medium text-[#475569]">
+                          <Clock size={11} className="text-[#64748B]" />
+                          <span>15 days left</span>
+                        </div>
+                      </div>
+
+                      {/* Funding Progress */}
+                      <div className="pt-0.5 space-y-1.5">
+                        <div className="flex items-center justify-between text-[10px] sm:text-[11px]">
+                          <span className="font-bold text-[#00A663] flex items-center gap-1">
+                            <Zap size={11} className="fill-[#00A663] text-[#00A663]" />
+                            75% funded
+                          </span>
+                          <span className="font-medium text-[#64748B]">
+                            AED 764,000 available
+                          </span>
+                        </div>
+                        <div className="h-1.5 sm:h-2 w-full rounded-full bg-gray-100 overflow-hidden">
+                          <div className="h-full w-[75%] rounded-full bg-[#00A663]" />
+                        </div>
+                      </div>
+
+                    </div>
+                  </div>
                 </div>
 
               </div>
 
               {/* Right Column (Editorial Text & Actions) */}
-              <div className="lg:col-span-6 space-y-6">
-                <span className="inline-flex items-center gap-1.5 rounded-full bg-[#E8F8F0] px-3.5 py-1 text-xs font-bold text-[#00A663] border border-[#00A663]/25">
-                  <Building size={13} />
-                  PROPERTIES
-                </span>
+              <div className="lg:col-span-6 space-y-6 lg:pl-4">
+                {/* Badge */}
+                <div className="inline-flex items-center gap-2 rounded-full bg-[#F4F5F7] px-3.5 py-1.5 text-xs font-bold text-[#0F172A] border border-black/[0.04]">
+                  <span className="text-base leading-none">🏢</span>
+                  <span>Properties</span>
+                </div>
 
-                <h3 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-[#0D1117] leading-tight">
-                  Invest in properties in prime areas
+                {/* Headline */}
+                <h3 className="text-3xl sm:text-4xl lg:text-[44px] font-extrabold tracking-tight text-[#0F172A] leading-[1.14]">
+                  Invest in properties in
+                  <br className="hidden sm:inline" />
+                  {' '}prime areas
                 </h3>
 
-                <p className="text-base sm:text-lg text-[#4B5563] leading-relaxed">
-                  Own shares of individual properties with high-yield and appreciation potential in Dubai. Benefit from effortless digital management, regular passive rental distributions, and complete Land Registry transparency.
+                {/* Description */}
+                <p className="text-base sm:text-lg text-[#64748B] leading-relaxed max-w-lg">
+                  Own shares of individual properties with high-yield and appreciation potential in Dubai
                 </p>
 
-                <div className="flex flex-wrap items-center gap-4 pt-2">
+                {/* Action Buttons */}
+                <div className="flex flex-wrap items-center gap-4 pt-3">
                   <a
                     href="#properties"
-                    className="inline-flex items-center justify-center rounded-full bg-[#0D1117] px-6 py-3 text-sm font-bold text-white shadow-md hover:bg-black transition-colors"
+                    className="inline-flex items-center justify-center rounded-xl bg-[#0F172A] px-7 py-3 text-sm font-bold text-white shadow-xs hover:bg-[#1E293B] transition-colors"
                   >
                     Learn more
                   </a>
                   <button
                     type="button"
                     onClick={() => setIsPlayingVideo(!isPlayingVideo)}
-                    className="inline-flex items-center justify-center gap-2 rounded-full border border-black/15 bg-white/70 px-5 py-3 text-sm font-bold text-[#0D1117] shadow-2xs backdrop-blur-xs hover:bg-white transition-all"
+                    className="inline-flex items-center justify-center gap-2.5 rounded-xl border border-gray-200 bg-white px-6 py-3 text-sm font-bold text-[#0F172A] shadow-2xs hover:bg-gray-50 transition-colors"
                   >
-                    <div className="flex size-5 items-center justify-center rounded-full bg-[#00A663] text-white">
-                      <Play size={10} fill="white" />
+                    <div className="flex size-5 items-center justify-center rounded-full border border-[#00A663] text-[#00A663]">
+                      <Play size={9} className="fill-[#00A663] text-[#00A663] ml-0.5" />
                     </div>
                     Watch how it works
                   </button>
@@ -196,137 +314,153 @@ export function DualProductBento() {
           </div>
 
           {/* -----------------------------------------------------------------------
-              BENTO CARD 2 (Funds - Inverted Layout): Left Editorial | Right Phone Peek
+              BENTO CARD 2 (Funds): Left Editorial | Right Phone Mockup (Half Screen)
               ----------------------------------------------------------------------- */}
-          <div className="rounded-[36px] bg-[#F7F5EF] border border-black/[0.08] p-8 sm:p-12 lg:p-14 overflow-hidden relative shadow-sm">
-            
-            {/* Ambient Background Glow */}
-            <div
-              className="pointer-events-none absolute -right-20 -bottom-20 size-80 rounded-full bg-emerald-600/10 blur-3xl"
-              aria-hidden="true"
-            />
-
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
+          <div className="rounded-[32px] sm:rounded-[40px] bg-[#F8F7F2] border border-black/[0.06] p-6 sm:p-10 lg:p-12 overflow-hidden relative shadow-[0_4px_30px_rgba(0,0,0,0.03)]">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 items-center">
               
               {/* Left Column (Editorial Text & Actions) */}
-              <div className="lg:col-span-6 space-y-6 order-2 lg:order-1">
-                <span className="inline-flex items-center gap-1.5 rounded-full bg-[#0B3528]/10 px-3.5 py-1 text-xs font-bold text-[#0B3528] border border-[#0B3528]/20">
-                  <PieChart size={13} />
-                  FUNDS
-                </span>
+              <div className="lg:col-span-6 space-y-6 lg:pr-4">
+                {/* Badge */}
+                <div className="inline-flex items-center gap-2 rounded-full bg-[#E5E9E7] px-3.5 py-1.5 text-xs font-bold text-[#0F172A] border border-black/[0.04]">
+                  <Clock size={13} className="text-[#00A663]" />
+                  <span>FUNDS</span>
+                </div>
 
-                <h3 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-[#0D1117] leading-tight">
-                  Invest in private single-asset real estate funds
+                {/* Headline */}
+                <h3 className="text-3xl sm:text-4xl lg:text-[44px] font-extrabold tracking-tight text-[#0F172A] leading-[1.14]">
+                  Invest in private single–asset
+                  <br className="hidden sm:inline" />
+                  {' '}real estate funds
                 </h3>
 
-                <p className="text-base sm:text-lg text-[#4B5563] leading-relaxed">
-                  Own units of exclusive commercial, residential and mixed-use funds across Saudi and other countries. Gain diversified exposure managed by tier-1 institutional asset managers with targeted internal rates of return.
+                {/* Description */}
+                <p className="text-base sm:text-lg text-[#64748B] leading-relaxed max-w-lg">
+                  Own units of exclusive commercial, residential and mixed–use funds across Saudi and other countries. Gain diversified exposure managed by tier-1 institutional asset managers with targeted internal rates of return.
                 </p>
 
-                <div className="flex flex-wrap items-center gap-4 pt-2">
+                {/* Action Buttons */}
+                <div className="flex flex-wrap items-center gap-4 pt-3">
                   <a
                     href="#funds"
-                    className="inline-flex items-center justify-center rounded-full bg-[#0D1117] px-6 py-3 text-sm font-bold text-white shadow-md hover:bg-black transition-colors"
+                    className="inline-flex items-center justify-center rounded-xl bg-[#0F172A] px-7 py-3 text-sm font-bold text-white shadow-xs hover:bg-[#1E293B] transition-colors"
                   >
                     Learn more
                   </a>
                   <button
                     type="button"
                     onClick={() => setIsPlayingVideo(!isPlayingVideo)}
-                    className="inline-flex items-center justify-center gap-2 rounded-full border border-black/15 bg-white/80 px-5 py-3 text-sm font-bold text-[#0D1117] shadow-2xs backdrop-blur-xs hover:bg-white transition-all"
+                    className="inline-flex items-center justify-center gap-2.5 rounded-xl border border-gray-200 bg-white px-6 py-3 text-sm font-bold text-[#0F172A] shadow-2xs hover:bg-gray-50 transition-colors"
                   >
-                    <div className="flex size-5 items-center justify-center rounded-full bg-[#00A663] text-white">
-                      <Play size={10} fill="white" />
+                    <div className="flex size-5 items-center justify-center rounded-full border border-[#00A663] text-[#00A663]">
+                      <Play size={9} className="fill-[#00A663] text-[#00A663] ml-0.5" />
                     </div>
                     Watch how it works
                   </button>
                 </div>
               </div>
 
-              {/* Right Column (Phone Showcase Peek - Inverted) */}
-              <div className="lg:col-span-6 relative flex justify-center items-center min-h-[460px] order-1 lg:order-2">
+              {/* Right Column (Showcase Container - Crops bottom half of phone) */}
+              <div className="lg:col-span-6 relative rounded-[28px] sm:rounded-[36px] bg-[#EEF0EB] pt-7 sm:pt-9 px-4 sm:px-6 flex justify-center items-start h-[440px] sm:h-[480px] lg:h-[500px] overflow-hidden shadow-inner">
                 
-                {/* Floating Polaroid Badge "+41.4% Al Yasmeen Fund" */}
-                <div className="absolute -right-2 sm:right-4 top-10 z-20 w-44 sm:w-50 rounded-2xl border border-black/[0.08] bg-white p-2.5 sm:p-3 shadow-xl backdrop-blur-md">
-                  <div className="relative h-20 w-full rounded-xl overflow-hidden mb-2">
+                {/* Floating Polaroid Sticker: Top-Right (Al Yasmeen Fund) */}
+                <div className="absolute right-0 sm:right-3 lg:right-5 top-14 sm:top-18 z-20 w-36 sm:w-44 rounded-2xl bg-white p-2.5 sm:p-3 shadow-2xl border border-black/5 transition-transform hover:scale-105 duration-300">
+                  <div className="relative h-20 sm:h-22 w-full rounded-xl overflow-hidden mb-1.5 bg-gray-100">
                     <img
-                      src="https://images.unsplash.com/photo-1577495508048-b635879837f1?auto=format&fit=crop&w=400&q=80"
+                      src="https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=400&q=80"
                       alt="Al Yasmeen Fund"
                       className="h-full w-full object-cover"
                     />
-                    <span className="absolute right-2 top-2 rounded-full bg-[#00A663] px-2 py-0.5 text-[9.5px] font-extrabold text-white">
+                    <span className="absolute right-2 top-2 rounded-full bg-[#00A663] px-2 py-0.5 text-[9px] font-extrabold text-white shadow-xs">
                       +41.4%
                     </span>
                   </div>
-                  <p className="text-[11px] font-bold text-[#0D1117] truncate">Al Yasmeen Fund</p>
-                  <p className="text-[9.5px] text-[#64748B]">Commercial Fund • Target Hit</p>
+                  <p className="text-[11px] sm:text-xs font-bold text-[#0F172A] leading-tight">
+                    Al Yasmeen Fund
+                  </p>
+                  <p className="text-[9.5px] sm:text-[10px] text-[#64748B]">
+                    Commercial Fund • Target Hit
+                  </p>
                 </div>
 
-                {/* Main Phone Peek Container */}
-                <div className="w-[min(100%,310px)] relative z-10">
-                  <DeviceFrame className="shadow-[0_25px_65px_-15px_rgba(11,53,40,0.35)]">
-                    <div className="flex-1 bg-white p-3.5 flex flex-col justify-between">
-                      <div className="space-y-3">
-                        <div className="flex items-center justify-between pb-1 border-b border-black/[0.06]">
-                          <span className="text-[10.5px] font-bold text-[#0D1117]">Private Funds</span>
-                          <span className="rounded-full bg-[#E8F8F0] px-2 py-0.5 text-[9.5px] font-bold text-[#00A663]">
-                            CMA &amp; DFSA
-                          </span>
+                {/* Main Phone Mockup (Submerged/Cropped at bottom - Same width as Card 1) */}
+                <div className="relative z-10 w-[310px] sm:w-[350px] lg:w-[380px] shrink-0 rounded-[44px] bg-[#1E293B] p-2.5 sm:p-3 border-[3.5px] border-[#334155]/60 shadow-[0_25px_60px_rgba(0,0,0,0.35)]">
+                  {/* Side Buttons */}
+                  <div className="absolute -left-[5px] top-20 h-7 w-[3px] rounded-l-xs bg-[#475569]" />
+                  <div className="absolute -left-[5px] top-32 h-11 w-[3px] rounded-l-xs bg-[#475569]" />
+                  <div className="absolute -right-[5px] top-24 h-14 w-[3px] rounded-r-xs bg-[#475569]" />
+
+                  {/* Phone Screen Canvas */}
+                  <div className="rounded-[34px] bg-white overflow-hidden flex flex-col text-left pb-14">
+                    
+                    {/* Top Status Bar & Dynamic Island */}
+                    <div className="relative z-30 pt-2 pb-1.5 px-4 bg-white flex items-center justify-between text-[11px] font-semibold text-[#0F172A]">
+                      <span className="w-10 text-left">9:41</span>
+                      <div className="h-5 w-24 sm:w-26 rounded-full bg-black flex items-center justify-end px-2.5 shadow-xs">
+                        <div className="size-1.5 rounded-full bg-[#1e293b]" />
+                      </div>
+                      <div className="flex w-10 items-center justify-end gap-1">
+                        <div className="h-2 w-3 rounded-2xs border border-current p-[0.5px]">
+                          <div className="h-full w-full bg-[#00A663] rounded-3xs" />
                         </div>
+                      </div>
+                    </div>
 
-                        {/* Fund Card: Al Khuzama Real Estate Fund */}
-                        <div className="rounded-2xl border border-black/[0.08] overflow-hidden bg-white shadow-2xs">
-                          <div className="relative h-28 w-full">
-                            <img
-                              src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=500&q=80"
-                              alt="Al Khuzama Real Estate Fund"
-                              className="h-full w-full object-cover"
-                            />
-                            <span className="absolute left-2.5 top-2.5 rounded-full bg-[#0B3528]/90 px-2.5 py-0.5 text-[9.5px] font-bold text-white">
-                              Exclusive Fund
-                            </span>
-                            <span className="absolute right-2.5 top-2.5 rounded-full bg-white/95 px-2.5 py-0.5 text-[9.5px] font-extrabold text-[#00A663]">
-                              +32.2% Return
-                            </span>
-                          </div>
+                    {/* Section Label inside Phone */}
+                    <div className="px-4 py-2 border-b border-gray-100 flex items-center justify-between">
+                      <span className="text-xs font-bold text-[#0F172A]">Private Funds</span>
+                    </div>
 
-                          <div className="p-3">
-                            <p className="text-xs font-bold text-[#0D1117]">Al Khuzama Real Estate Fund</p>
-                            <p className="text-[10px] text-[#64748B]">SAR 85M fund size</p>
+                    {/* Phone Inner Fund Card Details */}
+                    <div className="p-3.5 sm:p-4 space-y-3 bg-white">
+                      
+                      {/* Fund Hero Image */}
+                      <div className="relative h-44 sm:h-48 w-full rounded-2xl overflow-hidden bg-gray-100 shadow-2xs">
+                        <img
+                          src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=600&q=80"
+                          alt="Al Khuzama Real Estate Fund"
+                          className="h-full w-full object-cover"
+                        />
+                        <span className="absolute left-2.5 top-2.5 rounded-full bg-[#0B3528]/90 px-2.5 py-0.5 text-[9.5px] font-bold text-white shadow-xs">
+                          Exclusive Fund
+                        </span>
+                      </div>
 
-                            <div className="mt-2.5">
-                              <div className="flex justify-between text-[10px] font-semibold text-[#0D1117] mb-1">
-                                <span>Allocation Progress</span>
-                                <span className="text-[#00A663]">92% funded</span>
-                              </div>
-                              <div className="h-1.5 w-full rounded-full bg-black/[0.06] overflow-hidden">
-                                <div className="h-full w-[92%] rounded-full bg-[#00A663]" />
-                              </div>
-                            </div>
-                          </div>
+                      {/* Title & Fund Size */}
+                      <div>
+                        <h4 className="text-[14.5px] sm:text-[16px] font-bold text-[#0F172A] leading-tight">
+                          Al Khuzama Real Estate Fund
+                        </h4>
+                        <p className="text-[10px] sm:text-[11px] text-[#64748B] mt-0.5">
+                          SAR 85M fund size
+                        </p>
+                      </div>
+
+                      {/* Allocation Progress */}
+                      <div className="space-y-1.5">
+                        <div className="flex items-center justify-between text-[10px] sm:text-[11px]">
+                          <span className="font-semibold text-[#0F172A]">Allocation Progress</span>
+                          <span className="font-bold text-[#00A663]">92% funded</span>
                         </div>
-
-                        {/* Fund Feature Tag */}
-                        <div className="rounded-xl bg-[#F8FAF9] p-2 text-[10px] text-[#4B5563] space-y-1 border border-black/[0.06]">
-                          <div className="flex justify-between">
-                            <span>Target Distribution:</span>
-                            <strong className="text-[#0D1117]">Quarterly Dividends</strong>
-                          </div>
-                          <div className="flex justify-between">
-                            <span>Minimum Allocation:</span>
-                            <strong className="text-[#00A663]">SAR 1,000 / USD 266</strong>
-                          </div>
+                        <div className="h-1.5 sm:h-2 w-full rounded-full bg-gray-100 overflow-hidden">
+                          <div className="h-full w-[92%] rounded-full bg-[#00A663]" />
                         </div>
                       </div>
 
-                      <button
-                        type="button"
-                        className="mt-3 flex w-full items-center justify-center gap-1.5 rounded-xl bg-[#0D1117] py-2 text-xs font-bold text-white shadow-2xs hover:bg-black transition-colors"
-                      >
-                        Explore Fund Opportunities
-                      </button>
+                      {/* Distribution & Allocation Info Box */}
+                      <div className="rounded-xl bg-[#F8FAF9] p-3 text-[10.5px] sm:text-[11px] space-y-2 border border-black/[0.04]">
+                        <div className="flex justify-between items-center">
+                          <span className="text-[#64748B]">Target Distribution:</span>
+                          <strong className="text-[#0F172A] font-bold">Quarterly Dividends</strong>
+                        </div>
+                        <div className="flex justify-between items-center">
+                          <span className="text-[#64748B]">Minimum Allocation:</span>
+                          <strong className="text-[#00A663] font-bold">SAR 1,000 / USD 266</strong>
+                        </div>
+                      </div>
+
                     </div>
-                  </DeviceFrame>
+                  </div>
                 </div>
 
               </div>
