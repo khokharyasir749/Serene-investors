@@ -411,7 +411,8 @@ export function PropertiesHero() {
 
         {/* ================= 3. TWO FEATURE CARDS: RENTAL INCOME & CAPITAL APPRECIATION ================= */}
         <div className="mt-12 sm:mt-16 lg:mt-20">
-          <div className="mx-auto grid max-w-5xl grid-cols-1 gap-6 sm:gap-8 md:grid-cols-2">
+          <div className="mx-auto max-w-5xl space-y-6 sm:space-y-8">
+            <div className="grid grid-cols-1 gap-6 sm:gap-8 md:grid-cols-2">
             
             {/* Card 1: Build passive income from monthly rental payments */}
             <div className="relative flex min-h-[420px] sm:min-h-[460px] flex-col items-center justify-between overflow-hidden rounded-[32px] bg-[#f8f9fa] p-8 sm:p-10 text-center border border-gray-100 shadow-2xs transition-all duration-300 hover:shadow-md">
@@ -516,6 +517,107 @@ export function PropertiesHero() {
               </div>
             </div>
 
+          </div>
+
+          {/* Card 3 (Horizontal): Trade your investments within our community */}
+          <div className="rounded-[32px] bg-[#f8f9fa] border border-gray-100 p-8 sm:p-10 lg:p-12 overflow-hidden relative shadow-2xs transition-all duration-300 hover:shadow-md">
+            <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-8 sm:gap-10">
+              
+              {/* Left Column: Heading and Learn more CTA */}
+              <div className="max-w-xl">
+                <h3 className="text-2xl sm:text-3xl lg:text-[38px] font-extrabold tracking-tight leading-[1.2] text-[#0f172a]">
+                  <span className="text-[#25c974]">Trade</span>{' '}
+                  <span>your investments</span>
+                  <br />
+                  <span>within</span>{' '}
+                  <span className="text-[#25c974]">our community</span>
+                </h3>
+
+                <div className="mt-6 sm:mt-7">
+                  <a
+                    href="#trade"
+                    className="inline-flex items-center justify-center rounded-xl bg-[#0f172a] px-5 py-2.5 sm:px-6 sm:py-3 text-xs sm:text-sm font-bold text-white shadow-xs hover:bg-[#1e293b] transition-colors"
+                  >
+                    Learn more
+                  </a>
+                </div>
+              </div>
+
+              {/* Right Column: Floating White Pill Card with City Walk Property */}
+              <div className="relative flex items-center justify-center md:justify-end pt-3 pb-3 px-3 sm:px-6">
+                
+                {/* Floating Green Circle Badge with Tag Icon (Top-Right) */}
+                <div className="absolute -top-3 -right-1 sm:-top-4 sm:-right-2 z-20 flex size-11 sm:size-12 items-center justify-center rounded-full bg-[#25c974] text-white shadow-md transition-transform hover:scale-105">
+                  <svg
+                    className="size-5 sm:size-5.5 fill-none stroke-current -rotate-12"
+                    viewBox="0 0 24 24"
+                    strokeWidth="2.4"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    aria-hidden="true"
+                  >
+                    <path d="M12 2H2v10l9.29 9.29c.94.94 2.48.94 3.42 0l6.58-6.58c.94-.94.94-2.48 0-3.42L12 2Z" />
+                    <path d="M7 7h.01" />
+                  </svg>
+                </div>
+
+                {/* Floating Green Upward Trending Arrow (Bottom-Left) */}
+                <div className="absolute -bottom-3 left-1 sm:-bottom-4 sm:left-2 z-20 pointer-events-none text-[#25c974]">
+                  <svg
+                    className="w-7 h-7 sm:w-8 sm:h-8"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="3"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    aria-hidden="true"
+                  >
+                    <polyline points="23 6 13.5 15.5 8.5 10.5 1 18" />
+                    <polyline points="17 6 23 6 23 12" />
+                  </svg>
+                </div>
+
+                {/* Main White Capsule Card */}
+                <div className="relative z-10 w-full max-w-[340px] sm:max-w-[390px] rounded-2xl bg-white p-3.5 sm:p-4 pr-5 sm:pr-6 shadow-[0_12px_36px_rgba(0,0,0,0.06)] border border-gray-100 flex items-center gap-3.5 sm:gap-4 transition-transform hover:-translate-y-0.5 duration-300">
+                  
+                  {/* Circular Property Image */}
+                  <div className="size-12 sm:size-13 rounded-full overflow-hidden shrink-0 ring-1 ring-black/5 bg-gray-100">
+                    <img
+                      src="/images/journey/residential.jpg"
+                      alt="Building 8, City Walk"
+                      className="size-full object-cover"
+                    />
+                  </div>
+
+                  {/* Card Details */}
+                  <div className="flex-1 min-w-0">
+                    <p className="font-bold text-[#0f172a] text-sm sm:text-[15px] truncate leading-tight">
+                      Building 8, City Walk
+                    </p>
+
+                    {/* Progress Bar */}
+                    <div className="mt-2 h-1.5 w-full rounded-full bg-gray-200 overflow-hidden">
+                      <div className="h-full w-[90%] rounded-full bg-[#25c974]" />
+                    </div>
+
+                    {/* Stats Under Progress Bar */}
+                    <div className="mt-1.5 flex items-center justify-between gap-3 text-[11px] sm:text-xs">
+                      <span className="font-medium text-[#64748b] whitespace-nowrap">
+                        20,000 shares listed
+                      </span>
+                      <span className="font-bold text-[#25c974] whitespace-nowrap">
+                        90% sold
+                      </span>
+                    </div>
+                  </div>
+
+                </div>
+
+              </div>
+
+            </div>
+          </div>
           </div>
         </div>
 

@@ -1,26 +1,38 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useEffect, useRef } from 'react'
 
 export function ScrollProgressIndicator() {
-  const [progress, setProgress] = useState(0)
+  const barRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
-    function handleScroll() {
+    let frameId: number
+
+    function update() {
       const totalHeight = document.documentElement.scrollHeight - window.innerHeight
       if (totalHeight <= 0) {
-        setProgress(0)
+        if (barRef.current) barRef.current.style.transform = 'scaleX(0)'
         return
       }
       const currentScroll = window.scrollY
-      const pct = Math.min(100, Math.max(0, (currentScroll / totalHeight) * 100))
-      setProgress(pct)
+      const progress = Math.min(1, Math.max(0, currentScroll / totalHeight))
+      if (barRef.current) {
+        barRef.current.style.transform = `scaleX(${progress})`
+      }
     }
 
-    window.addEventListener('scroll', handleScroll, { passive: true })
-    handleScroll()
+    function onScroll() {
+      cancelAnimationFrame(frameId)
+      frameId = requestAnimationFrame(update)
+    }
 
-    return () => window.removeEventListener('scroll', handleScroll)
+    window.addEventListener('scroll', onScroll, { passive: true })
+    update()
+
+    return () => {
+      cancelAnimationFrame(frameId)
+      window.removeEventListener('scroll', onScroll)
+    }
   }, [])
 
   return (
@@ -29,8 +41,9 @@ export function ScrollProgressIndicator() {
       aria-hidden="true"
     >
       <div
-        className="h-full bg-gradient-to-r from-primary via-emerald-600 to-accent transition-[width] duration-100 ease-out"
-        style={{ width: `${progress}%` }}
+        ref={barRef}
+        className="h-full w-full origin-left bg-gradient-to-r from-[#00A663] via-[#00c48c] to-[#25c974] will-change-transform"
+        style={{ transform: 'scaleX(0)' }}
       />
     </div>
   )

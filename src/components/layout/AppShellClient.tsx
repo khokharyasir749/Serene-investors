@@ -6,7 +6,7 @@ import { useScrollToHash } from '@/hooks/useScrollToHash'
 import { registerGsapPlugins, ScrollTrigger } from '@/lib/gsap'
 import { Navbar } from '@/components/navigation'
 import { ScrollProgressIndicator } from './ScrollProgressIndicator'
-import { SiteFooter } from './SiteFooter'
+import { StakeFooterComplete } from '@/components/footer'
 
 type Props = {
   children: ReactNode
@@ -39,7 +39,7 @@ export function AppShellClient({ children }: Props) {
       <main id="main" tabIndex={-1}>
         {children}
       </main>
-      {pathname !== '/' && <SiteFooter />}
+      <StakeFooterComplete />
     </div>
   )
 }

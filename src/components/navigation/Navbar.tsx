@@ -72,7 +72,7 @@ const INVEST_ITEMS = [
   {
     title: 'Investment Calculator',
     desc: 'Calculate estimated rental income and capital appreciation',
-    href: '/calculator',
+    href: '/properties',
     icon: Calculator,
     badge: null,
   },
@@ -103,7 +103,7 @@ const CONTENT_ITEMS = [
   {
     title: 'Blog & Insights',
     desc: 'Market deep dives, investor guides and quarterly reports',
-    href: '/blog',
+    href: '/learn',
     icon: BookOpen,
   },
   {
@@ -260,6 +260,7 @@ export function Navbar() {
                           <Link
                             key={item.title}
                             href={item.href}
+                            onClick={() => setActiveDropdown(null)}
                             className="flex items-start gap-3 rounded-xl p-2.5 transition-colors hover:bg-gray-50 group"
                           >
                             <div className="flex size-9 shrink-0 items-center justify-center rounded-lg bg-gray-100 text-gray-700 group-hover:bg-[#E8F8F0] group-hover:text-[#00A663] transition-colors">
@@ -319,6 +320,7 @@ export function Navbar() {
                           <Link
                             key={item.title}
                             href={item.href}
+                            onClick={() => setActiveDropdown(null)}
                             className="flex items-start gap-3 rounded-xl p-2.5 transition-colors hover:bg-gray-50 group"
                           >
                             <div className="flex size-9 shrink-0 items-center justify-center rounded-lg bg-gray-100 text-gray-700 group-hover:bg-[#E8F8F0] group-hover:text-[#00A663] transition-colors">
@@ -371,6 +373,7 @@ export function Navbar() {
                           <Link
                             key={item.title}
                             href={item.href}
+                            onClick={() => setActiveDropdown(null)}
                             className="flex items-start gap-3 rounded-xl p-2.5 transition-colors hover:bg-gray-50 group"
                           >
                             <div className="flex size-9 shrink-0 items-center justify-center rounded-lg bg-gray-100 text-gray-700 group-hover:bg-[#E8F8F0] group-hover:text-[#00A663] transition-colors">
@@ -506,6 +509,7 @@ export function Navbar() {
                     <Link
                       key={item.title}
                       href={item.href}
+                      onClick={() => setMobileMenuOpen(false)}
                       className="flex items-center justify-between py-2 text-sm font-semibold text-gray-900 hover:text-[#00A663]"
                     >
                       <span>{item.title}</span>
@@ -527,6 +531,7 @@ export function Navbar() {
                     <Link
                       key={item.title}
                       href={item.href}
+                      onClick={() => setMobileMenuOpen(false)}
                       className="block py-2 text-sm font-semibold text-gray-900 hover:text-[#00A663]"
                     >
                       {item.title}
@@ -543,6 +548,7 @@ export function Navbar() {
                     <Link
                       key={item.title}
                       href={item.href}
+                      onClick={() => setMobileMenuOpen(false)}
                       className="block py-2 text-sm font-semibold text-gray-900 hover:text-[#00A663]"
                     >
                       {item.title}

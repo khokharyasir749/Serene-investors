@@ -3,7 +3,6 @@
 import React, { useState } from 'react'
 import {
   Play,
-  PieChart,
   ChevronLeft,
   Bookmark,
   Share2,
@@ -14,8 +13,8 @@ import {
   Users,
   Clock,
   Zap,
+  Tag,
 } from 'lucide-react'
-import { DeviceFrame } from '@/components/common/DeviceFrame'
 
 export function DualProductBento() {
   const [isPlayingVideo, setIsPlayingVideo] = useState(false)
@@ -513,6 +512,98 @@ export function DualProductBento() {
                       </div>
                     </div>
                   </div>
+                </div>
+
+              </div>
+
+            </div>
+          </div>
+
+          {/* -----------------------------------------------------------------------
+              BENTO CARD 3 (Trade): "Trade your investments within our community"
+              (Exact match to Stake trade showcase banner)
+              ----------------------------------------------------------------------- */}
+          <div className="rounded-[32px] sm:rounded-[40px] bg-[#F7F9FA] border border-black/[0.06] p-7 sm:p-10 lg:p-12 overflow-hidden relative shadow-[0_4px_30px_rgba(0,0,0,0.02)]">
+            <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-8 sm:gap-10">
+              
+              {/* Left Column: Heading and Learn more CTA */}
+              <div className="max-w-xl">
+                <h3 className="text-2xl sm:text-3xl lg:text-[40px] font-extrabold tracking-tight leading-[1.18] text-[#0F172A]">
+                  <span className="text-[#00c48c]">Trade</span>{' '}
+                  <span className="text-[#0F172A]">your investments</span>
+                  <br />
+                  <span className="text-[#0F172A]">within</span>{' '}
+                  <span className="text-[#00c48c]">our community</span>
+                </h3>
+
+                <div className="mt-6 sm:mt-7">
+                  <a
+                    href="#trade"
+                    className="inline-flex items-center justify-center rounded-lg bg-[#0F172A] px-5 py-2.5 text-xs sm:text-sm font-bold text-white shadow-xs hover:bg-[#1E293B] transition-colors"
+                  >
+                    Learn more
+                  </a>
+                </div>
+              </div>
+
+              {/* Right Column: Floating White Pill Card with City Walk Property */}
+              <div className="relative flex items-center justify-center lg:justify-end pt-3 pb-3 px-3 sm:px-6">
+                
+                {/* Floating Green Circle Badge with Tag Icon (Top-Right) */}
+                <div className="absolute -top-3 -right-1 sm:-top-4 sm:-right-2 z-20 size-11 sm:size-12 rounded-full bg-[#00c48c] text-white flex items-center justify-center shadow-lg transition-transform hover:scale-105">
+                  <Tag size={20} strokeWidth={2.4} className="-rotate-12 text-white" />
+                </div>
+
+                {/* Floating Green Upward Trending Arrow (Bottom-Left) */}
+                <div className="absolute -bottom-3 left-1 sm:-bottom-4 sm:left-2 z-20 pointer-events-none text-[#00c48c]">
+                  <svg
+                    className="w-7 h-7 sm:w-8 sm:h-8"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="#00c48c"
+                    strokeWidth="3"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  >
+                    <polyline points="23 6 13.5 15.5 8.5 10.5 1 18" />
+                    <polyline points="17 6 23 6 23 12" />
+                  </svg>
+                </div>
+
+                {/* Main White Capsule Card */}
+                <div className="relative z-10 w-full max-w-[340px] sm:max-w-[380px] rounded-2xl bg-white p-3.5 sm:p-4 pr-5 sm:pr-6 shadow-[0_12px_36px_rgba(0,0,0,0.06)] border border-black/[0.04] flex items-center gap-3.5 sm:gap-4 transition-transform hover:-translate-y-0.5 duration-300">
+                  
+                  {/* Circular Property Image */}
+                  <div className="size-12 sm:size-13 rounded-full overflow-hidden shrink-0 ring-1 ring-black/5 bg-gray-100">
+                    <img
+                      src="/images/journey/residential.jpg"
+                      alt="Building 8, City Walk"
+                      className="size-full object-cover"
+                    />
+                  </div>
+
+                  {/* Card Details */}
+                  <div className="flex-1 min-w-0">
+                    <p className="font-bold text-[#0F172A] text-sm sm:text-[15px] truncate leading-tight">
+                      Building 8, City Walk
+                    </p>
+
+                    {/* Progress Bar */}
+                    <div className="mt-2 h-1.5 w-full rounded-full bg-[#E2E8F0] overflow-hidden">
+                      <div className="h-full w-[90%] rounded-full bg-[#00c48c]" />
+                    </div>
+
+                    {/* Stats Under Progress Bar */}
+                    <div className="mt-1.5 flex items-center justify-between text-[11px] sm:text-xs">
+                      <span className="font-medium text-[#64748B]">
+                        20,000 shares listed
+                      </span>
+                      <span className="font-bold text-[#00c48c]">
+                        90% sold
+                      </span>
+                    </div>
+                  </div>
+
                 </div>
 
               </div>

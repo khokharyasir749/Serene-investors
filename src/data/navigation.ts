@@ -40,7 +40,7 @@ export const footerColumns: FooterColumn[] = [
     links: [
       { id: 'f-guide', label: 'Property guide', href: '/learn#property-guide' },
       { id: 'f-basics', label: 'Investment basics', href: '/learn#investment-basics' },
-      { id: 'f-faq', label: 'FAQ', href: '/learn#faq' },
+      { id: 'f-faq', label: 'FAQ', href: '/faq' },
     ],
   },
   {

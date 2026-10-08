@@ -5,7 +5,6 @@ import { DualProductBento } from '@/components/products'
 import { HowYouEarn } from '@/components/products'
 import { RewardsTiers } from '@/components/rewards'
 import { SecurityRegulation } from '@/components/trust'
-import { StakeFooterComplete } from '@/components/footer'
 import { pressLogos, site } from '@/data'
 import { usePageMeta } from '@/hooks/usePageMeta'
 
@@ -34,9 +33,6 @@ export function HomePage() {
 
       {/* 7. Security & Regulation: "Safety never sleeps - Robustly regulated" + 13 institutional logos */}
       <SecurityRegulation />
-
-      {/* 8. Bottom App CTA Banner (Emerald card with peeking phone) + Compliant Dark Legal Footer */}
-      <StakeFooterComplete />
     </>
   )
 }

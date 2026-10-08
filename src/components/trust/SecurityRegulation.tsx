@@ -292,7 +292,7 @@ export function SecurityRegulation() {
 
   return (
     <section
-      id="security-regulation"
+      id="security"
       className="relative overflow-hidden bg-[#0B131F] py-24 px-6 lg:px-12 text-white border-t border-b border-white/10"
       aria-label="Security and Regulation"
     >
