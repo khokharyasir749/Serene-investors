@@ -102,106 +102,122 @@ export function StakeHero() {
             <div className="absolute inset-0 w-full h-full">
 
               {/* --- PHONE 1: TOP-LEFT / BACK LAYER (Property Detail) --- */}
-              <div className="absolute -top-6 left-6 lg:left-4 w-[245px] lg:w-[265px] h-[480px] -rotate-[16deg] rounded-[42px] bg-gradient-to-br from-[#3b4350] via-[#20252d] to-[#29303a] p-[3.5px] shadow-[0_28px_60px_-12px_rgba(0,0,0,0.4),0_0_0_1px_rgba(255,255,255,0.14)] border border-[#485362]/80 z-10 opacity-95 transition-transform duration-300 hover:-rotate-[13deg]">
-                <div className="relative h-full w-full overflow-hidden rounded-[37px] bg-white flex flex-col justify-between text-left">
-                  
-                  {/* Top Section */}
-                  <div>
-                    {/* Dynamic Island */}
-                    <div className="h-3.5 w-18 bg-black rounded-full mx-auto mt-2" />
+              <div className="absolute -top-6 left-6 lg:left-4 w-[245px] lg:w-[265px] h-[480px] -rotate-[16deg] rounded-[50px] bg-gradient-to-br from-[#4b5563] via-[#202630] to-[#333d4b] p-[4px] shadow-[0_32px_75px_-15px_rgba(0,0,0,0.45),0_12px_28px_-8px_rgba(0,0,0,0.25),0_0_0_1px_rgba(255,255,255,0.16)] border border-[#4f5c6e] z-10 opacity-95 transition-transform duration-300 hover:-rotate-[13deg] select-none">
+                {/* Outer Metallic Chamfer Highlight */}
+                <div className="pointer-events-none absolute inset-0 rounded-[49px] ring-1 ring-inset ring-white/18" aria-hidden="true" />
+
+                {/* Hardware Buttons */}
+                <div className="absolute -left-[4.5px] top-[64px] h-[16px] w-[3.5px] rounded-l-[2px] bg-gradient-to-r from-[#4b5563] to-[#202630] border-l border-y border-[#5a6677] shadow-2xs" aria-hidden="true" />
+                <div className="absolute -left-[4.5px] top-[90px] h-[34px] w-[3.5px] rounded-l-[2px] bg-gradient-to-r from-[#4b5563] to-[#202630] border-l border-y border-[#5a6677] shadow-2xs" aria-hidden="true" />
+                <div className="absolute -left-[4.5px] top-[132px] h-[34px] w-[3.5px] rounded-l-[2px] bg-gradient-to-r from-[#4b5563] to-[#202630] border-l border-y border-[#5a6677] shadow-2xs" aria-hidden="true" />
+                <div className="absolute -right-[4.5px] top-[96px] h-[50px] w-[3.5px] rounded-r-[2px] bg-gradient-to-l from-[#4b5563] to-[#202630] border-r border-y border-[#5a6677] shadow-2xs" aria-hidden="true" />
+
+                {/* Inner Pitch-Black OLED Bezel */}
+                <div className="relative h-full w-full rounded-[46px] bg-[#090c10] p-[3.5px] overflow-hidden flex flex-col shadow-inner">
+                  <div className="relative h-full w-full overflow-hidden rounded-[42px] bg-white flex flex-col justify-between text-left">
                     
-                    {/* Authentic iOS Status Bar */}
-                    <IosStatusBar />
+                    {/* Top Section */}
+                    <div>
+                      {/* Dynamic Island with camera lens */}
+                      <div className="mx-auto flex h-[17px] w-20 items-center justify-end rounded-full bg-black px-2 shadow-sm mt-1.5 shrink-0">
+                        <div className="size-2 rounded-full bg-[#0a0d14] ring-1 ring-[#1b2230] flex items-center justify-center">
+                          <div className="size-0.5 rounded-full bg-[#20293d]" />
+                        </div>
+                      </div>
+                      
+                      {/* Authentic iOS Status Bar */}
+                      <IosStatusBar />
 
-                    {/* Navigation Bar inside App */}
-                    <div className="flex justify-between items-center px-4 pt-1 text-[9px]">
-                      <span className="font-bold text-gray-500 cursor-pointer text-xs">‹</span>
-                      <span className="font-bold text-[#00A663] bg-[#E8F8F0] px-2 py-0.5 rounded-full text-[8.5px]">
-                        Available
-                      </span>
-                      <div className="flex gap-2 text-gray-400 text-xs">
-                        <span>♡</span>
-                        <span>↗</span>
+                      {/* Navigation Bar inside App */}
+                      <div className="flex justify-between items-center px-4 pt-1 text-[9px]">
+                        <span className="font-bold text-gray-500 cursor-pointer text-xs">‹</span>
+                        <span className="font-bold text-[#00A663] bg-[#E8F8F0] px-2 py-0.5 rounded-full text-[8.5px]">
+                          Available
+                        </span>
+                        <div className="flex gap-2 text-gray-400 text-xs">
+                          <span>♡</span>
+                          <span>↗</span>
+                        </div>
+                      </div>
+
+                      {/* Studio One Tower Hero Image with Pagination */}
+                      <div
+                        className="mx-3 mt-1.5 h-26 rounded-xl bg-cover bg-center relative overflow-hidden shadow-xs"
+                        style={{ backgroundImage: 'url("https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=600&q=80")' }}
+                      >
+                        <div className="absolute bottom-1.5 flex justify-center w-full gap-1 items-center">
+                          <span className="h-1 w-2.5 bg-white rounded-full" />
+                          <span className="h-1 w-1 bg-white/60 rounded-full" />
+                          <span className="h-1 w-1 bg-white/60 rounded-full" />
+                        </div>
+                        <span className="absolute right-2 top-2 rounded-full bg-black/50 backdrop-blur-xs px-1.5 py-0.5 text-[7.5px] font-bold text-white">
+                          1 / 6
+                        </span>
+                      </div>
+
+                      {/* Specs & Pricing matching exact reference screenshot */}
+                      <div className="px-4 pt-2 pb-1 space-y-1 text-left">
+                        <div className="text-[8.5px] text-gray-500 font-semibold flex items-center justify-between">
+                          <div className="flex items-center gap-1.5">
+                            <span>🛏 2</span>
+                            <span>• Ready</span>
+                            <span>• 📍 Dubai</span>
+                          </div>
+                          <span className="text-[#00A663] font-bold text-[8px]">45% funded</span>
+                        </div>
+
+                        <h4 className="text-[11px] font-extrabold text-gray-900 leading-tight">
+                          2 Bed in Studio One Tower
+                        </h4>
+                        <div className="text-xs font-black text-[#00A663]">AED 1,236,002</div>
+
+                        {/* Financial Table matching Screenshot */}
+                        <div className="mt-1.5 pt-1.5 border-t border-gray-100 space-y-0.5 text-[8px] text-gray-500 font-medium">
+                          <div className="flex justify-between">
+                            <span>Annualised return</span>
+                            <span className="font-bold text-gray-900">11.98%</span>
+                          </div>
+                          <div className="flex justify-between">
+                            <span>Annual appreciation</span>
+                            <span className="font-bold text-gray-900">6.84%</span>
+                          </div>
+                          <div className="flex justify-between">
+                            <span>Gross yield</span>
+                            <span className="font-bold text-gray-900">6.77%</span>
+                          </div>
+                          <div className="flex justify-between">
+                            <span>Net yield</span>
+                            <span className="font-bold text-[#00A663]">5.98%</span>
+                          </div>
+                        </div>
                       </div>
                     </div>
 
-                    {/* Studio One Tower Hero Image with Pagination */}
-                    <div
-                      className="mx-3 mt-1.5 h-26 rounded-xl bg-cover bg-center relative overflow-hidden shadow-xs"
-                      style={{ backgroundImage: 'url("https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=600&q=80")' }}
-                    >
-                      <div className="absolute bottom-1.5 flex justify-center w-full gap-1 items-center">
-                        <span className="h-1 w-2.5 bg-white rounded-full" />
-                        <span className="h-1 w-1 bg-white/60 rounded-full" />
-                        <span className="h-1 w-1 bg-white/60 rounded-full" />
+                    {/* Bottom Tab Bar with 5 iOS Icons */}
+                    <div className="border-t border-gray-100 px-2.5 py-1.5 bg-gray-50/90 flex justify-between items-center text-[7px] font-semibold text-gray-400">
+                      <div className="flex flex-col items-center text-[#00A663]">
+                        <span>☖</span>
+                        <span>Properties</span>
                       </div>
-                      <span className="absolute right-2 top-2 rounded-full bg-black/50 backdrop-blur-xs px-1.5 py-0.5 text-[7.5px] font-bold text-white">
-                        1 / 6
-                      </span>
-                    </div>
-
-                    {/* Specs & Pricing matching exact reference screenshot */}
-                    <div className="px-4 pt-2 pb-1 space-y-1 text-left">
-                      <div className="text-[8.5px] text-gray-500 font-semibold flex items-center justify-between">
-                        <div className="flex items-center gap-1.5">
-                          <span>🛏 2</span>
-                          <span>• Ready</span>
-                          <span>• 📍 Dubai</span>
-                        </div>
-                        <span className="text-[#00A663] font-bold text-[8px]">45% funded</span>
+                      <div className="flex flex-col items-center">
+                        <span>💳</span>
+                        <span>Wallet</span>
                       </div>
-
-                      <h4 className="text-[11px] font-extrabold text-gray-900 leading-tight">
-                        2 Bed in Studio One Tower
-                      </h4>
-                      <div className="text-xs font-black text-[#00A663]">AED 1,236,002</div>
-
-                      {/* Financial Table matching Screenshot */}
-                      <div className="mt-1.5 pt-1.5 border-t border-gray-100 space-y-0.5 text-[8px] text-gray-500 font-medium">
-                        <div className="flex justify-between">
-                          <span>Annualised return</span>
-                          <span className="font-bold text-gray-900">11.98%</span>
-                        </div>
-                        <div className="flex justify-between">
-                          <span>Annual appreciation</span>
-                          <span className="font-bold text-gray-900">6.84%</span>
-                        </div>
-                        <div className="flex justify-between">
-                          <span>Gross yield</span>
-                          <span className="font-bold text-gray-900">6.77%</span>
-                        </div>
-                        <div className="flex justify-between">
-                          <span>Net yield</span>
-                          <span className="font-bold text-[#00A663]">5.98%</span>
-                        </div>
+                      <div className="flex flex-col items-center">
+                        <span>📊</span>
+                        <span>Portfolio</span>
+                      </div>
+                      <div className="flex flex-col items-center">
+                        <span>★</span>
+                        <span>Rewards</span>
+                      </div>
+                      <div className="flex flex-col items-center">
+                        <span>👤</span>
+                        <span>Profile</span>
                       </div>
                     </div>
+
                   </div>
-
-                  {/* Bottom Tab Bar with 5 iOS Icons */}
-                  <div className="border-t border-gray-100 px-2.5 py-1.5 bg-gray-50/90 flex justify-between items-center text-[7px] font-semibold text-gray-400">
-                    <div className="flex flex-col items-center text-[#00A663]">
-                      <span>☖</span>
-                      <span>Properties</span>
-                    </div>
-                    <div className="flex flex-col items-center">
-                      <span>💳</span>
-                      <span>Wallet</span>
-                    </div>
-                    <div className="flex flex-col items-center">
-                      <span>📊</span>
-                      <span>Portfolio</span>
-                    </div>
-                    <div className="flex flex-col items-center">
-                      <span>★</span>
-                      <span>Rewards</span>
-                    </div>
-                    <div className="flex flex-col items-center">
-                      <span>👤</span>
-                      <span>Profile</span>
-                    </div>
-                  </div>
-
                 </div>
               </div>
 
@@ -216,155 +232,187 @@ export function StakeHero() {
               </div>
 
               {/* --- PHONE 2: FRONT-RIGHT (Main Portfolio Screen) --- */}
-              <div className="absolute top-2 right-2 lg:right-2 w-[255px] lg:w-[275px] h-[510px] -rotate-[16deg] rounded-[42px] bg-gradient-to-br from-[#3b4350] via-[#20252d] to-[#29303a] p-[3.5px] shadow-[0_28px_60px_-12px_rgba(0,0,0,0.4),0_0_0_1px_rgba(255,255,255,0.14)] border border-[#485362]/80 z-20 transition-transform duration-300 hover:-rotate-[13deg]">
-                <div className="relative h-full w-full overflow-hidden rounded-[37px] bg-white flex flex-col justify-between text-left pb-2">
-                  
-                  <div>
-                    {/* Dynamic Island */}
-                    <div className="h-3.5 w-18 bg-black rounded-full mx-auto mt-2" />
+              <div className="absolute top-2 right-2 lg:right-2 w-[255px] lg:w-[275px] h-[510px] -rotate-[16deg] rounded-[50px] bg-gradient-to-br from-[#4b5563] via-[#202630] to-[#333d4b] p-[4px] shadow-[0_34px_80px_-15px_rgba(0,0,0,0.48),0_12px_28px_-8px_rgba(0,0,0,0.25),0_0_0_1px_rgba(255,255,255,0.18)] border border-[#4f5c6e] z-20 transition-transform duration-300 hover:-rotate-[13deg] select-none">
+                {/* Outer Metallic Chamfer Highlight */}
+                <div className="pointer-events-none absolute inset-0 rounded-[49px] ring-1 ring-inset ring-white/18" aria-hidden="true" />
+
+                {/* Hardware Buttons */}
+                <div className="absolute -left-[4.5px] top-[68px] h-[16px] w-[3.5px] rounded-l-[2px] bg-gradient-to-r from-[#4b5563] to-[#202630] border-l border-y border-[#5a6677] shadow-2xs" aria-hidden="true" />
+                <div className="absolute -left-[4.5px] top-[96px] h-[36px] w-[3.5px] rounded-l-[2px] bg-gradient-to-r from-[#4b5563] to-[#202630] border-l border-y border-[#5a6677] shadow-2xs" aria-hidden="true" />
+                <div className="absolute -left-[4.5px] top-[140px] h-[36px] w-[3.5px] rounded-l-[2px] bg-gradient-to-r from-[#4b5563] to-[#202630] border-l border-y border-[#5a6677] shadow-2xs" aria-hidden="true" />
+                <div className="absolute -right-[4.5px] top-[102px] h-[52px] w-[3.5px] rounded-r-[2px] bg-gradient-to-l from-[#4b5563] to-[#202630] border-r border-y border-[#5a6677] shadow-2xs" aria-hidden="true" />
+
+                {/* Inner Pitch-Black OLED Bezel */}
+                <div className="relative h-full w-full rounded-[46px] bg-[#090c10] p-[3.5px] overflow-hidden flex flex-col shadow-inner">
+                  <div className="relative h-full w-full overflow-hidden rounded-[42px] bg-white flex flex-col justify-between text-left pb-2">
                     
-                    {/* Status Bar with Currency Picker */}
-                    <IosStatusBar currencyPill={true} />
-
-                    {/* Title & Valuation */}
-                    <div className="px-3.5 pt-1 text-sm font-extrabold text-gray-950">Portfolio</div>
-                    
-                    <div className="px-3.5 pt-0.5">
-                      <div className="text-[9px] font-semibold text-gray-400 uppercase tracking-wider">PORTFOLIO VALUE</div>
-                      <div className="text-xl font-black tracking-tight text-gray-950 mt-0.5">
-                        AED 306,500<span className="text-xs font-semibold text-gray-400">.00</span>
-                      </div>
-                    </div>
-
-                    {/* 4 Action Buttons with Labels */}
-                    <div className="grid grid-cols-4 gap-1 px-3 pt-2 text-center">
-                      <div className="flex flex-col items-center gap-0.5">
-                        <div className="h-7 w-7 rounded-full bg-gray-100 flex items-center justify-center text-[10px] font-bold text-gray-800 shadow-2xs">⇄</div>
-                        <span className="text-[7.5px] font-semibold text-gray-600">Invest</span>
-                      </div>
-                      <div className="flex flex-col items-center gap-0.5">
-                        <div className="h-7 w-7 rounded-full bg-black flex items-center justify-center text-white text-[11px] font-bold shadow-2xs">+</div>
-                        <span className="text-[7.5px] font-semibold text-gray-600">Deposit</span>
-                      </div>
-                      <div className="flex flex-col items-center gap-0.5">
-                        <div className="h-7 w-7 rounded-full bg-gray-100 flex items-center justify-center text-[10px] font-bold text-gray-800 shadow-2xs">☆</div>
-                        <span className="text-[7.5px] font-semibold text-gray-600">Earn</span>
-                      </div>
-                      <div className="flex flex-col items-center gap-0.5">
-                        <div className="h-7 w-7 rounded-full bg-gray-100 flex items-center justify-center text-[10px] font-bold text-gray-800 shadow-2xs">↗</div>
-                        <span className="text-[7.5px] font-semibold text-gray-600">Exit</span>
-                      </div>
-                    </div>
-
-                    {/* All Time Returns Card */}
-                    <div className="mx-3 mt-1.5 rounded-xl bg-gray-50 border border-gray-100 p-1.5">
-                      <div className="flex justify-between items-center text-[8px] font-bold text-gray-600">
-                        <span>All time returns</span>
-                        <span className="text-emerald-700 bg-emerald-100 px-1 py-0.5 rounded text-[8px] font-black">30.8%</span>
-                      </div>
-                      <div className="mt-0.5 text-[11px] font-black text-gray-950">AED 91,950.00</div>
-                      <div className="mt-1 h-1.5 w-full bg-gray-200 rounded-full overflow-hidden flex">
-                        <div className="h-full bg-[#00A663] w-[70%]" />
-                        <div className="h-full bg-emerald-300 w-[30%]" />
-                      </div>
-                    </div>
-
-                    {/* Dual Rent Card */}
-                    <div className="mx-3 mt-1.5 grid grid-cols-2 gap-1 text-[8px] bg-gray-50 p-1.5 rounded-xl border border-gray-100">
-                      <div>
-                        <span className="text-gray-400 block text-[7px] font-semibold">July&apos;s rent</span>
-                        <span className="font-extrabold text-gray-900 text-[9.5px]">AED 10,225.50</span>
-                      </div>
-                      <div>
-                        <span className="text-gray-400 block text-[7px] font-semibold">Total rental income</span>
-                        <span className="font-extrabold text-gray-900 text-[9.5px]">AED 56,200.00</span>
-                      </div>
-                    </div>
-
-                    {/* "My Stakes" Section matching reference */}
-                    <div className="mx-3 mt-1.5 space-y-1">
-                      <div className="flex justify-between items-center text-[8px] font-bold">
-                        <span className="text-gray-900">My Stakes</span>
-                        <span className="text-[#00A663] text-[7.5px]">View all (23) →</span>
+                    <div>
+                      {/* Dynamic Island with camera lens */}
+                      <div className="mx-auto flex h-[17px] w-20 items-center justify-end rounded-full bg-black px-2 shadow-sm mt-1.5 shrink-0">
+                        <div className="size-2 rounded-full bg-[#0a0d14] ring-1 ring-[#1b2230] flex items-center justify-center">
+                          <div className="size-0.5 rounded-full bg-[#20293d]" />
+                        </div>
                       </div>
                       
-                      <div className="rounded-xl border border-gray-100 bg-gray-50/80 p-1.5 flex items-center justify-between text-[7.5px]">
-                        <span className="text-gray-600 font-medium">23 properties in 12 neighbourhoods</span>
-                        <span className="rounded bg-black/85 text-white px-1.5 py-0.5 text-[7px] font-bold">All Stakes</span>
+                      {/* Status Bar with Currency Picker */}
+                      <IosStatusBar currencyPill={true} />
+
+                      {/* Title & Valuation */}
+                      <div className="px-3.5 pt-1 text-sm font-extrabold text-gray-950">Portfolio</div>
+                      
+                      <div className="px-3.5 pt-0.5">
+                        <div className="text-[9px] font-semibold text-gray-400 uppercase tracking-wider">PORTFOLIO VALUE</div>
+                        <div className="text-xl font-black tracking-tight text-gray-950 mt-0.5">
+                          AED 306,500<span className="text-xs font-semibold text-gray-400">.00</span>
+                        </div>
                       </div>
+
+                      {/* 4 Action Buttons with Labels */}
+                      <div className="grid grid-cols-4 gap-1 px-3 pt-2 text-center">
+                        <div className="flex flex-col items-center gap-0.5">
+                          <div className="h-7 w-7 rounded-full bg-gray-100 flex items-center justify-center text-[10px] font-bold text-gray-800 shadow-2xs">⇄</div>
+                          <span className="text-[7.5px] font-semibold text-gray-600">Invest</span>
+                        </div>
+                        <div className="flex flex-col items-center gap-0.5">
+                          <div className="h-7 w-7 rounded-full bg-black flex items-center justify-center text-white text-[11px] font-bold shadow-2xs">+</div>
+                          <span className="text-[7.5px] font-semibold text-gray-600">Deposit</span>
+                        </div>
+                        <div className="flex flex-col items-center gap-0.5">
+                          <div className="h-7 w-7 rounded-full bg-gray-100 flex items-center justify-center text-[10px] font-bold text-gray-800 shadow-2xs">☆</div>
+                          <span className="text-[7.5px] font-semibold text-gray-600">Earn</span>
+                        </div>
+                        <div className="flex flex-col items-center gap-0.5">
+                          <div className="h-7 w-7 rounded-full bg-gray-100 flex items-center justify-center text-[10px] font-bold text-gray-800 shadow-2xs">↗</div>
+                          <span className="text-[7.5px] font-semibold text-gray-600">Exit</span>
+                        </div>
+                      </div>
+
+                      {/* All Time Returns Card */}
+                      <div className="mx-3 mt-1.5 rounded-xl bg-gray-50 border border-gray-100 p-1.5">
+                        <div className="flex justify-between items-center text-[8px] font-bold text-gray-600">
+                          <span>All time returns</span>
+                          <span className="text-emerald-700 bg-emerald-100 px-1 py-0.5 rounded text-[8px] font-black">30.8%</span>
+                        </div>
+                        <div className="mt-0.5 text-[11px] font-black text-gray-950">AED 91,950.00</div>
+                        <div className="mt-1 h-1.5 w-full bg-gray-200 rounded-full overflow-hidden flex">
+                          <div className="h-full bg-[#00A663] w-[70%]" />
+                          <div className="h-full bg-emerald-300 w-[30%]" />
+                        </div>
+                      </div>
+
+                      {/* Dual Rent Card */}
+                      <div className="mx-3 mt-1.5 grid grid-cols-2 gap-1 text-[8px] bg-gray-50 p-1.5 rounded-xl border border-gray-100">
+                        <div>
+                          <span className="text-gray-400 block text-[7px] font-semibold">July&apos;s rent</span>
+                          <span className="font-extrabold text-gray-900 text-[9.5px]">AED 10,225.50</span>
+                        </div>
+                        <div>
+                          <span className="text-gray-400 block text-[7px] font-semibold">Total rental income</span>
+                          <span className="font-extrabold text-gray-900 text-[9.5px]">AED 56,200.00</span>
+                        </div>
+                      </div>
+
+                      {/* "My Stakes" Section matching reference */}
+                      <div className="mx-3 mt-1.5 space-y-1">
+                        <div className="flex justify-between items-center text-[8px] font-bold">
+                          <span className="text-gray-900">My Stakes</span>
+                          <span className="text-[#00A663] text-[7.5px]">View all (23) →</span>
+                        </div>
+                        
+                        <div className="rounded-xl border border-gray-100 bg-gray-50/80 p-1.5 flex items-center justify-between text-[7.5px]">
+                          <span className="text-gray-600 font-medium">23 properties in 12 neighbourhoods</span>
+                          <span className="rounded bg-black/85 text-white px-1.5 py-0.5 text-[7px] font-bold">All Stakes</span>
+                        </div>
+                      </div>
+
                     </div>
 
+                    {/* Home Indicator Swipe Bar */}
+                    <div className="h-1 w-20 bg-black/20 rounded-full mx-auto" />
                   </div>
-
-                  {/* Home Indicator Swipe Bar */}
-                  <div className="h-1 w-20 bg-black/20 rounded-full mx-auto" />
                 </div>
               </div>
 
               {/* --- PHONE 3: BOTTOM-CENTER (Foreground Sharp Screen with Bottom Fade-Out Mask) --- */}
               <div 
-                className="absolute top-[310px] lg:top-[330px] left-[130px] lg:left-[155px] w-[245px] lg:w-[265px] h-[440px] -rotate-[16deg] rounded-[42px] bg-gradient-to-br from-[#3b4350] via-[#20252d] to-[#29303a] p-[3.5px] shadow-[0_28px_60px_-12px_rgba(0,0,0,0.4),0_0_0_1px_rgba(255,255,255,0.14)] border border-[#485362]/80 z-30 opacity-100"
+                className="absolute top-[310px] lg:top-[330px] left-[130px] lg:left-[155px] w-[245px] lg:w-[265px] h-[440px] -rotate-[16deg] rounded-[50px] bg-gradient-to-br from-[#4b5563] via-[#202630] to-[#333d4b] p-[4px] shadow-[0_32px_75px_-15px_rgba(0,0,0,0.45),0_12px_28px_-8px_rgba(0,0,0,0.25),0_0_0_1px_rgba(255,255,255,0.16)] border border-[#4f5c6e] z-30 opacity-100 select-none"
                 style={{
                   WebkitMaskImage: 'linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 28%, rgba(0,0,0,0) 65%)',
                   maskImage: 'linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 28%, rgba(0,0,0,0) 65%)',
                 }}
               >
-                <div className="relative h-full w-full overflow-hidden rounded-[37px] bg-white flex flex-col text-left">
-                  {/* Dynamic Island */}
-                  <div className="h-3.5 w-18 bg-black rounded-full mx-auto mt-2 shrink-0" />
-                  
-                  {/* iOS Status Bar with Cart Badge */}
-                  <div className="flex justify-between items-center px-4 pt-1.5 text-[9px] font-semibold text-gray-900 select-none">
-                    <span className="font-bold tracking-tight">9:41</span>
+                {/* Outer Metallic Chamfer Highlight */}
+                <div className="pointer-events-none absolute inset-0 rounded-[49px] ring-1 ring-inset ring-white/18" aria-hidden="true" />
+
+                {/* Hardware Buttons */}
+                <div className="absolute -left-[4.5px] top-[60px] h-[16px] w-[3.5px] rounded-l-[2px] bg-gradient-to-r from-[#4b5563] to-[#202630] border-l border-y border-[#5a6677] shadow-2xs" aria-hidden="true" />
+                <div className="absolute -left-[4.5px] top-[86px] h-[34px] w-[3.5px] rounded-l-[2px] bg-gradient-to-r from-[#4b5563] to-[#202630] border-l border-y border-[#5a6677] shadow-2xs" aria-hidden="true" />
+                <div className="absolute -left-[4.5px] top-[128px] h-[34px] w-[3.5px] rounded-l-[2px] bg-gradient-to-r from-[#4b5563] to-[#202630] border-l border-y border-[#5a6677] shadow-2xs" aria-hidden="true" />
+                <div className="absolute -right-[4.5px] top-[92px] h-[50px] w-[3.5px] rounded-r-[2px] bg-gradient-to-l from-[#4b5563] to-[#202630] border-r border-y border-[#5a6677] shadow-2xs" aria-hidden="true" />
+
+                {/* Inner Pitch-Black OLED Bezel */}
+                <div className="relative h-full w-full rounded-[46px] bg-[#090c10] p-[3.5px] overflow-hidden flex flex-col shadow-inner">
+                  <div className="relative h-full w-full overflow-hidden rounded-[42px] bg-white flex flex-col text-left">
+                    {/* Dynamic Island with camera lens */}
+                    <div className="mx-auto flex h-[17px] w-20 items-center justify-end rounded-full bg-black px-2 shadow-sm mt-1.5 shrink-0">
+                      <div className="size-2 rounded-full bg-[#0a0d14] ring-1 ring-[#1b2230] flex items-center justify-center">
+                        <div className="size-0.5 rounded-full bg-[#20293d]" />
+                      </div>
+                    </div>
                     
-                    <div className="flex items-center gap-1.5">
-                      <svg className="w-3 h-2 fill-current text-gray-800" viewBox="0 0 17 12">
-                        <rect x="0" y="9" width="3" height="3" rx="0.6" />
-                        <rect x="4.5" y="6" width="3" height="6" rx="0.6" />
-                        <rect x="9" y="3" width="3" height="9" rx="0.6" />
-                        <rect x="13.5" y="0" width="3" height="12" rx="0.6" />
-                      </svg>
-                      <span>🔖</span>
-                      <span className="bg-[#00A663] text-white px-1.5 py-0.2 rounded-full text-[7.5px] font-black">
-                        🛒 1
+                    {/* iOS Status Bar with Cart Badge */}
+                    <div className="flex justify-between items-center px-4 pt-1.5 text-[9px] font-semibold text-gray-900 select-none">
+                      <span className="font-bold tracking-tight">9:41</span>
+                      
+                      <div className="flex items-center gap-1.5">
+                        <svg className="w-3 h-2 fill-current text-gray-800" viewBox="0 0 17 12">
+                          <rect x="0" y="9" width="3" height="3" rx="0.6" />
+                          <rect x="4.5" y="6" width="3" height="6" rx="0.6" />
+                          <rect x="9" y="3" width="3" height="9" rx="0.6" />
+                          <rect x="13.5" y="0" width="3" height="12" rx="0.6" />
+                        </svg>
+                        <span>🔖</span>
+                        <span className="bg-[#00A663] text-white px-1.5 py-0.2 rounded-full text-[7.5px] font-black">
+                          🛒 1
+                        </span>
+                      </div>
+                    </div>
+
+                    {/* Clean Funds Title matching screenshot */}
+                    <div className="px-4 pt-1.5 text-xs font-black text-gray-950">Funds</div>
+
+                    {/* Sub-tabs: Available / Funded */}
+                    <div className="flex gap-4 px-4 pt-1.5 border-b border-gray-100">
+                      <span className="text-[#00A663] border-b-2 border-[#00A663] pb-1 font-bold text-[9px]">
+                        Available
+                      </span>
+                      <span className="text-gray-400 font-semibold text-[9px] pb-1">
+                        Funded
                       </span>
                     </div>
-                  </div>
 
-                  {/* Clean Funds Title matching screenshot */}
-                  <div className="px-4 pt-1.5 text-xs font-black text-gray-950">Funds</div>
-
-                  {/* Sub-tabs: Available / Funded */}
-                  <div className="flex gap-4 px-4 pt-1.5 border-b border-gray-100">
-                    <span className="text-[#00A663] border-b-2 border-[#00A663] pb-1 font-bold text-[9px]">
-                      Available
-                    </span>
-                    <span className="text-gray-400 font-semibold text-[9px] pb-1">
-                      Funded
-                    </span>
-                  </div>
-
-                  {/* Fund Preview Thumbnail Card matching screenshot */}
-                  <div className="mx-3 mt-2 rounded-xl border border-gray-100 p-2 bg-gray-50/90 shadow-2xs">
-                    <div
-                      className="h-20 rounded-lg bg-cover bg-center relative overflow-hidden"
-                      style={{ backgroundImage: 'url("https://images.unsplash.com/photo-1577495508048-b635879837f1?auto=format&fit=crop&w=500&q=80")' }}
-                    >
-                      <div className="absolute bottom-1.5 flex justify-center w-full gap-1">
-                        <span className="h-1 w-2.5 bg-white rounded-full" />
-                        <span className="h-1 w-1 bg-white/70 rounded-full" />
-                        <span className="h-1 w-1 bg-white/70 rounded-full" />
+                    {/* Fund Preview Thumbnail Card matching screenshot */}
+                    <div className="mx-3 mt-2 rounded-xl border border-gray-100 p-2 bg-gray-50/90 shadow-2xs">
+                      <div
+                        className="h-20 rounded-lg bg-cover bg-center relative overflow-hidden"
+                        style={{ backgroundImage: 'url("https://images.unsplash.com/photo-1577495508048-b635879837f1?auto=format&fit=crop&w=500&q=80")' }}
+                      >
+                        <div className="absolute bottom-1.5 flex justify-center w-full gap-1">
+                          <span className="h-1 w-2.5 bg-white rounded-full" />
+                          <span className="h-1 w-1 bg-white/70 rounded-full" />
+                          <span className="h-1 w-1 bg-white/70 rounded-full" />
+                        </div>
+                      </div>
+                      <div className="p-1.5">
+                        <div className="flex justify-between items-center text-[8.5px] text-gray-500 font-medium">
+                          <span>• Riyadh</span>
+                          <span className="text-[#00A663] font-bold">Available</span>
+                        </div>
+                        <div className="text-[10px] font-extrabold text-gray-900 mt-0.5">Riyadh Income Generating Fund</div>
                       </div>
                     </div>
-                    <div className="p-1.5">
-                      <div className="flex justify-between items-center text-[8.5px] text-gray-500 font-medium">
-                        <span>• Riyadh</span>
-                        <span className="text-[#00A663] font-bold">Available</span>
-                      </div>
-                      <div className="text-[10px] font-extrabold text-gray-900 mt-0.5">Riyadh Income Generating Fund</div>
-                    </div>
-                  </div>
 
+                  </div>
                 </div>
               </div>
 
