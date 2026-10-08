@@ -21,6 +21,8 @@ import {
   Check,
 } from 'lucide-react'
 import { TopBanner } from './TopBanner'
+import { useAuth } from '@/context/AuthContext'
+import { UserProfileDropdown } from '@/components/layout/UserProfileDropdown'
 
 /* =========================================================================
    STAKE OFFICIAL LOGO COMPONENT
@@ -129,6 +131,7 @@ const CONTENT_ITEMS = [
    ========================================================================= */
 export function Navbar() {
   const pathname = usePathname()
+  const { isAuthenticated, user, isLoaded, logout } = useAuth()
   const [activeDropdown, setActiveDropdown] = useState<'invest' | 'benefits' | 'content' | null>(null)
   const [langMenuOpen, setLangMenuOpen] = useState(false)
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
@@ -445,21 +448,36 @@ export function Navbar() {
               )}
             </div>
 
-            {/* 2. Login Button */}
-            <Link
-              href="/login"
-              className="flex items-center justify-center rounded-xl border border-gray-200 bg-white px-4 sm:px-5 py-2 text-[13.5px] font-semibold text-[#0D1117] hover:border-gray-300 hover:bg-gray-50 transition-all shadow-2xs active:scale-98"
-            >
-              Login
-            </Link>
+            {/* Authenticated User Profile Dropdown OR Login/Signup */}
+            {isLoaded && isAuthenticated && user ? (
+              <div className="flex items-center gap-2.5">
+                <Link
+                  href="/dashboard"
+                  className="hidden md:inline-flex items-center gap-1.5 rounded-xl border border-gray-200 bg-white px-3.5 py-2 text-[13px] font-semibold text-[#0D1117] hover:border-gray-300 hover:bg-gray-50 transition-all shadow-2xs active:scale-98"
+                >
+                  <span>Dashboard</span>
+                </Link>
+                <UserProfileDropdown user={user} />
+              </div>
+            ) : (
+              <>
+                {/* 2. Login Button */}
+                <Link
+                  href="/login"
+                  className="flex items-center justify-center rounded-xl border border-gray-200 bg-white px-4 sm:px-5 py-2 text-[13.5px] font-semibold text-[#0D1117] hover:border-gray-300 hover:bg-gray-50 transition-all shadow-2xs active:scale-98"
+                >
+                  Login
+                </Link>
 
-            {/* 3. Sign Up Button */}
-            <Link
-              href="/register"
-              className="flex items-center justify-center rounded-xl bg-[#0D1117] px-4.5 sm:px-5 py-2 text-[13.5px] font-semibold text-white hover:bg-gray-900 transition-all shadow-xs active:scale-98"
-            >
-              Sign up
-            </Link>
+                {/* 3. Sign Up Button */}
+                <Link
+                  href="/signup"
+                  className="flex items-center justify-center rounded-xl bg-[#0D1117] px-4.5 sm:px-5 py-2 text-[13.5px] font-semibold text-white hover:bg-gray-900 transition-all shadow-xs active:scale-98"
+                >
+                  Sign up
+                </Link>
+              </>
+            )}
 
             {/* Mobile Menu Hamburger Button */}
             <button
@@ -536,18 +554,57 @@ export function Navbar() {
 
             {/* Mobile CTAs */}
             <div className="pt-2 border-t border-gray-100 flex flex-col gap-2.5">
-              <Link
-                href="/login"
-                className="w-full text-center py-2.5 rounded-xl border border-gray-200 text-sm font-semibold text-gray-900 hover:bg-gray-50"
-              >
-                Login
-              </Link>
-              <Link
-                href="/register"
-                className="w-full text-center py-2.5 rounded-xl bg-[#0D1117] text-sm font-semibold text-white hover:bg-gray-900"
-              >
-                Sign up
-              </Link>
+              {isLoaded && isAuthenticated && user ? (
+                <div className="space-y-3">
+                  <div className="flex items-center gap-3 rounded-2xl bg-gray-50 p-3.5 border border-gray-100">
+                    <span className="flex size-10 shrink-0 items-center justify-center rounded-xl bg-[#00A663] font-mono text-sm font-bold text-white shadow-xs">
+                      {user.name ? user.name.slice(0, 2).toUpperCase() : 'YK'}
+                    </span>
+                    <div className="min-w-0 flex-1">
+                      <p className="truncate text-sm font-bold text-gray-900">{user.name}</p>
+                      <p className="truncate text-xs text-gray-500">{user.email}</p>
+                      <span className="inline-flex items-center gap-1 text-[10px] font-bold text-[#00A663] mt-0.5">
+                        <ShieldCheck size={11} />
+                        {user.investorType === 'institutional' ? 'Institutional' : 'Individual'} Investor
+                      </span>
+                    </div>
+                  </div>
+                  <Link
+                    href="/dashboard"
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="w-full block text-center py-2.5 rounded-xl bg-[#00A663] text-sm font-bold text-white hover:bg-[#008f55] transition-colors shadow-xs"
+                  >
+                    Portfolio / Dashboard
+                  </Link>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setMobileMenuOpen(false)
+                      logout()
+                    }}
+                    className="w-full text-center py-2 rounded-xl border border-red-200 text-xs font-bold text-red-600 hover:bg-red-50 transition-colors cursor-pointer"
+                  >
+                    Log out
+                  </button>
+                </div>
+              ) : (
+                <>
+                  <Link
+                    href="/login"
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="w-full text-center py-2.5 rounded-xl border border-gray-200 text-sm font-semibold text-gray-900 hover:bg-gray-50"
+                  >
+                    Login
+                  </Link>
+                  <Link
+                    href="/signup"
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="w-full text-center py-2.5 rounded-xl bg-[#0D1117] text-sm font-semibold text-white hover:bg-gray-900"
+                  >
+                    Sign up
+                  </Link>
+                </>
+              )}
             </div>
           </div>
         )}

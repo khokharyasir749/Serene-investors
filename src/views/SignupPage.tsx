@@ -35,11 +35,12 @@ export function SignupPage() {
       ? `/login?intent=${encodeURIComponent(intent)}&id=${encodeURIComponent(relatedId)}`
       : '/login'
 
-  const targetHref = property
+  const redirectParam = params?.get('redirect')
+  const targetHref = redirectParam || (property
     ? `/properties/${property.id}`
     : fund
       ? `/funds/${fund.id}`
-      : '/properties'
+      : '/')
 
   usePageMeta(
     `${site.name} | Create account`,

@@ -36,11 +36,12 @@ export function AuthPage({ title }: Props) {
       ? `/signup?intent=${encodeURIComponent(intent)}&id=${encodeURIComponent(relatedId)}`
       : '/signup'
 
-  const targetHref = property
+  const redirectParam = params?.get('redirect')
+  const targetHref = redirectParam || (property
     ? `/properties/${property.id}`
     : fund
       ? `/funds/${fund.id}`
-      : '/properties'
+      : '/')
 
   usePageMeta(
     `${site.name} | ${title}`,
@@ -90,10 +91,12 @@ export function AuthPage({ title }: Props) {
   }
 
   function handleQuickDemo() {
-    const demoEmail = 'demo.investor@serene-investors.com'
-    setEmail(demoEmail)
-    setPassword('demopassword')
-    sendOtpAndProceed(demoEmail)
+    login({
+      name: 'Yasir Khokhar',
+      email: 'investor@serene-investors.com',
+      investorType: 'individual',
+    })
+    setAuthState('success')
   }
 
   function handleOtpSuccess() {
@@ -118,12 +121,12 @@ export function AuthPage({ title }: Props) {
               Authentication successful
             </h2>
             <p className="mx-auto mt-3 max-w-sm text-sm leading-relaxed text-muted">
-              Welcome back{email ? ` (${email})` : ''}. Redirecting to your investor portal...
+              Welcome back{email ? ` (${email})` : ''}. Redirecting to {targetHref === '/' ? 'the home page' : 'your investor portal'}...
             </p>
 
             <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
               <ButtonLink href={targetHref} className="w-full gap-2 sm:w-auto">
-                Continue to portal
+                {targetHref === '/' ? 'Continue to Home' : 'Continue to portal'}
                 <ArrowRight size={16} aria-hidden="true" />
               </ButtonLink>
             </div>
