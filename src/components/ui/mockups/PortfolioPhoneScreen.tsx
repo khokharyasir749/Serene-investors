@@ -3,7 +3,6 @@ import {
   Plus,
   Percent,
   ArrowUpRight,
-  MessageSquare,
   ChevronRight,
   Calendar,
   Wallet,
@@ -154,15 +153,6 @@ export function PortfolioPhoneScreen() {
             </div>
           </div>
         </div>
-      </div>
-
-      {/* Floating live support bubble (emerald circular icon at bottom right) */}
-      <div className="absolute bottom-1 right-2.5 z-20 flex size-7 items-center justify-center rounded-full bg-primary text-white shadow-md transition-transform hover:scale-110 active:scale-95">
-        <span className="absolute -right-0.5 -top-0.5 flex size-2">
-          <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
-          <span className="relative inline-flex size-2 rounded-full bg-emerald-500" />
-        </span>
-        <MessageSquare size={13} strokeWidth={2.2} />
       </div>
     </div>
   )
