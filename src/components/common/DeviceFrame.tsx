@@ -21,32 +21,32 @@ export function DeviceFrame({
 }: DeviceFrameProps) {
   return (
     <div
-      className={`relative mx-auto w-full max-w-[320px] sm:max-w-[340px] ${aspectRatio} rounded-[52px] bg-[#161a20] p-[3.5px] shadow-[0_30px_70px_-15px_rgba(0,0,0,0.45),0_0_0_1px_rgba(255,255,255,0.08)] border border-[#3b4452]/80 select-none ${className}`}
+      className={`relative mx-auto w-full max-w-[320px] sm:max-w-[340px] ${aspectRatio} rounded-[52px] bg-gradient-to-br from-[#3b4350] via-[#20252d] to-[#29303a] p-[4px] shadow-[0_32px_75px_-15px_rgba(0,0,0,0.42),0_12px_28px_-8px_rgba(0,0,0,0.25),0_0_0_1px_rgba(255,255,255,0.14)] border border-[#485362]/80 select-none ${className}`}
     >
       {/* Outer Metallic Chamfer Highlight */}
-      <div className="pointer-events-none absolute inset-0 rounded-[51px] ring-1 ring-inset ring-white/10" aria-hidden="true" />
+      <div className="pointer-events-none absolute inset-0 rounded-[51px] ring-1 ring-inset ring-white/15" aria-hidden="true" />
 
       {/* --- CHASSIS HARDWARE BUTTONS & ANTENNA LINES --- */}
       {/* Left Top Antenna Seam */}
       <div className="absolute -left-[2px] top-[46px] h-[2px] w-[3.5px] bg-[#0c0f14]" aria-hidden="true" />
       {/* Left Action Button */}
-      <div className="absolute -left-[5.5px] top-[76px] h-[18px] w-[4px] rounded-l-[2px] bg-[#2d3440] border-l border-y border-[#525d70]/80 shadow-xs" aria-hidden="true" />
+      <div className="absolute -left-[5.5px] top-[74px] h-[18px] w-[4px] rounded-l-[2px] bg-gradient-to-r from-[#3e4754] to-[#252a33] border-l border-y border-[#5a6677]/90 shadow-xs" aria-hidden="true" />
       {/* Left Volume Up Button */}
-      <div className="absolute -left-[5.5px] top-[108px] h-[42px] w-[4px] rounded-l-[2px] bg-[#2d3440] border-l border-y border-[#525d70]/80 shadow-xs" aria-hidden="true" />
+      <div className="absolute -left-[5.5px] top-[104px] h-[42px] w-[4px] rounded-l-[2px] bg-gradient-to-r from-[#3e4754] to-[#252a33] border-l border-y border-[#5a6677]/90 shadow-xs" aria-hidden="true" />
       {/* Left Volume Down Button */}
-      <div className="absolute -left-[5.5px] top-[160px] h-[42px] w-[4px] rounded-l-[2px] bg-[#2d3440] border-l border-y border-[#525d70]/80 shadow-xs" aria-hidden="true" />
+      <div className="absolute -left-[5.5px] top-[156px] h-[42px] w-[4px] rounded-l-[2px] bg-gradient-to-r from-[#3e4754] to-[#252a33] border-l border-y border-[#5a6677]/90 shadow-xs" aria-hidden="true" />
       {/* Left Bottom Antenna Seam */}
       <div className="absolute -left-[2px] bottom-[72px] h-[2px] w-[3.5px] bg-[#0c0f14]" aria-hidden="true" />
 
       {/* Right Top Antenna Seam */}
       <div className="absolute -right-[2px] top-[46px] h-[2px] w-[3.5px] bg-[#0c0f14]" aria-hidden="true" />
       {/* Right Power / Lock Button */}
-      <div className="absolute -right-[5.5px] top-[116px] h-[64px] w-[4px] rounded-r-[2px] bg-[#2d3440] border-r border-y border-[#525d70]/80 shadow-xs" aria-hidden="true" />
+      <div className="absolute -right-[5.5px] top-[112px] h-[64px] w-[4px] rounded-r-[2px] bg-gradient-to-l from-[#3e4754] to-[#252a33] border-r border-y border-[#5a6677]/90 shadow-xs" aria-hidden="true" />
       {/* Right Bottom Antenna Seam */}
       <div className="absolute -right-[2px] bottom-[72px] h-[2px] w-[3.5px] bg-[#0c0f14]" aria-hidden="true" />
 
       {/* --- INNER UNIFORM PITCH-BLACK OLED BEZEL --- */}
-      <div className="relative h-full w-full rounded-[48px] bg-black p-[3.5px] overflow-hidden flex flex-col shadow-inner">
+      <div className="relative h-full w-full rounded-[48px] bg-[#0a0d12] p-[4px] overflow-hidden flex flex-col shadow-inner">
         
         {/* Screen Canvas */}
         <div

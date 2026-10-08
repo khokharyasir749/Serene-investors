@@ -411,9 +411,9 @@ export function InteractiveJourney() {
                     />
                   </div>
 
-                  {/* Phone Mockup (Half-screen cut off at bottom of card) */}
-                  <div className="w-[245px] sm:w-[255px] lg:w-[265px] h-[540px] sm:h-[580px] lg:h-[600px] rounded-t-[44px] bg-[#161a20] p-[3px] shadow-2xl relative z-20 border border-[#374151]/80 shrink-0">
-                    <div className="h-full rounded-t-[41px] overflow-hidden bg-white relative flex flex-col text-[#0F172A] pb-3">
+                  {/* Phone Mockup (Half-screen cut off at bottom of card - Steel Gray Titanium Frame) */}
+                  <div className="w-[245px] sm:w-[255px] lg:w-[265px] h-[540px] sm:h-[580px] lg:h-[600px] rounded-t-[46px] bg-gradient-to-br from-[#3b4350] via-[#20252d] to-[#29303a] p-[3.5px] shadow-[0_28px_60px_-12px_rgba(0,0,0,0.4),0_0_0_1px_rgba(255,255,255,0.14)] relative z-20 border border-[#485362]/80 shrink-0">
+                    <div className="h-full rounded-t-[42px] overflow-hidden bg-white relative flex flex-col text-[#0F172A] pb-3">
                       
                       {/* Top Status Bar & Dynamic Island */}
                       <PhoneTopBar className="bg-white" />

@@ -137,26 +137,26 @@ export function DualProductBento() {
                   </p>
                 </div>
 
-                {/* Main Phone Mockup (Submerged/Cropped at bottom - Realistic Titanium Frame) */}
-                <div className="relative z-10 w-[270px] sm:w-[290px] lg:w-[305px] shrink-0 rounded-[48px] bg-[#161a20] p-[3.5px] shadow-[0_30px_70px_-15px_rgba(0,0,0,0.45),0_0_0_1px_rgba(255,255,255,0.08)] border border-[#3b4452]/80 select-none">
+                {/* Main Phone Mockup (Submerged/Cropped at bottom - Realistic Steel Gray Titanium Frame) */}
+                <div className="relative z-10 w-[270px] sm:w-[290px] lg:w-[305px] shrink-0 rounded-[50px] bg-gradient-to-br from-[#3b4350] via-[#20252d] to-[#29303a] p-[4px] shadow-[0_32px_75px_-15px_rgba(0,0,0,0.42),0_12px_28px_-8px_rgba(0,0,0,0.25),0_0_0_1px_rgba(255,255,255,0.14)] border border-[#485362]/80 select-none">
                   {/* Outer Metallic Chamfer Highlight */}
-                  <div className="pointer-events-none absolute inset-0 rounded-[47px] ring-1 ring-inset ring-white/10" aria-hidden="true" />
+                  <div className="pointer-events-none absolute inset-0 rounded-[49px] ring-1 ring-inset ring-white/15" aria-hidden="true" />
 
                   {/* Chassis Hardware Buttons */}
                   <div className="absolute -left-[2px] top-[46px] h-[2px] w-[3.5px] bg-[#0c0f14]" aria-hidden="true" />
-                  <div className="absolute -left-[5.5px] top-[76px] h-[18px] w-[4px] rounded-l-[2px] bg-[#2d3440] border-l border-y border-[#525d70]/80 shadow-xs" aria-hidden="true" />
-                  <div className="absolute -left-[5.5px] top-[108px] h-[42px] w-[4px] rounded-l-[2px] bg-[#2d3440] border-l border-y border-[#525d70]/80 shadow-xs" aria-hidden="true" />
-                  <div className="absolute -left-[5.5px] top-[160px] h-[42px] w-[4px] rounded-l-[2px] bg-[#2d3440] border-l border-y border-[#525d70]/80 shadow-xs" aria-hidden="true" />
+                  <div className="absolute -left-[5.5px] top-[74px] h-[18px] w-[4px] rounded-l-[2px] bg-gradient-to-r from-[#3e4754] to-[#252a33] border-l border-y border-[#5a6677]/90 shadow-xs" aria-hidden="true" />
+                  <div className="absolute -left-[5.5px] top-[104px] h-[40px] w-[4px] rounded-l-[2px] bg-gradient-to-r from-[#3e4754] to-[#252a33] border-l border-y border-[#5a6677]/90 shadow-xs" aria-hidden="true" />
+                  <div className="absolute -left-[5.5px] top-[154px] h-[40px] w-[4px] rounded-l-[2px] bg-gradient-to-r from-[#3e4754] to-[#252a33] border-l border-y border-[#5a6677]/90 shadow-xs" aria-hidden="true" />
                   <div className="absolute -left-[2px] bottom-[72px] h-[2px] w-[3.5px] bg-[#0c0f14]" aria-hidden="true" />
 
                   <div className="absolute -right-[2px] top-[46px] h-[2px] w-[3.5px] bg-[#0c0f14]" aria-hidden="true" />
-                  <div className="absolute -right-[5.5px] top-[116px] h-[64px] w-[4px] rounded-r-[2px] bg-[#2d3440] border-r border-y border-[#525d70]/80 shadow-xs" aria-hidden="true" />
+                  <div className="absolute -right-[5.5px] top-[110px] h-[60px] w-[4px] rounded-r-[2px] bg-gradient-to-l from-[#3e4754] to-[#252a33] border-r border-y border-[#5a6677]/90 shadow-xs" aria-hidden="true" />
                   <div className="absolute -right-[2px] bottom-[72px] h-[2px] w-[3.5px] bg-[#0c0f14]" aria-hidden="true" />
 
                   {/* Inner OLED Pitch-Black Bezel */}
-                  <div className="relative h-full w-full rounded-[44px] bg-black p-[3.5px] overflow-hidden flex flex-col shadow-inner">
+                  <div className="relative h-full w-full rounded-[46px] bg-[#0a0d12] p-[3.5px] overflow-hidden flex flex-col shadow-inner">
                     {/* Phone Screen Canvas */}
-                    <div className="rounded-[40px] bg-white overflow-hidden flex flex-col text-left pb-14">
+                    <div className="rounded-[42px] bg-white overflow-hidden flex flex-col text-left pb-14">
                       
                       {/* Top Status Bar & Dynamic Island */}
                       <div className="relative z-30 pt-2 pb-1.5 px-5 bg-white flex items-center justify-between text-[11px] font-semibold text-[#0D1117]">
@@ -412,26 +412,26 @@ export function DualProductBento() {
                   </p>
                 </div>
 
-                {/* Main Phone Mockup (Submerged/Cropped at bottom - Realistic Titanium Frame) */}
-                <div className="relative z-10 w-[270px] sm:w-[290px] lg:w-[305px] shrink-0 rounded-[48px] bg-[#161a20] p-[3.5px] shadow-[0_30px_70px_-15px_rgba(0,0,0,0.45),0_0_0_1px_rgba(255,255,255,0.08)] border border-[#3b4452]/80 select-none">
+                {/* Main Phone Mockup (Submerged/Cropped at bottom - Realistic Steel Gray Titanium Frame) */}
+                <div className="relative z-10 w-[270px] sm:w-[290px] lg:w-[305px] shrink-0 rounded-[50px] bg-gradient-to-br from-[#3b4350] via-[#20252d] to-[#29303a] p-[4px] shadow-[0_32px_75px_-15px_rgba(0,0,0,0.42),0_12px_28px_-8px_rgba(0,0,0,0.25),0_0_0_1px_rgba(255,255,255,0.14)] border border-[#485362]/80 select-none">
                   {/* Outer Metallic Chamfer Highlight */}
-                  <div className="pointer-events-none absolute inset-0 rounded-[47px] ring-1 ring-inset ring-white/10" aria-hidden="true" />
+                  <div className="pointer-events-none absolute inset-0 rounded-[49px] ring-1 ring-inset ring-white/15" aria-hidden="true" />
 
                   {/* Chassis Hardware Buttons */}
                   <div className="absolute -left-[2px] top-[46px] h-[2px] w-[3.5px] bg-[#0c0f14]" aria-hidden="true" />
-                  <div className="absolute -left-[5.5px] top-[76px] h-[18px] w-[4px] rounded-l-[2px] bg-[#2d3440] border-l border-y border-[#525d70]/80 shadow-xs" aria-hidden="true" />
-                  <div className="absolute -left-[5.5px] top-[108px] h-[42px] w-[4px] rounded-l-[2px] bg-[#2d3440] border-l border-y border-[#525d70]/80 shadow-xs" aria-hidden="true" />
-                  <div className="absolute -left-[5.5px] top-[160px] h-[42px] w-[4px] rounded-l-[2px] bg-[#2d3440] border-l border-y border-[#525d70]/80 shadow-xs" aria-hidden="true" />
+                  <div className="absolute -left-[5.5px] top-[74px] h-[18px] w-[4px] rounded-l-[2px] bg-gradient-to-r from-[#3e4754] to-[#252a33] border-l border-y border-[#5a6677]/90 shadow-xs" aria-hidden="true" />
+                  <div className="absolute -left-[5.5px] top-[104px] h-[40px] w-[4px] rounded-l-[2px] bg-gradient-to-r from-[#3e4754] to-[#252a33] border-l border-y border-[#5a6677]/90 shadow-xs" aria-hidden="true" />
+                  <div className="absolute -left-[5.5px] top-[154px] h-[40px] w-[4px] rounded-l-[2px] bg-gradient-to-r from-[#3e4754] to-[#252a33] border-l border-y border-[#5a6677]/90 shadow-xs" aria-hidden="true" />
                   <div className="absolute -left-[2px] bottom-[72px] h-[2px] w-[3.5px] bg-[#0c0f14]" aria-hidden="true" />
 
                   <div className="absolute -right-[2px] top-[46px] h-[2px] w-[3.5px] bg-[#0c0f14]" aria-hidden="true" />
-                  <div className="absolute -right-[5.5px] top-[116px] h-[64px] w-[4px] rounded-r-[2px] bg-[#2d3440] border-r border-y border-[#525d70]/80 shadow-xs" aria-hidden="true" />
+                  <div className="absolute -right-[5.5px] top-[110px] h-[60px] w-[4px] rounded-r-[2px] bg-gradient-to-l from-[#3e4754] to-[#252a33] border-r border-y border-[#5a6677]/90 shadow-xs" aria-hidden="true" />
                   <div className="absolute -right-[2px] bottom-[72px] h-[2px] w-[3.5px] bg-[#0c0f14]" aria-hidden="true" />
 
                   {/* Inner OLED Pitch-Black Bezel */}
-                  <div className="relative h-full w-full rounded-[44px] bg-black p-[3.5px] overflow-hidden flex flex-col shadow-inner">
+                  <div className="relative h-full w-full rounded-[46px] bg-[#0a0d12] p-[3.5px] overflow-hidden flex flex-col shadow-inner">
                     {/* Phone Screen Canvas */}
-                    <div className="rounded-[40px] bg-white overflow-hidden flex flex-col text-left pb-14">
+                    <div className="rounded-[42px] bg-white overflow-hidden flex flex-col text-left pb-14">
                       
                       {/* Top Status Bar & Dynamic Island */}
                       <div className="relative z-30 pt-2 pb-1.5 px-5 bg-white flex items-center justify-between text-[11px] font-semibold text-[#0D1117]">

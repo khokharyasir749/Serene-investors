@@ -26,15 +26,17 @@ export function HowYouEarn() {
     >
       <div className="max-w-7xl mx-auto px-6 py-20">
         {/* Section Heading */}
-        <div className="text-center max-w-2xl mx-auto mb-20 sm:mb-28">
-          <p className="font-mono text-xs font-bold uppercase tracking-[0.16em] text-[#00A663] mb-3">
-            IT’S YOUR MONEY, GROW IT
+        <div className="text-center max-w-3xl mx-auto mb-16 sm:mb-24">
+          <p className="text-sm sm:text-base font-semibold text-[#00A663] mb-3 sm:mb-4">
+            It’s your money, grow it
           </p>
-          <h2 className="text-4xl lg:text-5xl font-extrabold tracking-tight text-[#0D1117] leading-[1.12]">
+          <h2 className="font-heading text-4xl sm:text-5xl lg:text-[56px] font-extrabold tracking-[-0.03em] text-[#0D1117] leading-[1.12] mb-5 sm:mb-7">
             So, how do I make money?
           </h2>
-          <p className="mt-4 text-base sm:text-lg text-[#4B5563]">
-            Join thousands of real estate investors who made an average of <span className="font-bold text-[#00A663]">10.2%</span> in 2025
+          <p className="font-heading text-xl sm:text-2xl lg:text-[28px] font-semibold text-[#0D1117] tracking-tight leading-snug sm:leading-relaxed max-w-2xl mx-auto">
+            Join <span className="text-[#00A663]">2M+</span> other real estate{' '}
+            <br className="hidden sm:inline" />
+            investors who made <span className="text-[#00A663]">10.2%</span> in 2025
           </p>
         </div>
 
@@ -54,28 +56,38 @@ export function HowYouEarn() {
                 aria-hidden="true"
               />
 
-              {/* Phone Chassis (Straight Front-Facing Angle like Picture 2 - Normal Mobile Proportion) */}
-              <div className="relative w-[280px] sm:w-[295px] aspect-[9/18] rounded-[46px] bg-[#161a20] p-[5.5px] shadow-[0_25px_65px_-15px_rgba(0,0,0,0.35),0_0_0_1px_rgba(255,255,255,0.08)] border border-[#3b4452]/70 select-none">
-                {/* Physical Side Buttons */}
-                <div className="absolute -left-[7.5px] top-20 h-5 w-[3px] rounded-l bg-[#2d3440] border-l border-y border-[#525d70]/80 shadow-xs" aria-hidden="true" />
-                <div className="absolute -left-[7.5px] top-29 h-10 w-[3px] rounded-l bg-[#2d3440] border-l border-y border-[#525d70]/80 shadow-xs" aria-hidden="true" />
-                <div className="absolute -left-[7.5px] top-42 h-10 w-[3px] rounded-l bg-[#2d3440] border-l border-y border-[#525d70]/80 shadow-xs" aria-hidden="true" />
-                <div className="absolute -right-[7.5px] top-30 h-14 w-[3px] rounded-r bg-[#2d3440] border-r border-y border-[#525d70]/80 shadow-xs" aria-hidden="true" />
+              {/* Phone Chassis (Realistic Steel Gray Titanium Frame matching reference picture) */}
+              <div className="relative w-[280px] sm:w-[295px] aspect-[9/18.5] rounded-[50px] bg-gradient-to-br from-[#3b4350] via-[#20252d] to-[#29303a] p-[4px] shadow-[0_32px_75px_-15px_rgba(0,0,0,0.42),0_12px_28px_-8px_rgba(0,0,0,0.25),0_0_0_1px_rgba(255,255,255,0.14)] border border-[#485362]/80 select-none">
+                {/* Outer Metallic Chamfer Highlight */}
+                <div className="pointer-events-none absolute inset-0 rounded-[49px] ring-1 ring-inset ring-white/15" aria-hidden="true" />
 
-                {/* Screen Container */}
-                <div className="relative h-full w-full overflow-hidden rounded-[41px] bg-white flex flex-col justify-between">
-                  {/* Top Portion (Status, Header, Card, Actions, Transactions) */}
-                  <div className="flex flex-col">
-                    {/* Status Bar */}
-                    <div className="relative pt-2.5 pb-0.5 px-5 flex items-center justify-between text-xs font-semibold text-gray-900 select-none">
-                      <span className="w-14 text-left font-semibold text-[13px] tracking-tight">9:41</span>
-                      
-                      {/* Perfectly Centered Dynamic Island */}
-                      <div className="absolute left-1/2 -translate-x-1/2 top-2.5 h-[18px] w-24 rounded-full bg-black flex items-center justify-end px-2.5 shadow-xs pointer-events-none">
-                        <div className="size-2 rounded-full bg-[#111] ring-1 ring-[#222] flex items-center justify-center">
-                          <div className="size-0.5 rounded-full bg-[#1f2937]" />
+                {/* Physical Side Buttons & Antenna Seams */}
+                <div className="absolute -left-[2px] top-[46px] h-[2px] w-[3.5px] bg-[#0c0f14]" aria-hidden="true" />
+                <div className="absolute -left-[5.5px] top-[74px] h-[18px] w-[4px] rounded-l-[2px] bg-gradient-to-r from-[#3e4754] to-[#252a33] border-l border-y border-[#5a6677]/90 shadow-xs" aria-hidden="true" />
+                <div className="absolute -left-[5.5px] top-[104px] h-[40px] w-[4px] rounded-l-[2px] bg-gradient-to-r from-[#3e4754] to-[#252a33] border-l border-y border-[#5a6677]/90 shadow-xs" aria-hidden="true" />
+                <div className="absolute -left-[5.5px] top-[154px] h-[40px] w-[4px] rounded-l-[2px] bg-gradient-to-r from-[#3e4754] to-[#252a33] border-l border-y border-[#5a6677]/90 shadow-xs" aria-hidden="true" />
+                <div className="absolute -left-[2px] bottom-[72px] h-[2px] w-[3.5px] bg-[#0c0f14]" aria-hidden="true" />
+
+                <div className="absolute -right-[2px] top-[46px] h-[2px] w-[3.5px] bg-[#0c0f14]" aria-hidden="true" />
+                <div className="absolute -right-[5.5px] top-[110px] h-[60px] w-[4px] rounded-r-[2px] bg-gradient-to-l from-[#3e4754] to-[#252a33] border-r border-y border-[#5a6677]/90 shadow-xs" aria-hidden="true" />
+                <div className="absolute -right-[2px] bottom-[72px] h-[2px] w-[3.5px] bg-[#0c0f14]" aria-hidden="true" />
+
+                {/* Inner OLED Pitch-Black Bezel */}
+                <div className="relative h-full w-full rounded-[46px] bg-[#0a0d12] p-[3.5px] overflow-hidden flex flex-col shadow-inner">
+                  {/* Screen Container */}
+                  <div className="relative h-full w-full overflow-hidden rounded-[42px] bg-white flex flex-col justify-between">
+                    {/* Top Portion (Status, Header, Card, Actions, Transactions) */}
+                    <div className="flex flex-col">
+                      {/* Status Bar */}
+                      <div className="relative pt-2.5 pb-0.5 px-5 flex items-center justify-between text-xs font-semibold text-gray-900 select-none">
+                        <span className="w-14 text-left font-semibold text-[13px] tracking-tight">9:41</span>
+                        
+                        {/* Perfectly Centered Dynamic Island */}
+                        <div className="absolute left-1/2 -translate-x-1/2 top-2 h-[22px] w-[90px] rounded-full bg-black flex items-center justify-end px-2.5 shadow-xs pointer-events-none">
+                          <div className="size-2 rounded-full bg-[#0a0d14] ring-1 ring-[#1b2230] flex items-center justify-center">
+                            <div className="size-0.5 rounded-full bg-[#20293d]" />
+                          </div>
                         </div>
-                      </div>
 
                       <div className="flex w-14 items-center justify-end gap-1.5">
                         {/* 4-bar cellular */}
@@ -255,6 +267,7 @@ export function HowYouEarn() {
                 </div>
               </div>
             </div>
+          </div>
 
             {/* Right Column (Editorial & Stats) */}
             <div className="lg:col-span-6 space-y-6">

@@ -102,8 +102,8 @@ export function StakeHero() {
             <div className="absolute inset-0 w-full h-full">
 
               {/* --- PHONE 1: TOP-LEFT / BACK LAYER (Property Detail) --- */}
-              <div className="absolute -top-6 left-6 lg:left-4 w-[245px] lg:w-[265px] h-[480px] -rotate-[16deg] rounded-[38px] bg-[#12161A] p-[4px] shadow-[0_22px_50px_-12px_rgba(0,0,0,0.35),0_0_0_1px_rgba(255,255,255,0.12)] z-10 opacity-95 transition-transform duration-300 hover:-rotate-[13deg]">
-                <div className="relative h-full w-full overflow-hidden rounded-[34px] bg-white flex flex-col justify-between text-left">
+              <div className="absolute -top-6 left-6 lg:left-4 w-[245px] lg:w-[265px] h-[480px] -rotate-[16deg] rounded-[42px] bg-gradient-to-br from-[#3b4350] via-[#20252d] to-[#29303a] p-[3.5px] shadow-[0_28px_60px_-12px_rgba(0,0,0,0.4),0_0_0_1px_rgba(255,255,255,0.14)] border border-[#485362]/80 z-10 opacity-95 transition-transform duration-300 hover:-rotate-[13deg]">
+                <div className="relative h-full w-full overflow-hidden rounded-[37px] bg-white flex flex-col justify-between text-left">
                   
                   {/* Top Section */}
                   <div>
@@ -216,8 +216,8 @@ export function StakeHero() {
               </div>
 
               {/* --- PHONE 2: FRONT-RIGHT (Main Portfolio Screen) --- */}
-              <div className="absolute top-2 right-2 lg:right-2 w-[255px] lg:w-[275px] h-[510px] -rotate-[16deg] rounded-[38px] bg-[#12161A] p-[4px] shadow-[0_22px_50px_-12px_rgba(0,0,0,0.35),0_0_0_1px_rgba(255,255,255,0.12)] z-20 transition-transform duration-300 hover:-rotate-[13deg]">
-                <div className="relative h-full w-full overflow-hidden rounded-[34px] bg-white flex flex-col justify-between text-left pb-2">
+              <div className="absolute top-2 right-2 lg:right-2 w-[255px] lg:w-[275px] h-[510px] -rotate-[16deg] rounded-[42px] bg-gradient-to-br from-[#3b4350] via-[#20252d] to-[#29303a] p-[3.5px] shadow-[0_28px_60px_-12px_rgba(0,0,0,0.4),0_0_0_1px_rgba(255,255,255,0.14)] border border-[#485362]/80 z-20 transition-transform duration-300 hover:-rotate-[13deg]">
+                <div className="relative h-full w-full overflow-hidden rounded-[37px] bg-white flex flex-col justify-between text-left pb-2">
                   
                   <div>
                     {/* Dynamic Island */}
@@ -303,13 +303,13 @@ export function StakeHero() {
 
               {/* --- PHONE 3: BOTTOM-CENTER (Foreground Sharp Screen with Bottom Fade-Out Mask) --- */}
               <div 
-                className="absolute top-[310px] lg:top-[330px] left-[130px] lg:left-[155px] w-[245px] lg:w-[265px] h-[440px] -rotate-[16deg] rounded-[38px] bg-[#12161A] p-[4px] shadow-[0_22px_50px_-12px_rgba(0,0,0,0.35),0_0_0_1px_rgba(255,255,255,0.12)] z-30 opacity-100"
+                className="absolute top-[310px] lg:top-[330px] left-[130px] lg:left-[155px] w-[245px] lg:w-[265px] h-[440px] -rotate-[16deg] rounded-[42px] bg-gradient-to-br from-[#3b4350] via-[#20252d] to-[#29303a] p-[3.5px] shadow-[0_28px_60px_-12px_rgba(0,0,0,0.4),0_0_0_1px_rgba(255,255,255,0.14)] border border-[#485362]/80 z-30 opacity-100"
                 style={{
                   WebkitMaskImage: 'linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 28%, rgba(0,0,0,0) 65%)',
                   maskImage: 'linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 28%, rgba(0,0,0,0) 65%)',
                 }}
               >
-                <div className="relative h-full w-full overflow-hidden rounded-[34px] bg-white flex flex-col text-left">
+                <div className="relative h-full w-full overflow-hidden rounded-[37px] bg-white flex flex-col text-left">
                   {/* Dynamic Island */}
                   <div className="h-3.5 w-18 bg-black rounded-full mx-auto mt-2 shrink-0" />
                   

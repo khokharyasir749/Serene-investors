@@ -244,8 +244,11 @@ export function RewardsTiers() {
           {TIERS.map((tier) => (
             <div
               key={tier.id}
-              className="relative w-full max-w-[290px] sm:max-w-[310px] mx-auto rounded-[42px] bg-[#0D1117] p-[6px] shadow-[0_25px_60px_-15px_rgba(0,0,0,0.35)] border border-white/10 select-none flex flex-col transition-transform duration-300 hover:-translate-y-2"
+              className="relative w-full max-w-[290px] sm:max-w-[310px] mx-auto rounded-[50px] bg-gradient-to-br from-[#3b4350] via-[#20252d] to-[#29303a] p-[4px] shadow-[0_32px_75px_-15px_rgba(0,0,0,0.42),0_12px_28px_-8px_rgba(0,0,0,0.25),0_0_0_1px_rgba(255,255,255,0.14)] border border-[#485362]/80 select-none flex flex-col transition-transform duration-300 hover:-translate-y-2"
             >
+              {/* Outer Metallic Chamfer Highlight */}
+              <div className="pointer-events-none absolute inset-0 rounded-[49px] ring-1 ring-inset ring-white/15" aria-hidden="true" />
+
               {/* Popular Badge on Phone */}
               {tier.isPopular && (
                 <div className="absolute -top-3 left-1/2 -translate-x-1/2 z-30 rounded-full bg-[#7C3AED] px-3 py-0.5 text-[10px] font-extrabold uppercase tracking-wider text-white shadow-md border border-white/20">
@@ -253,11 +256,15 @@ export function RewardsTiers() {
                 </div>
               )}
 
-              {/* Screen Canvas */}
-              <div className="relative h-full min-h-[540px] w-full overflow-hidden rounded-[36px] bg-white flex flex-col justify-between">
-                
-                {/* Physical Notch / Dynamic Island */}
-                <div className="absolute top-2 left-1/2 -translate-x-1/2 z-30 h-4 w-20 rounded-full bg-black/90 pointer-events-none" />
+              {/* Inner OLED Pitch-Black Bezel */}
+              <div className="relative h-full min-h-[540px] w-full rounded-[46px] bg-[#0a0d12] p-[3.5px] overflow-hidden flex flex-col shadow-inner">
+                {/* Screen Canvas */}
+                <div className="relative h-full w-full overflow-hidden rounded-[42px] bg-white flex flex-col justify-between">
+                  
+                  {/* Dynamic Island */}
+                  <div className="absolute top-2 left-1/2 -translate-x-1/2 z-30 h-[18px] w-20 rounded-full bg-black flex items-center justify-end px-2 shadow-xs pointer-events-none">
+                    <div className="size-2 rounded-full bg-[#0a0d14] ring-1 ring-[#1b2230]" />
+                  </div>
 
                 {/* Top Colored Phone Banner */}
                 <div className={`${tier.headerBg} pt-8 pb-7 px-4 text-white text-center relative overflow-hidden shrink-0`}>
@@ -341,6 +348,7 @@ export function RewardsTiers() {
 
               </div>
             </div>
+          </div>
           ))}
         </div>
 
